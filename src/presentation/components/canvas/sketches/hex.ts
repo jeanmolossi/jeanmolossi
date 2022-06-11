@@ -10,11 +10,11 @@ export function sketch(p5: P5Instance) {
         addedTime = 10,
         dieChance = 0.05,
         spawnChance = 1,
-        sparkChance = 0.05,
+        sparkChance = 0.1,
         sparkDist = 10,
         sparkSize = 3;
 
-    let color = (hue: number) => (light: number) => [hue, 255, light],
+    let color = (hue: number) => (light: number) => [hue, toRgba(100), light],
         baseLight = 50,
         addedLight = 10,
         shadowToTimePropMult = 6,
@@ -23,7 +23,6 @@ export function sketch(p5: P5Instance) {
 
     let cx = w / 2,
         cy = h / 2,
-        repaintAlpha: 0.04,
         hueChange = 0.1;
 
     let tick = 0,
@@ -137,6 +136,7 @@ export function sketch(p5: P5Instance) {
                     p5.sin(this.cumulativeTime * this.lightInputMultiplier);
 
             let [hue, sat, lig] = this.color(stepBaseLight);
+            p5.drawingContext.shadowColor = this.color(stepBaseLight);
 
             p5.colorMode(p5.HSL);
             p5.fill(hue, sat, lig);
@@ -160,4 +160,9 @@ export function sketch(p5: P5Instance) {
 
 function direction(): number {
     return Math.random() < 0.5 ? 1 : -1;
+}
+
+function toRgba(percent: number) {
+    const max = 255;
+    return (max * percent) / 100;
 }
