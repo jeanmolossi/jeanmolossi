@@ -46,8 +46,8 @@ export function sketch(p5: P5Instance) {
         ++tick;
 
         if (tick % 120 === 0) {
-            cx = p5.mouseX;
-            cy = p5.mouseY;
+            cx = p5.mouseX || w / 2;
+            cy = p5.mouseY || h / 2;
         }
 
         p5.drawingContext.globalCompositeOperation = "source-over";

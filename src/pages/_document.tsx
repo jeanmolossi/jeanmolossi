@@ -1,6 +1,6 @@
-import { FontLoader } from '@/presentation/scripts'
 import Document, { DocumentContext, Head, Html, Main, NextScript } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
+import { FontLoader } from '@/presentation/scripts'
 
 
 export default class MyDocument extends Document {

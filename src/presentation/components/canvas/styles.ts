@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const CanvasOverlay = styled.div`
     width: 100%;
@@ -7,7 +7,7 @@ export const CanvasOverlay = styled.div`
     bottom: 0;
     left: 0;
     right: 0;
-    z-index: -1;
+    z-index: -999;
 
     > div {
         background-color: ${({ theme }) => theme.oxfordBlue};
