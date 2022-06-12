@@ -5,10 +5,11 @@ export function sketch(p5: P5Instance) {
         h = p5.windowHeight;
 
     let len = 20,
-        count = 50,
-        baseTime = 20,
+        count = particlesLength(),
+        baseTime = 10,
         addedTime = 10,
         dieChance = 0.05,
+        lineWidth = 4,
         spawnChance = 1,
         sparkChance = 0.1,
         sparkDist = 10,
@@ -36,14 +37,18 @@ export function sketch(p5: P5Instance) {
         p5.createCanvas(w, h, p5.P2D);
         p5.fill(`black`);
         p5.rect(0, 0, w, h);
-        p5.frameRate(60);
 
         p5.noSmooth();
-        p5.colorMode(p5.HSB);
+        p5.colorMode(p5.HSL);
     };
 
     p5.draw = function () {
         ++tick;
+
+        if (tick % 120 === 0) {
+            cx = p5.mouseX;
+            cy = p5.mouseY;
+        }
 
         p5.drawingContext.globalCompositeOperation = "source-over";
         p5.drawingContext.shadowBlur = 0;
@@ -59,10 +64,25 @@ export function sketch(p5: P5Instance) {
         });
     };
 
+    p5.windowResized = function () {
+        w = p5.windowWidth;
+        h = p5.windowHeight;
+
+        cx = w / 2;
+        cy = h / 2;
+
+        count = particlesLength();
+
+        p5.resizeCanvas(w, h);
+    };
+
     class Line {
         x: number;
         y: number;
         rad: number;
+
+        birthX: number;
+        birthY: number;
 
         addedX: number;
         addedY: number;
@@ -83,6 +103,9 @@ export function sketch(p5: P5Instance) {
             this.y = 0;
             this.addedX = 0;
             this.addedY = 0;
+
+            this.birthX = cx;
+            this.birthY = cy;
 
             this.rad = 0;
 
@@ -136,15 +159,14 @@ export function sketch(p5: P5Instance) {
                     p5.sin(this.cumulativeTime * this.lightInputMultiplier);
 
             let [hue, sat, lig] = this.color(stepBaseLight);
-            p5.drawingContext.shadowColor = this.color(stepBaseLight);
+            p5.drawingContext.shadowColor = `hsl(${hue}, ${sat}%, ${lig}%)`;
 
-            p5.colorMode(p5.HSL);
             p5.fill(hue, sat, lig);
 
-            let particleX = cx + (this.x + x) * 20,
-                particleY = cy + (this.y + y) * 20;
+            let particleX = this.birthX + (this.x + x) * 20,
+                particleY = this.birthY + (this.y + y) * 20;
 
-            p5.ellipse(particleX, particleY, 4, 4);
+            p5.ellipse(particleX, particleY, lineWidth, lineWidth);
 
             if (Math.random() < sparkChance) {
                 let sparkVariant =
@@ -165,4 +187,8 @@ function direction(): number {
 function toRgba(percent: number) {
     const max = 255;
     return (max * percent) / 100;
+}
+
+function particlesLength() {
+    return Math.floor(Math.min(window.innerHeight, window.innerWidth) * 0.1);
 }
