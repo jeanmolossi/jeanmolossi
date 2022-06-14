@@ -1,5 +1,4 @@
 import { createGlobalStyle } from 'styled-components';
-import { backdrop } from '../components';
 
 export const GlobalStyle = createGlobalStyle`
     html,
@@ -27,10 +26,16 @@ export const GlobalStyle = createGlobalStyle`
         color: #D58936;
     }
 
+    p {
+        line-height: 1.5rem;
+        font-family: inherit;
+    }
+
     * {
         box-sizing: border-box;
         padding: 0;
         margin: 0;
+        scroll-behavior: smooth;
     }
 `;
 

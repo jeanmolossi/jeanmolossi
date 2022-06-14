@@ -1,6 +1,8 @@
 import { fromTop } from '@/presentation/styles/animations';
 import styled from 'styled-components';
 
+const switchSize = `875px`;
+
 export const NavbarContainer = styled.div`
     display: block;
     width: 100%;
@@ -12,7 +14,7 @@ export const NavbarContainer = styled.div`
     left: 0;
     right: 0;
 
-    @media (min-width: 768px) {
+    @media (min-width: ${switchSize}) {
         flex-direction: row;
         bottom: auto;
         min-height: 2.5rem;
@@ -34,7 +36,7 @@ export const Navbar = styled.nav`
         justify-content: space-between;
     }
 
-    @media (min-width: 768px) {
+    @media (min-width: ${switchSize}) {
         max-width: ${({ theme }) => theme.dimensions.maxWidth};
         align-items: stretch;
         flex-direction: row;
@@ -76,7 +78,7 @@ export const CloseIcon = styled.button`
         background-color: ${({ theme }) => theme.bronze}50;
     }
 
-    @media (min-width: 768px) {
+    @media (min-width: ${switchSize}) {
         display: none;
     }
 `;
@@ -103,7 +105,7 @@ export const NavList = styled.div<WithOpenProps>`
     backdrop-filter: hue-rotate(180deg);
     transition: all 100ms ease-out;
 
-    @media (max-width: 768px) {
+    @media (max-width: ${switchSize}) {
         pointer-events: none;
         justify-content: center;
         opacity: 0;
@@ -127,7 +129,7 @@ export const NavList = styled.div<WithOpenProps>`
         `}
     }
 
-    @media (min-width: 768px) {
+    @media (min-width: ${switchSize}) {
         flex-direction: row;
     }
 `;
@@ -135,13 +137,13 @@ export const NavList = styled.div<WithOpenProps>`
 export const NavbarItem = styled.div<WithChildProps>`
     line-height: 100%;
 
-    @media (max-width: 768px) {
+    @media (max-width: ${switchSize}) {
         margin: ${({ theme }) => `${theme.gutter.xs} 0`};
         ${fromTop}
         transition-delay: ${({ child }) => child * 50}ms;
     }
 
-    @media (min-width: 768px) {
+    @media (min-width: ${switchSize}) {
         transform: none;
     }
 
@@ -164,7 +166,7 @@ export const NavbarLink = styled.a`
         text-decoration: underline;
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: ${switchSize}) {
         color: ${({ theme }) => theme.blackChocolate};
         background-color: ${({ theme }) => theme.silverMetallic};
         padding: ${({ theme }) => `${theme.gutter.md}`};

@@ -1,4 +1,4 @@
-import { css } from 'styled-components';
+import { css, keyframes } from 'styled-components';
 
 interface WithAppear {
     isOnScreen: boolean;
@@ -55,4 +55,49 @@ export const fromRight = css<WithAppear>`
     opacity: 1;
     transform: translateX(0);
     `}
+`;
+
+const pulseAnimation = keyframes`
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    50% {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1.02);
+        opacity: 0;
+    }
+`;
+
+export const pulse = css`
+    position: relative;
+
+    &:before {
+        content: '';
+        position: absolute;
+
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+
+        border-radius: ${({ theme }) => theme.radii.md};
+        box-shadow: 0 0 12px ${({ theme }) => theme.beige},
+            inset 0 0 24px ${({ theme }) => theme.beige};
+
+        transform: scale(0);
+        transition: all 0.2s ease-in-out;
+        z-index: -1;
+    }
+
+    &:hover {
+        &:before {
+            animation: ${pulseAnimation} 1s ease-in-out infinite;
+        }
+    }
 `;

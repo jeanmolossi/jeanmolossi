@@ -1,15 +1,17 @@
 import { BaseHead, Container } from "@/presentation/components"
 import { AboutMeSection } from "./sections/about-me"
+import { HeroSection } from "./sections/hero"
 import * as S from './styles'
 
-export const Main = () => {
-
+export const Main = (props: any) => {
     return (
         <>
-            <Container>
-                <BaseHead />
+            <BaseHead />
                 
-                <AboutMeSection />            
+            <HeroSection />
+            
+            <Container>
+                <AboutMeSection />
             </Container>
         </>
     )

@@ -10,7 +10,7 @@ export const AboutMeSection = () => {
     const next = useChildCounter();
     
     return (
-        <S.Section>
+        <S.Section id='about-me'>
             <S.Heading child={next()} isOnScreen={isLinkOnScreen}>Bem vindo(a)</S.Heading>
 
             <S.Paragraph
