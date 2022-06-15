@@ -29,7 +29,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
 
     videoName = videoName.replace(/[\.\\/]*/gi, '').trim();
 
-    let videoPath = `/videos/${videoName}.mp4`;
+    let videoPath = `https://main.d127laxagvg0jk.amplifyapp.com/videos/${videoName}.mp4`;
 
     if (process.env.NODE_ENV === 'development') {
         videoPath = resolve(
