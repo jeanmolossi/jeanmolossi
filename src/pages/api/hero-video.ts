@@ -29,16 +29,20 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
 
     videoName = videoName.replace(/[\.\\/]*/gi, '').trim();
 
-    const videoPath = resolve(
-        __dirname,
-        '..',
-        '..',
-        '..',
-        '..',
-        'public',
-        'videos',
-        `${videoName}.mp4`,
-    );
+    let videoPath = `/videos/${videoName}.mp4`;
+
+    if (process.env.NODE_ENV === 'development') {
+        videoPath = resolve(
+            __dirname,
+            '..',
+            '..',
+            '..',
+            '..',
+            'public',
+            'videos',
+            `${videoName}.mp4`,
+        );
+    }
 
     const videoSize = fs.statSync(videoPath).size;
 
