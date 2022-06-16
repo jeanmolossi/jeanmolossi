@@ -1,5 +1,5 @@
 import { backdrop } from '@/presentation/components';
-import { fromLeft, pulse } from '@/presentation/styles/animations';
+import { fromLeft } from '@/presentation/styles/animations';
 import styled, { keyframes } from 'styled-components';
 
 export const Section = styled.section`
@@ -13,13 +13,16 @@ export const Section = styled.section`
 export const Content = styled.article`
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: repeat(2, 1fr) 30px;
+    grid-template-rows: 1fr auto auto;
     place-items: center;
     padding: 0 ${({ theme }) => theme.gutter.md};
+    padding-top: 4rem;
+    height: 100%;
 
     @media (min-width: 768px) {
+        padding-top: 0;
         grid-template-columns: minmax(400px, 1fr) minmax(367px, 1fr);
-        grid-template-rows: auto 30px;
+        grid-template-rows: auto 100px;
     }
 `;
 
@@ -32,16 +35,23 @@ export const Hero = styled.div`
     align-items: center;
     padding: ${({ theme }) => theme.gutter.lg};
     background-color: ${({ theme }) => theme.beige}05;
+    transition-delay: 200ms;
 
     > h1 {
         font-weight: bold;
-        font-size: 2rem;
+
+        @media (min-width: 768px) {
+            font-size: 2rem;
+        }
     }
 
     > h2 {
         font-weight: 500;
-        font-size: 3rem;
         color: ${({ theme }) => theme.beige};
+
+        @media (min-width: 768px) {
+            font-size: 3rem;
+        }
     }
 
     > p {
@@ -145,4 +155,10 @@ export const ScrollDownButton = styled.a`
     padding: ${({ theme }) => theme.gutter.md};
 
     animation: ${upAndDown} 1s ease-in-out infinite;
+
+    @media (min-width: 768px) {
+        grid-column: span 2;
+        background-color: ${({ theme }) => theme.rust}70;
+        border-radius: ${({ theme }) => theme.radii.md};
+    }
 `;

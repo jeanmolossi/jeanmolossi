@@ -1,6 +1,6 @@
 import LazyVideo from './video'
 import * as S from './styles'
-import { useRef } from 'react'
+import { useMemo, useRef } from 'react'
 import { useOnScreen } from '@/presentation/hooks';
 import Link from 'next/link';
 import { getItem, menuItems } from '@/config/routes';
@@ -12,6 +12,8 @@ export const HeroSection = () => {
 
     const [isOnScreen] = useOnScreen(heroRef);
 
+    const { href, as } = useMemo(() => getItem('Sobre mim'), [])
+
     return (
         <S.Section>
             <S.Content>
@@ -21,7 +23,7 @@ export const HeroSection = () => {
 
                     <p>Recentemente comecei a ensinar e você pode me acompanhar e aprender mais sobre esse mundo de Software Development (desenvolvimento de software).</p>
 
-                    <Link passHref href={getItem('Sobre mim')}>
+                    <Link passHref href={href} as={as}>
                         <S.LinkButton>
                             <FiBook /> Aprender
                         </S.LinkButton>
@@ -32,7 +34,7 @@ export const HeroSection = () => {
                     <LazyVideo />
                 </S.VideoWrapper>
 
-                <S.ScrollDownButton href='#about-me'>
+                <S.ScrollDownButton href={as}>
                     <FiChevronsDown size={32} />
                 </S.ScrollDownButton>
             </S.Content>
