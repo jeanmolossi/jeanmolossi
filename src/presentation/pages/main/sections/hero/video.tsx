@@ -60,7 +60,7 @@ const Video = () => {
     return (
         <video
             ref={videoRef}
-            src="/api/hero-video?filename=Hud-22449"
+            src="/videos/Hud-22449_lg.mp4"
             autoPlay
             controlsList="nodownload"
             loop
