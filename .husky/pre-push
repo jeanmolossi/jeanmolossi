@@ -3,4 +3,6 @@
 
 yarn tsc --noEmit
 
+sudo chown -R "$(whoami)" .next
+
 yarn build
