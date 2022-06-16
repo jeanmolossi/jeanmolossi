@@ -3,11 +3,16 @@ import { ImProfile } from 'react-icons/im';
 import { TbHandClick } from 'react-icons/tb';
 
 export const menuItems = [
-    { href: '/', label: 'Início', icon: FiHome },
-    { href: '/#about-me', label: 'Sobre mim', icon: ImProfile },
-    { href: '/', label: 'Aprendizado', icon: FiTv },
-    { href: '/', label: 'Blog', icon: FiBook },
-    { href: '/', label: 'Contato ?', icon: TbHandClick },
+    { href: '/', as: '/', label: 'Início', icon: FiHome },
+    {
+        href: '/',
+        as: '/#about-me',
+        label: 'Sobre mim',
+        icon: ImProfile,
+    },
+    { href: '/', as: '/', label: 'Aprendizado', icon: FiTv },
+    { href: '/', as: '/', label: 'Blog', icon: FiBook },
+    { href: '/', as: '/', label: 'Contato ?', icon: TbHandClick },
 ] as const;
 
 type MenuItems = typeof menuItems;
