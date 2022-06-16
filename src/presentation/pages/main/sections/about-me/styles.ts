@@ -12,6 +12,10 @@ export const Section = styled.section`
     flex-direction: column;
     justify-content: center;
     min-height: 100vh;
+
+    @media (min-width: 768px) {
+        padding: 0 ${({ theme }) => theme.gutter.xxl};
+    }
 `;
 
 export const Heading = styled.h1<WithAnimProps>`

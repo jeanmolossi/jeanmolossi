@@ -1,8 +1,7 @@
 import { useRef } from 'react'
 import Link from 'next/link'
-import { useOnScreen } from '@/presentation/hooks'
+import { useOnScreen, useChildCounter } from '@/presentation/hooks'
 import * as S from './styles'
-import { useChildCounter } from '@/presentation/hooks/use-child-counter'
 
 export const AboutMeSection = () => {
     const linkRef = useRef<HTMLAnchorElement>(null)
@@ -11,7 +10,7 @@ export const AboutMeSection = () => {
     
     return (
         <S.Section id='about-me'>
-            <S.Heading child={next()} isOnScreen={isLinkOnScreen}>Bem vindo(a)</S.Heading>
+            <S.Heading child={next()} isOnScreen={isLinkOnScreen}>Sobre mim</S.Heading>
 
             <S.Paragraph
                 child={next()}
@@ -37,7 +36,7 @@ export const AboutMeSection = () => {
 
             <Link href="/sobre" passHref>
                 <S.Link child={next()} isOnScreen={isLinkOnScreen} ref={linkRef}>
-                    Ficou curioso(a) ?
+                    Quer informações técnicas ?
                 </S.Link>
             </Link>
         </S.Section>

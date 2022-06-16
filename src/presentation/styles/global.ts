@@ -66,6 +66,7 @@ export const theme = {
         md: '1rem',
         lg: '2rem',
         xl: '4rem',
+        xxl: '8rem',
     },
 
     radii: {
