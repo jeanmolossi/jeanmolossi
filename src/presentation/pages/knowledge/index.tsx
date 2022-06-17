@@ -3,7 +3,11 @@ import { Container } from "@/presentation/components"
 export const Knowledge = () => {
     return (
         <Container>
-            <h1>Aprenda sobre:</h1>
+            <br />
+            <br />
+            <br />
+            <br />
+            <h1>Página de aprendizado em desenvolvimento</h1>
         </Container>
     )
 }

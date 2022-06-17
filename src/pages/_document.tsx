@@ -9,18 +9,18 @@ export default class MyDocument extends Document {
     const originalRenderPage = ctx.renderPage
 
     try {
-      ctx.renderPage = () =>
-        originalRenderPage({
-          enhanceApp: (App) => (props) =>
-            sheet.collectStyles(<App {...props} />),
-        })
+        ctx.renderPage = () =>
+            originalRenderPage({
+            enhanceApp: (App) => (props) =>
+                sheet.collectStyles(<App {...props} />),
+            })
 
-      // @ts-ignore
-      const initialProps = await Document.getInitialProps(ctx)
-      return {
-        ...initialProps,
-        styles: [initialProps.styles, sheet.getStyleElement()],
-      }
+        const originalProps = await ctx.defaultGetInitialProps(ctx);
+
+        return {
+            ...(originalProps || {}),
+            styles: [originalProps.styles, sheet.getStyleElement()],
+        }
     } finally {
       sheet.seal()
     }

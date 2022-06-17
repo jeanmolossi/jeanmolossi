@@ -1,14 +1,13 @@
 import { Container } from "@/presentation/components"
 
-export const InTouch = () => {
+export const Blog = () => {
     return (
         <Container>
             <br />
             <br />
             <br />
             <br />
-            <h1>Contato ?</h1>
-            <p>Não achou que seria tão facil, achou ?</p>
+            <h1>Página do blog em desenvolvimento</h1>
         </Container>
     )
 }

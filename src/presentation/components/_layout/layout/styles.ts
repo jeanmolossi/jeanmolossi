@@ -6,6 +6,7 @@ export const MainContainer = styled.main`
     align-items: center;
 
     min-height: 100vh;
+    position: relative;
 
     canvas {
         background-color: #000000;
