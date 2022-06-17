@@ -1,27 +1,28 @@
-import React, { ReactNode } from 'react'
-import dynamic from 'next/dynamic';
-// import Canvas from '@/presentation/components/canvas';
+import React, { ReactNode, useEffect, useState } from 'react'
+import Canvas from '@/presentation/components/canvas';
 import { Navbar } from '../navbar';
 import { MainContainer } from './styles'
-
-const Canvas = dynamic<any>(
-    () => import('@/presentation/components/canvas'),
-    { loading: () => <div>Loading...</div>, ssr: false, },
-) as React.FunctionComponent;
 
 interface LayoutProps {
     children?: ReactNode;
 }
 
 export function Layout({ children }: LayoutProps) {
+    const [canShow, setCanShow] = useState(false);
+
+    useEffect(() => {
+        if (typeof window !== 'undefined')
+            setCanShow(typeof window !== 'undefined')
+    }, [])
+
     return (
-        <>
-            <Canvas />
+        <div style={{ backgroundColor: 'black'}} >
+            {canShow ? <Canvas /> : null}
             <MainContainer>
                 {children}
 
                 <Navbar />
             </MainContainer>
-        </>
+        </div>
     )
 }

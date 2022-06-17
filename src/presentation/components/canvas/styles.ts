@@ -7,7 +7,7 @@ export const CanvasOverlay = styled.div`
     bottom: 0;
     left: 0;
     right: 0;
-    z-index: -999;
+    z-index: 0;
     background: black;
 
     > div {
