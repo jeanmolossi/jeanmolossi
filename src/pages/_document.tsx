@@ -2,7 +2,7 @@ import Document, { DocumentContext, Head, Html, Main, NextScript } from 'next/do
 import { ServerStyleSheet } from 'styled-components'
 import { FontLoader } from '@/presentation/scripts'
 
-
+// @ts-ignore
 export default class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
     const sheet = new ServerStyleSheet()
@@ -13,8 +13,9 @@ export default class MyDocument extends Document {
         originalRenderPage({
           enhanceApp: (App) => (props) =>
             sheet.collectStyles(<App {...props} />),
-        }) 
+        })
 
+      // @ts-ignore
       const initialProps = await Document.getInitialProps(ctx)
       return {
         ...initialProps,
@@ -24,13 +25,12 @@ export default class MyDocument extends Document {
       sheet.seal()
     }
   }
-  
+
   render(): JSX.Element {
       return (
           <Html>
               <Head>
                   <FontLoader />
-                  <script type='javascript' src='https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.min.js'></script>
               </Head>
               <body>
                   <Main />

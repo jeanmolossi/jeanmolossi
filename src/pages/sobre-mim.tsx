@@ -1,8 +1,8 @@
 import { NextPage } from "next";
 import { AboutMe } from "@/presentation/pages/about-me"
 
-const SobreMim: NextPage = (props) => {
-    return <AboutMe {...props} />
+const SobreMim: NextPage = () => {
+    return <AboutMe />
 }
 
 export default SobreMim;

@@ -7,9 +7,9 @@ export const Main = (props: any) => {
     return (
         <>
             <BaseHead />
-                
+
             <HeroSection />
-            
+
             <Container>
                 <AboutMeSection />
             </Container>
