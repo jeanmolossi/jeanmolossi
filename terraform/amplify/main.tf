@@ -46,14 +46,20 @@ resource "aws_amplify_app" "this" {
 
   custom_rule {
     source = "/<*>"
+    status = "200"
+    target = data.aws_cloudfront_distribution.amplify_cloudfront_id.domain_name
+  }
+
+  custom_rule {
+    source = "/<*>"
     status = "404"
     target = "/"
   }
 
   custom_rule {
-    source = "/<*>"
-    status = "200"
-    target = "https://d1528p1wz2k5ez.amplifyapp.com/<*>"
+    source = "https://jeanmolossi.com.br"
+    status = "301"
+    target = "https://www.jeanmolossi.com.br"
   }
 
   tags = merge(
@@ -65,8 +71,7 @@ resource "aws_amplify_app" "this" {
 resource "aws_amplify_branch" "this" {
   for_each = local.branches
 
-  app_id = aws_amplify_app.this.id
-  # branch_name = "develop"
+  app_id      = aws_amplify_app.this.id
   branch_name = lookup(each.value, "branch_name", "develop")
 
   framework = "Next.js - SSR"
@@ -77,21 +82,23 @@ resource "aws_amplify_branch" "this" {
   }
 }
 
-# resource "aws_amplify_domain_association" "this" {
-#   for_each = local.branches
+resource "aws_amplify_domain_association" "this" {
+  for_each = local.branches
 
-#   app_id      = aws_amplify_app.this.id
-#   domain_name = lookup(each.value, "sub_domain", var.project_name)
+  app_id      = aws_amplify_app.this.id
+  domain_name = lookup(each.value, "sub_domain", var.project_name)
 
-#   sub_domain {
-#     branch_name = aws_amplify_branch.this[each.key].branch_name
-#     prefix      = ""
-#   }
-#   sub_domain {
-#     branch_name = aws_amplify_branch.this[each.key].branch_name
-#     prefix      = "www"
-#   }
-# }
+  sub_domain {
+    branch_name = aws_amplify_branch.this[each.key].branch_name
+    prefix      = ""
+  }
+
+  sub_domain {
+    branch_name = aws_amplify_branch.this[each.key].branch_name
+    prefix      = "www"
+
+  }
+}
 
 resource "aws_amplify_webhook" "master" {
   for_each = local.branches

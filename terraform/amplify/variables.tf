@@ -27,3 +27,8 @@ variable "kibana_password" {
   type        = string
   description = "the kibana password"
 }
+
+variable "amplify_cloudfront_id" {
+  type = string
+  description = "value of the CloudFront distribution id"
+}
