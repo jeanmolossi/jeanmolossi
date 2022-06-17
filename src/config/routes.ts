@@ -10,9 +10,14 @@ export const menuItems = [
         label: 'Sobre mim',
         icon: ImProfile,
     },
-    { href: '/', as: '/', label: 'Aprendizado', icon: FiTv },
-    { href: '/', as: '/', label: 'Blog', icon: FiBook },
-    { href: '/', as: '/', label: 'Contato ?', icon: TbHandClick },
+    {
+        href: '/aprendizado',
+        as: '/aprendizado',
+        label: 'Aprendizado',
+        icon: FiTv,
+    },
+    { href: '/blog', as: '/blog', label: 'Blog', icon: FiBook },
+    { href: '/contato', as: '/contato', label: 'Contato ?', icon: TbHandClick },
 ] as const;
 
 type MenuItems = typeof menuItems;
