@@ -7,9 +7,9 @@ locals {
 
   branches = {
     main = {
-      env         = "prod"
+      env         = "production"
       stage       = "PRODUCTION"
-      sub_domain  = format("%s.%s", var.project_name, var.route53_zone_name)
+      sub_domain  = format("%s", var.route53_zone_name)
       branch_name = "main"
     }
   }
