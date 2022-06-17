@@ -17,3 +17,13 @@ variable "route53_zone_name" {
   type        = string
   description = "The name of the Route53 zone"
 }
+
+variable "ghp_token" {
+  type        = string
+  description = "The GitHub Personal Access Token"
+}
+
+variable "kibana_password" {
+  type        = string
+  description = "the kibana password"
+}
