@@ -6,17 +6,28 @@ PASSWORD=$3
 configPath="../configs"
 baseVarFile="base.tfvars"
 varFile="vars.tfvars"
-# services="vpc open-search amplify"
-services="open-search"
+services="vpc open-search amplify"
 
 echo "Running terraform $ACTION"
+echo "GHP_TOKEN: $GHP_TOKEN"
+echo "PASSWORD: $PASSWORD"
+
+if [[ "$GHP_TOKEN" == "" ]]; then
+    echo "GHP_TOKEN is empty"
+    exit 1
+fi
+
+if [[ "$PASSWORD" == "" ]]; then
+    echo "PASSWORD is empty"
+    exit 1
+fi
 
 function init {
     for service in $services; do
         if [ ! -d "$service/.terraform" ]; then
             echo "Initializing $service"
             cd $service
-            terraform init -backend-config="$configPath/$baseVarFile" 
+            terraform init -backend-config="$configPath/$baseVarFile"
             cd ..
         fi
     done
@@ -29,8 +40,8 @@ function plan {
         terraform plan \
             -var-file="$configPath/$baseVarFile" \
             -var-file="$configPath/$varFile" \
-            -var ghp_token=$GHP_TOKEN \
-            -var kibana_password=$PASSWORD \
+            -var "ghp_token=$GHP_TOKEN" \
+            -var "kibana_password=$PASSWORD" \
             -out="$service.plan"
         cd ..
     done
@@ -40,7 +51,12 @@ function apply {
     for service in $services; do
         echo "applying $service"
         cd $service
-        terraform apply -var-file="$configPath/$baseVarFile" -var-file="$configPath/$varFile" -auto-approve
+        terraform apply \
+            -var-file="$configPath/$baseVarFile" \
+            -var-file="$configPath/$varFile" \
+            -var "ghp_token=$GHP_TOKEN" \
+            -var "kibana_password=$PASSWORD" \
+            -auto-approve
         cd ..
     done
 }
@@ -51,7 +67,12 @@ function destroy {
     for service in $invertedServices; do
         echo "destroying $service"
         cd $service
-        terraform destroy -var-file="$configPath/$baseVarFile" -var-file="$configPath/$varFile" -auto-approve
+        terraform destroy \
+            -var-file="$configPath/$baseVarFile" \
+            -var-file="$configPath/$varFile" \
+            -var "ghp_token=$GHP_TOKEN" \
+            -var "kibana_password=$PASSWORD" \
+            -auto-approve
         cd ..
     done
 }
