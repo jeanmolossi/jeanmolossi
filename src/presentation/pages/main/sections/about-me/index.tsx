@@ -7,7 +7,7 @@ export const AboutMeSection = () => {
     const linkRef = useRef<HTMLAnchorElement>(null)
     const [isLinkOnScreen] = useOnScreen(linkRef)
     const next = useChildCounter();
-    
+
     return (
         <S.Section id='about-me'>
             <S.Heading child={next()} isOnScreen={isLinkOnScreen}>Sobre mim</S.Heading>
@@ -36,7 +36,7 @@ export const AboutMeSection = () => {
 
             <Link href="/sobre-mim" passHref>
                 <S.Link child={next()} isOnScreen={isLinkOnScreen} ref={linkRef}>
-                    Quer informações técnicas ?
+                    Quer informações técnicas ? Sim ou Claro!
                 </S.Link>
             </Link>
         </S.Section>

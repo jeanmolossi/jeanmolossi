@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { sketch } from './sketches/hex';
 import { CanvasOverlay } from './styles';
 
-export default function Canvas() {
+const Canvas = () => {
     const [Wrapper, setWrapper] = useState<any>(null);
 
     useEffect(() => {
@@ -18,3 +18,5 @@ export default function Canvas() {
         </CanvasOverlay>
     )
 }
+
+export default Canvas;
