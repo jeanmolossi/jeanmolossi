@@ -1,6 +1,5 @@
 import { backdrop } from '@/presentation/components';
-import { theme } from '@/presentation/styles';
-import { fromLeft, fromRight } from '@/presentation/styles/animations';
+import { fromLeft } from '@/presentation/styles/animations';
 import styled from 'styled-components';
 
 export const Section = styled.section`
