@@ -12,7 +12,8 @@ export const HeroSection = () => {
 
     const [isOnScreen] = useOnScreen(heroRef);
 
-    const { href, as } = useMemo(() => getItem('Sobre mim'), [])
+    const { href: learnHref, as: learnAs } = useMemo(() => getItem('Aprendizado'), [])
+    const { as: aboutAs } = useMemo(() => getItem('Sobre mim'), [])
 
     return (
         <S.Section>
@@ -23,7 +24,7 @@ export const HeroSection = () => {
 
                     <p>Recentemente comecei a ensinar e você pode me acompanhar e aprender mais sobre esse mundo de Software Development (desenvolvimento de software).</p>
 
-                    <Link passHref href={href} as={as}>
+                    <Link passHref href={learnHref} as={learnAs}>
                         <S.LinkButton>
                             <FiBook /> Aprender
                         </S.LinkButton>
@@ -34,7 +35,7 @@ export const HeroSection = () => {
                     <LazyVideo />
                 </S.VideoWrapper>
 
-                <S.ScrollDownButton href={as}>
+                <S.ScrollDownButton href={aboutAs}>
                     <FiChevronsDown size={32} />
                 </S.ScrollDownButton>
             </S.Content>

@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useMemo, useRef } from 'react'
 import Link from 'next/link'
 import { useOnScreen, useChildCounter } from '@/presentation/hooks'
 import * as S from './styles'
@@ -7,6 +7,10 @@ export const AboutMeSection = () => {
     const linkRef = useRef<HTMLAnchorElement>(null)
     const [isLinkOnScreen] = useOnScreen(linkRef)
     const next = useChildCounter();
+
+    const currentAge = useMemo(() => calcAge(
+        new Date(1995, 3, 8, 7, 31, 0)
+    ), [])
 
     return (
         <S.Section id='about-me'>
@@ -23,7 +27,7 @@ export const AboutMeSection = () => {
                 child={next()}
                 isOnScreen={isLinkOnScreen}
             >
-                Uma breve apresentação sobre minha vida. Atualmente, estou com 27 anos de idade, amo programar.
+                Uma breve apresentação sobre minha vida. Atualmente, estou com {currentAge} anos de idade, amo programar.
             </S.Paragraph>
 
             <S.Paragraph
@@ -41,4 +45,10 @@ export const AboutMeSection = () => {
             </Link>
         </S.Section>
     )
+}
+
+function calcAge(birthday: Date) {
+    const ageDifMs = Date.now() - birthday.getTime()
+    const ageDate = new Date(ageDifMs)
+    return Math.abs(ageDate.getUTCFullYear() - 1970)
 }
