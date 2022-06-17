@@ -6,8 +6,12 @@ export function useOnScreen<T extends HTMLElement>(
 ) {
     const [isIntersecting, setIntersecting] = useState(false);
 
+    if (typeof window === 'undefined') {
+        return [true] as const;
+    }
+
     useEffect(() => {
-        const observer = new IntersectionObserver(
+        const observer = new window.IntersectionObserver(
             ([entry]) => {
                 setIntersecting(entry.isIntersecting);
             },
