@@ -13,7 +13,7 @@ export const Section = styled.section`
 export const Content = styled.article`
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr auto auto;
+    grid-template-rows: 1fr auto minmax(100px, auto);
     place-items: center;
     padding: 0 ${({ theme }) => theme.gutter.md};
     padding-top: 4rem;
@@ -113,13 +113,14 @@ export const LinkButton = styled.a`
 `;
 
 export const VideoWrapper = styled.div`
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
     perspective: 100vw;
     overflow: hidden;
 
     @media (min-width: 768px) {
+        display: flex;
         padding: 2.5rem;
     }
 
