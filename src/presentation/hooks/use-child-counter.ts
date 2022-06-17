@@ -3,7 +3,7 @@
  *
  * Example:
  * ```
- *      const { next } = useChildCounter();
+ *      const next = useChildCounter();
  *      <Component child={next()} /> // child will be 1
  *      <Component child={next()} /> // child will be 2
  * ```
