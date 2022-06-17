@@ -5,8 +5,8 @@ data "aws_route53_zone" "this" {
   private_zone = false
 }
 
-# data "aws_acm_certificate" "this" {
-#   domain = "*.${var.route53_zone_name}"
+data "aws_acm_certificate" "this" {
+  domain = "*.${var.route53_zone_name}"
 
-#   statuses = ["ISSUED"]
-# }
+  statuses = ["ISSUED"]
+}
