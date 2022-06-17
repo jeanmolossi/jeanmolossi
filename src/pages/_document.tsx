@@ -15,7 +15,8 @@ export default class MyDocument extends Document {
                 sheet.collectStyles(<App {...props} />),
             })
 
-        const originalProps = await ctx.defaultGetInitialProps(ctx);
+        // @ts-ignore
+        const originalProps = await Document.getInitialProps(ctx);
 
         return {
             ...(originalProps || {}),
