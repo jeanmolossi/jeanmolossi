@@ -34,7 +34,7 @@ export const AboutMeSection = () => {
             </S.Paragraph>
 
 
-            <Link href="/sobre" passHref>
+            <Link href="/sobre-mim" passHref>
                 <S.Link child={next()} isOnScreen={isLinkOnScreen} ref={linkRef}>
                     Quer informações técnicas ?
                 </S.Link>
