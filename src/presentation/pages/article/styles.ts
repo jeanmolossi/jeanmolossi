@@ -22,3 +22,8 @@ export const Article = styled.article`
         padding-bottom: ${({ theme }) => theme.gutter.md};
     }
 `;
+
+export const Divider = styled.div`
+    display: block;
+    min-height: 4.5rem;
+`;
