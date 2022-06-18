@@ -86,12 +86,6 @@ resource "aws_amplify_app" "this" {
     target = "https://www.jeanmolossi.com.br"
   }
 
-  environment_variables = {
-    "DEV_TO_BASE_URL"             = ""
-    "DEV_TO_API_KEY"              = ""
-    "NEXT_PUBLIC_DEV_TO_BASE_URL" = ""
-  }
-
   tags = merge(
     local.default_tags,
     { "amplify:project_name" = var.project_name }
@@ -108,7 +102,11 @@ resource "aws_amplify_branch" "this" {
   stage     = upper(lookup(each.value, "stage", "DEVELOPMENT"))
 
   environment_variables = {
-    ENV = lookup(each.value, "env", "development")
+    ENV                         = lookup(each.value, "env", "development")
+    DEV_TO_BASE_URL             = lookup(each.value, "DEV_TO_BASE_URL", "")
+    DEV_TO_API_KEY              = lookup(each.value, "DEV_TO_API_KEY", "")
+    NEXT_PUBLIC_DEV_TO_BASE_URL = lookup(each.value, "NEXT_PUBLIC_DEV_TO_BASE_URL", "")
+    NEXT_PUBLIC_GA_TRACKING_ID  = lookup(each.value, "NEXT_PUBLIC_GA_TRACKING_ID", "")
   }
 }
 
