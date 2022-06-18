@@ -40,7 +40,7 @@ export const Navbar = () => {
 
                     {menuItems.map(({ href, as, label, icon: Icon }, i) => (
                         <S.NavbarItem isOnScreen={isOpen} child={next()} key={i.toString()}>
-                            <Link href="/" passHref>
+                            <Link href={href} as={as} passHref>
                                 <S.NavbarLink onClickCapture={onClose}>
                                     <Icon />
                                     {label}
