@@ -17,7 +17,7 @@ export function Layout({ children }: LayoutProps) {
 
     return (
         <div style={{ backgroundColor: 'black'}} >
-            {canShow ? <Canvas /> : null}
+            {/* {canShow ? <Canvas /> : null} */}
             <MainContainer>
                 {children}
 
