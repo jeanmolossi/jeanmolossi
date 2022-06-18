@@ -8,8 +8,6 @@ export interface ArticleProps {
 }
 
 export const Article = ({ article }: ArticleProps) => {
-    console.log(article)
-
     return (
         <Container>
             <br />

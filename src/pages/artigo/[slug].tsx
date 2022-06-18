@@ -1,4 +1,5 @@
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next";
+import { getArticles, getArticleBySlug } from "@/data/dev.to";
 import { Article, ArticleProps } from "@/presentation/pages/article";
 
 export default function Artigo(props: InferGetStaticPropsType<typeof getStaticProps>) {
@@ -11,11 +12,9 @@ export const getStaticProps: GetStaticProps<ArticleProps> = async ({ params }) =
         return { props: { article: {} as ArticleType } }
     }
 
-    const username = 'ben';
     const { slug } = params as { slug: string };
 
-    const article: ArticleType = await fetch(`${process.env.DEV_TO_BASE_URL}/articles/${username}/${slug}`)
-        .then(res => res.json());
+    const article = await getArticleBySlug(slug)
 
     return {
         props: {
@@ -25,14 +24,8 @@ export const getStaticProps: GetStaticProps<ArticleProps> = async ({ params }) =
     }
 }
 
-
 export const getStaticPaths: GetStaticPaths = async () => {
-    const articles: ArticleType[] = await fetch(
-        // `${process.env.DEV_TO_BASE_URL}/articles/me/published`,
-        `${process.env.DEV_TO_BASE_URL}/articles?username=ben`,
-        // { headers: { 'api_key': `${process.env.DEV_TO_API_KEY}` } }
-    )
-        .then(r => r.json())
+    const articles = await getArticles()
 
     const paths = articles.map(article => ({
         params: { slug: article.slug },

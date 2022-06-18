@@ -1,6 +1,11 @@
+import { Article } from "@/domain/entities/dev.to/article";
 import { Container } from "@/presentation/components"
 
-export const Blog = () => {
+export interface BlogProps {
+    articles: Article[];
+}
+
+export const Blog = ({ articles }: BlogProps) => {
     return (
         <Container>
             <br />
@@ -8,6 +13,7 @@ export const Blog = () => {
             <br />
             <br />
             <h1>Página do blog em desenvolvimento</h1>
+            <h2>{articles.length}</h2>
         </Container>
     )
 }
