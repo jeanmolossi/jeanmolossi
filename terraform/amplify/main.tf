@@ -69,6 +69,12 @@ resource "aws_amplify_app" "this" {
   }
 
   custom_rule {
+    source = "/artigo/<*>"
+    status = "200"
+    target = "${data.aws_cloudfront_distribution.amplify_cloudfront_id.domain_name}/artigo/<*>"
+  }
+
+  custom_rule {
     source = "/<*>"
     status = "404"
     target = "/"
