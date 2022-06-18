@@ -2,6 +2,7 @@ import type { AppProps } from 'next/app'
 import { ThemeProvider } from 'styled-components'
 import { GlobalStyle, theme } from '@/presentation/styles'
 import { Layout } from '@/presentation/components'
+import '@/presentation/styles/github-dark.min.css'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
