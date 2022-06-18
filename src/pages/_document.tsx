@@ -1,6 +1,6 @@
 import Document, { DocumentContext, Head, Html, Main, NextScript } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
-import { FontLoader } from '@/presentation/scripts'
+import { FontLoader, TagManagerNoScript } from '@/presentation/scripts'
 
 // @ts-ignore
 export default class MyDocument extends Document {
@@ -34,6 +34,7 @@ export default class MyDocument extends Document {
                   <FontLoader />
               </Head>
               <body>
+                  <TagManagerNoScript />
                   <Main />
                   <NextScript />
               </body>

@@ -1,4 +1,4 @@
-import { gtag } from "@/config/constants";
+import { gtag } from '@/config/constants';
 
 declare global {
     interface Window {
@@ -7,18 +7,17 @@ declare global {
 }
 
 export namespace Gtag {
-
     export type Event = {
         action: string;
         category: string;
         label: string;
         value: string;
-    }
+    };
 
     export type Actor = {
         pageView(url: string): void;
         event(e: Event): void;
-    }
+    };
 }
 
 export const gtagActions: Gtag.Actor = {
@@ -38,7 +37,7 @@ export const gtagActions: Gtag.Actor = {
         window.gtag('event', action, {
             event_category: category,
             event_label: label,
-            value: value
-        })
-    }
-}
+            value: value,
+        });
+    },
+};
