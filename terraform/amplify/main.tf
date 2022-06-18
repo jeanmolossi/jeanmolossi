@@ -45,9 +45,15 @@ resource "aws_amplify_app" "this" {
   iam_service_role_arn = data.aws_iam_role.amplifyconsole.arn
 
   custom_rule {
-    source = "/<*>"
+    source = "/"
     status = "200"
     target = data.aws_cloudfront_distribution.amplify_cloudfront_id.domain_name
+  }
+
+  custom_rule {
+    source = "/<*>"
+    status = "200"
+    target = "${data.aws_cloudfront_distribution.amplify_cloudfront_id.domain_name}/<*>"
   }
 
   custom_rule {
