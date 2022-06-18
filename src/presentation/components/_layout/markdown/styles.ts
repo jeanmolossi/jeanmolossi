@@ -46,4 +46,8 @@ export const MarkdownWrapper = styled.div`
             border-radius: ${({ theme }) => theme.radii.sm};
         }
     }
+
+    > hr {
+        border-color: ${({ theme }) => theme.beige}15;
+    }
 `;
