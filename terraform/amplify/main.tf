@@ -80,6 +80,12 @@ resource "aws_amplify_app" "this" {
     target = "https://www.jeanmolossi.com.br"
   }
 
+  environment_variables = {
+    "DEV_TO_BASE_URL"             = ""
+    "DEV_TO_API_KEY"              = ""
+    "NEXT_PUBLIC_DEV_TO_BASE_URL" = ""
+  }
+
   tags = merge(
     local.default_tags,
     { "amplify:project_name" = var.project_name }
