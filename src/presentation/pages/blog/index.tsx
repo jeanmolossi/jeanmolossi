@@ -1,7 +1,11 @@
 import { Article } from "@/domain/entities/dev.to/article";
 import { Container } from "@/presentation/components"
+import { RenderIf } from "@/presentation/helpers";
+import Image from "next/image";
 import Link from "next/link";
+import { useMemo } from "react";
 import { FiBookOpen } from "react-icons/fi";
+import { ArticleExcerpt } from "./article-thumb";
 import * as S from './styles';
 
 export interface BlogProps {
@@ -9,26 +13,25 @@ export interface BlogProps {
 }
 
 export const Blog = ({ articles }: BlogProps) => {
+
+    const smallExcerpt = useMemo(() => {
+        const total = articles.length;
+
+        return total <= 1
+            ? `Mostrando ${total} artigo`
+            : `Mostrando ${total} artigos`;
+    }, [articles]);
+
     return (
         <Container>
             <S.Heading>
                 <h1>Blog</h1>
-                <small>Mostrando {articles.length} artigos</small>
+                <small>{smallExcerpt}</small>
             </S.Heading>
 
             <S.ArticleList>
                 {articles.map(article => (
-                    <Link key={article.id.toString()} href="/artigo/[slug]" as={`/artigo/${article.slug}`} passHref>
-                        <S.ArticleItem>
-                            <h1>{article.title}</h1>
-                            <h2>{article.description}</h2>
-
-                            <S.ArticleLink>
-                                <FiBookOpen />
-                                Veja artigo completo
-                            </S.ArticleLink>
-                        </S.ArticleItem>
-                    </Link>
+                    <ArticleExcerpt article={article} key={article.id.toString()} />
                 ))}
             </S.ArticleList>
         </Container>
