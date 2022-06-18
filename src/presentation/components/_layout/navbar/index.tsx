@@ -32,7 +32,7 @@ export const Navbar = () => {
                         }
                     />
                 </div>
-                
+
                 <S.NavList isOpen={isOpen}>
                     <RenderIf condition={isOpen}>
                         <Logo />
@@ -40,13 +40,13 @@ export const Navbar = () => {
 
                     {menuItems.map(({ href, as, label, icon: Icon }, i) => (
                         <S.NavbarItem isOnScreen={isOpen} child={next()} key={i.toString()}>
-                            <Link href={href} as={as} passHref>
+                            <Link href="/" passHref>
                                 <S.NavbarLink onClickCapture={onClose}>
                                     <Icon />
                                     {label}
                                 </S.NavbarLink>
                             </Link>
-                        </S.NavbarItem> 
+                        </S.NavbarItem>
                     ))}
                 </S.NavList>
             </S.Navbar>
