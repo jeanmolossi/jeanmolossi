@@ -7,18 +7,18 @@ import remarkGfm from 'remark-gfm';
 import { MarkdownProcessor } from '@/presentation/helpers';
 import * as S from './styles';
 
-interface MarkdownProps {
+export interface MarkdownProps {
     children?: string;
 }
 
-export const Markdown = ({ children = '' }: MarkdownProps) => {
+export const Markdown = ({ children: md = '' }: MarkdownProps) => {
     const parsedBody = useMemo(() => {
-        const processor = new MarkdownProcessor(children)
+        const processor = new MarkdownProcessor(md)
         return processor
             .extractEmbed()
             .extractEmptyCodeBlock()
             .final()
-    }, [children])
+    }, [md])
 
     return (
         <S.MarkdownWrapper>
@@ -26,12 +26,11 @@ export const Markdown = ({ children = '' }: MarkdownProps) => {
                 remarkPlugins={[remarkGfm]}
                 rehypePlugins={[
                     rehypeRaw,
+                    rehypeHighlight,
                     rehypeExternalLinks,
-                    rehypeHighlight
                 ]}
-            >
-                {parsedBody}
-            </ReactMarkdown>
+                children={parsedBody}
+            />
         </S.MarkdownWrapper>
     )
 }
