@@ -1,6 +1,7 @@
 import { AxiosError } from 'axios';
 import { Article } from '@/domain/entities/dev.to/article';
 import { devToApi } from '@/data/api/dev.to';
+import logger from '@/config/logger/logger';
 
 export async function getArticleBySlug(slug: string): Promise<Article> {
     const username = 'jeanmolossi';
@@ -10,13 +11,17 @@ export async function getArticleBySlug(slug: string): Promise<Article> {
             `/articles/${username}/${slug}`,
         );
 
+        logger.info('article fetched', { slug, author: article.user.username });
         return article || {};
     } catch (e) {
-        const err = e as Error;
-        console.log(err.message);
-
-        const aErr = e as AxiosError;
-        console.log(aErr.response?.data);
+        if (e instanceof AxiosError) {
+            logger.error('failed to fetch article', {
+                err: e.response?.data,
+                isAxios: true,
+            });
+        } else {
+            logger.error('failed to fetch article', { err: e, isAxios: false });
+        }
 
         return {
             title: 'Artigo não disponível',
