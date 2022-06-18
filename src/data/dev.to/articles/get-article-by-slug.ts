@@ -3,7 +3,7 @@ import { Article } from '@/domain/entities/dev.to/article';
 import { devToApi } from '@/data/api/dev.to';
 
 export async function getArticleBySlug(slug: string): Promise<Article> {
-    const username = 'ben';
+    const username = 'jeanmolossi';
 
     try {
         const { data: article } = await devToApi.get<Article>(
