@@ -45,39 +45,15 @@ resource "aws_amplify_app" "this" {
   iam_service_role_arn = data.aws_iam_role.amplifyconsole.arn
 
   custom_rule {
-    source = "/"
-    status = "200"
-    target = data.aws_cloudfront_distribution.amplify_cloudfront_id.domain_name
-  }
-
-  custom_rule {
     source = "/<*>"
     status = "200"
-    target = "${data.aws_cloudfront_distribution.amplify_cloudfront_id.domain_name}/<*>"
-  }
-
-  custom_rule {
-    source = "/_next/<*>"
-    status = "200"
-    target = "${data.aws_cloudfront_distribution.amplify_cloudfront_id.domain_name}/_next/<*>"
-  }
-
-  custom_rule {
-    source = "/videos/<*>"
-    status = "200"
-    target = "${data.aws_cloudfront_distribution.amplify_cloudfront_id.domain_name}/videos/<*>"
-  }
-
-  custom_rule {
-    source = "/artigo/<*>"
-    status = "200"
-    target = "${data.aws_cloudfront_distribution.amplify_cloudfront_id.domain_name}/artigo/<*>"
+    target = "https://${data.aws_cloudfront_distribution.amplify_cloudfront_id.domain_name}/<*>"
   }
 
   custom_rule {
     source = "/<*>"
     status = "404"
-    target = "/"
+    target = "https://${data.aws_cloudfront_distribution.amplify_cloudfront_id.domain_name}/<*>"
   }
 
   custom_rule {
