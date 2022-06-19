@@ -1,0 +1,64 @@
+import React, { useMemo } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { SiYoutube } from "react-icons/si";
+import { cdnLoader } from "@/presentation/helpers";
+import { useMediaQuery } from "@/presentation/hooks";
+import { Playlist } from "../";
+import * as S from "./styles";
+
+export interface PlaylistItemProps {
+    playlist: Playlist;
+}
+
+export const PlaylistItem = React.memo(({ playlist }: PlaylistItemProps) => {
+    const isUpMediaQuery = useMediaQuery('(min-width: 768px)')
+
+    const src = useMemo(() => {
+        return isUpMediaQuery
+                ? playlist.thumbnail.big.url
+                : playlist.thumbnail.small.url;
+    }, [isUpMediaQuery])
+
+    const description = useMemo(() => {
+        const maxLength = isUpMediaQuery ? 200 : 350;
+        return playlist
+            .description
+            .nlToBr()
+            .trimAfter(maxLength)
+    }, [playlist.description, isUpMediaQuery])
+
+    return (
+        <Link href="/playlists/[slug]" as={`/playlists/${playlist.slug}`} passHref>
+            <S.ItemContainer>
+                <S.ItemCover>
+                    <div>
+                        <Image
+                            alt={`capa da playlist ${playlist.title}`}
+                            loader={cdnLoader}
+                            loading="lazy"
+                            objectFit="cover"
+                            src={{ src, width: 1280, height: 720 }}
+                        />
+                    </div>
+                </S.ItemCover>
+
+                <S.ItemDescription>
+                    <h1>{playlist.title}</h1>
+
+                    <small>Publicada {playlist.publishedAt.toRelativeTime()}</small>
+
+                    <p
+                        title={playlist.description}
+                        dangerouslySetInnerHTML={{ __html: description }}>
+                    </p>
+
+
+                    <span>
+                        <SiYoutube /> Ver vídeos desta playlist
+                    </span>
+                </S.ItemDescription>
+            </S.ItemContainer>
+        </Link>
+    );
+})
