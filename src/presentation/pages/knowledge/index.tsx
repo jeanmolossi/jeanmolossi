@@ -1,6 +1,13 @@
 import { YTPlaylist } from "@/domain/entities/youtube/request";
 import { Container } from "@/presentation/components"
+import dynamic from "next/dynamic";
+import { FunctionComponent } from "react";
+import { PlaylistItemProps } from './playlist'
 import * as S from './styles'
+
+const LazyPlaylistItem = dynamic(
+    () => import('./playlist').then(mod => mod.PlaylistItem)
+) as FunctionComponent<PlaylistItemProps>
 
 export interface Playlist {
     id: string;
@@ -11,6 +18,7 @@ export interface Playlist {
         big: YTPlaylist.Resolution;
     },
     slug: string;
+    publishedAt: string;
 }
 
 export interface KnowledgeProps {
@@ -21,16 +29,14 @@ export const Knowledge = ({ playlists }: KnowledgeProps) => {
     return (
         <Container>
             <S.KnowledgeContainer>
-                <h1>Página de aprendizado em desenvolvimento</h1>
+                <h1>Aprenda com projetos práticos</h1>
+                <h2>Playlists organizadas</h2>
 
-                {playlists.map(playlist => (
-                    <div key={playlist.id}>
-                        <img src={playlist.thumbnail.small.url} alt={playlist.title} />
-                        <span>{playlist.title}</span>
-                        <p>{playlist.description}</p>
-                        <hr />
-                    </div>
-                ))}
+                <S.Playlists>
+                    {playlists.map(playlist => (
+                        <LazyPlaylistItem key={playlist.id} playlist={playlist} />
+                    ))}
+                </S.Playlists>
             </S.KnowledgeContainer>
         </Container>
     )
