@@ -1,5 +1,6 @@
 import { YTPlaylist } from "@/domain/entities/youtube/request";
 import { Container } from "@/presentation/components"
+import * as S from './styles'
 
 export interface Playlist {
     id: string;
@@ -19,13 +20,9 @@ export interface KnowledgeProps {
 export const Knowledge = ({ playlists }: KnowledgeProps) => {
     return (
         <Container>
-            <br />
-            <br />
-            <br />
-            <br />
-            <h1>Página de aprendizado em desenvolvimento</h1>
+            <S.KnowledgeContainer>
+                <h1>Página de aprendizado em desenvolvimento</h1>
 
-            <div>
                 {playlists.map(playlist => (
                     <div key={playlist.id}>
                         <img src={playlist.thumbnail.small.url} alt={playlist.title} />
@@ -34,7 +31,7 @@ export const Knowledge = ({ playlists }: KnowledgeProps) => {
                         <hr />
                     </div>
                 ))}
-            </div>
+            </S.KnowledgeContainer>
         </Container>
     )
 }
