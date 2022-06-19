@@ -3,3 +3,4 @@ export * from './_layout/backdrop-base';
 export * from './_layout/layout';
 export * from './_layout/markdown';
 export * from './container';
+export * from './social-links';
