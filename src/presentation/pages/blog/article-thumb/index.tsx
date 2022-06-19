@@ -6,7 +6,7 @@ import { RenderIf } from "@/presentation/helpers";
 import { ArticleProps } from "../../article";
 import * as S from "./styles"
 
-const cdnLoader: ImageLoader = ({ src }) => src;
+const cdnLoader: ImageLoader = ({ src, width, quality }) => `${src}?w=${width}&q=${quality}`;
 
 export const ArticleExcerpt = React.memo(({ article }: ArticleProps) => {
     return (
