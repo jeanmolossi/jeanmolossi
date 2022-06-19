@@ -8,7 +8,7 @@ const Aprendizado = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
 
 export default Aprendizado
 
-export const getStaticProps: GetStaticProps<KnowledgeProps> = async ({ params, previewData }) => {
+export const getStaticProps: GetStaticProps<KnowledgeProps> = async () => {
     const result = await getPlaylists()
 
     const playlists: KnowledgeProps['playlists'] = result.items.map(playlist => ({
@@ -16,10 +16,11 @@ export const getStaticProps: GetStaticProps<KnowledgeProps> = async ({ params, p
         title: playlist.snippet.title,
         description: playlist.snippet.description,
         thumbnail: {
-            small: playlist.snippet.thumbnails.default,
-            big: playlist.snippet.thumbnails.high
+            small: playlist.snippet.thumbnails.medium,
+            big: playlist.snippet.thumbnails.standard
         },
-        slug: playlist.snippet.title.toSlug()
+        slug: playlist.snippet.title.toSlug(),
+        publishedAt: playlist.snippet.publishedAt
     }));
 
     return {
