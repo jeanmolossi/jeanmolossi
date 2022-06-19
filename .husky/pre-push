@@ -6,3 +6,8 @@ yarn tsc --noEmit
 sudo chown -R "$(whoami)" .next
 
 yarn build
+
+cd ./terraform
+./run.sh init $GHP_TOKEN $PASSWORD
+./run.sh plan $GHP_TOKEN $PASSWORD
+./run.sh apply $GHP_TOKEN $PASSWORD
