@@ -1,11 +1,13 @@
 locals {
-  default_tags = {
+  # REMOVE example_ prefix
+  example_default_tags = {
     ProjectName = var.project_name
     Repository  = var.repository_source
     Mainteiner  = "Terraform"
   }
 
-  branches = {
+  # REMOVE example_ prefix
+  example_branches = {
     main = {
       stage       = "PRODUCTION"
       sub_domain  = format("%s", var.route53_zone_name)
