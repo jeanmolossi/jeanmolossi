@@ -15,6 +15,7 @@ locals {
       DEV_TO_BASE_URL              = ""
       DEV_TO_API_KEY               = ""
       YOUTUBE_API_KEY              = ""
+      YOUTUBE_CHAN_ID              = ""
       NEXT_PUBLIC_DEV_TO_BASE_URL  = ""
       NEXT_PUBLIC_GA_TRACKING_ID   = ""
       NEXT_PUBLIC_GTM_TRACKING_TAG = ""
