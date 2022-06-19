@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useMemo } from "react"
 import Image, { ImageLoader } from "next/image"
 import dynamic from "next/dynamic"
-import { FiEye, FiMessageCircle } from "react-icons/fi"
+import { FiEye, FiHeart, FiMessageCircle } from "react-icons/fi"
 import { Article } from "@/domain/entities/dev.to/article"
 import { MarkdownProps, SocialLinks } from "@/presentation/components"
 import { TagList } from "@/presentation/pages/article/tag-list"
@@ -91,7 +91,7 @@ export const TheArticle = ({ article }: TheArticleProps) => {
 const Reactions = React.memo(({ article }: TheArticleProps) => {
     return (
         <S.Reactions>
-            <span><FiEye /> { article.public_reactions_count.compress() }</span>
+            <span><FiHeart /> { article.public_reactions_count.compress() }</span>
             <span><FiMessageCircle /> { article.comments_count.compress() }</span>
         </S.Reactions>
     )
