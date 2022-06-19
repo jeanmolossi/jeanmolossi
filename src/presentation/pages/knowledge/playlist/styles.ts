@@ -26,7 +26,7 @@ export const ItemContainer = styled.a`
 export const ItemCover = styled.div`
     background-color: ${({ theme }) => theme.blackChocolate};
     border-radius: ${({ theme }) => theme.radii.md};
-    margin-bottom: ${({ theme }) => `${theme.gutter.md}`};
+    margin-bottom: ${({ theme }) => `${theme.gutter.xs}`};
     overflow: hidden;
     display: flex;
     justify-content: stretch;

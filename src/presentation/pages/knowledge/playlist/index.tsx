@@ -2,7 +2,7 @@ import React, { useMemo } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { SiYoutube } from "react-icons/si";
-import { cdnLoader } from "@/presentation/helpers";
+import { cdnLoader, RenderIf } from "@/presentation/helpers";
 import { useMediaQuery } from "@/presentation/hooks";
 import { Playlist } from "../";
 import * as S from "./styles";
@@ -48,11 +48,12 @@ export const PlaylistItem = React.memo(({ playlist }: PlaylistItemProps) => {
 
                     <small>Publicada {playlist.publishedAt.toRelativeTime()}</small>
 
-                    <p
-                        title={playlist.description}
-                        dangerouslySetInnerHTML={{ __html: description }}>
-                    </p>
-
+                    <RenderIf condition={!!playlist.description}>
+                        <p
+                            title={playlist.description}
+                            dangerouslySetInnerHTML={{ __html: description }}>
+                        </p>
+                    </RenderIf>
 
                     <span>
                         <SiYoutube /> Ver vídeos desta playlist
