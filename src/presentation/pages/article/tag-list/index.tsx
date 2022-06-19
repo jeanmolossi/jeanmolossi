@@ -1,4 +1,5 @@
 import { RenderIf } from "@/presentation/helpers";
+import * as S from './styles'
 
 interface TagListProps {
     tagList?: string;
@@ -17,7 +18,9 @@ export const TagList = ({ tagList = '' }: TagListProps) => {
 
     return (
         <RenderIf condition={tags.length > 0}>
-            {tags}
+            <S.Tags>
+                {tags}
+            </S.Tags>
         </RenderIf>
     )
 }
