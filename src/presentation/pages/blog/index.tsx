@@ -1,15 +1,11 @@
-import { Article } from "@/domain/entities/dev.to/article";
-import { Container } from "@/presentation/components"
-import { RenderIf } from "@/presentation/helpers";
-import Image from "next/image";
-import Link from "next/link";
 import { useMemo } from "react";
-import { FiBookOpen } from "react-icons/fi";
+import { ListingArticle } from "@/domain/entities/dev.to/article";
+import { Container } from "@/presentation/components"
 import { ArticleExcerpt } from "./article-thumb";
 import * as S from './styles';
 
 export interface BlogProps {
-    articles: Article[];
+    articles: ListingArticle[];
 }
 
 export const Blog = ({ articles }: BlogProps) => {
