@@ -1,11 +1,12 @@
 import React from "react";
 import Link from "next/link";
-import Image from "next/image";
+import Image, { ImageLoader } from "next/image";
 import { FiBookOpen, FiEye, FiHeart } from "react-icons/fi";
-import { AiOutlineInteraction } from "react-icons/ai";
 import { RenderIf } from "@/presentation/helpers";
 import { ArticleProps } from "../../article";
 import * as S from "./styles"
+
+const cdnLoader: ImageLoader = ({ src }) => src;
 
 export const ArticleExcerpt = React.memo(({ article }: ArticleProps) => {
     return (
@@ -15,6 +16,7 @@ export const ArticleExcerpt = React.memo(({ article }: ArticleProps) => {
                     <S.ArticleCover>
                         <div>
                             <Image
+                                loader={cdnLoader}
                                 alt={`Imagem de capa para o artigo ${article.title}`}
                                 loading="lazy"
                                 layout="responsive"
@@ -35,6 +37,8 @@ export const ArticleExcerpt = React.memo(({ article }: ArticleProps) => {
                     <S.ArticleAuthor>
                         <S.AuthorPhoto>
                             <Image
+                                loader={cdnLoader}
+                                alt={`Foto de perfil do autor ${article.user.name}`}
                                 loading="lazy"
                                 objectFit="cover"
                                 src={{
