@@ -7,6 +7,8 @@ declare global {
     interface String {
         toRelativeTime(): string;
         toSlug(): string;
+        nlToBr(): string;
+        trimAfter(length: number, suffix?: string): string;
     }
 }
 
@@ -29,6 +31,22 @@ String.prototype.toSlug = function () {
         strict: true,
         locale: 'pt',
     });
+};
+
+String.prototype.nlToBr = function () {
+    const self = this as string;
+
+    return self.replace(/\n/g, '<br />');
+};
+
+String.prototype.trimAfter = function (length: number, suffix = '...') {
+    const self = this as string;
+
+    if (self.length <= length) {
+        return self;
+    }
+
+    return self.substring(0, length).concat(suffix);
 };
 
 export {};
