@@ -1,5 +1,3 @@
-export {};
-
 declare global {
     interface Number {
         compress(options?: CompressOptions): string;
@@ -82,3 +80,5 @@ Number.prototype.compress = function (options?: CompressOptions) {
 
     return `${self}`;
 };
+
+export {};
