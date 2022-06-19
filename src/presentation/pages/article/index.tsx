@@ -1,4 +1,4 @@
-import { ListingArticle } from "@/domain/entities/dev.to/article";
+import { Article as ArticleModel } from "@/domain/entities/dev.to/article";
 import { Container } from "@/presentation/components";
 import { SwapComponents } from "@/presentation/helpers";
 import { TheArticle } from "./typeof/article";
@@ -6,7 +6,7 @@ import { NotFoundArticle } from "./typeof/not-found";
 import * as S from "./styles";
 
 export interface ArticleProps {
-    article: ListingArticle;
+    article: ArticleModel;
 }
 
 export const Article = ({ article }: ArticleProps) => {
