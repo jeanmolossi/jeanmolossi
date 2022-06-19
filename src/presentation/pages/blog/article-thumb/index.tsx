@@ -2,13 +2,17 @@ import React from "react";
 import Link from "next/link";
 import Image, { ImageLoader } from "next/image";
 import { FiBookOpen, FiEye, FiHeart } from "react-icons/fi";
+import { ListingArticle } from "@/domain/entities/dev.to/article";
 import { RenderIf } from "@/presentation/helpers";
-import { ArticleProps } from "../../article";
 import * as S from "./styles"
 
 const cdnLoader: ImageLoader = ({ src, width, quality }) => `${src}?w=${width}&q=${quality}`;
 
-export const ArticleExcerpt = React.memo(({ article }: ArticleProps) => {
+interface ArticleExcerptProps {
+    article: ListingArticle
+}
+
+export const ArticleExcerpt = React.memo(({ article }: ArticleExcerptProps) => {
     return (
         <Link href="/artigo/[slug]" as={`/artigo/${article.slug}`} passHref>
             <S.ArticleItem>
