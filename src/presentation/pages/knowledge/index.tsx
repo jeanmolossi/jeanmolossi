@@ -31,6 +31,7 @@ export const Knowledge = ({ playlists }: KnowledgeProps) => {
                         <img src={playlist.thumbnail.small.url} alt={playlist.title} />
                         <span>{playlist.title}</span>
                         <p>{playlist.description}</p>
+                        <hr />
                     </div>
                 ))}
             </div>
