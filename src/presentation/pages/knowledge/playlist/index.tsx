@@ -2,9 +2,9 @@ import React, { useMemo } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { SiYoutube } from "react-icons/si";
+import { Playlist } from "@/domain/entities/youtube/view";
 import { cdnLoader, RenderIf } from "@/presentation/helpers";
 import { useMediaQuery } from "@/presentation/hooks";
-import { Playlist } from "../";
 import * as S from "./styles";
 
 export interface PlaylistItemProps {
@@ -29,7 +29,7 @@ export const PlaylistItem = React.memo(({ playlist }: PlaylistItemProps) => {
     }, [playlist.description, isUpMediaQuery])
 
     return (
-        <Link href="/playlists/[slug]" as={`/playlists/${playlist.slug}`} passHref>
+        <Link href="/playlists/[...slug]" as={`/playlists/${playlist.slug}`} passHref>
             <S.ItemContainer>
                 <S.ItemCover>
                     <div>
