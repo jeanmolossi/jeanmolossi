@@ -1,6 +1,7 @@
 import { AxiosError } from 'axios';
 import logger from '@/config/logger/logger';
 import { YTPlaylist } from '@/domain/entities/youtube/request';
+import { Playlist } from '@/domain/entities/youtube/view';
 import { youtube } from '../api/youtube';
 
 export async function getPlaylists() {
@@ -17,7 +18,22 @@ export async function getPlaylists() {
 
         data.items = filteredPlaylists;
 
-        return data;
+        const playlists: Playlist[] = data.items.map(playlist => ({
+            id: playlist.id,
+            title: playlist.snippet.title,
+            description: playlist.snippet.description,
+            thumbnail: {
+                small: playlist.snippet.thumbnails.medium,
+                big: playlist.snippet.thumbnails.standard,
+            },
+            slug: playlist.snippet.title
+                .toSlug()
+                .concat('/')
+                .concat(playlist.id),
+            publishedAt: playlist.snippet.publishedAt,
+        }));
+
+        return playlists;
     } catch (error) {
         if (error instanceof AxiosError) {
             logger.error(
