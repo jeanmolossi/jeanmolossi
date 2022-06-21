@@ -89,3 +89,39 @@ export namespace YTPlaylistItems {
         };
     }
 }
+
+export namespace YTVideo {
+    export interface Response {
+        kind: 'youtube#videoListResponse';
+        etag: 'LcCLmWj5WQ9mp-scXMkvZDQ9eW4';
+        items: Item[];
+    }
+
+    export interface Item {
+        kind: 'youtube#video';
+        etag: 'r3s9OiVXgY__0i7yIGnPyt0-gjM';
+        id: string;
+        snippet: {
+            publishedAt: string;
+            channelId: string;
+            title: string;
+            description: string;
+            thumbnails: {
+                default: YTPlaylist.Resolution;
+                medium: YTPlaylist.Resolution;
+                high: YTPlaylist.Resolution;
+                standard: YTPlaylist.Resolution;
+                maxres: YTPlaylist.Resolution;
+            };
+            channelTitle: string;
+            tags: string[];
+            categoryId: string;
+            liveBroadcastContent: string;
+            localized: {
+                title: string;
+                description: string;
+            };
+            defaultAudioLanguage: string;
+        };
+    }
+}

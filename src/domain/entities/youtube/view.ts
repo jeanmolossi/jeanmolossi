@@ -1,4 +1,4 @@
-import { YTPlaylist, YTPlaylistItems } from './request';
+import { YTPlaylist, YTPlaylistItems, YTVideo } from './request';
 
 export interface Playlist {
     id: string;
@@ -13,3 +13,5 @@ export interface Playlist {
 }
 
 export type PlaylistItem = YTPlaylistItems.Item;
+
+export type Video = YTVideo.Item;
