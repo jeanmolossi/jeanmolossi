@@ -101,3 +101,24 @@ export const pulse = css`
         }
     }
 `;
+
+export const pulseAnim = keyframes`
+    0% {
+        transform: translate(calc(-50% - 0.25rem), -50%) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(calc(-50% - 0.25rem), -50%) scale(1.3);
+        opacity: 0;
+    }
+`;
+
+export const rotation = keyframes`
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+`;
