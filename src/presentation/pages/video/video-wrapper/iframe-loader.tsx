@@ -12,7 +12,7 @@ const IFrameLoader = ({ videoId }: { videoId: string }) => {
             start: '0',
         }).forEach(([key, value]) => url.append(key, value))
 
-        return `http://www.youtube.com/embed/${videoId}?${url.toString()}`
+        return `https://www.youtube.com/embed/${videoId}?${url.toString()}`
     }, [videoId]);
 
     return (
