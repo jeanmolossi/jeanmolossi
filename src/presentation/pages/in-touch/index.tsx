@@ -6,8 +6,12 @@ import * as S from './styles';
 
 export const InTouch = () => {
     const src = useMemo(() => {
+        const source = process.env.NODE_ENV === 'production'
+            ? 'https://jeanmolossi.com.br/kumala-la-kumala.gif'
+            : '/kumala-la-kumala.gif';
+
         return {
-            src: '/kumala-la-kumala.gif',
+            src: source,
             width: 640,
             height: 594
         }
