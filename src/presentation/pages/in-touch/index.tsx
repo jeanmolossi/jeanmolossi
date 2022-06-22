@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/presentation/components"
 import * as S from './styles';
+import { cdnLoader } from "@/presentation/helpers";
 
 export const InTouch = () => {
     const src = useMemo(() => {
@@ -27,6 +28,7 @@ export const InTouch = () => {
 
                 <div>
                     <Image
+                        loader={cdnLoader}
                         loading="lazy"
                         objectFit="cover"
                         src={src}
