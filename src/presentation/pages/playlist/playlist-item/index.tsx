@@ -1,7 +1,9 @@
 import { PlaylistItem as PlaylistItemModel } from "@/domain/entities/youtube/view";
 import { MarkdownProps } from "@/presentation/components";
+import { cdnLoader } from "@/presentation/helpers";
 import { useMediaQuery } from "@/presentation/hooks";
 import dynamic from "next/dynamic";
+import Image from "next/image";
 import Link from "next/link";
 import { FunctionComponent, useMemo } from "react";
 import * as S from './styles';
@@ -24,11 +26,27 @@ export const PlaylistItem = ({ item }: PlaylistItemProps) => {
         return item.snippet.description.trimAfter(length, '... _**ver mais**_')
     }, [item.snippet.description, isUpMedia]);
 
+    const thumb = useMemo(() => {
+        const size: keyof typeof item.snippet.thumbnails = isUpMedia
+            ? 'high'
+            : 'medium'
+        return {
+            src: item.snippet.thumbnails[size].url,
+            width: 1280,
+            height: 720
+        }
+    }, [item.snippet.thumbnails, isUpMedia])
+
     return (
         <S.ItemContainer>
             <Link href="/video/[...slug]" as={`/video/${slug}`} passHref>
                 <S.Cover>
-                    <img src={item.snippet.thumbnails.medium.url} />
+                    <Image
+                        loader={cdnLoader}
+                        loading="lazy"
+                        objectFit="cover"
+                        src={thumb}
+                    />
                 </S.Cover>
             </Link>
 
