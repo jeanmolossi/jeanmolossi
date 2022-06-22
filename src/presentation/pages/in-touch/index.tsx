@@ -1,10 +1,18 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/presentation/components"
-import Gif from '../../../../public/kumala-la-kumala.gif'
 import * as S from './styles';
+import { useMemo } from "react";
 
 export const InTouch = () => {
+    const src = useMemo(() => {
+        return {
+            src: '/kumala-la-kumala.gif',
+            width: 640,
+            height: 594
+        }
+    }, [])
+
     return (
         <Container>
             <S.InTouchContainer>
@@ -17,7 +25,7 @@ export const InTouch = () => {
                     <Image
                         loading="lazy"
                         objectFit="cover"
-                        src={Gif}
+                        src={src}
                     />
                 </div>
 
