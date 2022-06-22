@@ -13,7 +13,9 @@ export async function getVideo(videoId: string) {
             },
         });
 
-        return data.items[0];
+        const video = data.items[0];
+        logger.info({ videoId }, `video ${video.snippet.title} fetched`);
+        return video;
     } catch (error) {
         if (error instanceof AxiosError) {
             logger.error(

@@ -10,6 +10,9 @@ const nextConfig = {
             's3.amazonaws.com',
         ]
     },
+    devIndicators: {
+        autoPrerender: false,
+    },
 }
 
 module.exports = nextConfig

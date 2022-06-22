@@ -15,6 +15,11 @@ export async function getPlaylistItems(playlistId: string) {
             },
         );
 
+        logger.info(
+            { ...data.pageInfo },
+            `playlist ${playlistId} items fetched`,
+        );
+
         return data.items;
     } catch (error) {
         if (error instanceof AxiosError) {
@@ -25,7 +30,8 @@ export async function getPlaylistItems(playlistId: string) {
                     .join(', '),
             );
         } else {
-            logger.error(error);
+            Object.assign({ playlistId }, error);
+            logger.error(error, 'failed to fetch playlist items');
         }
 
         throw error;

@@ -11,16 +11,19 @@ export async function getArticleBySlug(slug: string): Promise<Article> {
             `/articles/${username}/${slug}`,
         );
 
-        logger.info('article fetched', { slug, author: article.user.username });
+        logger.info({ slug, author: article.user.username }, 'article fetched');
         return article || {};
     } catch (e) {
         if (e instanceof AxiosError) {
-            logger.error('failed to fetch article', {
-                err: e.response?.data,
-                isAxios: true,
-            });
+            logger.error(
+                {
+                    err: e.response?.data,
+                    isAxios: true,
+                },
+                'failed to fetch article',
+            );
         } else {
-            logger.error('failed to fetch article', { err: e, isAxios: false });
+            logger.error({ err: e, isAxios: false }, 'failed to fetch article');
         }
 
         return {

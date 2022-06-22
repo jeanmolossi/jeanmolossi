@@ -33,6 +33,11 @@ export async function getPlaylists() {
             publishedAt: playlist.snippet.publishedAt,
         }));
 
+        logger.info(
+            { playlists: filteredPlaylists.length },
+            'playlists fetched',
+        );
+
         return playlists;
     } catch (error) {
         if (error instanceof AxiosError) {

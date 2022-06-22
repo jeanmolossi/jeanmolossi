@@ -8,12 +8,12 @@ export async function getArticles() {
             `${process.env.DEV_TO_BASE_URL}/articles/me/published`,
         );
 
-        logger.info('Articles fetched', { articles: articles.length });
+        logger.info({ articles: articles.length }, 'articles fetched');
         return articles || [];
     } catch (e) {
         const err = e as Error;
 
-        logger.error('failed to fetch articles', err);
+        logger.error(err, 'failed to fetch articles');
 
         return [];
     }
