@@ -53,15 +53,14 @@ export const getStaticProps: GetStaticProps<any> = async ({ params }) => {
             props: {
                 video,
             },
-            revalidate: timeIn('01d')
+            revalidate: timeIn('01d'),
         }
     } catch(e) {
         logger.error(e, 'video not found')
         return {
             props: { video: {} },
-            revalidate: timeIn('01d')
+            notFound: true,
+            revalidate: timeIn('05m'),
         }
     }
-
-
 }

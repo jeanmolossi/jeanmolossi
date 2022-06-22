@@ -16,7 +16,7 @@ export const getStaticProps: GetStaticProps<BlogProps> = async () => {
         props: {
             articles
         },
-        revalidate: timeIn('01d')
+        revalidate: timeIn('06h')
     }
 }
 

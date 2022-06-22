@@ -1,6 +1,7 @@
 import logger from "@/config/logger/logger"
 import { getPlaylistItems } from "@/data/youtube/playlist-items"
 import { getPlaylists } from "@/data/youtube/playlists"
+import { timeIn } from "@/presentation/helpers"
 import { Playlist, PlaylistProps } from "@/presentation/pages/playlist"
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next"
 
@@ -39,6 +40,7 @@ export const getStaticProps: GetStaticProps<PlaylistProps> = async ({ params }) 
         props: {
             playlistItems
         },
+        revalidate: timeIn('01d'),
         notFound,
     }
 }

@@ -1,15 +1,18 @@
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next";
 import { getArticles, getArticleBySlug } from "@/data/dev.to";
 import { Article, ArticleProps } from "@/presentation/pages/article";
+import { timeIn } from "@/presentation/helpers";
 
 export default function Artigo(props: InferGetStaticPropsType<typeof getStaticProps>) {
     return <Article {...props} />;
 }
 
-type ArticleType = ArticleProps['article'];
 export const getStaticProps: GetStaticProps<ArticleProps> = async ({ params }) => {
     if (!params) {
-        return { props: { article: {} as ArticleType } }
+        return {
+            notFound: true,
+            revalidate: timeIn('05m')
+        }
     }
 
     const { slug } = params as { slug: string };
@@ -20,7 +23,7 @@ export const getStaticProps: GetStaticProps<ArticleProps> = async ({ params }) =
         props: {
             article,
         },
-        revalidate: false,
+        revalidate: timeIn('06h'),
     }
 }
 
