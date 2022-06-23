@@ -40,7 +40,7 @@ String.prototype.nlToBr = function () {
 };
 
 String.prototype.trimAfter = function (length: number, suffix = '...') {
-    const self = this as string;
+    const self = this.replace(/[\s\t\r]+/gi, ' ') as string;
 
     if (self.length <= length) {
         return self;
