@@ -1,7 +1,7 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, useMemo } from "react";
 import dynamic from "next/dynamic";
 import { Playlist } from "@/domain/entities/youtube/view";
-import { Container } from "@/presentation/components"
+import { BaseHead, Container } from "@/presentation/components"
 import { PlaylistItemProps } from './playlist'
 import * as S from './styles'
 
@@ -14,8 +14,15 @@ export interface KnowledgeProps {
 }
 
 export const Knowledge = ({ playlists }: KnowledgeProps) => {
+    const playlistsNames = useMemo(() => playlists.map(p => p.title).join(', '), [playlists])
+
     return (
         <Container>
+            <BaseHead
+                title="Aprenda na prática"
+                description={`Projetos práticos como ${playlistsNames.trimAfter(37)}`}
+                canonical="/aprendizado"
+            />
             <S.KnowledgeContainer>
                 <S.Heading>
                     <h1>Aprenda com projetos práticos</h1>

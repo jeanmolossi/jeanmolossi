@@ -1,9 +1,9 @@
 import React, { FunctionComponent, useMemo } from "react"
 import Image, { ImageLoader } from "next/image"
 import dynamic from "next/dynamic"
-import { FiEye, FiHeart, FiMessageCircle } from "react-icons/fi"
+import { FiHeart, FiMessageCircle } from "react-icons/fi"
 import { Article } from "@/domain/entities/dev.to/article"
-import { MarkdownProps, SocialLinks } from "@/presentation/components"
+import { BaseHead, MarkdownProps, Robots, SocialLinks } from "@/presentation/components"
 import { TagList } from "@/presentation/pages/article/tag-list"
 import { Article as ArticleContainer } from "@/presentation/pages/article/styles"
 import * as S from './styles'
@@ -31,6 +31,17 @@ export const TheArticle = ({ article }: TheArticleProps) => {
 
     return (
         <ArticleContainer>
+            <BaseHead
+                title={article.title}
+                description={article.description}
+                og={{
+                    type: 'article',
+                    url: `https://jeanmolossi.com.br/artigo/${article.slug}`,
+                    image: article.cover_image ? [article.cover_image] : undefined
+                }}
+                robots={[Robots.index, Robots.follow, Robots.noimageindex]}
+                canonical={`/artigo/${article.slug}`}
+            />
             <S.Cover>
                 <div>
                     <Image

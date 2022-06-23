@@ -1,9 +1,9 @@
 import { useMemo } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Container } from "@/presentation/components"
-import * as S from './styles';
+import { BaseHead, Container } from "@/presentation/components"
 import { cdnLoader } from "@/presentation/helpers";
+import * as S from './styles';
 
 export const InTouch = () => {
     const src = useMemo(() => {
@@ -20,6 +20,11 @@ export const InTouch = () => {
 
     return (
         <Container>
+            <BaseHead
+                title="Contato"
+                description="Links e informações. Acesse e obtenha mais informações. Atualmente respondo mais rápido por alguma das minhas redes sociais."
+                canonical="/contato"
+            />
             <S.InTouchContainer>
                 <h1>Contato ?</h1>
                 <p>Não achou que seria tão facil, achou ? &#128514;&#128514;&#128514;</p>

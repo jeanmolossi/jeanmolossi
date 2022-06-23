@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { ListingArticle } from "@/domain/entities/dev.to/article";
-import { Container } from "@/presentation/components"
+import { BaseHead, Container } from "@/presentation/components"
 import { ArticleExcerpt } from "./article-thumb";
 import * as S from './styles';
 
@@ -20,6 +20,11 @@ export const Blog = ({ articles }: BlogProps) => {
 
     return (
         <Container>
+            <BaseHead
+                title="Blog"
+                description="Artigos sobre tecnologia, frameworks, padrões de projeto, dicas e truques, exemplos, etc."
+                canonical="/blog"
+            />
             <S.Heading>
                 <h1>Blog</h1>
                 <small>{smallExcerpt}</small>

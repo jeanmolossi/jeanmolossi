@@ -1,6 +1,6 @@
-import { Container } from "@/presentation/components"
+import React, { useMemo } from "react";
+import { BaseHead, Container } from "@/presentation/components"
 import { SwapComponents } from "@/presentation/helpers"
-import React from "react";
 import * as S from './styles'
 
 interface Link {
@@ -15,8 +15,24 @@ export interface LinksProps {
 }
 
 export const Links = ({ links }: LinksProps) => {
+    const linksDesc = useMemo(() => {
+        return links.reduce((a, l, i) => {
+            // First link label
+            if (i === 0) return `${l.label}`;
+            // Last link label
+            if (i+1 === links.length) return `${a} e ${l.label}`;
+            // Non first and non last link label
+            return `${a}, ${l.label}`;
+        }, '')
+    }, [links])
+
     return (
         <Container>
+            <BaseHead
+                title="Link tree, árvore de links"
+                description={`Links de fácil acesso. ${linksDesc}`}
+                canonical="/links"
+            />
             <S.LinksContainer>
                 <h1>Link Tree</h1>
 
