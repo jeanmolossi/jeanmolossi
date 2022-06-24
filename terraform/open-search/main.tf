@@ -85,6 +85,6 @@ resource "aws_route53_record" "domain" {
   zone_id = data.aws_route53_zone.this.id
   ttl     = "300"
   records = [
-    aws_opensearch_domain.obs.kibana_endpoint
+    aws_opensearch_domain.obs.endpoint
   ]
 }
