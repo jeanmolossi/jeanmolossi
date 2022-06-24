@@ -25,9 +25,9 @@ export const WhatIveBeenDone = () => {
                 <h1>Techs do meu arsenal</h1>
 
                 <S.TechList ref={techlistRef}>
-                    {techs.map(tech => (
+                    {techs.map((tech, i) => (
                         <S.TechListItem
-                            key={tech.href}
+                            key={i.toString()}
                             isOnScreen={isTechListOnScreen}
                             child={nextTech()}
                         >
@@ -49,9 +49,9 @@ export const WhatIveBeenDone = () => {
                 <h1>Tools do meu arsenal</h1>
 
                 <S.TechList ref={toollistRef}>
-                    {tools.map(tool => (
+                    {tools.map((tool, i) => (
                         <S.TechListItem
-                            key={tool.href}
+                            key={i.toString()}
                             isOnScreen={isToolListOnScreen}
                             child={nextTool()}
                         >
@@ -73,9 +73,9 @@ export const WhatIveBeenDone = () => {
                 <h1>Outras 'coisas' que também tenho experiência</h1>
 
                 <S.TechList ref={otherlistRef}>
-                    {others.map(other => (
+                    {others.map((other, i) => (
                         <S.TechListItem
-                            key={other.href}
+                            key={i.toString()}
                             isOnScreen={isOtherListOnScreen}
                             child={nextOther()}
                         >

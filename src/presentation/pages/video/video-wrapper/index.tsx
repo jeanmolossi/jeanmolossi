@@ -37,7 +37,7 @@ export const VideoWrapper = React.memo(({ video }: VideoProps) => {
                         <div>
                             <Image
                                 loader={cdnLoader}
-                                loading="lazy"
+                                priority
                                 objectFit="cover"
                                 src={{ src, width: 1280, height: 720 }}
                             />
