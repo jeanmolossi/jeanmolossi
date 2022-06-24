@@ -78,13 +78,15 @@ resource "aws_amplify_branch" "this" {
   stage     = upper(lookup(each.value, "stage", "DEVELOPMENT"))
 
   environment_variables = {
-    ENV                         = lookup(each.value, "env", "development")
-    DEV_TO_BASE_URL             = lookup(each.value, "DEV_TO_BASE_URL", "")
-    DEV_TO_API_KEY              = lookup(each.value, "DEV_TO_API_KEY", "")
-    YOUTUBE_API_KEY             = lookup(each.value, "YOUTUBE_API_KEY", "")
-    YOUTUBE_CHAN_ID             = lookup(each.value, "YOUTUBE_CHAN_ID", "")
-    NEXT_PUBLIC_DEV_TO_BASE_URL = lookup(each.value, "NEXT_PUBLIC_DEV_TO_BASE_URL", "")
-    NEXT_PUBLIC_GA_TRACKING_ID  = lookup(each.value, "NEXT_PUBLIC_GA_TRACKING_ID", "")
+    ENV                          = lookup(each.value, "env", "development")
+    DEV_TO_BASE_URL              = lookup(each.value, "DEV_TO_BASE_URL", "")
+    DEV_TO_API_KEY               = lookup(each.value, "DEV_TO_API_KEY", "")
+    YOUTUBE_API_KEY              = lookup(each.value, "YOUTUBE_API_KEY", "")
+    YOUTUBE_CHAN_ID              = lookup(each.value, "YOUTUBE_CHAN_ID", "")
+    NEXT_PUBLIC_DEV_TO_BASE_URL  = lookup(each.value, "NEXT_PUBLIC_DEV_TO_BASE_URL", "")
+    NEXT_PUBLIC_GA_TRACKING_ID   = lookup(each.value, "NEXT_PUBLIC_GA_TRACKING_ID", "")
+    NEXT_PUBLIC_GTM_TRACKING_TAG = lookup(each.value, "NEXT_PUBLIC_GTM_TRACKING_TAG", "")
+    INDEX_NAME                   = lookup(each.value, "INDEX_NAME", "")
   }
 }
 

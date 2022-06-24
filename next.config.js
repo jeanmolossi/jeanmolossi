@@ -13,7 +13,6 @@ const nextConfig = {
     devIndicators: {
         autoPrerender: false,
     },
-    target: "serverless"
 }
 
 module.exports = nextConfig

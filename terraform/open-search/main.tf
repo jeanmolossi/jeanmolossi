@@ -34,7 +34,7 @@ resource "aws_opensearch_domain" "obs" {
   domain_endpoint_options {
     custom_endpoint_certificate_arn = data.aws_acm_certificate.this.arn
     custom_endpoint_enabled         = true
-    custom_endpoint                 = "kibana-${var.project_name}.${var.route53_zone_name}"
+    custom_endpoint                 = "kibana.${var.route53_zone_name}"
 
     enforce_https       = true
     tls_security_policy = "Policy-Min-TLS-1-2-2019-07"
@@ -80,7 +80,7 @@ POLICY
 }
 
 resource "aws_route53_record" "domain" {
-  name    = format("kibana-%s.%s", var.project_name, var.route53_zone_name)
+  name    = format("kibana.%s", var.route53_zone_name)
   type    = "CNAME"
   zone_id = data.aws_route53_zone.this.id
   ttl     = "300"
