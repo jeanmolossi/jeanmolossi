@@ -2,7 +2,7 @@ import type { AppProps, NextWebVitalsMetric } from 'next/app'
 import { ThemeProvider } from 'styled-components'
 import { GlobalStyle, theme } from '@/presentation/styles'
 import { Layout } from '@/presentation/components'
-import { AnalyticsScript, HotjarScript, TagManager, TrackSessions } from '@/presentation/scripts'
+import { AnalyticsScript, AwsRum, HotjarScript, TagManager } from '@/presentation/scripts'
 import '@/presentation/styles/github-dark.min.css'
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -12,7 +12,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <TagManager />
         <AnalyticsScript />
         <HotjarScript />
-        <TrackSessions />
+        <AwsRum />
         <ThemeProvider theme={theme}>
             <Layout>
                 <Component {...pageProps} />
