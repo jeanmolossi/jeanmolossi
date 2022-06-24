@@ -1,12 +1,12 @@
-import { cors } from '@/infrastructure';
-import { Logger } from '@/infrastructure/logger';
 import { NextApiRequest, NextApiResponse } from 'next';
+import { Logger } from '@/infrastructure/logger';
+// import { cors } from '@/infrastructure';
 
 export default async function handler(
     request: NextApiRequest,
     response: NextApiResponse,
 ) {
-    await cors(request, response);
+    // await cors(request, response);
 
     let body: any = {
         level: 'info',
