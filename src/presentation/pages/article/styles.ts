@@ -9,6 +9,7 @@ export const Article = styled.article`
     padding: ${({ theme }) => theme.gutter.md};
     row-gap: ${({ theme }) => theme.gutter.md};
     background-color: ${({ theme }) => theme.blackChocolate}CC;
+    margin: 0 auto;
 
     > h1 {
         font-size: 2rem;
@@ -20,6 +21,10 @@ export const Article = styled.article`
         text-shadow: 1px 1px 0 ${({ theme }) => theme.oxfordBlue};
         border-bottom: 1px solid ${({ theme }) => theme.beige}40;
         padding-bottom: ${({ theme }) => theme.gutter.md};
+    }
+
+    @media (min-width: 768px) {
+        max-width: 700px;
     }
 `;
 
