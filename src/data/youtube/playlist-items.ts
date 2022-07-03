@@ -20,7 +20,7 @@ export async function getPlaylistItems(playlistId: string) {
             `playlist ${playlistId} items fetched`,
         );
 
-        return data.items;
+        return filterPrivateVideos(data.items);
     } catch (error) {
         if (error instanceof AxiosError) {
             logger.error(
@@ -36,4 +36,11 @@ export async function getPlaylistItems(playlistId: string) {
 
         throw error;
     }
+}
+
+function filterPrivateVideos(items: YTPlaylistItems.Item[]) {
+    return items.filter(({ snippet }: YTPlaylistItems.Item) => {
+        const { title } = snippet;
+        return title !== 'Private video';
+    });
 }
