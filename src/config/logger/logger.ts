@@ -5,7 +5,7 @@ import { randomUUID } from 'crypto';
 const logger = pino(
     {
         base: {
-            env: process.env.NODE_ENV,
+            environment: process.env.NODE_ENV,
             pid: process.pid,
             hostname: os.hostname(),
         },
