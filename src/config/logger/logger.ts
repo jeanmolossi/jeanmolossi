@@ -8,6 +8,7 @@ const logger = pino(
             environment: process.env.NODE_ENV,
             pid: process.pid,
             hostname: os.hostname(),
+            index: 'portfolio-frontend-app',
         },
         level: 'info',
         messageKey: 'message',
