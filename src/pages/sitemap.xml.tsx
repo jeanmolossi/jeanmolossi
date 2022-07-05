@@ -11,6 +11,7 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
     }[process.env.NODE_ENV]
 
     const pages = readFolderRecursive(__dirname)
+        .filter(hiddenPaths)
         .map(toSitemapUrl(baseUrl))
         .map(UrlMap)
 
@@ -18,7 +19,7 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
     res.write(siteMap(paths(pages)));
     res.end();
 
-    return { props: {}, }
+    return { props: {} }
 }
 
 /**
@@ -28,7 +29,7 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
  */
 function toSitemapUrl(baseUrl: string): (url: string) => string {
     // should removes .html to make frindly url
-    return (path: string) => `${baseUrl}/${path.replace('.html', '')}`
+    return (path: string) => `${baseUrl}/${path.replace(/(\.html|index)/gi, '')}`
 }
 
 /**
@@ -109,4 +110,24 @@ function siteMap(urlMap: string): string {
  */
 function isHtmlPage(path: string): boolean {
     return Boolean(path.match(/\.html$/gi))
+}
+
+/**
+ * hiddenPaths - Returns if the path should be hidden
+ * @param {string} path - is the path to be checked
+ * @returns {boolean} - path should be hidden
+ */
+function hiddenPaths(path: string): boolean {
+    const pathsToHide = ['404', '500'];
+
+    let shouldHide = false;
+
+    pathsToHide.forEach(pathToHide => {
+        const regex = new RegExp(`${pathToHide}(\\.html)?$`, 'gi');
+        if (regex.test(path)) {
+            shouldHide = true;
+        }
+    })
+
+    return !shouldHide;
 }
