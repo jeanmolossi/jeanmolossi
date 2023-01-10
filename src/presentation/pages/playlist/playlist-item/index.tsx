@@ -3,7 +3,7 @@ import { MarkdownProps } from "@/presentation/components";
 import { cdnLoader } from "@/presentation/helpers";
 import { useMediaQuery } from "@/presentation/hooks";
 import dynamic from "next/dynamic";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import Link from "next/link";
 import { FunctionComponent, useMemo } from "react";
 import * as S from './styles';
@@ -39,7 +39,7 @@ export const PlaylistItem = ({ item }: PlaylistItemProps) => {
 
     return (
         <S.ItemContainer>
-            <Link href="/video/[...slug]" as={`/video/${slug}`} passHref>
+            <Link href="/video/[...slug]" as={`/video/${slug}`} passHref legacyBehavior>
                 <S.Cover>
                     <Image
                         loader={cdnLoader}
@@ -50,7 +50,7 @@ export const PlaylistItem = ({ item }: PlaylistItemProps) => {
                 </S.Cover>
             </Link>
 
-            <Link href="/video/[...slug]" as={`/video/${slug}`} passHref>
+            <Link href="/video/[...slug]" as={`/video/${slug}`} passHref legacyBehavior>
                 <S.Details>
                     <h1>{item.snippet.title}</h1>
 

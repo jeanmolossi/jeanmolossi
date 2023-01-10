@@ -8,7 +8,7 @@ export const NotFoundArticle = ({ article }: ArticleProps) => (
         <h2>{ article.description }</h2>
 
         <Link href="/blog" passHref>
-            <a>Voltar ao blog</a>
+            Voltar ao blog
         </Link>
     </S.Article>
 )

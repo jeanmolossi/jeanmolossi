@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import Image, { ImageLoader } from "next/image";
+import Image, { ImageLoader } from "next/legacy/image";
 import { FiBookOpen, FiEye, FiHeart } from "react-icons/fi";
 import { ListingArticle } from "@/domain/entities/dev.to/article";
 import { RenderIf } from "@/presentation/helpers";
@@ -14,7 +14,7 @@ interface ArticleExcerptProps {
 
 export const ArticleExcerpt = React.memo(({ article }: ArticleExcerptProps) => {
     return (
-        <Link href="/artigo/[slug]" as={`/artigo/${article.slug}`} passHref>
+        <Link href="/artigo/[slug]" as={`/artigo/${article.slug}`} passHref legacyBehavior>
             <S.ArticleItem>
                 <RenderIf condition={!!article.cover_image}>
                     <S.ArticleCover>

@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import Link from "next/link";
 import { BaseHead, Container } from "@/presentation/components"
 import { cdnLoader } from "@/presentation/helpers";
@@ -41,7 +41,7 @@ export const InTouch = () => {
                 </div>
 
                 <Link href="/links" passHref>
-                    <a>&#128073; Ver links</a>
+                    &#128073; Ver links
                 </Link>
             </S.InTouchContainer>
         </Container>
