@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useMemo } from "react"
-import Image, { ImageLoader } from "next/image"
+import Image, { ImageLoader } from "next/legacy/image"
 import dynamic from "next/dynamic"
 import { FiHeart, FiMessageCircle } from "react-icons/fi"
 import { Article } from "@/domain/entities/dev.to/article"

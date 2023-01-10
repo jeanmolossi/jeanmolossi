@@ -13,10 +13,12 @@ export const RenderIf = ({ condition, children }: RenderIfProps) => {
     return null
 }
 
+// @ts-ignore
 export function NoSsrComponent<T>(Component: ComponentType<T>): ComponentType<T> {
     if (typeof window === 'undefined') {
         return (props: T) => null
     }
 
+    // @ts-ignore
     return (props: T) => <Component {...props} />
 }

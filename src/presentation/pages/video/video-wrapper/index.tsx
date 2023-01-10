@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useCallback, useMemo, useState } from "react";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import dynamic from "next/dynamic";
 import { FaPlay } from "react-icons/fa";
 import { cdnLoader, SwapComponents } from "@/presentation/helpers";
