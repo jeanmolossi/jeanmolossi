@@ -9,10 +9,7 @@ const nextConfig = {
             'res.cloudinary.com',
             's3.amazonaws.com',
         ]
-    },
-    devIndicators: {
-        autoPrerender: false,
-    },
+    }
 }
 
 module.exports = nextConfig

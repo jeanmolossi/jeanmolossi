@@ -18,6 +18,11 @@
     "paths": {
         "@/*": ["./*"]
     },
+    "plugins": [
+        {
+            "name": "next"
+        }
+    ],
     "strictPropertyInitialization": false,
     "sourceMap": true,
   },

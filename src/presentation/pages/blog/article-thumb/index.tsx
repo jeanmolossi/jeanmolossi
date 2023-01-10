@@ -14,7 +14,7 @@ interface ArticleExcerptProps {
 
 export const ArticleExcerpt = React.memo(({ article }: ArticleExcerptProps) => {
     return (
-        <Link href="/artigo/[slug]" as={`/artigo/${article.slug}`} passHref>
+        <Link href="/artigo/[slug]" as={`/artigo/${article.slug}`} passHref legacyBehavior>
             <S.ArticleItem>
                 <RenderIf condition={!!article.cover_image}>
                     <S.ArticleCover>

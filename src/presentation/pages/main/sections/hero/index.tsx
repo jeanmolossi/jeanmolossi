@@ -24,7 +24,7 @@ export const HeroSection = () => {
 
                     <p>Recentemente comecei a ensinar e você pode me acompanhar e aprender mais sobre esse mundo de Software Development (desenvolvimento de software).</p>
 
-                    <Link passHref href={learnHref} as={learnAs}>
+                    <Link passHref href={learnHref} as={learnAs} legacyBehavior>
                         <S.LinkButton>
                             <FiBook /> Aprender
                         </S.LinkButton>

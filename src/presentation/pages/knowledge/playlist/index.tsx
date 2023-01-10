@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
 import Link from "next/link";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import { SiYoutube } from "react-icons/si";
 import { Playlist } from "@/domain/entities/youtube/view";
 import { cdnLoader, RenderIf } from "@/presentation/helpers";
@@ -29,7 +29,7 @@ export const PlaylistItem = React.memo(({ playlist }: PlaylistItemProps) => {
     }, [playlist.description, isUpMediaQuery])
 
     return (
-        <Link href="/playlists/[...slug]" as={`/playlists/${playlist.slug}`} passHref>
+        <Link href="/playlists/[...slug]" as={`/playlists/${playlist.slug}`} passHref legacyBehavior>
             <S.ItemContainer>
                 <S.ItemCover>
                     <div>
