@@ -3,10 +3,10 @@ import { createGlobalStyle } from 'styled-components';
 export const GlobalStyle = createGlobalStyle`
     html,
     body {
-        font-family: 'Inter', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+        font-family: 'Poppins', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
             Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 
-        color: #F2F3D9;
+        color: #f5f5f5;
     }
 
     a {
@@ -21,9 +21,9 @@ export const GlobalStyle = createGlobalStyle`
     h4,
     h5,
     h6 {
-        font-family: 'Poiret One', cursive;
+        font-family: 'Poppins', 'Poiret One', cursive;
         font-weight: 600;
-        color: #D58936;
+        color: #f5f5f5;
     }
 
     p {
@@ -56,8 +56,20 @@ export const theme = {
     outrageousOrange: '#FC7753',
     ghostWhite: '#E8E9F3',
 
+    // v2 theme
+    aqueBlue: '#04b4e0',
+    lightGray: '#aaabab',
+    gray: '#454445',
+    darkGray: '#222323',
+    grafitiWhite: '#f5f5f5',
+
     dimensions: {
         maxWidth: '1024px',
+
+        smartphone: '430px',
+        landscape: '768px',
+        tablet: '1024px',
+        desktop: '1440px'
     },
 
     gutter: {
