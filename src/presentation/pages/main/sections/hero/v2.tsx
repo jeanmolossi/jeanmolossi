@@ -27,9 +27,11 @@ export const Container = styled.div`
     flex: 1;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    align-items: center;
     --spacing: ${({theme}) => theme.gutter.xl};
     gap: ${({theme}) => theme.gutter.md};
     padding: var(--spacing);
+    min-height: 100vh;
 
     ${({theme}) => css`
         width: min(100%, ${theme.dimensions.desktop});
