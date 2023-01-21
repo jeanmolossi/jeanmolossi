@@ -9,7 +9,7 @@ interface GetArticlesParams {
 
 
 
-export async function getArticles({ page = 1 }: GetArticlesParams) {
+export async function getArticles({ page = 1 }: GetArticlesParams = {}) {
     const searchParams = new URLSearchParams()
 
     if (typeof page != 'number') {

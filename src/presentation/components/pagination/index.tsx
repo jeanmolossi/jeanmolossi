@@ -35,7 +35,7 @@ export const Pagination = ({
                 query: { page: next_page }
             }}>
                 <RenderIf condition={hasNextPage}>
-                    <PageLink>Próxima página &gt;</PageLink>
+                    <PageLink className="next">Próxima página &gt;</PageLink>
                 </RenderIf>
             </Link>
         </PaginationWrapper>
@@ -47,11 +47,22 @@ const PaginationWrapper = styled.div`
     justify-content: space-between;
     padding: ${({ theme }) => theme.gutter.md} 0;
     margin: ${({ theme }) => theme.gutter.md} 0;
+
+    @media (max-width: 375px) {
+        flex-direction: column;
+        justify-content: initial;
+        row-gap: ${({ theme }) => theme.gutter.md};
+    }
 `
 
 const PageLink = styled.span`
+    display: block;
     padding: ${({ theme }) => theme.gutter.md};
     background-color: ${({ theme }) => theme.aqueBlue};
     color: ${({ theme }) => theme.darkGray};
     border-radius: ${({ theme }) => theme.radii.xs};
+
+    &.next{
+        text-align: right;
+    }
 `
