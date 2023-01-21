@@ -3,7 +3,7 @@ import * as S from './styles'
 import { useMemo, useRef } from 'react'
 import { useOnScreen } from '@/presentation/hooks';
 import Link from 'next/link';
-import { getItem, menuItems } from '@/config/routes';
+import { getItem } from '@/config/routes';
 import { FiBook, FiChevronsDown } from 'react-icons/fi';
 
 

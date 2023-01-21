@@ -33,7 +33,7 @@ export default class MyDocument extends Document {
               <Head>
                   <FontLoader />
               </Head>
-              <body>
+              <body style={{ backgroundColor: '#222323'}}>
                   <TagManagerNoScript />
                   <Main />
                   <NextScript />
