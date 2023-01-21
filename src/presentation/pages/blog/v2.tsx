@@ -1,11 +1,8 @@
-import Link from "next/link";
 import styled from "styled-components";
 import { ListingArticle } from "@/domain/entities/dev.to/article";
 import { backdrop, BaseHead, Container } from "@/presentation/components";
-import { RenderIf } from "@/presentation/helpers";
 import { Pagination } from "@/presentation/components";
 import { ArticleExcerpt } from "./article-thumb";
-import { article } from "@/config/constants";
 
 export interface BlogProps {
     articles: ListingArticle[];
@@ -48,8 +45,6 @@ export const Blog = ({
                 resource="/blog/[page]"
                 next_page={nextPage?.toString()}
                 prev_page={prevPage?.toString()}
-                total={total}
-                per_page={article.per_page}
             />
         </Container>
     )

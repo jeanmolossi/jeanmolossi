@@ -18,7 +18,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     const paths: Array<{ params: ParsedUrlQuery }> = []
 
     try {
-        const playlists = await getPlaylists()
+        const { playlists } = await getPlaylists()
         const playlistIds = playlists.map(playlist => playlist.id)
 
         const playlistItems = await Promise.all(
