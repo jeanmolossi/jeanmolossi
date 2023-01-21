@@ -10,19 +10,15 @@ import { article } from "@/config/constants";
 export interface BlogProps {
     articles: ListingArticle[];
     total: number;
-    hasNextPage?: boolean
-    page?: number;
-    nextPage?: number;
-    prevPage?: number;
+    nextPage?: number | null;
+    prevPage?: number | null;
 }
 
 export const Blog = ({
     articles,
     total,
-    hasNextPage = false,
-    page = 1,
-    nextPage = 2,
-    prevPage = 1,
+    nextPage = null,
+    prevPage = null,
 }: BlogProps) => {
 
     const smallExcerpt =  total <= 1
@@ -49,9 +45,9 @@ export const Blog = ({
             </ArticleList>
 
             <Pagination
-                page={page}
-                next_page={nextPage}
-                prev_page={prevPage}
+                resource="/blog/[page]"
+                next_page={nextPage?.toString()}
+                prev_page={prevPage?.toString()}
                 total={total}
                 per_page={article.per_page}
             />

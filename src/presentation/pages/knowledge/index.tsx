@@ -1,9 +1,10 @@
 import { FunctionComponent, useMemo } from "react";
 import dynamic from "next/dynamic";
 import { Playlist } from "@/domain/entities/youtube/view";
-import { BaseHead, Container } from "@/presentation/components"
+import { BaseHead, Container, Pagination } from "@/presentation/components"
 import { PlaylistItemProps } from './playlist'
 import * as S from './styles'
+import { youtube } from "@/config/constants";
 
 const LazyPlaylistItem = dynamic(
     () => import('./playlist').then(mod => mod.PlaylistItem)
@@ -11,9 +12,17 @@ const LazyPlaylistItem = dynamic(
 
 export interface KnowledgeProps {
     playlists: Playlist[];
+    total: number
+    nextPage: string | null;
+    prevPage: string | null;
 }
 
-export const Knowledge = ({ playlists }: KnowledgeProps) => {
+export const Knowledge = ({
+    playlists,
+    total,
+    nextPage,
+    prevPage,
+}: KnowledgeProps) => {
     const playlistsNames = useMemo(() => playlists.map(p => p.title).join(', '), [playlists])
 
     return (
@@ -35,6 +44,12 @@ export const Knowledge = ({ playlists }: KnowledgeProps) => {
                     ))}
                 </S.Playlists>
             </S.KnowledgeContainer>
+
+            <Pagination
+                resource="/aprendizado/[page]"
+                next_page={nextPage}
+                prev_page={prevPage}
+            />
         </Container>
     )
 }

@@ -35,6 +35,8 @@ export namespace YTPlaylist {
     export interface Response {
         kind: 'youtube#playlistListResponse';
         etag: string;
+        nextPageToken?: string;
+        prevPageToken?: string;
         pageInfo: {
             totalResults: number;
             resultsPerPage: number;

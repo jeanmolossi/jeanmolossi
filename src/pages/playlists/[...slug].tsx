@@ -12,7 +12,7 @@ const PlaylistVideos = (props: InferGetStaticPropsType<typeof getStaticProps>) =
 export default PlaylistVideos
 
 export const getStaticPaths: GetStaticPaths = async () => {
-    const playlists = await getPlaylists();
+    const { playlists } = await getPlaylists();
 
     const paths = playlists.map((playlist) => ({
         params: { slug: playlist.slug.split('/') },

@@ -28,10 +28,8 @@ export const getServerSideProps: GetServerSideProps<BlogProps> = async ({ params
         props: {
             articles,
             total,
-            hasNextPage,
-            page,
-            nextPage: hasNextPage ? page + 1 : page,
-            prevPage: page > 1 ? page - 1 : 1
+            nextPage: hasNextPage ? page + 1 : null,
+            prevPage: page > 1 ? page - 1 : null
         },
         notFound: total == 0
     }

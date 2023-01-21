@@ -4,11 +4,16 @@ import { YTPlaylist } from '@/domain/entities/youtube/request';
 import { Playlist } from '@/domain/entities/youtube/view';
 import { youtube } from '../api/youtube';
 
-export async function getPlaylists() {
+interface GetPlaylistsProps {
+    page?: string
+}
+
+export async function getPlaylists({ page }: GetPlaylistsProps = {}) {
     try {
         const { data } = await youtube.get<YTPlaylist.Response>('/playlists', {
             params: {
                 part: 'id,snippet',
+                pageToken: page,
             },
         });
 
@@ -33,12 +38,19 @@ export async function getPlaylists() {
             publishedAt: playlist.snippet.publishedAt,
         }));
 
+        const { pageInfo, prevPageToken, nextPageToken } = data
+
         logger.info(
             { playlists: filteredPlaylists.length },
             'playlists fetched',
         );
 
-        return playlists;
+        return {
+            playlists,
+            pageInfo,
+            prevPageToken,
+            nextPageToken
+        };
     } catch (error) {
         if (error instanceof AxiosError) {
             logger.error(

@@ -11,6 +11,7 @@ export async function getPlaylistItems(playlistId: string) {
                 params: {
                     part: 'snippet',
                     playlistId,
+                    maxResults: 50
                 },
             },
         );

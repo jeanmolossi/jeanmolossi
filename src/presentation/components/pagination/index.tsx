@@ -3,35 +3,32 @@ import { RenderIf } from "@/presentation/helpers";
 import styled from "styled-components";
 
 interface PaginationProps {
-    page: number;
-    next_page: number;
-    prev_page: number;
-    total: number;
-    per_page: number;
+    resource: string;
+    next_page?: string | null;
+    prev_page?: string | null;
 }
 
 export const Pagination = ({
-    page = 1,
+    resource = '',
     next_page,
-    prev_page = 1,
-    total = 0,
-    per_page
+    prev_page,
 }: PaginationProps) => {
-    const hasNextPage = total >= per_page;
+    const hasNextPage = !!next_page;
+    const hasPrevPage = !!prev_page
 
     return (
         <PaginationWrapper>
             <Link href={{
-                pathname: '/blog/[page]',
+                pathname: resource,
                 query: { page: prev_page }
             }}>
-                <RenderIf condition={page>1}>
+                <RenderIf condition={hasPrevPage}>
                     <PageLink>&lt; Página anterior</PageLink>
                 </RenderIf>
             </Link>
 
             <Link href={{
-                pathname: '/blog/[page]',
+                pathname: resource,
                 query: { page: next_page }
             }}>
                 <RenderIf condition={hasNextPage}>

@@ -15,3 +15,7 @@ export const social = {
 export const article = {
     per_page: 30
 }
+
+export const youtube = {
+    per_page: 2
+}
