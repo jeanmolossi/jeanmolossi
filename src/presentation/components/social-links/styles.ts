@@ -6,6 +6,7 @@ export const SocialWrapper = styled.div`
     column-gap: ${({ theme }) => theme.gutter.sm};
     align-items: center;
     font-size: 1.25rem;
+    z-index: 1;
 
     > a {
         --pos: 0;

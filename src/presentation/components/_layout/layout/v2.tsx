@@ -1,4 +1,5 @@
 import { CSSProperties, ReactNode } from "react";
+import { Navbar } from "../navbar";
 import { MainContainer } from './styles'
 
 interface LayoutProps {
@@ -16,6 +17,8 @@ export function Layout({ children, className = '' }: LayoutProps) {
         <div style={backgroundStyle}>
             <MainContainer>
                 {children}
+
+                <Navbar />
             </MainContainer>
         </div>
     )
