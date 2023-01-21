@@ -14,11 +14,7 @@ export const VideoWrapper = styled.div`
 `;
 
 export const ImageButton = styled.button`
-    ${backdrop}
-
     border: none;
-    background-color: transparent;
-    padding: 0;
 
     display: flex;
     justify-content: stretch;
@@ -26,6 +22,9 @@ export const ImageButton = styled.button`
     flex: 0 1 auto;
 
     position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    background-color: ${({ theme }) => theme.darkGray};
 
     > span {
         position: absolute;
@@ -39,7 +38,6 @@ export const ImageButton = styled.button`
 
         font-size: 2rem;
         color: ${({ theme }) => theme.beige};
-        background-color: ${({ theme }) => theme.darkGray};
         transition: all 200ms ease-in-out;
         z-index: 1;
 
@@ -78,10 +76,5 @@ export const ImageButton = styled.button`
                 animation: ${pulseAnim} 500ms ease-in-out infinite;
             }
         }
-    }
-
-    > div {
-        display: block;
-        width: 100%;
     }
 `;

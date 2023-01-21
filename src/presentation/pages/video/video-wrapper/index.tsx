@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useCallback, useMemo, useState } from "react";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import dynamic from "next/dynamic";
 import { FaPlay } from "react-icons/fa";
 import { cdnLoader, SwapComponents } from "@/presentation/helpers";
@@ -34,14 +34,12 @@ export const VideoWrapper = React.memo(({ video }: VideoProps) => {
                 }
                 componentIfConditionFalse={
                     <S.ImageButton onClick={wantPlayVideo}>
-                        <div>
-                            <Image
-                                loader={cdnLoader}
-                                priority
-                                objectFit="cover"
-                                src={{ src, width: 1280, height: 720 }}
-                            />
-                        </div>
+                        <Image
+                            alt={`Capa do vídeo ${video.snippet.title}`}
+                            style={{ objectFit:"cover" }}
+                            src={{ src, width: 1280, height: 720 }}
+                            fill
+                        />
 
                         <span>
                             <FaPlay />
