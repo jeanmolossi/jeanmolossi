@@ -7,8 +7,6 @@ interface GetArticlesParams {
     page?: number;
 }
 
-
-
 export async function getArticles({ page = 1 }: GetArticlesParams = {}) {
     const searchParams = new URLSearchParams()
 
