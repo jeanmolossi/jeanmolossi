@@ -12,7 +12,7 @@ export const Heading = styled.h1`
     ${backdrop}
 
     display: block;
-    padding: ${({ theme }) => `${theme.gutter.md} ${theme.gutter.lg}`};
+    padding: ${({ theme }) => `${theme.gutter.md}`};
     border-radius: ${({ theme }) => theme.radii.sm};
 `;
 
@@ -20,8 +20,7 @@ export const Description = styled.div`
     ${backdrop}
 
     display: block;
-    padding: ${({ theme }) => `${theme.gutter.md} ${theme.gutter.lg}`};
-    background-color: #000000bf;
+    padding: ${({ theme }) => `${theme.gutter.md}`};
 
     > span {
         display: block;

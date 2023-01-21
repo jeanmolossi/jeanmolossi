@@ -39,7 +39,7 @@ export const ImageButton = styled.button`
 
         font-size: 2rem;
         color: ${({ theme }) => theme.beige};
-        background-color: ${({ theme }) => theme.blackChocolate}45;
+        background-color: ${({ theme }) => theme.darkGray};
         transition: all 200ms ease-in-out;
         z-index: 1;
 
