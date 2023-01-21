@@ -143,6 +143,10 @@ const Menu = styled.div`
         }
     }
 
+    @media (max-width: 375px) {
+        width: 100%;
+    }
+
     &.opened {
         transform: translateX(0);
     }
