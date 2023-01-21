@@ -1,9 +1,9 @@
 import React, { useMemo } from "react";
 import Link from "next/link";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import { SiYoutube } from "react-icons/si";
 import { Playlist } from "@/domain/entities/youtube/view";
-import { cdnLoader, RenderIf } from "@/presentation/helpers";
+import { RenderIf } from "@/presentation/helpers";
 import { useMediaQuery } from "@/presentation/hooks";
 import * as S from "./styles";
 
@@ -29,37 +29,51 @@ export const PlaylistItem = React.memo(({ playlist }: PlaylistItemProps) => {
     }, [playlist.description, isUpMediaQuery])
 
     return (
-        <Link href="/playlists/[...slug]" as={`/playlists/${playlist.slug}`} passHref legacyBehavior>
-            <S.ItemContainer>
+        <S.ItemContainer>
+            <Link
+                href="/playlists/[...slug]"
+                as={`/playlists/${playlist.slug}`}
+            >
                 <S.ItemCover>
-                    <div>
-                        <Image
-                            alt={`capa da playlist ${playlist.title}`}
-                            loader={cdnLoader}
-                            loading="lazy"
-                            objectFit="cover"
-                            src={{ src, width: 1280, height: 720 }}
-                        />
-                    </div>
+                    <Image
+                        alt={`capa da playlist ${playlist.title}`}
+                        loading="lazy"
+                        style={{ objectFit: "cover" }}
+                        src={{ src, width: 1280, height: 720 }}
+                        fill
+                    />
                 </S.ItemCover>
+            </Link>
 
-                <S.ItemDescription>
+            <S.ItemDescription>
+                <Link
+                    href="/playlists/[...slug]"
+                    as={`/playlists/${playlist.slug}`}
+                >
                     <h1>{playlist.title}</h1>
+                </Link>
 
-                    <small>Publicada {playlist.publishedAt.toRelativeTime()}</small>
+                <small>Publicada {playlist.publishedAt.toRelativeTime()}</small>
 
-                    <RenderIf condition={!!playlist.description}>
+                <RenderIf condition={!!playlist.description}>
+                    <Link
+                        href="/playlists/[...slug]"
+                        as={`/playlists/${playlist.slug}`}
+                    >
                         <p
                             title={playlist.description}
                             dangerouslySetInnerHTML={{ __html: description }}>
                         </p>
-                    </RenderIf>
+                    </Link>
+                </RenderIf>
 
-                    <span>
-                        <SiYoutube /> Ver vídeos desta playlist
-                    </span>
-                </S.ItemDescription>
-            </S.ItemContainer>
-        </Link>
+                <Link
+                    href="/playlists/[...slug]"
+                    as={`/playlists/${playlist.slug}`}
+                >
+                    <SiYoutube /> Ver vídeos desta playlist
+                </Link>
+            </S.ItemDescription>
+        </S.ItemContainer>
     );
 })

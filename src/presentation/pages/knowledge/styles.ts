@@ -1,4 +1,3 @@
-import { backdrop } from '@/presentation/components';
 import styled from 'styled-components';
 
 export const KnowledgeContainer = styled.section`
@@ -6,20 +5,20 @@ export const KnowledgeContainer = styled.section`
 `;
 
 export const Heading = styled.div`
-    ${backdrop}
-
     display: flex;
     flex-direction: column;
     row-gap: ${({ theme }) => theme.gutter.md};
     margin-bottom: ${({ theme }) => theme.gutter.md};
     padding: ${({ theme }) => theme.gutter.md};
+    background-color: ${({ theme }) => theme.darkGray};
 
     > h1 {
-        font-size: 1.75rem;
+        font-size: 2rem;
     }
 
     > h2 {
-        color: ${({ theme }) => theme.beige};
+        color: ${({ theme }) => theme.grafitiWhite};
+        font-weight: 400;
     }
 `;
 

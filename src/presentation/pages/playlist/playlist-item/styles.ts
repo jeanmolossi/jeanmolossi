@@ -15,15 +15,17 @@ export const ItemContainer = styled.div`
 `;
 
 export const Cover = styled.a`
-    display: flex;
-    width: 100%;
+    position: relative;
+    width: min(100%, 768px);
+    padding-bottom: 56.25%;
+    border-radius: ${({ theme }) => theme.radii.xs};
 
-    align-items: center;
-    justify-content: stretch;
-    flex: 0 1 auto;
+    > img {
+        border-radius: ${({ theme }) => theme.radii.xs};
+    }
 `;
 
-export const Details = styled.a`
+export const Details = styled.div`
     display: flex;
     flex-direction: column;
     gap: ${({ theme }) => theme.gutter.md};
@@ -35,7 +37,7 @@ export const Details = styled.a`
 
     > div {
         display: block;
-        color: ${({ theme }) => theme.beige};
+        color: ${({ theme }) => theme.grafitiWhite};
 
         > p > em > strong {
             color: ${({ theme }) => theme.lightGreen};

@@ -1,46 +1,43 @@
 import styled, { css } from 'styled-components';
-import { backdrop } from '@/presentation/components';
 import { socialColors } from '@/presentation/styles';
 
-const inset = css`
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-`;
-
 export const ItemContainer = styled.a`
-    ${backdrop};
     display: grid;
     grid-template-columns: 1fr;
     padding: ${({ theme }) => theme.gutter.md};
     row-gap: ${({ theme }) => theme.gutter.md};
+    border-radius: ${({ theme }) => theme.radii.sm};
 
     @media (min-width: 768px) {
         grid-template-columns: 1.5fr 2.5fr;
         column-gap: ${({ theme }) => theme.gutter.md};
     }
+
+    background-color: ${({ theme }) => theme.darkGray};
 `;
 
 export const ItemCover = styled.div`
-    background-color: ${({ theme }) => theme.blackChocolate};
+    position: relative;
+    width: min(100%, 425px);
+    padding-bottom: 56.25%;
     border-radius: ${({ theme }) => theme.radii.md};
-    margin-bottom: ${({ theme }) => `${theme.gutter.xs}`};
-    overflow: hidden;
-    display: flex;
-    justify-content: stretch;
-    align-items: center;
-    flex: 0 1 auto;
+    flex-shrink: 0;
 
-    > div {
-        display: block;
-        width: 100%;
-    }
+    ${({ theme }) => css`
+        background-image: linear-gradient(
+            135deg,
+            ${theme.lightGray}20 0%,
+            ${theme.aqueBlue}20 100%
+        );
 
-    @media (min-width: 768px) {
-        max-width: 30rem;
-    }
+        &:hover {
+            background-image: linear-gradient(
+                45deg,
+                ${theme.lightGray}50 0%,
+                ${theme.aqueBlue}50 100%
+            );
+        }
+    `}
 `;
 
 export const ItemDescription = styled.div`
@@ -53,17 +50,20 @@ export const ItemDescription = styled.div`
         color: ${({ theme }) => theme.silverMetallic};
     }
 
-    > p {
-        position: relative;
-        text-overflow: ellipsis;
-        padding: ${({ theme }) => `${theme.gutter.xs} ${theme.gutter.md}`};
-        border-radius: ${({ theme }) => theme.radii.xs};
-        color: ${({ theme }) => theme.beige};
-        overflow-y: hidden;
-        background-color: ${({ theme }) => theme.blackChocolate}EB;
-    }
+    > a {
+        > p {
+            position: relative;
+            text-overflow: ellipsis;
+            padding: ${({ theme }) => `${theme.gutter.xs} 0`};
+            border-radius: ${({ theme }) => theme.radii.xs};
+            color: ${({ theme }) => theme.grafitiWhite};
+            overflow-y: hidden;
+        }
 
-    > span {
+        > h1 {
+            flex: 1;
+        }
+
         display: flex;
         align-items: center;
         justify-content: flex-end;

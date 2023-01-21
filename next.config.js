@@ -8,6 +8,7 @@ const nextConfig = {
         domains: [
             'res.cloudinary.com',
             's3.amazonaws.com',
+            'i.ytimg.com'
         ]
     }
 }

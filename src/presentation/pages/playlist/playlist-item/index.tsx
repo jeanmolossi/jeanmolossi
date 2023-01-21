@@ -3,9 +3,9 @@ import { MarkdownProps } from "@/presentation/components";
 import { cdnLoader } from "@/presentation/helpers";
 import { useMediaQuery } from "@/presentation/hooks";
 import dynamic from "next/dynamic";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import Link from "next/link";
-import { FunctionComponent, useMemo } from "react";
+import { FunctionComponent } from "react";
 import * as S from './styles';
 
 const LazyMD = dynamic(() => import("@/presentation/components/_layout/markdown").then(mod => mod.Markdown)) as FunctionComponent<MarkdownProps>
@@ -17,40 +17,42 @@ interface PlaylistItemProps {
 export const PlaylistItem = ({ item }: PlaylistItemProps) => {
     const isUpMedia = useMediaQuery("(min-width: 768px)");
 
-    const slug = useMemo(() => {
-        return `${item.snippet.title.toSlug()}/${item.snippet.resourceId.videoId}`;
-    }, [item.snippet.title, item.snippet.resourceId.videoId]);
-
-    const description = useMemo(() => {
-        const length = isUpMedia ? 250 : 350
-        return item.snippet.description.trimAfter(length, '... _**ver mais**_')
-    }, [item.snippet.description, isUpMedia]);
-
-    const thumb = useMemo(() => {
-        const size: keyof typeof item.snippet.thumbnails = isUpMedia
+    const size: keyof typeof item.snippet.thumbnails = isUpMedia
             ? 'high'
             : 'medium'
-        return {
-            src: item.snippet.thumbnails[size].url,
-            width: 1280,
-            height: 720
-        }
-    }, [item.snippet.thumbnails, isUpMedia])
+
+    const slug = `${item.snippet.title.toSlug()}/${item.snippet.resourceId.videoId}`;
+
+    const length = isUpMedia ? 250 : 350
+
+    const description = item
+        .snippet
+        .description
+        .nlToBr()
+        .trimAfter(length, '... _**ver mais**_');
+
+    const thumb = {
+        src: item.snippet.thumbnails[size].url,
+        width: 1280,
+        height: 720
+    }
 
     return (
         <S.ItemContainer>
             <Link href="/video/[...slug]" as={`/video/${slug}`} passHref legacyBehavior>
                 <S.Cover>
                     <Image
-                        loader={cdnLoader}
+                        alt={`Miniatura do vídeo ${item.snippet.title}`}
+                        loader={ cdnLoader }
                         loading="lazy"
-                        objectFit="cover"
-                        src={thumb}
+                        style={{ objectFit:"cover" }}
+                        src={ thumb }
+                        fill
                     />
                 </S.Cover>
             </Link>
 
-            <Link href="/video/[...slug]" as={`/video/${slug}`} passHref legacyBehavior>
+            <Link href="/video/[...slug]" as={`/video/${slug}`}>
                 <S.Details>
                     <h1>{item.snippet.title}</h1>
 
