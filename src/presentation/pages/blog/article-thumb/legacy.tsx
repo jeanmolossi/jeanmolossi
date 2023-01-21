@@ -18,20 +18,18 @@ export const ArticleExcerpt = React.memo(({ article }: ArticleExcerptProps) => {
             <S.ArticleItem>
                 <RenderIf condition={!!article.cover_image}>
                     <S.ArticleCover>
-                        <div>
-                            <Image
-                                loader={cdnLoader}
-                                alt={`Imagem de capa para o artigo ${article.title}`}
-                                loading="lazy"
-                                layout="responsive"
-                                objectFit="cover"
-                                src={{
-                                    src: article.cover_image,
-                                    width: 1280,
-                                    height: 720
-                                }}
-                            />
-                        </div>
+                        <Image
+                            loader={cdnLoader}
+                            alt={`Imagem de capa para o artigo ${article.title}`}
+                            loading="lazy"
+                            layout="responsive"
+                            objectFit="cover"
+                            src={{
+                                src: article.cover_image,
+                                width: 1280,
+                                height: 720
+                            }}
+                        />
                     </S.ArticleCover>
                 </RenderIf>
 

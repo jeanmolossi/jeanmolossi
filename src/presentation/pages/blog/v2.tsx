@@ -53,4 +53,9 @@ const ArticleList = styled.div`
     gap: ${({ theme }) => theme.gutter.sm};
 
     background-color: ${({ theme }) => theme.darkGray};
+
+    > article:not(:last-child) {
+        padding-bottom: ${({ theme }) => theme.gutter.sm};
+        border-bottom: 0.05rem solid ${({ theme }) => theme.gray};
+    }
 `;

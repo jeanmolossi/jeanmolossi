@@ -11,8 +11,8 @@ export const GlobalStyle = createGlobalStyle`
 
     a {
         text-decoration: none;
-        color: #45e5b7;
-        font-weight: 500;
+        color: #04b4e0;
+        font-weight: 100;
     }
 
     h1,
