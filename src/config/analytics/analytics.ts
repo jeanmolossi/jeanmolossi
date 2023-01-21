@@ -15,7 +15,15 @@ export namespace Gtag {
     };
 
     export type Actor = {
+         /**
+         * pageView - This method is used to send a pageview hit to Google Analytics.
+         * @param url is the url to be tracked
+         */
         pageView(url: string): void;
+        /**
+         * event - This method is used to send an event hit to Google Analytics.
+         * @param {Gtag.Event} event is the event to be tracked
+         */
         event(e: Event): void;
     };
 }
