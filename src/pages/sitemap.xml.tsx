@@ -85,7 +85,7 @@ function UrlMap(url: string): string {
             <loc>${url}</loc>
             <lastmod>${new Date().toISOString()}</lastmod>
             <changefreq>monthly</changefreq>
-            <priority>1.0</priority>
+            <priority>0.8</priority>
         </url>
     `;
 }
