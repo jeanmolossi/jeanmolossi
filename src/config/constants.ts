@@ -11,3 +11,7 @@ export const social = {
     telegram: 'https://t.me/jeanmolossi',
     instagram: 'https://instagram.com/jeancarlosmolossi',
 } as const;
+
+export const article = {
+    per_page: 2
+}

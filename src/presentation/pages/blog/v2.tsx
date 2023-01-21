@@ -1,14 +1,29 @@
+import Link from "next/link";
 import styled from "styled-components";
 import { ListingArticle } from "@/domain/entities/dev.to/article";
 import { backdrop, BaseHead, Container } from "@/presentation/components";
+import { RenderIf } from "@/presentation/helpers";
+import { Pagination } from "@/presentation/components";
 import { ArticleExcerpt } from "./article-thumb";
+import { article } from "@/config/constants";
 
 export interface BlogProps {
     articles: ListingArticle[];
+    total: number;
+    hasNextPage?: boolean
+    page?: number;
+    nextPage?: number;
+    prevPage?: number;
 }
 
-export const Blog = ({ articles }: BlogProps) => {
-    const total = articles.length;
+export const Blog = ({
+    articles,
+    total,
+    hasNextPage = false,
+    page = 1,
+    nextPage = 2,
+    prevPage = 1,
+}: BlogProps) => {
 
     const smallExcerpt =  total <= 1
         ? `Mostrando ${total} artigo`
@@ -32,6 +47,14 @@ export const Blog = ({ articles }: BlogProps) => {
                     <ArticleExcerpt article={article} key={article.id.toString()} />
                 ))}
             </ArticleList>
+
+            <Pagination
+                page={page}
+                next_page={nextPage}
+                prev_page={prevPage}
+                total={total}
+                per_page={article.per_page}
+            />
         </Container>
     )
 }
