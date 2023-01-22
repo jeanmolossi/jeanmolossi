@@ -4,7 +4,6 @@ import { Playlist } from "@/domain/entities/youtube/view";
 import { BaseHead, Container, Pagination } from "@/presentation/components"
 import { PlaylistItemProps } from './playlist'
 import * as S from './styles'
-import { youtube } from "@/config/constants";
 
 const LazyPlaylistItem = dynamic(
     () => import('./playlist').then(mod => mod.PlaylistItem)
@@ -12,14 +11,12 @@ const LazyPlaylistItem = dynamic(
 
 export interface KnowledgeProps {
     playlists: Playlist[];
-    total: number
     nextPage: string | null;
     prevPage: string | null;
 }
 
 export const Knowledge = ({
     playlists,
-    total,
     nextPage,
     prevPage,
 }: KnowledgeProps) => {

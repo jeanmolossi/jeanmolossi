@@ -1,7 +1,7 @@
-import { useState, useEffect, RefObject } from 'react';
+import { useState, useEffect, RefObject, MutableRefObject } from 'react';
 
-export function useOnScreen<T extends HTMLElement>(
-    ref: RefObject<T>,
+export function useOnScreen<T extends HTMLElement = any>(
+    ref: RefObject<T> | MutableRefObject<T>,
     rootMargin = '0px',
 ) {
     const [isIntersecting, setIntersecting] = useState(false);
@@ -14,10 +14,14 @@ export function useOnScreen<T extends HTMLElement>(
         const observer = new window.IntersectionObserver(
             ([entry]) => {
                 setIntersecting(entry.isIntersecting);
+
+                ref.current?.classList
+                    .toggle(
+                        'isOnScreen',
+                        entry.isIntersecting,
+                    );
             },
-            {
-                rootMargin,
-            },
+            { rootMargin },
         );
 
         if (ref.current) {

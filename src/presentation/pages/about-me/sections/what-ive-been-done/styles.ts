@@ -48,16 +48,15 @@ export const TechList = styled.ul`
     margin-top: ${({ theme }) => theme.gutter.md};
     list-style: none;
     overflow-x: hidden;
+
+    ${fromLeft};
 `;
 
 interface WithChildCounter {
     child: number;
-    isOnScreen: boolean;
 }
 
 export const TechListItem = styled.li<WithChildCounter>`
-    ${fromLeft};
-
     margin: ${({ theme }) => theme.gutter.xs} 0;
     transition-delay: ${({ child }) => `${child * 0.1}s`};
     display: flex;

@@ -28,7 +28,6 @@ export const WhatIveBeenDone = () => {
                     {techs.map((tech, i) => (
                         <S.TechListItem
                             key={i.toString()}
-                            isOnScreen={isTechListOnScreen}
                             child={nextTech()}
                         >
                             <a href={tech.href}>
@@ -52,7 +51,6 @@ export const WhatIveBeenDone = () => {
                     {tools.map((tool, i) => (
                         <S.TechListItem
                             key={i.toString()}
-                            isOnScreen={isToolListOnScreen}
                             child={nextTool()}
                         >
                             <a href={tool.href} target="_blank">
@@ -76,7 +74,6 @@ export const WhatIveBeenDone = () => {
                     {others.map((other, i) => (
                         <S.TechListItem
                             key={i.toString()}
-                            isOnScreen={isOtherListOnScreen}
                             child={nextOther()}
                         >
                             <a href={other.href} target="_blank">

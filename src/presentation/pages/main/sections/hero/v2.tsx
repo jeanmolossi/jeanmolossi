@@ -7,9 +7,17 @@ export const HeroSection = () => {
             <ImageWrapper>
                 <Image
                     alt="avatar"
-                    src={"/images/avatar-posing.png"}
+                    src={{
+                        src: "/images/avatar-posing.png",
+                        width: 400,
+                        height: 400
+                    }}
+                    sizes={[
+                        '(min-width: 830px) 360px'
+                    ].join(',')}
                     style={{ objectFit: 'cover' }}
                     fill
+                    priority
                 />
             </ImageWrapper>
 
