@@ -24,7 +24,8 @@ const scriptSrc = [
 
 const childSrc = [
     "'self'",
-    "https://www.youtube.com/"
+    "https://www.youtube.com/",
+    "https://*.hotjar.com/"
 ]
 
 const styleSrc = [
@@ -40,6 +41,7 @@ const fontSrc = [
 
 const imgSrc = [
     "'self'",
+    "https://jeanmolossi.com.br/",
     "https://i.ytimg.com/",
     "data:",
 ]
