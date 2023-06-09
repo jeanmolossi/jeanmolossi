@@ -4,6 +4,7 @@ import { GlobalStyle, theme } from '@/presentation/styles'
 import { Layout } from '@/presentation/components'
 import { AnalyticsScript, AwsRum, HotjarScript, TagManager } from '@/presentation/scripts'
 import '@/presentation/styles/github-dark.min.css'
+import NextNProgress from 'nextjs-progressbar';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -13,6 +14,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <AnalyticsScript />
         <HotjarScript />
         <AwsRum />
+        <NextNProgress />
         <ThemeProvider theme={theme}>
             <Layout>
                 <Component {...pageProps} />

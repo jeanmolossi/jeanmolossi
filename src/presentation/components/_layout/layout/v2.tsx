@@ -1,6 +1,8 @@
 import { CSSProperties, ReactNode } from "react";
 import { Navbar } from "../navbar";
 import { MainContainer } from './styles'
+import { HireLogo } from "../hire-logo";
+import { Footer } from "../footer";
 
 interface LayoutProps {
     children?:ReactNode;
@@ -18,7 +20,10 @@ export function Layout({ children, className = '' }: LayoutProps) {
             <MainContainer>
                 {children}
 
+                <HireLogo />
                 <Navbar />
+
+                <Footer />
             </MainContainer>
         </div>
     )
