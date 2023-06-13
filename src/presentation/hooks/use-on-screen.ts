@@ -1,3 +1,5 @@
+'use client';
+
 import { useState, useEffect, RefObject, MutableRefObject } from 'react';
 
 export function useOnScreen<T extends HTMLElement = any>(

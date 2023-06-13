@@ -1,0 +1,165 @@
+.menu_container {
+    @apply
+        fixed
+        top-0
+        left-0
+        right-0
+
+        flex
+        items-center
+        mb-5
+        bg-neutral-800
+        text-[#cdcdcd]
+        p-5
+        z-[1]
+        select-none
+        box-border
+
+        max-[830px]:flex-row-reverse
+        max-[830px]:justify-between
+
+        min-[831px]:w-full
+}
+
+.menu_container a {
+    @apply
+        no-underline
+        transition-colors
+        duration-300
+
+        hover:text-teal-500
+        min-[831px]:text-[#cdcdcd]
+}
+
+.menu_container span {
+    @apply
+        block
+        w-[33px]
+        h-1
+        mb-[5px]
+        relative
+        bg-[#cdcdcd]
+        rounded-sm
+        z-[1]
+        origin-[4px_0px]
+        transition-all
+        min-[831px]:hidden;
+}
+
+.menu_container span:first-child {
+    @apply origin-[0%_0%];
+}
+
+.menu_container span:nth-child(3) {
+    @apply origin-[0%_100%]
+}
+
+.menu_container input {
+    @apply min-[831px]:hidden
+}
+
+.menu_container label input {
+    @apply
+        block
+        w-9
+        h-6
+        m-0
+        absolute
+        cursor-pointer
+        opacity-0
+        z-[2];
+}
+
+.menu_container label input:checked ~ span {
+    @apply
+        opacity-100
+        rotate-45;
+}
+
+.menu_container label input:checked ~ span:nth-child(3) {
+    @apply
+        -rotate-45
+        -translate-x-[0px]
+        translate-y-[11px];
+}
+
+.menu_container label input:checked ~ span:nth-child(4) {
+    @apply
+        opacity-0
+        rotate-0
+        scale-[0.2];
+}
+
+/** MENU LOGO **/
+
+.menu_logo {
+    @apply break-keep shrink-0 ml-8;
+}
+
+/** MENU **/
+
+.menu {
+    @apply
+        max-[830px]:absolute
+        max-[830px]:box-border
+        max-[830px]:w-[min(80%,_700px)]
+        max-[830px]:right-0
+        max-[830px]:top-0
+        max-[830px]:-m-5
+        max-[830px]:p-[75px_50px_50px]
+        max-[830px]:bg-neutral-800
+        max-[830px]:origin-[0%_0%]
+        max-[830px]:translate-x-full
+        max-[830px]:transition-all
+        max-[830px]:duration-500
+
+        min-[831px]:relative
+        min-[831px]:w-full
+        min-[831px]:flex
+        min-[831px]:justify-end
+
+        max-[375px]:w-full
+}
+
+.menu ul {
+    @apply
+        inline-flex
+        list-none
+        gap-4
+        items-center
+
+        min-[831px]:p-0
+
+        max-[830px]:flex
+        max-[830px]:flex-col
+        max-[830px]:min-h-screen
+        max-[830px]:items-end
+        max-[830px]:pt-12
+}
+
+.menu li {
+    @apply
+        block
+        shrink-0
+}
+
+.menu a {
+    @apply
+        gap-2
+        inline-flex
+        items-center
+        break-keep
+        px-1 py-2
+}
+
+.menu li > a {
+    @apply
+        max-[830px]:text-xl
+        max-[830px]:p-8
+        max-[830px]:text-gray-400
+        max-[830px]:font-medium
+}
+
+.menu.opened {
+    @apply translate-x-0
+}

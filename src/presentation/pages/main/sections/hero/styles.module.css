@@ -1,0 +1,11 @@
+.image_wrapper {
+    @apply
+        relative
+        block
+        overflow-hidden
+        my-0
+        mx-auto
+        w-[clamp(200px,_100%,_360px)]
+        pb-[clamp(200px,_100%,_360px)]
+        -mb-4
+}

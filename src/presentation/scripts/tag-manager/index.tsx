@@ -1,18 +1,19 @@
+'use client';
+
 import Script from "next/script"
 import { gtag } from '@/config/constants'
-import { useRouter } from "next/router"
+import { usePathname, useSearchParams } from "next/navigation"
 import { useEffect } from "react"
 import { gtm } from "@/config/analytics"
 
 export const TagManager = () => {
-    const router = useRouter()
+    const pathname = usePathname()
+    const searchParams = useSearchParams()
 
     useEffect(() => {
-        router.events.on('routeChangeComplete', gtm.pageView)
-        return () => {
-            router.events.off('routeChangeComplete', gtm.pageView)
-        }
-    }, [router.events])
+        const url = pathname + (searchParams?.toString() || '')
+        gtm.pageView(url)
+    }, [pathname, searchParams])
 
     return (
         <>

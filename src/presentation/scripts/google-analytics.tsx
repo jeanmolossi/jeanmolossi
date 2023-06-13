@@ -1,27 +1,24 @@
+'use client';
+
 import { useEffect } from 'react';
 import Script from 'next/script'
 import { useRouter } from 'next/router'
 import { gtag } from '@/config/constants'
 import { gtagActions } from '@/config/analytics';
-
-
+import { usePathname, useSearchParams } from 'next/navigation';
 
 export const AnalyticsScript = () => {
-    const router = useRouter();
+    const pathname = usePathname()
+    const searchParams = useSearchParams()
 
     useEffect(() => {
         const handleChangeRoute = (url: string) => {
             gtagActions.pageView(url);
         }
 
-        router.events.on('routeChangeComplete', handleChangeRoute);
-        router.events.on('hashChangeComplete', handleChangeRoute);
-
-        return () => {
-            router.events.off('routeChangeComplete', handleChangeRoute);
-            router.events.off('hashChangeComplete', handleChangeRoute);
-        }
-    }, [router.events])
+        const url = pathname + (searchParams?.toString() || '')
+        handleChangeRoute(url)
+    }, [pathname, searchParams])
 
     return (
         <>

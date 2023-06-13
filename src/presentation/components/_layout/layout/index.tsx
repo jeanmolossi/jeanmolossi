@@ -1,12 +1,11 @@
+import styles from './styles.module.css'
 import { CSSProperties, ReactNode } from "react";
 import { Navbar } from "../navbar";
-import { MainContainer } from './styles'
 import { HireLogo } from "../hire-logo";
 import { Footer } from "../footer";
 
 interface LayoutProps {
     children?:ReactNode;
-    className?: string;
 }
 
 const backgroundStyle: CSSProperties = {
@@ -14,17 +13,17 @@ const backgroundStyle: CSSProperties = {
     backgroundAttachment: 'fixed'
 }
 
-export function Layout({ children, className = '' }: LayoutProps) {
+export function Layout({ children }: LayoutProps) {
     return (
         <div style={backgroundStyle}>
-            <MainContainer>
+            <main className={styles.main_container}>
                 {children}
 
                 <HireLogo />
                 <Navbar />
 
                 <Footer />
-            </MainContainer>
+            </main>
         </div>
     )
 }

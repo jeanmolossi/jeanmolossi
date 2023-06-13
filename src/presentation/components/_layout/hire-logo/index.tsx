@@ -1,9 +1,10 @@
 import Image from "next/image"
-import { HireContainer } from './styles'
+import Link from "next/link"
+import styles from './styles.module.css'
 
 export const HireLogo = () => {
     return (
-        <HireContainer href={"/links"}>
+        <Link href={"/links"} className={styles.hire_container}>
             <div>
                 <Image
                     src={{
@@ -25,6 +26,6 @@ export const HireLogo = () => {
                     alt="globo"
                 />
             </div>
-        </HireContainer>
+        </Link>
     )
 }

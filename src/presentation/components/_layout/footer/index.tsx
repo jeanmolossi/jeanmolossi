@@ -1,12 +1,10 @@
-import { Container } from './styles'
+import styles from './styles.module.css'
 
 export const Footer = () => {
     const year = (new Date()).getFullYear()
     return (
-        <Container>
-            <p>
-                Todos os direitos reservados &copy; {year}
-            </p>
-        </Container>
+        <div className={styles.footer}>
+            <p>Todos os direitos reservados &copy; {year}</p>
+        </div>
     )
 }
