@@ -33,9 +33,10 @@ export default function RootLayout({
     )
 }
 
-// @ts-ignore
 export function reportWebVitals(metric: NextWebVitalsMetric) {
     if (typeof window !== 'undefined' && window.gtag) {
+        // Use `window.gtag` if you initialized Google Analytics as this example:
+        // https://github.com/vercel/next.js/blob/canary/examples/with-google-analytics/pages/_app.js
         window.gtag('event', metric.name, {
             event_category: metric.label === 'web-vital' ? 'Web Vitals' : 'Next.js custom metric',
             value: Math.round(metric.name === 'CLS' ? metric.value * 1000 : metric.value),
