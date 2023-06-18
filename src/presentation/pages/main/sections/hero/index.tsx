@@ -3,8 +3,8 @@ import styles from './styles.module.css'
 
 export function HeroSection() {
     return (
-        <div className="bg-neutral-800 p-4 w-full inline-flex justify-center">
-            <div className="grid grid-cols-1 lg:grid-cols-[1fr,_clamp(20rem,100%,34rem)] gap-6 max-w-7xl min-h-[80vh]">
+        <div className="bg-neutral-800 p-4 w-full inline-flex justify-center md:bg-[url('/images/book-1868068_1920.jpg')] bg-cover bg-bottom bg-blend-multiply">
+            <div className={styles.hero_wrapper}>
                 <div className="my-auto px-4">
                     <h1 className="text-3xl md:text-5xl md:leading-tight mb-8 font-medium">
                         Alavanque sua <span className="text-orange-500">carreira</span>{' '}

@@ -1,3 +1,8 @@
+.hero_wrapper {
+    @apply
+        grid grid-cols-1 lg:grid-cols-[1fr,_clamp(20rem,100%,34rem)] gap-6 max-w-7xl min-h-[80vh]
+}
+
 .image_wrapper {
     @apply
         relative

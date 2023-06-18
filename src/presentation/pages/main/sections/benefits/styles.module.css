@@ -11,7 +11,7 @@
     @apply
         basis-full
         sm:basis-[calc(50%-var(--gap))] xl:basis-[calc(25%-var(--gap))]
-        bg-neutral-900/90
+        bg-neutral-700/90
         rounded
         relative
 }
@@ -44,7 +44,7 @@
 .benefit_item_content {
     @apply
         flex flex-col gap-4
-        bg-neutral-900 rounded-[inherit]
+        bg-neutral-700 rounded-[inherit]
         w-[calc(100%-2px)]
         h-[calc(100%-2px)]
         p-4
@@ -65,4 +65,17 @@
     );
 
     @apply z-[1]
+}
+
+/* SOCIAL PROOF */
+
+.proof_wrapper small {
+    @apply
+        ml-2 block text-neutral-400 transition-all
+}
+
+.proof {
+    @apply
+        rounded-lg relative aspect-[16_/_12] w-full block overflow-clip bg-neutral-700
+        border-4 border-neutral-900
 }

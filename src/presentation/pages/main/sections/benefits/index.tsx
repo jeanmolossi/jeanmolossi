@@ -2,10 +2,11 @@ import { IconType } from "react-icons"
 import { IoFootstepsOutline } from "react-icons/io5";
 import { MdOutlineTipsAndUpdates } from "react-icons/md";
 import { SiSkillshare } from "react-icons/si";
-import { BsPersonVideo2 } from "react-icons/bs";
+import { BsGraphUp, BsPersonVideo2 } from "react-icons/bs";
 import styles from './styles.module.css'
 import { FiGift } from "react-icons/fi";
 import { MouseEvent } from "react";
+import Image from "next/image";
 
 export function Benefits() {
     const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
@@ -23,8 +24,8 @@ export function Benefits() {
 
     return (
         <section className="bg-neutral-800 w-full">
-            <div className="max-w-7xl mx-auto py-28">
-                <h2 className="p-4 inline-flex text-2xl gap-2 items-center">
+            <div className="max-w-7xl mx-auto py-8">
+                <h2 className="py-4 inline-flex text-2xl gap-2 items-center">
                     <FiGift />
                     Bônus exclusivos
                 </h2>
@@ -51,6 +52,27 @@ export function Benefits() {
                     />
                 </div>
             </div>
+
+            <div className="max-w-7xl mx-auto">
+                <h3 className="inline-flex text-2xl gap-2 mb-4 py-4 mx-auto">
+                    <BsGraphUp />
+                    Veja o mercado de tecnologia
+                </h3>
+
+                <div className=" grid grid-cols-1 md:grid-cols-2 gap-4 mx-auto">
+                    <ProofItem
+                        alt="Vagas na área de tecnologia"
+                        backlink="https://forbes.com.br/carreira/2022/08/empregos-em-ti-veja-os-cargos-em-alta-e-os-salarios-da-area/"
+                        image="/images/social-prof/forbes-dev.jpg"
+                    />
+
+                    <ProofItem
+                        alt="Média de salários por nível de desenvolvedores"
+                        backlink="https://pesquisa.codigofonte.com.br/2022"
+                        image="/images/social-prof/cdftv-salary.jpg"
+                    />
+                </div>
+            </div>
         </section>
     )
 }
@@ -71,6 +93,35 @@ function Item({ icon: Icon, benefit }: ItemProps) {
 
                 <p>{benefit}</p>
             </div>
+        </div>
+    )
+}
+
+interface ProofProps {
+    alt: string;
+    backlink: string;
+    image: string;
+}
+
+function ProofItem({ alt, backlink, image }: ProofProps) {
+    const url = new URL(backlink)
+
+    return (
+        <div className={['group', styles.proof_wrapper].join(' ')}>
+            <a href={backlink} className={styles.proof} rel="noopener noreferer" target="_blank">
+                <Image
+                    alt={alt}
+                    src={{
+                        src: image,
+                        width: 800,
+                        height: 800
+                    }}
+                    style={{ objectFit: 'contain' }}
+                    fill
+                />
+            </a>
+
+            <small className="group-hover:text-white">Fonte: {url.hostname}</small>
         </div>
     )
 }
