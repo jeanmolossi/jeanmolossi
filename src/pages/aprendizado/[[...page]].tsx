@@ -3,7 +3,8 @@ import { Knowledge, KnowledgeProps } from "@/presentation/pages/knowledge";
 import { getPlaylists } from "@/data/youtube/playlists";
 
 const Aprendizado = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-    return <Knowledge {...props} />
+    return <>null</>
+    // return <Knowledge {...props} />
 }
 
 export default Aprendizado
