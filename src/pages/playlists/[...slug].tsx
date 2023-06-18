@@ -6,7 +6,8 @@ import { Playlist, PlaylistProps } from "@/presentation/pages/playlist"
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next"
 
 const PlaylistVideos = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
-    return <Playlist {...props} />
+    return null
+    // return <Playlist {...props} />
 }
 
 export default PlaylistVideos

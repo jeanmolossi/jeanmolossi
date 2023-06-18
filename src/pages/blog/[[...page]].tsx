@@ -4,7 +4,8 @@ import { Blog as BlogPage, BlogProps } from '@/presentation/pages/blog'
 import { article } from "@/config/constants";
 
 const Blog = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-    return <BlogPage {...props} />;
+    return null
+    // return <BlogPage {...props} />;
 }
 
 export const getServerSideProps: GetServerSideProps<BlogProps> = async ({ params, res }) => {

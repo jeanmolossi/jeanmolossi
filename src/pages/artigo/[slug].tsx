@@ -4,7 +4,8 @@ import { Article, ArticleProps } from "@/presentation/pages/article";
 import { timeIn } from "@/presentation/helpers";
 
 export default function Artigo(props: InferGetStaticPropsType<typeof getStaticProps>) {
-    return <Article {...props} />;
+    return null
+    // return <Article {...props} />;
 }
 
 export const getStaticProps: GetStaticProps<ArticleProps> = async ({ params }) => {

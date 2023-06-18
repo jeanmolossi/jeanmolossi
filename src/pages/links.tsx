@@ -6,7 +6,8 @@ import { socialColors } from "@/presentation/styles"
 import { GetStaticProps, InferGetStaticPropsType } from "next"
 
 const LinksPage = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
-    return <Links {...props} />
+    return null
+    // return <Links {...props} />
 }
 
 export default LinksPage

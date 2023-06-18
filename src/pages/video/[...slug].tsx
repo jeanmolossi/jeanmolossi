@@ -8,7 +8,8 @@ import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next"
 import { ParsedUrlQuery } from "querystring"
 
 const VideoPage = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
-    return <Video {...props} />
+    return null
+    // return <Video {...props} />
 }
 
 export default VideoPage
