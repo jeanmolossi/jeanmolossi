@@ -1,9 +1,8 @@
-import Image from "next/image";
 import styles from './styles.module.css'
 
 export function HeroSection() {
     return (
-        <div className="bg-neutral-800 p-4 w-full inline-flex justify-center md:bg-[url('/images/book-1868068_1920.jpg')] bg-cover bg-bottom bg-blend-multiply">
+        <section id="inicio" className="bg-neutral-800 p-4 w-full inline-flex justify-center md:bg-[url('/images/book-1868068_1920.jpg')] bg-cover bg-bottom bg-blend-multiply">
             <div className={styles.hero_wrapper}>
                 <div className="my-auto px-4">
                     <h1 className="text-3xl md:text-5xl md:leading-tight mb-8 font-medium">
@@ -33,6 +32,6 @@ export function HeroSection() {
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     )
 }

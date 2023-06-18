@@ -2,9 +2,10 @@
 
 import { ChangeEvent, useEffect, useState } from "react"
 import Link from "next/link"
-import { menuItems } from "@/config/routes"
+import { eapMenuItems, menuItems } from "@/config/routes"
 import { usePathname, useSearchParams } from "next/navigation";
 import styles from './styles.module.css'
+import { RenderIf } from "@/presentation/helpers";
 
 export const Navbar = () => {
     const pathname = usePathname()
@@ -47,7 +48,7 @@ export const Navbar = () => {
                 visible ? styles.opened : "",
             ].join(' ')}>
                 <ul>
-                    {menuItems.map((item, i) => {
+                    {(pathname?.startsWith('/eap') ? eapMenuItems : menuItems).map((item, i) => {
                         const { href, as, label, icon:Icon } = item
 
                         return (
@@ -62,6 +63,14 @@ export const Navbar = () => {
                             </li>
                         )
                     })}
+
+                    <RenderIf condition={!!pathname?.startsWith('/eap')}>
+                        <a href="#" rel="noopener noreferer" target="_blank"
+                            className="lg:py-2 rounded !text-white bg-orange-500 text-center p-[inherit]"
+                        >
+                            Garantir e-book
+                        </a>
+                    </RenderIf>
                 </ul>
             </div>
         </nav>

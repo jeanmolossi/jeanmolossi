@@ -15,10 +15,10 @@
         select-none
         box-border
 
-        max-[830px]:flex-row-reverse
-        max-[830px]:justify-between
+        max-lg:flex-row-reverse
+        max-lg:justify-between
 
-        min-[831px]:w-full
+        lg:w-full
 }
 
 .menu_container a {
@@ -28,7 +28,7 @@
         duration-300
 
         hover:text-teal-500
-        min-[831px]:text-[#cdcdcd]
+        lg:text-[#cdcdcd]
 }
 
 .menu_container span {
@@ -43,7 +43,7 @@
         z-[1]
         origin-[4px_0px]
         transition-all
-        min-[831px]:hidden;
+        lg:hidden;
 }
 
 .menu_container span:first-child {
@@ -55,7 +55,7 @@
 }
 
 .menu_container input {
-    @apply min-[831px]:hidden
+    @apply lg:hidden
 }
 
 .menu_container label input {
@@ -100,23 +100,23 @@
 
 .menu {
     @apply
-        max-[830px]:absolute
-        max-[830px]:box-border
-        max-[830px]:w-[min(80%,_700px)]
-        max-[830px]:right-0
-        max-[830px]:top-0
-        max-[830px]:-m-5
-        max-[830px]:p-[75px_50px_50px]
-        max-[830px]:bg-neutral-800
-        max-[830px]:origin-[0%_0%]
-        max-[830px]:translate-x-full
-        max-[830px]:transition-all
-        max-[830px]:duration-500
+        max-lg:absolute
+        max-lg:box-border
+        max-lg:w-[min(80%,_700px)]
+        max-lg:right-0
+        max-lg:top-0
+        max-lg:-m-5
+        max-lg:p-[75px_2rem_50px_1rem]
+        max-lg:bg-neutral-800
+        max-lg:origin-[0%_0%]
+        max-lg:translate-x-full
+        max-lg:transition-all
+        max-lg:duration-500
 
-        min-[831px]:relative
-        min-[831px]:w-full
-        min-[831px]:flex
-        min-[831px]:justify-end
+        lg:relative
+        lg:w-full
+        lg:flex
+        lg:justify-end
 
         max-[375px]:w-full
 }
@@ -128,13 +128,13 @@
         gap-4
         items-center
 
-        min-[831px]:p-0
+        lg:p-0
 
-        max-[830px]:flex
-        max-[830px]:flex-col
-        max-[830px]:min-h-screen
-        max-[830px]:items-end
-        max-[830px]:pt-12
+        max-lg:flex
+        max-lg:flex-col
+        max-lg:min-h-screen
+        max-lg:items-end
+        max-lg:pt-12
 }
 
 .menu li {
@@ -154,10 +154,11 @@
 
 .menu li > a {
     @apply
-        max-[830px]:text-xl
-        max-[830px]:p-8
-        max-[830px]:text-gray-400
-        max-[830px]:font-medium
+        max-lg:text-xl
+        max-lg:py-8 px-4
+        max-lg:text-gray-400
+        max-lg:font-medium
+        grid grid-cols-[20px,_1fr]
 }
 
 .menu.opened {

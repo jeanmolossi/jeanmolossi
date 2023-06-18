@@ -28,7 +28,7 @@ const items = [
 
 export function Contents () {
     return (
-        <section className="bg-neutral-800 w-full py-8 px-4">
+        <section id="content" className="bg-neutral-800 w-full py-8 px-4">
             <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[1fr,_clamp(20rem,100%,34rem)] gap-8">
                 <div className="flex flex-col gap-8">
                     <h2 className="inline-flex gap-2 items-center text-lg md:text-2xl">

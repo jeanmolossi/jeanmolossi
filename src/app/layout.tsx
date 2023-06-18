@@ -8,9 +8,9 @@ import { Layout as LayoutComponent } from "@/presentation/components";
 import '@/presentation/styles/global.css'
 
 export default function RootLayout({
-    children
+    children,
 }: {
-    children: React.ReactNode
+    children: React.ReactNode,
 }) {
     return (
         <html lang="pt-BR">

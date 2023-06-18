@@ -4,7 +4,7 @@ import { GiLifeBar } from "react-icons/gi";
 
 export function Guarantee() {
     return (
-        <section className="bg-neutral-800 w-full py-8 px-4">
+        <section id="guarantee" className="bg-neutral-800 w-full py-8 px-4">
             <div className="max-w-7xl mx-auto flex flex-wrap gap-8 py-20">
                 <Item
                     icon={FaMedal}

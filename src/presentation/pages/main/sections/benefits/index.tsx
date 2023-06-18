@@ -23,7 +23,7 @@ export function Benefits() {
     }
 
     return (
-        <section className="bg-neutral-800 w-full">
+        <section className="bg-neutral-800 w-full" id="bonus">
             <div className="max-w-7xl mx-auto py-8">
                 <h2 className="py-4 inline-flex text-2xl gap-2 items-center">
                     <FiGift />
@@ -53,7 +53,7 @@ export function Benefits() {
                 </div>
             </div>
 
-            <div className="max-w-7xl mx-auto">
+            <div className="max-w-7xl mx-auto" id="tech-market">
                 <h3 className="inline-flex text-2xl gap-2 mb-4 py-4 mx-auto">
                     <BsGraphUp />
                     Veja o mercado de tecnologia
