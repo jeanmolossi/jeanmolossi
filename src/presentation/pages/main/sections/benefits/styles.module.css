@@ -1,0 +1,68 @@
+.benefits_wrapper {
+    --gap: 0.5rem;
+    @apply flex flex-wrap justify-center gap-[var(--gap)] py-6
+}
+
+.benefits_wrapper:hover > .benefit_item > .benefit_item_border {
+    @apply opacity-100
+}
+
+.benefit_item {
+    @apply
+        basis-full
+        sm:basis-[calc(50%-var(--gap))] xl:basis-[calc(25%-var(--gap))]
+        bg-neutral-900/90
+        rounded
+        relative
+}
+
+.benefit_item_border,
+.benefit_item::before {
+    @apply
+        content-[""]
+        absolute
+        left-0
+        top-0
+        z-[2]
+        w-full
+        h-full
+        rounded-[inherit]
+        transition-all
+        opacity-0;
+}
+
+.benefit_item::before {
+    background: radial-gradient(
+        800px circle at var(--mouse-x) var(--mouse-y),
+        #FFFFFF10,
+        transparent 40%
+    );
+
+    @apply z-[3]
+}
+
+.benefit_item_content {
+    @apply
+        flex flex-col gap-4
+        bg-neutral-900 rounded-[inherit]
+        w-[calc(100%-2px)]
+        h-[calc(100%-2px)]
+        p-4
+        m-[1px]
+        z-[2]
+        relative
+}
+
+.benefit_item:hover::before {
+    @apply opacity-100
+}
+
+.benefit_item > .benefit_item_border {
+    background: radial-gradient(
+        800px circle at var(--mouse-x) var(--mouse-y),
+        #FFFFFF48,
+        transparent 40%
+    );
+
+    @apply z-[1]
+}

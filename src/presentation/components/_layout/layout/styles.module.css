@@ -8,7 +8,8 @@
         min-h-screen
         relative
 
-        pt-28;
+        pt-20
+        bg-stone-900;
 }
 
 .main_container canvas {

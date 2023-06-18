@@ -1,0 +1,11 @@
+.container {
+    @apply
+        max-w-7xl
+        w-full
+        my-0
+        mx-auto
+        flex
+        flex-col
+        py-0
+        px-4
+}

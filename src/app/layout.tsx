@@ -3,7 +3,7 @@
 import React from "react"
 import { AnalyticsScript, AwsRum, FontLoader, HotjarScript, TagManager, TagManagerNoScript } from "@/presentation/scripts"
 import NextNProgress from 'nextjs-progressbar';
-import type { NextWebVitalsMetric } from "next/app";
+// import type { NextWebVitalsMetric } from "next/app";
 import { Layout as LayoutComponent } from "@/presentation/components";
 import '@/presentation/styles/global.css'
 

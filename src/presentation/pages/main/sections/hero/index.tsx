@@ -4,29 +4,32 @@ import styles from './styles.module.css'
 export function HeroSection() {
     return (
         <div className="bg-neutral-800 p-4 w-full inline-flex justify-center">
-            <div className="grid grid-cols-1 lg:grid-cols-2">
+            <div className="grid grid-cols-1 lg:grid-cols-[1fr,_clamp(20rem,100%,34rem)] gap-6 max-w-7xl min-h-[80vh]">
                 <div className="my-auto px-4">
-                    <h1>Alcance o <span className="text-orange-500">sucesso</span>, desvende o potencial <span className="text-orange-500">ilimitado</span> da sua ideia!</h1>
-                    <h2 className="font-normal text-gray-400 leading-5">
-                        Construa um futuro inovador com soluções exclusivas, projetadas
-                        para impulsionar seus objetivos e superar todas as expectativas!
+                    <h1 className="text-3xl md:text-5xl md:leading-tight mb-8 font-medium">
+                        Alavanque sua <span className="text-orange-500">carreira</span>{' '}
+                        com o e-book de{' '}
+                        <span className="text-orange-500">Alavancagem</span> Profissional
+                    </h1>
+                    <h2 className="text-lg font-normal text-gray-400">
+                        Descubra os segredos para construir uma base sólida, dominar habilidades técnicas e alcançar o sucesso profissional no mundo da programação.
                     </h2>
                 </div>
 
-                <div>
-                    <div className={styles.image_wrapper}>
-                        <Image
-                            alt="avatar"
-                            src={{
-                                src: "/images/avatar-posing.png",
-                                height: 400,
-                                width: 400
-                            }}
-                            sizes={['(min-width: 830px) 360px'].join(',')}
-                            style={{ objectFit: 'cover', marginBottom: '-16px' }}
-                            fill
-                            priority
-                        />
+                <div className={styles.offer_card}>
+                    <div className="flex gap-2 text-lg items-center">
+                        <span className="uppercase py-2 px-4 bg-stone-900 rounded">90% Off</span>
+                        <span className="animate-pulse">Por tempo limitado</span>
+                    </div>
+
+                    <div className={styles.pricing}>
+                        <span className={styles.from}>De <span className="line-through">R$ 197,00</span> por</span>
+                        <span className={styles.to}>R$ 19,70</span>
+                    </div>
+
+                    <div className="flex flex-col gap-4 text-center">
+                        <a href="#" className={styles.grant_book}>Quero o meu agora!</a>
+                        <span className="font-medium">Cartão de crédito, Boleto à vista e Pix</span>
                     </div>
                 </div>
             </div>

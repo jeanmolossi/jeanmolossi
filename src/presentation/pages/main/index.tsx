@@ -1,13 +1,15 @@
 'use client';
 
-import { BaseHead, Container } from "@/presentation/components"
-import { AboutMeSection } from "./sections/about-me"
+import { Benefits } from "./sections/benefits";
+import { Contents } from "./sections/contents";
 import { HeroSection } from "./sections/hero"
 
 export const Main = () => {
     return (
         <>
             <HeroSection />
+            <Contents />
+            <Benefits />
 
             {/* <Container>
                 <AboutMeSection />
