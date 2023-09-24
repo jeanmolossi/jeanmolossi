@@ -1,0 +1,45 @@
+.social_wrapper {
+    @apply
+        flex
+        gap-x-4
+        items-center
+        text-xl
+        z-[1]
+}
+
+.social_wrapper > a.github {
+    --color: #F0F;
+}
+
+.social_wrapper > a.twitter {
+    --color: #FF0;
+}
+
+.social_wrapper > a.linkedin {}
+
+.social_wrapper > a.youtube {}
+
+.social_wrapper > a.telegram {}
+
+.social_wrapper > a {
+    @apply flex;
+    --pos: 0;
+    --color: #F00;
+    color: var(--color);
+}
+
+.social_wrapper > a.with_bg_white {
+    @apply relative z-[2];
+}
+
+.social_wrapper > a.with_bg_white::before {
+    content: '';
+    position: absolute;
+    top: var(--pos);
+    left: var(--pos);
+    right: var(--pos);
+    bottom: var(--pos);
+    background-color: white;
+    border-radius: 999px;
+    z-index: -1;
+}

@@ -1,11 +1,11 @@
 import React from "react"
 import { SiGithub, SiTwitter, SiLinkedin, SiYoutube, SiTelegram, SiInstagram } from "react-icons/si"
 import { social } from "@/config/constants"
-import * as S from './styles'
+import styles from './styles.module.css'
 
 export const SocialLinks = React.memo(() => {
     return (
-        <S.SocialWrapper>
+        <div className={styles.social_wrapper}>
             <SocialLink className="github" withBgWhite>
                 <SiGithub />
             </SocialLink>
@@ -29,7 +29,7 @@ export const SocialLinks = React.memo(() => {
             <SocialLink className="instagram">
                 <SiInstagram />
             </SocialLink>
-        </S.SocialWrapper>
+        </div>
     )
 })
 

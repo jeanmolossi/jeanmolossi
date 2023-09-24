@@ -5,7 +5,7 @@ import rehypeRaw from 'rehype-raw';
 import rehypeHighlight from 'rehype-highlight';
 import remarkGfm from 'remark-gfm';
 import { MarkdownProcessor } from '@/presentation/helpers';
-import * as S from './styles';
+import styles from './styles.module.css';
 
 export interface MarkdownProps {
     children?: string;
@@ -21,7 +21,7 @@ export const Markdown = ({ children: md = '' }: MarkdownProps) => {
     }, [md])
 
     return (
-        <S.MarkdownWrapper>
+        <div className={styles.markdown_wrapper}>
             <ReactMarkdown
                 remarkPlugins={[remarkGfm]}
                 rehypePlugins={[
@@ -31,7 +31,7 @@ export const Markdown = ({ children: md = '' }: MarkdownProps) => {
                 ]}
                 children={parsedBody}
             />
-        </S.MarkdownWrapper>
+        </div>
     )
 }
 

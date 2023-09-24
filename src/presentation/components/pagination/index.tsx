@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { RenderIf } from "@/presentation/helpers";
-import styled from "styled-components";
+import styles from './styles.module.css'
 
 interface PaginationProps {
     resource: string;
@@ -17,13 +17,13 @@ export const Pagination = ({
     const hasPrevPage = !!prev_page
 
     return (
-        <PaginationWrapper>
+        <div className={styles.pagination_wrapper}>
             <Link href={{
                 pathname: resource,
                 query: { page: prev_page }
             }}>
                 <RenderIf condition={hasPrevPage}>
-                    <PageLink>&lt; Página anterior</PageLink>
+                    <span className={styles.page_link}>&lt; Página anterior</span>
                 </RenderIf>
             </Link>
 
@@ -32,34 +32,10 @@ export const Pagination = ({
                 query: { page: next_page }
             }}>
                 <RenderIf condition={hasNextPage}>
-                    <PageLink className="next">Próxima página &gt;</PageLink>
+                    <span className={[styles.page_link, styles.next].join(' ')}>Próxima página &gt;</span>
                 </RenderIf>
             </Link>
-        </PaginationWrapper>
+        </div>
     )
 }
 
-const PaginationWrapper = styled.div`
-    display: flex;
-    justify-content: space-between;
-    padding: ${({ theme }) => theme.gutter.md} 0;
-    margin: ${({ theme }) => theme.gutter.md} 0;
-
-    @media (max-width: 375px) {
-        flex-direction: column;
-        justify-content: initial;
-        row-gap: ${({ theme }) => theme.gutter.md};
-    }
-`
-
-const PageLink = styled.span`
-    display: block;
-    padding: ${({ theme }) => theme.gutter.md};
-    background-color: ${({ theme }) => theme.aqueBlue};
-    color: ${({ theme }) => theme.darkGray};
-    border-radius: ${({ theme }) => theme.radii.xs};
-
-    &.next{
-        text-align: right;
-    }
-`

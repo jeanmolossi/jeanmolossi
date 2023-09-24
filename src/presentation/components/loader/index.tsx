@@ -1,10 +1,10 @@
 import { CgSpinner } from "react-icons/cg"
-import * as S from './styles'
+import styles from './styles.module.css'
 
 export const Loader = () => {
     return (
-        <S.LoaderContainer>
+        <div className={styles.loader_container}>
             <div><CgSpinner color="white" /></div>
-        </S.LoaderContainer>
+        </div>
     )
 }

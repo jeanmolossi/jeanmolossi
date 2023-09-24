@@ -1,13 +1,13 @@
+import styles from './styles.module.css'
 import Link from 'next/link'
-import * as S from './styles'
 
 export const Logo = () => {
     return (
         <Link href="/" passHref>
-            <S.Heading>
+            <h1 className={styles.heading}>
                 Jean Molossi
                 <small>Fullstack Software Developer</small>
-            </S.Heading>
+            </h1>
         </Link>
     )
 }

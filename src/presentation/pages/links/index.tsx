@@ -1,7 +1,7 @@
 import React, { useMemo } from "react";
 import { BaseHead, Container } from "@/presentation/components"
 import { SwapComponents } from "@/presentation/helpers"
-import * as S from './styles'
+import styles from './styles.module.css'
 
 interface Link {
     href: string;
@@ -33,13 +33,14 @@ export const Links = ({ links }: LinksProps) => {
                 description={`Links de fácil acesso. ${linksDesc}`}
                 canonical="/links"
             />
-            <S.LinksContainer>
+
+            <div className={styles.links_container}>
                 <h1>Link Tree</h1>
 
                 <SwapComponents
                     condition={!!links && links.length > 0}
                     componentIfConditionTrue={
-                        <S.LinkList>
+                        <div className={styles.link_list}>
                             {links?.map(({ href, label, bgColor, txtColor = 'black' }, i) => (
                                 <div key={i.toString()}>
                                     <BlankLink
@@ -51,7 +52,7 @@ export const Links = ({ links }: LinksProps) => {
                                     </BlankLink>
                                 </div>
                             ))}
-                        </S.LinkList>
+                        </div>
                     }
                     componentIfConditionFalse={
                         <h1>Oops, nenhum link encontrado</h1>
@@ -61,7 +62,7 @@ export const Links = ({ links }: LinksProps) => {
                 <h3>O que são estes links ?</h3>
                 <p>Estes links são atalhos para minhas referências, como por exemplo:</p>
                 <p>Meu Github, canal do Youtube, etc.</p>
-            </S.LinksContainer>
+            </div>
         </Container>
     )
 }
@@ -75,14 +76,17 @@ interface BlankLinkProps {
 
 const BlankLink = ({ href = '#', children, txtColor, bgColor }: BlankLinkProps) => {
     return (
-        <S.LinkAnchor
-            bgColor={bgColor}
-            color={txtColor}
+        <a
+            style={{
+                '--bg-color': bgColor,
+                '--txt-color': txtColor,
+            }}
+            className={styles.link_anchor}
             href={href}
             target="_blank"
             rel="noopener noreferrer"
         >
             {children}
-        </S.LinkAnchor>
+        </a>
     )
 }
