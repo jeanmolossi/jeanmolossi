@@ -1,0 +1,60 @@
+section.wrapper {
+    @apply
+        w-full
+        flex flex-col
+        items-center
+        justify-center
+        min-h-screen
+        py-16
+        px-0;
+}
+
+.timeline {
+    @apply
+        flex
+        flex-col
+        w-10/12
+        h-auto
+        max-w-3xl
+        my-0 mx-auto
+        md:grid
+        md:grid-cols-[1fr_0.1875rem_1fr];
+}
+
+.timeline_content {
+    @apply
+        bg-neutral-800
+        text-white
+        p-7
+        transition-[400ms_ease]
+        break-words
+        m-4
+        mb-5
+        rounded-md
+}
+
+.timeline_middle {
+    @apply
+        relative
+        w-1
+        h-full
+        bg-gradient-to-b
+        from-cyan-800
+        to-cyan-400
+}
+
+.timeline_circle {
+    @apply
+        absolute
+        top-0
+        left-1/2
+        w-4
+        h-4
+        rounded-full
+        bg-gradient-to-tr
+        from-cyan-400
+        to-cyan-800
+        -translate-x-1/2
+        -translate-y-1/2
+        max-md:hidden
+}

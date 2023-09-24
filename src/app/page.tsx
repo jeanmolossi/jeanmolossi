@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import Image from "next/image";
+import Timeline from "./components/sections/timeline";
 
 export const metadata: Metadata = {
     title: 'Portfólio | Jean Molossi',
@@ -20,6 +21,7 @@ export default function HomePage() {
     const experienceInYears = currentYear - startedIn
 
     return (
+        <>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 place-items-center min-h-[calc(100vh-15rem)] max-w-7xl px-6 xl:p-0">
             <div className="flex flex-col gap-4">
                 <h1 className="text-2xl md:text-4xl md:leading-tight">
@@ -53,5 +55,8 @@ export default function HomePage() {
                 </div>
             </div>
         </div>
+
+        <Timeline />
+        </>
     )
 }
