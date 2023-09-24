@@ -1,3 +1,5 @@
+'use client';
+
 import { IconType } from "react-icons"
 import { IoFootstepsOutline } from "react-icons/io5";
 import { MdOutlineTipsAndUpdates } from "react-icons/md";

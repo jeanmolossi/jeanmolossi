@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { Main } from "@/presentation/pages/main";
+import { Home } from "@/presentation/pages/home";
 
 export const metadata: Metadata = {
     title: 'Portfólio | Jean Molossi',
@@ -14,6 +14,6 @@ export const metadata: Metadata = {
     }
 }
 
-export default function Home() {
-    return <Main />
+export default function HomePage() {
+    return <Home />
 }

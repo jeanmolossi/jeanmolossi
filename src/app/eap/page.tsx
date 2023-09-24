@@ -1,5 +1,5 @@
-import { Main } from "@/presentation/pages/main";
+import { Eap } from "@/presentation/pages/eap";
 
-export default function Eap() {
-    return <Main />
+export default function EapPage() {
+    return <Eap />
 }
