@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import Image from "next/image";
-import Timeline from "./components/sections/timeline";
+import Timeline from "@/app/components/sections/timeline/timeline";
 
 export const metadata: Metadata = {
     title: 'Portfólio | Jean Molossi',
