@@ -31,7 +31,7 @@ export default function HomePage() {
                 Gulp, Sass, <b>Javascript</b>, jQuery, Ajax, etc.
             </>
             ),
-            href: "/exp"
+            href: "/exp/informatic-center"
         }
     ];
 
