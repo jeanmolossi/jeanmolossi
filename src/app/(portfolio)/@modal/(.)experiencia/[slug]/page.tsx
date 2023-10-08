@@ -19,6 +19,10 @@ export default function ExpModal({ params }: ModalParams) {
         return (
             <Modal>
                 <h1>Oops! Não encontrado</h1>
+                <p>
+                    Não encontrei a página que você está procurando =(
+                </p>
+                <small>{slug}</small>
             </Modal>
         )
     }
@@ -28,8 +32,8 @@ export default function ExpModal({ params }: ModalParams) {
     return (
         <Modal>
             <header className="mb-4">
-                <h1 className="text-lg">{title} | {role}</h1>
-                <small className="text-gray-400">{start_period} à {end_period}</small>
+                <h1 className="text-2xl">{title} | {role}</h1>
+                <small className="text-gray-400">De {start_period} à {end_period}</small>
             </header>
 
             <Suspense fallback={'Carregando...'}>

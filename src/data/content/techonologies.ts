@@ -6,6 +6,7 @@ import {
     SiCypress,
     SiDocker,
     SiFigma,
+    SiFirebase,
     SiGithub,
     SiGnubash,
     SiGo,
@@ -110,6 +111,12 @@ export const techs = [
         icon: SiMongodb,
         alt: 'MongoDB',
         color: '#0ea04c',
+    },
+    {
+        href: 'https://firebase.google.com/?hl=pt-br',
+        icon: SiFirebase,
+        alt: 'Firebase',
+        color: '#FFCC2F'
     },
     {
         href: 'https://ubuntu.com/download',

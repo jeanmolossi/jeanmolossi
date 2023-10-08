@@ -16,7 +16,13 @@ export default function Experience({ params }: ExpParams) {
 
     if (!experience || !Content) {
         return (
-            <h1>Oops! Não encontrado</h1>
+            <div className="py-4">
+                <h1 className="text-2xl">Oops! Não encontrado</h1>
+                <p>
+                    Não encontrei a página que você está procurando =(
+                </p>
+                <small>{slug}</small>
+            </div>
         )
     }
 
@@ -24,10 +30,10 @@ export default function Experience({ params }: ExpParams) {
 
 
     return (
-        <div className="max-w-screen-lg flex flex-col min-h-[70vh] justify-center">
+        <div className="max-w-screen-lg flex flex-col min-h-[70vh] justify-center py-8">
             <header className="mb-4">
-                <h1 className="text-lg">{title} | {role}</h1>
-                <small className="text-gray-400">{start_period} à {end_period}</small>
+                <h1 className="text-3xl">{title} | {role}</h1>
+                <small className="text-gray-400">De {start_period} à {end_period}</small>
             </header>
 
             <Suspense fallback={'Carregando...'}>

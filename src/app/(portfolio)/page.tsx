@@ -31,7 +31,7 @@ export default function HomePage() {
                 Gulp, Sass, <b>Javascript</b>, jQuery, Ajax, etc.
             </>
             ),
-            href: "/exp/informatic-center"
+            href: "/experiencia/informatic-center"
         },
         {
             heading: 'Bokas Restaurante | Garçom',
@@ -43,7 +43,7 @@ export default function HomePage() {
                 e objetiva.
             </>
             ),
-            href: '/exp/bokas-restaurante'
+            href: '/experiencia/bokas-restaurante'
         },
         {
             heading: 'Khube | Dev Fullstack',
@@ -56,7 +56,7 @@ export default function HomePage() {
                 Frontend
             </>
             ),
-            href: '/exp/khube'
+            href: '/experiencia/khube'
         },
         {
             heading: 'Catho Online | Dev Fullstack',
@@ -68,7 +68,7 @@ export default function HomePage() {
                 elas, as principais são Golang, Javascript/Typescript e PHP.
             </>
             ),
-            href: '/exp/catho-online'
+            href: '/experiencia/catho-online'
         }
     ];
 
@@ -101,7 +101,7 @@ export default function HomePage() {
                                 height: 400,
                                 width: 400
                             }}
-                            style={{ objectFit: 'cover', transform: 'rotateY(180deg)' }}
+                            style={{ objectFit: 'cover' }}
                             fill
                         />
                     </div>
