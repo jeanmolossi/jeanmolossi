@@ -30,45 +30,6 @@ export default function Timeline({ items }: TimelineProps) {
 
             <div className={styles.timeline}>
                 {renderItems()}
-
-                <Item
-                    left
-                    heading='Bokas Restaurante | Garçom'
-                    subheading='De 2017 à 2020'
-                    content={
-                    <>
-                        Trabalhando como garçom desenvolvi diversas habilidades
-                        que melhoraram minha <b>comunicação</b> de forma clara
-                        e objetiva.
-                    </>
-                    }
-                />
-
-                <Item
-                    heading='Khube | Dev Fullstack'
-                    subheading='De 2020 à 2021'
-                    content={
-                    <>
-                        Desenvolvi sistemas web completos, desde <b>Frontend</b> até os
-                        serviços de <b>Backend</b>.
-                        Utilizei majoritariamente NodeJS no Backend e ReactJS no
-                        Frontend
-                    </>
-                    }
-                />
-
-                <Item
-                    left
-                    heading='Catho Online | Dev Fullstack'
-                    subheading='De 2021 - Atualmente'
-                    content={
-                    <>
-                        Desenvolvo aplicações de <b>grande porte</b>. Atuo, como{' '}
-                        <b>Desenvolvedor Sênior</b> utilizando diversas techs, dentre
-                        elas, as principais são Golang, Javascript/Typescript e PHP.
-                    </>
-                    }
-                />
             </div>
         </section>
     )
@@ -101,7 +62,9 @@ function Item({
             <small>{subheading}</small>
             <p>{content}</p>
             {href && (
-                <Link href={href}>Ver</Link>
+                <Link className='mt-4 text-sm' href={href}>
+                    Ver experiência completa
+                </Link>
             )}
         </div>
     ];

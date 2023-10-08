@@ -2,8 +2,13 @@
 
 import { useRouter } from "next/navigation";
 import React, { MouseEventHandler, useCallback, useEffect, useRef } from "react";
+import { FiX } from "react-icons/fi";
 
-export default function Modal({ children }: { children: React.ReactNode }) {
+export default function Modal({
+    children
+}: {
+    children: React.ReactNode
+}) {
     const overlay = useRef<HTMLDivElement>(null!)
     const wrapper = useRef<HTMLDivElement>(null!)
     const router = useRouter()
@@ -26,22 +31,47 @@ export default function Modal({ children }: { children: React.ReactNode }) {
         [onDismiss]
     )
 
+    const handleHtmlOverflow = useCallback(
+        (hide = false) => {
+            if (hide)
+                document.querySelector('html')!.style.overflowY = 'hidden'
+            else
+                document.querySelector('html')!.style.overflowY = 'initial'
+        },
+        []
+    )
+
     useEffect(() => {
+        handleHtmlOverflow(true)
         document.addEventListener('keydown', onEscape)
-        return () => document.removeEventListener('keydown', onEscape)
+
+        return () => {
+            handleHtmlOverflow()
+            document.removeEventListener('keydown', onEscape)
+        }
     }, [onEscape])
 
     return (
         <div
             ref={overlay}
-            className="fixed z-10 left-0 right-0 top-0 bottom-0 mx-auto bg-black/60"
+            className="fixed z-10 left-0 right-0 top-0 h-screen mx-auto bg-black/70 overflow-y-scroll py-8"
             onClick={onClick}
         >
             <div
                 ref={wrapper}
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full"
+                className={
+                    'mx-auto ' +
+                    'max-w-3xl w-full p-4 rounded bg-neutral-900 min-h-[16rem] ' +
+                    'z-10 ' +
+                    'grid grid-rows-[2rem_1fr]'
+                }
             >
-                {children}
+                <div className="grid grid-cols-[1fr_2rem]">
+                    <span></span>
+                    <button className="p-1" onClick={onDismiss}><FiX size={24} /></button>
+                </div>
+
+                <div>{children}</div>
             </div>
         </div>
     )

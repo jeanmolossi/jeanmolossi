@@ -1,0 +1,15 @@
+.content {
+    @apply flex flex-col gap-4 py-8;
+}
+
+.content > small {
+    @apply text-gray-400;
+}
+
+.content > p {
+    @apply text-gray-300;
+}
+
+.content > p > b {
+    @apply decoration-dotted underline text-cyan-600 font-semibold;
+}

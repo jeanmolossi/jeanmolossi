@@ -54,6 +54,10 @@ section.wrapper {
     @apply text-gray-300 text-sm
 }
 
+.timeline_content > a {
+    @apply text-sm mt-4 block text-end;
+}
+
 .timeline_content > p > b {
     @apply decoration-dotted underline text-cyan-600 font-semibold
 }

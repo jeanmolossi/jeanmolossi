@@ -32,6 +32,43 @@ export default function HomePage() {
             </>
             ),
             href: "/exp/informatic-center"
+        },
+        {
+            heading: 'Bokas Restaurante | Garçom',
+            subheading: 'De 2017 à 2020',
+            content: (
+            <>
+                Trabalhando como garçom desenvolvi diversas habilidades
+                que melhoraram minha <b>comunicação</b> de forma clara
+                e objetiva.
+            </>
+            ),
+            href: '/exp/bokas-restaurante'
+        },
+        {
+            heading: 'Khube | Dev Fullstack',
+            subheading: 'De 2020 à 2021',
+            content: (
+            <>
+                Desenvolvi sistemas web completos, desde <b>Frontend</b> até os
+                serviços de <b>Backend</b>.
+                Utilizei majoritariamente NodeJS no Backend e ReactJS no
+                Frontend
+            </>
+            ),
+            href: '/exp/khube'
+        },
+        {
+            heading: 'Catho Online | Dev Fullstack',
+            subheading: 'De 2021 - Atualmente',
+            content: (
+            <>
+                Desenvolvo aplicações de <b>grande porte</b>. Atuo, como{' '}
+                <b>Desenvolvedor Sênior</b> utilizando diversas techs, dentre
+                elas, as principais são Golang, Javascript/Typescript e PHP.
+            </>
+            ),
+            href: '/exp/catho-online'
         }
     ];
 
