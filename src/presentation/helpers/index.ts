@@ -5,5 +5,6 @@ export * from './is-client-side';
 export * from './markdown-processor';
 export * from './number';
 export * from './object';
+export * from './promise';
 export * from './string-time-to-seconds';
 export * from './string';

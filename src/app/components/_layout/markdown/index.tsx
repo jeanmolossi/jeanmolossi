@@ -35,3 +35,4 @@ export const Markdown = ({ children: md = '' }: MarkdownProps) => {
     )
 }
 
+export default Markdown

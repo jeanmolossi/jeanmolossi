@@ -5,16 +5,20 @@ import Image from "next/image";
 import dynamic from "next/dynamic";
 import { FaPlay } from "react-icons/fa";
 import { SwapComponents } from "@/presentation/helpers";
-import { Loader } from "@/presentation/components";
-import { VideoProps } from "../";
-import * as S from './styles'
+import { Loader } from "@/app/components/loader";
+import { Video as VideoModel } from "@/domain/entities/youtube/view";
+import styles from './video-wrapper.module.css'
 
 const LazyIFrame = dynamic(
     () => import('./iframe-loader'),
     { loading: () => <Loader />}
 ) as FunctionComponent<{ videoId: string }>
 
-export const VideoWrapper = React.memo(({ video }: VideoProps) => {
+interface VideoWrapperProps {
+    video: VideoModel;
+}
+
+export const VideoWrapper = React.memo(({ video }: VideoWrapperProps) => {
     const [shouldPlay, setShouldPlay] = useState(false);
 
     const wantPlayVideo = useCallback(() => {
@@ -28,14 +32,14 @@ export const VideoWrapper = React.memo(({ video }: VideoProps) => {
     }, [video.snippet.thumbnails])
 
     return (
-        <S.VideoWrapper>
+        <div className={styles.video_wrapper}>
             <SwapComponents
                 condition={shouldPlay}
                 componentIfConditionTrue={
                     <LazyIFrame videoId={video.id} />
                 }
                 componentIfConditionFalse={
-                    <S.ImageButton onClick={wantPlayVideo}>
+                    <button className={styles.image_button} onClick={wantPlayVideo}>
                         <Image
                             alt={`Capa do vídeo ${video.snippet.title}`}
                             style={{ objectFit:"cover" }}
@@ -46,9 +50,9 @@ export const VideoWrapper = React.memo(({ video }: VideoProps) => {
                         <span>
                             <FaPlay />
                         </span>
-                    </S.ImageButton>
+                    </button>
                 }
             />
-        </S.VideoWrapper>
+        </div>
     )
 })
