@@ -20,14 +20,12 @@ export default function Layout({
     return (
         <div className="app-layout-child mx-auto w-full max-w-7xl">
             {children}
-
+            {modal}
             <RenderIf condition={pathname === '/'}>
                 <Suspense>
                     {lastVideo}
                 </Suspense>
             </RenderIf>
-
-            {modal}
         </div>
     )
 }

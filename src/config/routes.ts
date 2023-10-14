@@ -18,6 +18,12 @@ export const menuItems = [
         label: 'Aprendizado',
         icon: FiTv,
     },
+    {
+        href: '/playlists',
+        as: '/playlists',
+        label: 'Playlists',
+        icon: FiTv,
+    },
     { href: '/blog', as: '/blog', label: 'Blog', icon: FiBook },
     { href: '/contato', as: '/contato', label: 'Contato ?', icon: TbHandClick },
 ];

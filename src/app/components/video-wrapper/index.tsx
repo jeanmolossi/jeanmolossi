@@ -21,9 +21,10 @@ interface VideoWrapperProps {
 export const VideoWrapper = React.memo(({ video }: VideoWrapperProps) => {
     const [shouldPlay, setShouldPlay] = useState(false);
 
-    const wantPlayVideo = useCallback(() => {
-        setShouldPlay(true);
-    }, [])
+    const wantPlayVideo = useCallback(
+        () => setShouldPlay(true),
+        [],
+    )
 
     const src = useMemo(() => {
         return video.snippet.thumbnails.maxres?.url

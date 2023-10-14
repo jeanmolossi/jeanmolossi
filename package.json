@@ -8,7 +8,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "mock:server": "json-server ./examples/mock-server.js --port 3001 --delay 1500"
+    "mock:server": "json-server ./examples/mock-server.js --port 3001 --delay 1500 --routes ./examples/routes.json"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.350.0",

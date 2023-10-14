@@ -36,7 +36,7 @@ div.video_container {
         border-transparent
         hover:border-cyan-600
         rounded
-        transition-all
+        transition-all;
 }
 
 .video_thumbnail > img {
