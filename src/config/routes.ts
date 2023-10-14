@@ -13,12 +13,6 @@ export const menuItems = [
         icon: ImProfile,
     },
     {
-        href: '/aprendizado',
-        as: '/aprendizado',
-        label: 'Aprendizado',
-        icon: FiTv,
-    },
-    {
         href: '/playlists',
         as: '/playlists',
         label: 'Playlists',
