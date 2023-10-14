@@ -8,8 +8,8 @@ export const menuItems = [
     { href: '/', as: '/', label: 'Início', icon: FiHome },
     {
         href: '/',
-        as: '/#about-me',
-        label: 'Sobre mim',
+        as: '/#experiencias',
+        label: 'Experiências',
         icon: ImProfile,
     },
     {

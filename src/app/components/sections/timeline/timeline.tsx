@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { HtmlHTMLAttributes } from 'react';
 import styles from './styles.module.css';
 import Link from 'next/link';
 
-interface TimelineProps {
+interface TimelineProps extends HtmlHTMLAttributes<HTMLTableSectionElement> {
     header: string;
     items: Array<ItemProps>;
     className?: string;
@@ -12,6 +12,7 @@ export default function Timeline({
     header,
     items,
     className,
+    ...rest
 }: TimelineProps) {
     const renderItems = () => items.map((item, i) => {
         let left = i % 2 !== 0
@@ -31,7 +32,7 @@ export default function Timeline({
     })
 
     return (
-        <section className={[styles.wrapper, className].join(' ')}>
+        <section {...rest} className={[styles.wrapper, className].join(' ')}>
             <h1 className='text-2xl mb-8'>{header}</h1>
 
             <div className={styles.timeline}>
