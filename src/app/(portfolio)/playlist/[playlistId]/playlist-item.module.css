@@ -1,0 +1,32 @@
+.items_wrapper {
+    @apply
+        grid
+        grid-cols-1
+        gap-4
+}
+
+.item_wrapper {
+    @apply
+        grid
+        grid-cols-1
+        md:grid-cols-[minmax(284px,312px)_1fr]
+        lg:grid-cols-[minmax(284px,448px)_1fr]
+        gap-4
+        shadow-md
+        drop-shadow-md
+        p-4
+        bg-neutral-800
+        rounded-md
+}
+
+.item_content {
+    @apply flex flex-col gap-4;
+}
+
+.item_content a p {
+    @apply text-stone-200
+}
+
+.item_content em strong {
+    @apply text-cyan-500 font-bold
+}

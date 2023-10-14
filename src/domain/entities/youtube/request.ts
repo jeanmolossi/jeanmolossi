@@ -46,8 +46,8 @@ export namespace YTPlaylistItems {
     export interface Response {
         kind: 'youtube#playlistItemListResponse';
         etag: string;
-        nextPageToken: string;
-        prevPageToken: string;
+        nextPageToken?: string;
+        prevPageToken?: string;
         pageInfo: {
             totalResults: number;
             resultsPerPage: number;
@@ -75,9 +75,10 @@ export namespace YTPlaylistItems {
         };
         contentDetails: {
             videoId: string;
-            startAt: string;
-            endAt: string;
-            note: string;
+            startAt?: string;
+            endAt?: string;
+            note?: string;
+            videoPublishedAt: string;
         };
         status: {
             privacyStatus: string;

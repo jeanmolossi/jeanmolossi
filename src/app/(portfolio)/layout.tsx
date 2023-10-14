@@ -1,5 +1,6 @@
 'use client';
 
+import "@/presentation/helpers";
 import { Suspense } from "react";
 import { usePathname } from 'next/navigation'
 import { RenderIf } from "@/presentation/helpers";
