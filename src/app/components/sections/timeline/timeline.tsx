@@ -3,10 +3,16 @@ import styles from './styles.module.css';
 import Link from 'next/link';
 
 interface TimelineProps {
-    items: Array<ItemProps>
+    header: string;
+    items: Array<ItemProps>;
+    className?: string;
 }
 
-export default function Timeline({ items }: TimelineProps) {
+export default function Timeline({
+    header,
+    items,
+    className,
+}: TimelineProps) {
     const renderItems = () => items.map((item, i) => {
         let left = i % 2 !== 0
         if (typeof item.left !== 'undefined')
@@ -25,11 +31,20 @@ export default function Timeline({ items }: TimelineProps) {
     })
 
     return (
-        <section className={styles.wrapper}>
-            <h1 className='text-2xl mb-8'>Experiência profissional</h1>
+        <section className={[styles.wrapper, className].join(' ')}>
+            <h1 className='text-2xl mb-8'>{header}</h1>
 
             <div className={styles.timeline}>
                 {renderItems()}
+
+                {/* LAST ITEM - empty */}
+                <div className={styles.timeline_empty}></div>
+
+                <div className={styles.timeline_middle}>
+                    <div className={styles.timeline_circle}></div>
+                </div>
+
+                <div className={styles.timeline_empty}></div>
             </div>
         </section>
     )

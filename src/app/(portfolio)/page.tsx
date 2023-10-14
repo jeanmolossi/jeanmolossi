@@ -108,7 +108,11 @@ export default function HomePage() {
                 </div>
             </div>
 
-            <Timeline items={items} />
+            <Timeline
+                className='py-16 px-0 min-h-screen'
+                header="Experiência profissional"
+                items={items}
+            />
         </>
     )
 }

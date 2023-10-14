@@ -14,10 +14,7 @@ section.wrapper {
         w-full
         flex flex-col
         items-center
-        justify-center
-        min-h-screen
-        py-16
-        px-0;
+        justify-center;
 
     animation: appear 400ms ease-out;
 }
