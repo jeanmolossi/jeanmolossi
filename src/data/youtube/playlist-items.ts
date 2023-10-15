@@ -9,9 +9,9 @@ export async function getPlaylistItems(playlistId: string) {
             '/playlistItems',
             {
                 params: {
-                    part: 'snippet',
+                    part: 'snippet,contentDetails,status',
                     playlistId,
-                    maxResults: 50
+                    maxResults: 5
                 },
             },
         );
@@ -21,7 +21,7 @@ export async function getPlaylistItems(playlistId: string) {
             `playlist ${playlistId} items fetched`,
         );
 
-        return filterPrivateVideos(data.items);
+        return filterPrivateVideos(data);
     } catch (error) {
         if (error instanceof AxiosError) {
             logger.error(
@@ -39,9 +39,11 @@ export async function getPlaylistItems(playlistId: string) {
     }
 }
 
-function filterPrivateVideos(items: YTPlaylistItems.Item[]) {
-    return items.filter(({ snippet }: YTPlaylistItems.Item) => {
-        const { title } = snippet;
-        return title !== 'Private video';
+function filterPrivateVideos(data: YTPlaylistItems.Response) {
+    data.items = data.items.filter((item: YTPlaylistItems.Item) => {
+        const { title } = item.snippet;
+        return (title !== 'Private video')
     });
+
+    return data
 }

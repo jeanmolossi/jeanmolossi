@@ -1,0 +1,47 @@
+@keyframes appearOverlay {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+div.overlay {
+    @apply
+        fixed
+        z-10
+        left-0
+        right-0
+        top-0
+        h-screen
+        mx-auto
+        bg-black/70
+        overflow-y-scroll
+        py-8;
+
+    animation: appearOverlay 200ms ease-out;
+}
+
+@keyframes appearWrapper {
+    from {
+        opacity: 0;
+        transform: translateY(4rem);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+div.wrapper {
+    @apply
+        mx-auto
+        max-w-3xl
+        w-full
+        p-4
+        rounded
+        bg-neutral-900
+        min-h-[16rem]
+        grid grid-rows-[2rem_1fr];
+
+
+    animation: appearWrapper 300ms ease-out;
+}

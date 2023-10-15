@@ -1,12 +1,12 @@
-import { YTPlaylist, YTPlaylistItems, YTVideo } from './request';
+import { YTPlaylist, YTPlaylistItems, YTVideo, Resolution } from './request';
 
 export interface Playlist {
     id: string;
     title: string;
     description: string;
     thumbnail: {
-        small: YTPlaylist.Resolution;
-        big: YTPlaylist.Resolution;
+        small: Resolution;
+        big: Resolution;
     };
     slug: string;
     publishedAt: string;

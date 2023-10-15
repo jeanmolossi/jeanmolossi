@@ -8,7 +8,7 @@ interface GetPlaylistsProps {
     page?: string
 }
 
-export async function getPlaylists({ page }: GetPlaylistsProps = {}) {
+export async function getPlaylists({ page }: GetPlaylistsProps) {
     try {
         const { data } = await youtube.get<YTPlaylist.Response>('/playlists', {
             params: {
@@ -17,31 +17,31 @@ export async function getPlaylists({ page }: GetPlaylistsProps = {}) {
             },
         });
 
-        const filteredPlaylists = data.items.filter(
-            item => item.snippet.title.toLowerCase() !== 'favorites',
-        );
+        const playlists: Playlist[] = data.items
+            ?.flatMap((item) => {
+                if (item.snippet.title.toLowerCase() === 'favorites')
+                    return [] as any;
 
-        data.items = filteredPlaylists;
-
-        const playlists: Playlist[] = data.items.map(playlist => ({
-            id: playlist.id,
-            title: playlist.snippet.title,
-            description: playlist.snippet.description,
-            thumbnail: {
-                small: playlist.snippet.thumbnails.medium,
-                big: playlist.snippet.thumbnails.standard,
-            },
-            slug: playlist.snippet.title
-                .toSlug()
-                .concat('/')
-                .concat(playlist.id),
-            publishedAt: playlist.snippet.publishedAt,
-        }));
+                return [{
+                    id: item.id,
+                    title: item.snippet.title,
+                    description: item.snippet.description,
+                    thumbnail: {
+                        small: item.snippet.thumbnails.medium,
+                        big: item.snippet.thumbnails.standard,
+                    },
+                    slug: item.snippet.title
+                        .toSlug()
+                        .concat('/')
+                        .concat(item.id),
+                    publishedAt: item.snippet.publishedAt,
+                }]
+            }) || []
 
         const { pageInfo, prevPageToken, nextPageToken } = data
 
         logger.info(
-            { playlists: filteredPlaylists.length },
+            { playlists: playlists.length || 0 },
             'playlists fetched',
         );
 

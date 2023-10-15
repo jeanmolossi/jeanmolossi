@@ -1,0 +1,90 @@
+div.markdown_wrapper {
+    @apply
+        flex
+        flex-col
+        break-words
+        gap-4
+        grow-0
+}
+
+div.markdown_wrapper > pre {
+    @apply
+        flex
+        rounded
+        items-stretch
+        grow
+        shrink
+        flex-wrap
+        max-w-full
+}
+
+div.markdown_wrapper > pre > code {
+    @apply
+        grow shrink
+        p-4
+        overflow-x-scroll
+        w-full
+        lg:max-w-5xl
+}
+
+div.markdown_wrapper > p > code {
+    @apply
+        bg-[#222]
+        rounded
+        p-2
+        overflow-x-hidden
+}
+
+div.markdown_wrapper > blockquote {
+    @apply
+        bg-[#333]
+        border-l-[3px]
+        border-solid
+        border-l-amber-700
+        p-2
+}
+
+div.markdown_wrapper > ol,
+div.markdown_wrapper > ul {
+    @apply ml-8
+}
+
+div.markdown_wrapper > ol li,
+div.markdown_wrapper > ul li {
+    @apply my-4 mx-0
+}
+
+div.markdown_wrapper > ol li ul > li,
+div.markdown_wrapper > ul li ul > li {
+    @apply my-2 mx-8
+}
+
+div.markdown_wrapper > p {
+    margin: 0;
+}
+
+div.markdown_wrapper > p > img {
+    @apply
+        block
+        w-full
+        rounded
+}
+
+div.markdown_wrapper > hr {
+    @apply border-stone-300
+}
+
+div.markdown_wrapper > table {
+    @apply w-full min-w-[310px] overflow-x-auto;
+}
+
+div.markdown_wrapper > table,
+div.markdown_wrapper > table tr td,
+div.markdown_wrapper > table tr th {
+    @apply border-2 border-gray-700
+}
+
+div.markdown_wrapper > table tr td,
+div.markdown_wrapper > table tr th {
+    @apply p-2
+}

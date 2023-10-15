@@ -1,0 +1,17 @@
+.main_container {
+    @apply
+        flex
+        flex-col
+        items-center
+        justify-between
+
+        min-h-screen
+        relative
+
+        pt-20
+        bg-stone-900;
+}
+
+.main_container canvas {
+    @apply bg-stone-950;
+}

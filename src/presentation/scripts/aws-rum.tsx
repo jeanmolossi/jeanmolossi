@@ -1,6 +1,9 @@
 import Script from "next/script";
 
 export function AwsRum() {
+    if (process.env.NODE_ENV === 'development')
+        return null;
+
     return (
         <Script
             id="aws-rum"

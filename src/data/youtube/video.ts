@@ -1,6 +1,6 @@
 import { AxiosError } from 'axios';
 import logger from '@/config/logger/logger';
-import { YTVideo } from '@/domain/entities/youtube/request';
+import { YTSearch, YTVideo } from '@/domain/entities/youtube/request';
 import { youtube } from '../api/youtube';
 
 export async function getVideo(videoId: string) {
@@ -29,5 +29,36 @@ export async function getVideo(videoId: string) {
         }
 
         throw error;
+    }
+}
+
+export async function getLastVideos(videos = 1) {
+    try {
+        const { data } = await youtube.get<YTSearch.Response>('/search', {
+            params: {
+                part: 'snippet',
+                maxResults: videos,
+                order: 'date'
+            }
+        })
+
+        return data.items;
+    }catch (error) {
+        let err = 'Ocorreu algum erro!';
+
+        if (error instanceof AxiosError) {
+            err = error.response?.data.error.message || error.message;
+
+            logger.error(
+                err,
+                error.response?.data.error.errors
+                    ?.map(({ reason }: any) => reason)
+                    .join(', '),
+            );
+        } else {
+            logger.error(error);
+        }
+
+        throw new Error(err)
     }
 }

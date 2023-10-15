@@ -1,13 +1,13 @@
 import { ListingArticle } from '@/domain/entities/dev.to/article';
 import { devToApi } from '@/data/api/dev.to';
 import logger from '@/config/logger/logger';
-import { article } from '@/config/constants';
 
 interface GetArticlesParams {
     page?: number;
+    perPage?: number;
 }
 
-export async function getArticles({ page = 1 }: GetArticlesParams = {}) {
+export async function getArticles({ page = 1, perPage = 10 }: GetArticlesParams = {}) {
     const searchParams = new URLSearchParams()
 
     if (typeof page != 'number') {
@@ -15,7 +15,7 @@ export async function getArticles({ page = 1 }: GetArticlesParams = {}) {
     }
 
     searchParams.set('page', page.toString())
-    searchParams.set('per_page', article.per_page.toString())
+    searchParams.set('per_page', perPage.toString())
 
     try {
         const { data: articles } = await devToApi.get<ListingArticle[]>(

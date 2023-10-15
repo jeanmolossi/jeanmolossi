@@ -43,6 +43,7 @@ const imgSrc = [
     "'self'",
     "https://jeanmolossi.com.br/",
     "https://i.ytimg.com/",
+    "https://*.s3.amazonaws.com/",
     "data:",
 ]
 

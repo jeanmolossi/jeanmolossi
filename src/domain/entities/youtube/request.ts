@@ -1,12 +1,14 @@
+export type Resolution = {
+    url: string;
+    width: number;
+    height: number;
+};
+
+export type Thumbnails = Partial<Record<'default' | 'medium' | 'high' | 'standard' | 'maxres', Resolution>>;
+
 export namespace YTPlaylist {
     export interface Query {
         part: 'id' | 'snippet' | 'status';
-    }
-
-    export interface Resolution {
-        url: string;
-        width: number;
-        height: number;
     }
 
     export interface Item {
@@ -18,12 +20,7 @@ export namespace YTPlaylist {
             channelId: string;
             title: string;
             description: string;
-            thumbnails: {
-                default: Resolution;
-                medium: Resolution;
-                high: Resolution;
-                standard: Resolution;
-            };
+            thumbnails: Thumbnails;
             channelTitle: string;
             localized: {
                 title: string;
@@ -49,8 +46,8 @@ export namespace YTPlaylistItems {
     export interface Response {
         kind: 'youtube#playlistItemListResponse';
         etag: string;
-        nextPageToken: string;
-        prevPageToken: string;
+        nextPageToken?: string;
+        prevPageToken?: string;
         pageInfo: {
             totalResults: number;
             resultsPerPage: number;
@@ -67,11 +64,7 @@ export namespace YTPlaylistItems {
             channelId: string;
             title: string;
             description: string;
-            thumbnails: {
-                default: YTPlaylist.Resolution;
-                medium: YTPlaylist.Resolution;
-                high: YTPlaylist.Resolution;
-            };
+            thumbnails: Thumbnails;
             channelTitle: string;
             playlistId: string;
             position: number;
@@ -82,9 +75,10 @@ export namespace YTPlaylistItems {
         };
         contentDetails: {
             videoId: string;
-            startAt: string;
-            endAt: string;
-            note: string;
+            startAt?: string;
+            endAt?: string;
+            note?: string;
+            videoPublishedAt: string;
         };
         status: {
             privacyStatus: string;
@@ -108,13 +102,7 @@ export namespace YTVideo {
             channelId: string;
             title: string;
             description: string;
-            thumbnails: {
-                default: YTPlaylist.Resolution;
-                medium: YTPlaylist.Resolution;
-                high: YTPlaylist.Resolution;
-                standard: YTPlaylist.Resolution;
-                maxres: YTPlaylist.Resolution;
-            };
+            thumbnails: Thumbnails;
             channelTitle: string;
             tags: string[];
             categoryId: string;
@@ -124,6 +112,33 @@ export namespace YTVideo {
                 description: string;
             };
             defaultAudioLanguage: string;
+        };
+    }
+}
+
+export namespace YTSearch {
+    export interface Response {
+        kind: 'youtube#searchListResponse';
+        etag: 'QKNg6h-mboftpkGSADf4P0pv0dM';
+        items: Item[];
+    }
+
+    export interface Item {
+        kind: 'youtube#searchResult';
+        etag: 'nEQUaFuKJtAPJSvwItE0MTF0gPI';
+        id: {
+            kind: 'youtube#video';
+            videoId: string;
+        };
+        snippet: {
+            publishedAt: string;
+            channelId: string;
+            title: string;
+            description: string;
+            thumbnails: Thumbnails;
+            channelTitle: string;
+            liveBroadcastContent: string;
+            publishTime: string;
         };
     }
 }
