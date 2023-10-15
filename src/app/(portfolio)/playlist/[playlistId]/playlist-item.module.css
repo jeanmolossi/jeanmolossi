@@ -30,3 +30,28 @@
 .item_content em strong {
     @apply text-cyan-500 font-bold
 }
+
+.pagination {
+    @apply
+        my-6
+        mx-auto
+        grid
+        grid-cols-2
+        gap-4
+        place-items-center
+        w-[min(100%,448px)]
+        place-self-center;
+}
+
+
+.page_link {
+    @apply
+        p-2
+        hover:underline;
+}
+
+.page_link[aria-hidden="true"],
+.pagination[aria-hidden="true"],
+.divider[aria-hidden="true"] {
+    @apply hidden;
+}

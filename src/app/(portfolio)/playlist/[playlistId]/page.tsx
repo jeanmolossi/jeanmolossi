@@ -32,10 +32,14 @@ export default async function Playlist({ params }: PlaylistProps) {
                 {items.map(item => <Video key={item.id} video={item} />)}
             </div>
 
-            <div></div>
+            <div className={styles.divider}></div>
 
-            <div aria-hidden={(!prevPageToken && !nextPageToken)}>
+            <div
+                className={styles.pagination}
+                aria-hidden={(!prevPageToken && !nextPageToken)}
+            >
                 <Link
+                    className={styles.page_link}
                     aria-hidden={!prevPageToken}
                     href={`/playlist/${playlistId}?page=${prevPageToken}`}
                 >
@@ -43,6 +47,7 @@ export default async function Playlist({ params }: PlaylistProps) {
                 </Link>
 
                 <Link
+                    className={styles.page_link}
                     aria-hidden={!prevPageToken}
                     href={`/playlist/${playlistId}?page=${nextPageToken}`}
                 >
