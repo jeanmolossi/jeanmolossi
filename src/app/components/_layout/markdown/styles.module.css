@@ -73,3 +73,18 @@ div.markdown_wrapper > p > img {
 div.markdown_wrapper > hr {
     @apply border-stone-300
 }
+
+div.markdown_wrapper > table {
+    @apply w-full min-w-[310px] overflow-x-auto;
+}
+
+div.markdown_wrapper > table,
+div.markdown_wrapper > table tr td,
+div.markdown_wrapper > table tr th {
+    @apply border-2 border-gray-700
+}
+
+div.markdown_wrapper > table tr td,
+div.markdown_wrapper > table tr th {
+    @apply p-2
+}
