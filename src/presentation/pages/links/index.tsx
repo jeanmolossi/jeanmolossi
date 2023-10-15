@@ -1,7 +1,8 @@
 import React, { useMemo } from "react";
-import { BaseHead, Container } from "@/presentation/components"
+import { BaseHead } from "@/presentation/components"
 import { SwapComponents } from "@/presentation/helpers"
 import styles from './styles.module.css'
+import Container from "@/app/components/_layout/container";
 
 interface Link {
     href: string;

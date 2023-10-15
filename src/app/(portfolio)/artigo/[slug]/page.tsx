@@ -5,7 +5,7 @@ import styles from './artigo.module.css';
 import React, { Suspense } from "react";
 import { Article } from "@/domain/entities/dev.to/article";
 import { FiHeart, FiMessageCircle } from "react-icons/fi";
-import { SocialLinks } from "@/presentation/components/social-links";
+import { SocialLinks } from "@/app/components/social-links";
 
 const LazyMd = React.lazy(() => import('@/app/components/_layout/markdown'))
 
