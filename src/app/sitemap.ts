@@ -1,7 +1,8 @@
+import { MetadataRoute } from "next";
 import { getArticles } from "@/data/dev.to";
 import { getPlaylists } from "@/data/youtube/playlists";
 import { getLastVideos } from "@/data/youtube/video";
-import { MetadataRoute } from "next";
+import '@/presentation/helpers/index'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const [articles, videos, playlists] = await Promise.all([
