@@ -16,8 +16,6 @@ export default function Layout({
 }) {
     const pathname = usePathname();
 
-    console.log(pathname)
-
     return (
         <div className="app-layout-child mx-auto w-full max-w-7xl">
             {children}

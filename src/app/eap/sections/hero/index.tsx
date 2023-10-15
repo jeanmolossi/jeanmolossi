@@ -1,3 +1,4 @@
+import { GrantBook } from './grants-book'
 import styles from './styles.module.css'
 
 export function HeroSection() {
@@ -27,7 +28,7 @@ export function HeroSection() {
                     </div>
 
                     <div className="flex flex-col gap-4 text-center">
-                        <a href="#" className={styles.grant_book}>Quero o meu agora!</a>
+                        <GrantBook />
                         <span className="font-medium">Cartão de crédito, Boleto à vista e Pix</span>
                     </div>
                 </div>

@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function Contato () {
-    const source = process.env.NODE_ENV === 'production'
+    const source = process.env.NODE_ENV === 'production_wrong' as any
         ? 'https://jeanmolossi.com.br/kumala-la-kumala.gif'
         : '/kumala-la-kumala.gif';
 
@@ -27,7 +27,7 @@ export default function Contato () {
                 <div className="mx-auto">
                     <Image
                         loading="lazy"
-                        objectFit="cover"
+                        className="object-cover"
                         src={src}
                         alt="fake contacts"
                     />
