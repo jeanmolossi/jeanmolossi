@@ -1,0 +1,6 @@
+User-Agent: *
+Allow: /
+Disallow: /private/
+Disallow: /.git
+
+Sitemap: https://jeanmolossi.com.br/sitemap.xml
