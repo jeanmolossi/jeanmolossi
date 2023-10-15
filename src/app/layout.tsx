@@ -6,6 +6,7 @@ import NextNProgress from 'nextjs-progressbar';
 // import type { NextWebVitalsMetric } from "next/app";
 import { Layout as LayoutComponent } from "@/presentation/components";
 import '@/presentation/styles/global.css'
+import '@/presentation/styles/github-dark.min.css'
 
 export default function RootLayout({
     children,

@@ -6,27 +6,27 @@ import styles from './styles.module.css'
 export const SocialLinks = React.memo(() => {
     return (
         <div className={styles.social_wrapper}>
-            <SocialLink className="github" withBgWhite>
+            <SocialLink linkto="github" className={styles.github} withBgWhite>
                 <SiGithub />
             </SocialLink>
 
-            <SocialLink className="twitter">
+            <SocialLink linkto="twitter" className={styles.twitter}>
                 <SiTwitter />
             </SocialLink>
 
-            <SocialLink className="linkedin" withBgWhite>
+            <SocialLink linkto="linkedin" className={styles.linkedin} withBgWhite>
                 <SiLinkedin />
             </SocialLink>
 
-            <SocialLink className="youtube" withBgWhite>
+            <SocialLink linkto="youtube" className={styles.youtube} withBgWhite>
                 <SiYoutube />
             </SocialLink>
 
-            <SocialLink className="telegram" withBgWhite>
+            <SocialLink linkto="telegram" className={styles.telegram} withBgWhite>
                 <SiTelegram />
             </SocialLink>
 
-            <SocialLink className="instagram">
+            <SocialLink linkto="instagram" className={styles.instagram}>
                 <SiInstagram />
             </SocialLink>
         </div>
@@ -34,12 +34,13 @@ export const SocialLinks = React.memo(() => {
 })
 
 interface SocialLinkProps {
-    className: keyof typeof social
+    linkto: keyof typeof social
+    className: string;
     withBgWhite?: boolean
     children?: React.ReactNode
 }
 
-const SocialLink = ({ className, withBgWhite, children }: SocialLinkProps) => {
+const SocialLink = ({ linkto, className, withBgWhite, children }: SocialLinkProps) => {
     const classes = [
         className,
         withBgWhite ? 'withBgWhite' : '',
@@ -48,7 +49,7 @@ const SocialLink = ({ className, withBgWhite, children }: SocialLinkProps) => {
     return (
         <a
             className={classes}
-            href={social[className]}
+            href={social[linkto]}
             target="_blank"
             rel="noopener noreferrer"
         >

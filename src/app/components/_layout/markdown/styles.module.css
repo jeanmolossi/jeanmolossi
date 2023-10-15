@@ -20,15 +20,11 @@ div.markdown_wrapper > pre {
 
 div.markdown_wrapper > pre > code {
     @apply
-        flex grow shrink
+        grow shrink
         p-4
         overflow-x-scroll
         w-full
-        max-w-sm
-        md:max-w-md
-        lg:max-w-lg
-        xl:max-w-xl
-        2xl:max-w-2xl
+        lg:max-w-5xl
 }
 
 div.markdown_wrapper > p > code {

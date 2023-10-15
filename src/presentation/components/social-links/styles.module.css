@@ -8,23 +8,32 @@
 }
 
 .social_wrapper > a.github {
-    --color: #F0F;
+    --color: #000000;
 }
 
 .social_wrapper > a.twitter {
-    --color: #FF0;
+    --color: #348bc4;
 }
 
-.social_wrapper > a.linkedin {}
+.social_wrapper > a.linkedin {
+    --color: #0b66c3;
+}
 
-.social_wrapper > a.youtube {}
+.social_wrapper > a.youtube {
+    --color: #fe0001;
+}
 
-.social_wrapper > a.telegram {}
+.social_wrapper > a.telegram {
+    --color: #2da5df;
+}
+
+.social_wrapper > a.instagram {
+    --color: #d73161;
+}
 
 .social_wrapper > a {
     @apply flex;
     --pos: 0;
-    --color: #F00;
     color: var(--color);
 }
 
