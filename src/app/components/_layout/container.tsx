@@ -1,6 +1,6 @@
 import { HtmlHTMLAttributes } from "react";
 
-interface ContainerProps extends HtmlHTMLAttributes<HTMLDivElement> {}
+interface ContainerProps extends HtmlHTMLAttributes<HTMLSelectElement> {}
 
 export default function Container({
     children,
@@ -8,8 +8,8 @@ export default function Container({
     ...rest
 }: ContainerProps) {
     return (
-        <div {...rest} className={['w-full max-w-7xl px-6 xl:p-0', className].join(' ')}>
+        <section {...rest} className={['w-full max-w-7xl px-6 xl:p-0', className].join(' ')}>
             {children}
-        </div>
+        </section>
     )
 }
