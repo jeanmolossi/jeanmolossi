@@ -1,3 +1,5 @@
+import { z } from "zod";
+
 export const gtag = {
     GA_TRACKING_ID: process.env.NEXT_PUBLIC_GA_TRACKING_ID,
     GTM_TRACKING_TAG: process.env.NEXT_PUBLIC_GTM_TRACKING_TAG,
@@ -19,3 +21,19 @@ export const article = {
 export const youtube = {
     per_page: 2
 }
+
+export const App = () => z.object({
+    NEXT_PUBLIC_DEV_TO_BASE_URL: z.string().min(1).url(),
+    NEXT_PUBLIC_GA_TRACKING_ID: z.string().min(1),
+    NEXT_PUBLIC_GTM_TRACKING_TAG: z.string().min(1)
+}).parse(process.env)
+
+export const Api = () => z.object({
+    BASE_URL: z.string().min(1).url(),
+    DEV_TO_BASE_URL: z.string().min(1).url(),
+    DEV_TO_API_KEY: z.string().min(1),
+
+    YOUTUBE_V3_API: z.string().min(1).url(),
+    YOUTUBE_API_KEY: z.string().min(1),
+    YOUTUBE_CHAN_ID: z.string().min(1)
+}).parse(process.env)
