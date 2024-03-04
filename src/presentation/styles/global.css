@@ -24,13 +24,6 @@
         --input: 214.3 31.8% 91.4%;
         --ring: 221.2 83.2% 53.3%;
         --radius: 0.5rem;
-
-        --github: #000000;
-        --twitter: #348bc4;
-        --linkedin: #0b66c3;
-        --youtube: #fe0001;
-        --telegram: #2da5df;
-        --instagram: #d73161;
     }
 
     .dark {
@@ -53,13 +46,6 @@
         --border: 217.2 32.6% 17.5%;
         --input: 217.2 32.6% 17.5%;
         --ring: 224.3 76.3% 48%;
-
-        --github: #000000;
-        --twitter: #348bc4;
-        --linkedin: #0b66c3;
-        --youtube: #fe0001;
-        --telegram: #2da5df;
-        --instagram: #d73161;
     }
 }
 
@@ -74,39 +60,12 @@
 
 html,
 body {
-    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-        Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
-        sans-serif;
-
-    color: #f5f5f5;
     scroll-behavior: smooth !important;
 }
 
 html,
 body > main {
     scroll-behavior: smooth;
-}
-
-a {
-    text-decoration: none;
-    color: #04b4e0;
-    font-weight: 100;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-family: 'Poppins', 'Poiret One', cursive;
-    font-weight: 600;
-    color: #f5f5f5;
-}
-
-p {
-    line-height: 1.5rem;
-    font-family: inherit;
 }
 
 * {

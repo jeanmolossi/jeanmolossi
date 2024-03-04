@@ -1,12 +1,25 @@
 'use client';
 
-import React from "react"
-import { AnalyticsScript, AwsRum, FontLoader, HotjarScript, TagManager, TagManagerNoScript } from "@/presentation/scripts"
+import { cn } from "@/lib/helpers";
+import { ThemeProvider } from "@/presentation/components/theme-provider";
+import {
+    AnalyticsScript,
+    FontLoader,
+    HotjarScript,
+    TagManager,
+    TagManagerNoScript
+} from "@/presentation/scripts";
+import '@/presentation/styles/github-dark.min.css';
+import '@/presentation/styles/global.css';
+import { Poppins } from 'next/font/google';
 import NextNProgress from 'nextjs-progressbar';
-// import type { NextWebVitalsMetric } from "next/app";
-import { Layout as LayoutComponent } from "@/presentation/components";
-import '@/presentation/styles/global.css'
-import '@/presentation/styles/github-dark.min.css'
+import React from "react";
+
+const poppins = Poppins({
+    subsets: ['latin'],
+    weight: ['400', '500', '600', '700'],
+    variable: '--poppins',
+})
 
 export default function RootLayout({
     children,
@@ -20,15 +33,22 @@ export default function RootLayout({
                 <TagManager />
                 <AnalyticsScript />
                 <HotjarScript />
-                <AwsRum />
                 <NextNProgress />
             </head>
-            <body>
-                <LayoutComponent>
+            <body className={cn(
+                'min-h-screen bg-background font-sans antialiased',
+                poppins.variable,
+            )}>
+                <ThemeProvider
+                    attribute="class"
+                    defaultTheme="system"
+                    enableSystem
+                    disableTransitionOnChange
+                >
                     <TagManagerNoScript />
 
                     {children}
-                </LayoutComponent>
+                </ThemeProvider>
             </body>
         </html>
     )

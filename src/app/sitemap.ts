@@ -3,6 +3,7 @@ import { getArticles } from "@/data/dev.to";
 import { getPlaylists } from "@/data/youtube/playlists";
 import { getLastVideos } from "@/data/youtube/video";
 import '@/presentation/helpers/index'
+import { Api } from "@/config/constants";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const [articles, videos, playlists] = await Promise.all([
@@ -50,7 +51,7 @@ function baseUrl(path: string) {
     if (path.substring(0,1) !== '/')
         path = "/" + path
 
-    return `${process.env.BASE_URL || 'https://jeanmolossi.com.br'}${path}`
+    return `${Api().BASE_URL || 'https://jeanmolossi.com.br'}${path}`
 }
 
 type Route = MetadataRoute.Sitemap[0];
