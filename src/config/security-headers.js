@@ -3,7 +3,9 @@ const defaultSrc = [
     "https://www.googletagmanager.com/",
     "https://www.google-analytics.com/",
     "https://*.us-east-1.amazonaws.com/",
+    "wss://*.hotjar.com/",
     "https://*.hotjar.com/",
+    "https://*.hotjar.io/",
     "https://i.ytimg.com/",
     "'unsafe-inline'"
 ]
