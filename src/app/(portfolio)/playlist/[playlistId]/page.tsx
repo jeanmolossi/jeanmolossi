@@ -1,10 +1,10 @@
-import React from "react";
-import Image from "next/image";
 import Container from "@/app/components/_layout/container";
 import { getPlaylistItems } from "@/data/youtube/playlist-items";
 import { YTPlaylistItems } from "@/domain/entities/youtube/request";
-import styles from './playlist-item.module.css'
+import Image from "next/image";
 import Link from "next/link";
+import React from "react";
+import styles from './playlist-item.module.css';
 
 const LazyMD = React.lazy(() => import('@/app/components/_layout/markdown'))
 
@@ -12,17 +12,28 @@ interface PlaylistProps {
     params?: {
         playlistId: string;
     }
+    searchParams?: {
+        page?: string;
+        pageSize?: string;
+    }
 }
 
-export default async function Playlist({ params }: PlaylistProps) {
+export default async function Playlist({ params, searchParams }: PlaylistProps) {
     const playlistId = params?.playlistId
+    const page = searchParams?.page || '1'
+    const pageSize = searchParams?.pageSize || '10'
 
     if (!playlistId) {
         return <Container>Nada encontrado</Container>
     }
 
-    const playlistVideos = await getPlaylistItems(playlistId)
-    const { items, nextPageToken, prevPageToken } = playlistVideos
+    const playlistVideos = await getPlaylistItems({ playlistId, page, pageSize })
+    const { items, nextPageParams, prevPageParams } = playlistVideos
+
+    console.log({ nextPageParams, prevPageParams })
+
+    const hasPrevPage = !!prevPageParams
+    const hasNextPage = !!nextPageParams
 
     return (
         <Container className="my-4">
@@ -36,20 +47,20 @@ export default async function Playlist({ params }: PlaylistProps) {
 
             <div
                 className={styles.pagination}
-                aria-hidden={(!prevPageToken && !nextPageToken)}
+                aria-hidden={(!hasPrevPage && !hasNextPage)}
             >
                 <Link
                     className={styles.page_link}
-                    aria-hidden={!prevPageToken}
-                    href={`/playlist/${playlistId}?page=${prevPageToken}`}
+                    aria-hidden={!hasPrevPage}
+                    href={`/playlist/${playlistId}?${prevPageParams}`}
                 >
                     Página anterior
                 </Link>
 
                 <Link
                     className={styles.page_link}
-                    aria-hidden={!prevPageToken}
-                    href={`/playlist/${playlistId}?page=${nextPageToken}`}
+                    aria-hidden={!hasNextPage}
+                    href={`/playlist/${playlistId}?${nextPageParams}`}
                 >
                         Proxima página
                 </Link>
@@ -87,7 +98,7 @@ function Video({ video }: VideoProps) {
                 <h2 className="text-2xl">{video.snippet.title}</h2>
                 <small>Publicado {video.snippet.publishedAt.toRelativeTime()}</small>
 
-                <Link href={`/video/${video.contentDetails.videoId}`}>
+                <Link href={`/video/${video.snippet.resourceId.videoId}`}>
                     <LazyMD>{description}</LazyMD>
                 </Link>
             </div>
