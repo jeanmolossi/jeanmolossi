@@ -45,13 +45,7 @@ const nextConfig = {
             },
             {
                 protocol: 'https',
-                hostname: 'https://*.easypanel.host',
-                port: '',
-                pathname: '/uploads/**'
-            },
-            {
-                protocol: 'https',
-                hostname: 'https://*.*.easypanel.host',
+                hostname: '*.easypanel.host',
                 port: '',
                 pathname: '/uploads/**'
             }
