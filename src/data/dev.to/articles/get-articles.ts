@@ -67,10 +67,9 @@ export async function getArticles({ page = 1, perPage = 10 }: GetArticlesParams 
             page_views_count: 0,
             reading_time_minutes: item.attributes.readingTimeMinutes || 5,
             slug: item.attributes.uid,
-            cover_image: format(
-                '%s%s',
-                Api().STRAPI_URL, item.attributes.cover.data.attributes.url
-            ),
+            cover_image: item.attributes.cover.data.attributes.formats.thumbnail.url
+                || item.attributes.cover.data.attributes.formats.medium.url
+                || item.attributes.cover.data.attributes.url,
         }));
 
         return listing || [];

@@ -1,4 +1,5 @@
 import Timeline from "@/app/components/sections/timeline/timeline";
+import IAimg from '@/presentation/assets/images/cinematic_profile_pic_of_a_young_developer_inspired_cyberpunk_colors_style-Photographic.png';
 import { Metadata } from "next";
 import Image from "next/image";
 
@@ -96,11 +97,7 @@ export default function HomePage() {
                         <Image
                             title="Foto gerada por IA"
                             alt="Imagem de um desenvolvedor gerado por IA"
-                            src={{
-                                src: '/images/cinematic_profile_pic_of_a_young_developer_inspired_cyberpunk_colors_style-Photographic.png',
-                                height: 400,
-                                width: 400
-                            }}
+                            src={IAimg}
                             style={{ objectFit: 'cover' }}
                             fill
                         />

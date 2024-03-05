@@ -1,5 +1,7 @@
 const headers = require('./src/config/security-headers')
 
+const isProd = process.env.NODE_ENV === 'production';
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     experimental: {
@@ -11,7 +13,11 @@ const nextConfig = {
     compiler: {
         styledComponents: true,
     },
+
     images: {
+        loader: !isProd ? 'custom' : undefined,
+        loaderFile: !isProd ? './src/lib/local-strapi-loader.js' : undefined,
+
         remotePatterns: [
             {
                 protocol: 'https',

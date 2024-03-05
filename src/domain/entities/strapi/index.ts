@@ -1,3 +1,4 @@
+
 export namespace Strapi {
     export interface Entry<TAttrs> {
         id: number;
@@ -15,19 +16,24 @@ export namespace Strapi {
         }
     }
 
+    type Format = {
+        ext: `.${'jpg' | 'jpeg' | 'png'}`;
+        url: string;
+        hash: string;
+        mime: HTMLInputElement['accept'];
+        name: string;
+        path: null;
+        size: number;
+        width: number;
+        heigth: number;
+    }
+
     export interface File {
         name: string;
         alternativeText: string | null;
         width: number;
         heigth: number;
-        formats: {
-            thumbnail: {
-                name: string;
-                width: number;
-                heigth: number;
-                url: string;
-            }
-        };
+        formats: Record<'thumbnail' | 'small' | 'medium' | 'large', Format>;
         url: string;
     }
 }

@@ -15,7 +15,7 @@ export function DesktopNavigation() {
     });
 
     return (
-        <div className="mx-auto fixed top-0 inline-flex items-center justify-between w-full p-4 z-10 bg-background">
+        <div className="mx-auto fixed top-0 left-0 inline-flex items-center justify-between w-full p-4 z-10 bg-background">
             <Link href='/' className="font-semibold">Jean Molossi</Link>
             <NavMenu className={desktopClassName} />
             <ToggleTheme />
@@ -27,14 +27,14 @@ function NavMenu({ className }: { className?: string }) {
     return (
         <NavigationMenu>
             <NavigationMenuList>
-                {items.map(({ href, as, label, icon: Icon }) => (
-                    <NavigationMenuItem>
-                        <Link href={href} as={as}>
-                            <NavigationMenuLink className={className}>
-                                <Icon />
-                                {label}
-                            </NavigationMenuLink>
-                        </Link>
+                {items.map(({ href, as, label, icon: Icon }, i) => (
+                    <NavigationMenuItem key={i}>
+                        <NavigationMenuLink className={className} asChild>
+                            <Link href={href} as={as}>
+                                    <Icon />
+                                    {label}
+                            </Link>
+                        </NavigationMenuLink>
                     </NavigationMenuItem>
                 ))}
             </NavigationMenuList>

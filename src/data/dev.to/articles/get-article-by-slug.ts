@@ -61,11 +61,8 @@ export async function getArticleBySlug(slug: string): Promise<DevArticle> {
             published_at: article.attributes.updatedAt,
             comments_count: 0,
             public_reactions_count: article.attributes.reactions || 0,
-            cover_image: format(
-                '%s%s',
-                Api().STRAPI_URL,
-                article.attributes.cover.data.attributes.url
-            ),
+            cover_image: article.attributes.cover.data.attributes.formats.large.url
+                || article.attributes.cover.data.attributes.url,
             title: article.attributes.title,
             description: article.attributes.subtitle,
             reading_time_minutes: article.attributes.readingTimeMinutes || 5,

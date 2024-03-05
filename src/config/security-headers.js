@@ -48,6 +48,7 @@ const imgSrc = [
     "https://*.s3.amazonaws.com/",
     "https://media.dev.to/",
     "https://*.easypanel.host",
+    "http://localhost:1337",
     "data:",
 ]
 

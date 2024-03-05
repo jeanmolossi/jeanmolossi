@@ -1,18 +1,9 @@
 import Container from "@/app/components/_layout/container";
+import kumala from '@/presentation/assets/images/kumala-la-kumala.gif';
 import Image from "next/image";
 import Link from "next/link";
 
 export default function Contato () {
-    const source = process.env.NODE_ENV === 'production_wrong' as any
-        ? 'https://jeanmolossi.com.br/kumala-la-kumala.gif'
-        : '/kumala-la-kumala.gif';
-
-    const src = {
-        src: source,
-        width: 640,
-        height: 594
-    }
-
     return (
         <Container>
             <div className="flex flex-col gap-4 mt-4 p-4 max-w-2xl mx-auto">
@@ -28,8 +19,10 @@ export default function Contato () {
                     <Image
                         loading="lazy"
                         className="object-cover"
-                        src={src}
+                        src={kumala}
                         alt="fake contacts"
+                        width={640}
+                        height={594}
                     />
                 </div>
 
