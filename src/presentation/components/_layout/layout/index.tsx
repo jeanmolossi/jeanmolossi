@@ -1,7 +1,6 @@
-import { ReactNode, Suspense } from "react";
+import { ReactNode } from "react";
 import { Footer } from "../footer";
 import { HireLogo } from "../hire-logo";
-import { Navbar } from "../navbar";
 import styles from './styles.module.css';
 
 interface LayoutProps {
@@ -14,9 +13,6 @@ export function Layout({ children }: LayoutProps) {
             {children}
 
             <HireLogo />
-            <Suspense>
-                <Navbar />
-            </Suspense>
 
             <Footer />
         </main>

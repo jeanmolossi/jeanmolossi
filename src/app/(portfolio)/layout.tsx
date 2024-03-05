@@ -1,3 +1,4 @@
+import { HireLogo } from "@/presentation/components/_layout/hire-logo";
 import Navigation from "@/presentation/components/_layout/navigation-menu";
 import "@/presentation/helpers";
 
@@ -14,6 +15,8 @@ export default function Layout({
 
             {children}
             {modal}
+
+            <HireLogo />
         </div>
     )
 }
