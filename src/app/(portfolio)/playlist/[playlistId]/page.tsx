@@ -1,6 +1,9 @@
 import Container from "@/app/components/_layout/container";
 import { getPlaylistItems } from "@/data/youtube/playlist-items";
 import { YTPlaylistItems } from "@/domain/entities/youtube/request";
+import { cn } from "@/lib/helpers";
+import { Button } from "@/presentation/components/ui/button";
+import { ArrowLeftCircle } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -30,7 +33,7 @@ export default async function Playlist({ params, searchParams }: PlaylistProps) 
     const playlistVideos = await getPlaylistItems({ playlistId, page, pageSize })
     const { items, nextPageParams, prevPageParams } = playlistVideos
 
-    console.log({ nextPageParams, prevPageParams })
+    const emptyVideos = items.length === 0;
 
     const hasPrevPage = !!prevPageParams
     const hasNextPage = !!nextPageParams
@@ -38,6 +41,29 @@ export default async function Playlist({ params, searchParams }: PlaylistProps) 
     return (
         <Container className="my-4">
             <h1 className="text-4xl my-4">Vídeos</h1>
+
+
+            <div className={cn({'hidden': !emptyVideos}, 'mx-auto max-w-[768px]')}>
+                <h1 className="text-7xl mb-8">Oops! Nenhum vídeo</h1>
+
+                <p>
+                    Nenhum vídeo foi adicionado à essa playlist ainda.{' '}
+                    Seja o primeiro a saber quando um vídeo for adicionado!
+                </p>
+
+                <div className="my-4">
+                    <label htmlFor="mail">Quero ser avisado: </label>
+                    <input id="mail" placeholder="Deixe seu e-mail" className="p-2 rounded" />
+                </div>
+
+                <Button asChild variant={'link'} size="lg">
+                    <Link href="/playlists">
+                        <ArrowLeftCircle />
+                        Volte para as playlists
+                    </Link>
+                </Button>
+            </div>
+
 
             <div className={styles.items_wrapper}>
                 {items.map(item => <Video key={item.id} video={item} />)}
