@@ -60,7 +60,7 @@ export async function getArticleBySlug(slug: string): Promise<DevArticle> {
             },
             published_at: article.attributes.updatedAt,
             comments_count: 0,
-            public_reactions_count: 0,
+            public_reactions_count: article.attributes.reactions || 0,
             cover_image: format(
                 '%s%s',
                 Api().STRAPI_URL,
@@ -68,10 +68,10 @@ export async function getArticleBySlug(slug: string): Promise<DevArticle> {
             ),
             title: article.attributes.title,
             description: article.attributes.subtitle,
-            reading_time_minutes: 7,
-            positive_reactions_count: 0,
+            reading_time_minutes: article.attributes.readingTimeMinutes || 5,
+            positive_reactions_count: article.attributes.reactions || 0,
             published_timestamp: article.attributes.updatedAt,
-            tag_list: '1, 2',
+            tag_list: article.attributes.tags?.join(', ') || '',
             type_of: TypeofArticle.Article,
         }
 

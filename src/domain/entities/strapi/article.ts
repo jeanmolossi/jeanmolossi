@@ -6,6 +6,9 @@ export interface Article {
     updatedAt: string;
     uid: string;
     cover?: string;
+    readingTimeMinutes?: number;
+    reactions?: number;
+    tags?: string[];
 }
 
 export interface Publisher {

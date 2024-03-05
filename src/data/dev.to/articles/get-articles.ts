@@ -63,9 +63,9 @@ export async function getArticles({ page = 1, perPage = 10 }: GetArticlesParams 
                 website_url: Api().BASE_URL,
             },
             published_at: item.attributes.createdAt,
-            public_reactions_count: 0,
+            public_reactions_count: item.attributes.reactions || 0,
             page_views_count: 0,
-            reading_time_minutes: 7,
+            reading_time_minutes: item.attributes.readingTimeMinutes || 5,
             slug: item.attributes.uid,
             cover_image: format(
                 '%s%s',
