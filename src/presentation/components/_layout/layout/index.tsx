@@ -1,8 +1,8 @@
-import styles from './styles.module.css'
-import { ReactNode } from "react";
-import { Navbar } from "../navbar";
-import { HireLogo } from "../hire-logo";
+import { ReactNode, Suspense } from "react";
 import { Footer } from "../footer";
+import { HireLogo } from "../hire-logo";
+import { Navbar } from "../navbar";
+import styles from './styles.module.css';
 
 interface LayoutProps {
     children?:ReactNode;
@@ -14,7 +14,9 @@ export function Layout({ children }: LayoutProps) {
             {children}
 
             <HireLogo />
-            <Navbar />
+            <Suspense>
+                <Navbar />
+            </Suspense>
 
             <Footer />
         </main>

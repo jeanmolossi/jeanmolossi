@@ -1,11 +1,11 @@
 'use client';
 
-import { ChangeEvent, useEffect, useState } from "react"
-import Link from "next/link"
-import { eapMenuItems, menuItems } from "@/config/routes"
-import { usePathname, useSearchParams } from "next/navigation";
-import styles from './styles.module.css'
+import { eapMenuItems, menuItems } from "@/config/routes";
 import { RenderIf } from "@/presentation/helpers";
+import Link from "next/link";
+import { usePathname, useSearchParams } from "next/navigation";
+import { ChangeEvent, useEffect, useState } from "react";
+import styles from './styles.module.css';
 
 export const Navbar = () => {
     const pathname = usePathname()
