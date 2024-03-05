@@ -2,6 +2,10 @@ const headers = require('./src/config/security-headers')
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+    experimental: {
+        missingSuspenseWithCSRBailout: false,
+    },
+
     poweredByHeader: false,
     reactStrictMode: true,
     compiler: {
