@@ -1,6 +1,7 @@
 'use client';
 
 import { cn } from "@/lib/helpers";
+import { Footer } from "@/presentation/components/_layout/footer";
 import { ThemeProvider } from "@/presentation/components/theme-provider";
 import {
     AnalyticsScript,
@@ -48,6 +49,9 @@ export default function RootLayout({
                     <TagManagerNoScript />
 
                     {children}
+
+
+                    <Footer />
                 </ThemeProvider>
             </body>
         </html>
