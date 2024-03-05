@@ -1,20 +1,60 @@
-import { AxiosError } from 'axios';
 import logger from '@/config/logger/logger';
+import { Strapi } from '@/domain/entities/strapi';
+import { Video } from '@/domain/entities/strapi/video';
 import { YTSearch, YTVideo } from '@/domain/entities/youtube/request';
+import { AxiosError } from 'axios';
+import { format } from 'util';
+import { strapi } from '../api/strapi';
 import { youtube } from '../api/youtube';
 
-export async function getVideo(videoId: string) {
+export async function getVideo(videoId: string): Promise<YTVideo.Item> {
     try {
-        const { data } = await youtube.get<YTVideo.Response>('/videos', {
+        const { data } = await strapi.get<Strapi.ListResponse<Video>>('/videos', {
             params: {
-                part: 'snippet',
-                id: videoId,
-                maxResults: 1,
+                filters: {
+                    canonicalUrl: {
+                        '$eq': videoId
+                    }
+                }
             },
         });
 
-        const video = data.items[0];
+        console.log(data.data)
+
+        const item = data.data.at(0)?.attributes;
+
+        const video: YTVideo.Item = {
+            id: item ? `${item?.videoID}` : '',
+            etag: 'r3s9OiVXgY__0i7yIGnPyt0-gjM',
+            kind: 'youtube#video',
+            snippet: {
+                title: item?.title || 'No title',
+                thumbnails: {
+                    maxres: {
+                        url: format(
+                            'https://i.ytimg.com/vi/%s/sddefault.jpg',
+                            item?.videoID,
+                        ),
+                        width: 1920,
+                        height: 9/16*1920
+                    },
+                },
+                publishedAt: item?.publishedAt || (new Date().toISOString()),
+                description: item?.excerpt || '',
+                tags: ['video'],
+                categoryId: '',
+                channelId: '',
+                channelTitle: '',
+                defaultAudioLanguage: 'Português - Brasil',
+                liveBroadcastContent: '',
+                localized: { description: '', title: '' }
+            }
+        }
+
+        if (!video) throw new Error('not found');
+
         logger.info({ videoId }, `video ${video.snippet.title} fetched`);
+
         return video;
     } catch (error) {
         if (error instanceof AxiosError) {
