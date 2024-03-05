@@ -46,7 +46,15 @@ export async function getArticles({ page = 1, perPage = 10 }: GetArticlesParams 
             title: item.attributes.title,
             description: item.attributes.subtitle,
             user: {
-                profile_image_90: `http://localhost:1337/uploads/foto_perfil_google_812f84b6b3.jpeg`,
+                profile_image_90: format(
+                    '%s%s',
+                    process.env.NODE_ENV === 'production'
+                        ? `https://cms-strapi.p2r8jl.easypanel.host`
+                        : `http://localhost:1337`,
+                    process.env.NODE_ENV === 'production'
+                        ? `/uploads/foto_perfil_google_c341e0e3bc.jpeg`
+                        : `/uploads/foto_perfil_google_812f84b6b3.jpeg`,
+                ),
                 github_username: 'jeanmolossi',
                 name: 'Jean Carlos Molossi',
                 profile_image: 'http://github.com/jeanmolossi.png',
