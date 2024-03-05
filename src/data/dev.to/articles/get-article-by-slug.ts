@@ -1,18 +1,74 @@
-import { AxiosError } from 'axios';
-import { Article } from '@/domain/entities/dev.to/article';
-import { devToApi } from '@/data/api/dev.to';
+import { Api } from '@/config/constants';
 import logger from '@/config/logger/logger';
+import { strapi } from '@/data/api/strapi';
+import { Article as DevArticle, TypeofArticle } from '@/domain/entities/dev.to/article';
+import { Strapi } from '@/domain/entities/strapi';
+import { Article, Publisher } from '@/domain/entities/strapi/article';
+import { WithRel } from '@/domain/entities/strapi/playlist';
+import { AxiosError } from 'axios';
+import { format } from 'util';
 
-export async function getArticleBySlug(slug: string): Promise<Article> {
+export async function getArticleBySlug(slug: string): Promise<DevArticle> {
     const username = 'jeanmolossi';
 
     try {
-        const { data: article } = await devToApi.get<Article>(
-            `/articles/${username}/${slug}`,
+        const { data: { data: articles, meta } } =
+            await strapi.get<Strapi.ListResponse<WithRel<Article, 'publisher', Publisher> & WithRel<Article, 'cover', Strapi.File>>>(
+            `/artigos`,
+            {
+                params: {
+                    filters: {
+                        uid: slug,
+                    },
+                    populate: {
+                        publisher: {
+                            fields: [
+                                'firstname',
+                                'lastname'
+                            ]
+                        },
+                        cover: true,
+                    }
+                }
+            }
         );
 
-        logger.info({ slug, author: article.user.username }, 'article fetched');
-        return article || {};
+        const article = articles.at(0);
+
+        if (!article) throw new Error('Not found')
+
+        const result: DevArticle = {
+            id: article.id,
+            body_markdown: article.attributes.content,
+            slug: article.attributes.uid,
+            user: {
+                profile_image_90: `http://localhost:1337/uploads/foto_perfil_google_812f84b6b3.jpeg`,
+                github_username: 'jeanmolossi',
+                name: 'Jean Carlos Molossi',
+                profile_image: 'http://github.com/jeanmolossi.png',
+                twitter_username: '@JeanMolossi',
+                username: 'JeanMolossi',
+                website_url: Api().BASE_URL,
+            },
+            published_at: article.attributes.updatedAt,
+            comments_count: 0,
+            public_reactions_count: 0,
+            cover_image: format(
+                '%s%s',
+                Api().STRAPI_URL,
+                article.attributes.cover.data.attributes.url
+            ),
+            title: article.attributes.title,
+            description: article.attributes.subtitle,
+            reading_time_minutes: 7,
+            positive_reactions_count: 0,
+            published_timestamp: article.attributes.updatedAt,
+            tag_list: '1, 2',
+            type_of: TypeofArticle.Article,
+        }
+
+        logger.info({ slug, author: result.user.username }, 'article fetched');
+        return result || {};
     } catch (e) {
         if (e instanceof AxiosError) {
             logger.error(
@@ -32,6 +88,6 @@ export async function getArticleBySlug(slug: string): Promise<Article> {
             body_markdown: '[Voltar ao Blog](/blog)',
             tag_list: '',
             id: 0,
-        } as Article;
+        } as DevArticle;
     }
 }
