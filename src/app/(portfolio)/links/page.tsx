@@ -1,9 +1,9 @@
+import Container from "@/app/components/_layout/container";
 import { social } from "@/config/constants";
-import { getContrast } from "@/presentation/helpers/contrast-calc"
-import { socialColors } from "@/presentation/styles";
-import Container from "../components/_layout/container";
-import styles from './links.module.css'
 import { SwapComponents } from "@/presentation/helpers";
+import { getContrast } from "@/presentation/helpers/contrast-calc";
+import { socialColors } from "@/presentation/styles";
+import styles from './links.module.css';
 
 interface Link {
     href: string;
