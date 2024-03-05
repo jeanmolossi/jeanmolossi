@@ -1,4 +1,3 @@
-import React from "react";
 import { IconType } from "react-icons";
 import styles from './skills.module.css';
 
@@ -33,7 +32,7 @@ interface SkillsProps {
 
 export function Skills({ skills }: SkillsProps) {
     return (
-        <div className="flex flex-col gap-1 p-4 hover:bg-neutral-800 rounded transition-all">
+        <div className="flex flex-col gap-1 p-4 hover:bg-background rounded transition-all">
             {skills.map((skill, i) => <Skill key={i.toString()} {...skill} />)}
         </div>
     )

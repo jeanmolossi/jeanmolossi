@@ -38,7 +38,7 @@ div.wrapper {
         w-full
         p-4
         rounded
-        bg-neutral-900
+        bg-secondary
         min-h-[16rem]
         grid grid-rows-[2rem_1fr];
 

@@ -30,7 +30,7 @@ export default function Experience({ params }: ExpParams) {
 
 
     return (
-        <div className="max-w-screen-lg flex flex-col min-h-[70vh] justify-center py-8">
+        <div className="max-w-screen-lg flex flex-col min-h-[70vh] mx-auto justify-center py-8">
             <header className="mb-4">
                 <h1 className="text-3xl">{title} | {role}</h1>
                 <small className="text-gray-400">De {start_period} à {end_period}</small>
