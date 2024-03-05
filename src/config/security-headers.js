@@ -44,6 +44,8 @@ const imgSrc = [
     "https://jeanmolossi.com.br/",
     "https://i.ytimg.com/",
     "https://*.s3.amazonaws.com/",
+    "https://media.dev.to/",
+    "https://*.easypanel.host",
     "data:",
 ]
 
