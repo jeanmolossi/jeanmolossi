@@ -14,4 +14,20 @@ export namespace Strapi {
             }
         }
     }
+
+    export interface File {
+        name: string;
+        alternativeText: string | null;
+        width: number;
+        heigth: number;
+        formats: {
+            thumbnail: {
+                name: string;
+                width: number;
+                heigth: number;
+                url: string;
+            }
+        };
+        url: string;
+    }
 }

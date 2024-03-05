@@ -1,13 +1,18 @@
-import { ListingArticle } from '@/domain/entities/dev.to/article';
-import { devToApi } from '@/data/api/dev.to';
+import { Api } from '@/config/constants';
 import logger from '@/config/logger/logger';
+import { strapi } from '@/data/api/strapi';
+import { ArticleResult } from '@/domain/entities/dev.to/article';
+import { Strapi } from '@/domain/entities/strapi';
+import { Article, Publisher } from '@/domain/entities/strapi/article';
+import { WithRel } from '@/domain/entities/strapi/playlist';
+import { format } from 'util';
 
 interface GetArticlesParams {
     page?: number;
     perPage?: number;
 }
 
-export async function getArticles({ page = 1, perPage = 10 }: GetArticlesParams = {}) {
+export async function getArticles({ page = 1, perPage = 10 }: GetArticlesParams = {}): Promise<ArticleResult[]> {
     const searchParams = new URLSearchParams()
 
     if (typeof page != 'number') {
@@ -17,13 +22,50 @@ export async function getArticles({ page = 1, perPage = 10 }: GetArticlesParams 
     searchParams.set('page', page.toString())
     searchParams.set('per_page', perPage.toString())
 
+    const limit = perPage;
+    const start = perPage * (page - 1);
+
     try {
-        const { data: articles } = await devToApi.get<ListingArticle[]>(
-            `/articles/me/published?${searchParams.toString()}`,
+        const { data: { data: articles, meta } } =
+            await strapi.get<Strapi.ListResponse<WithRel<Article, 'publisher', Publisher> & WithRel<Article, 'cover', Strapi.File>>>(
+            `/artigos`,
+            {
+                params: {
+                    pagination: {
+                        start,
+                        limit,
+                    },
+                    populate: 'cover'
+                }
+            }
         );
 
-        logger.info({ articles: articles.length }, 'articles fetched');
-        return articles || [];
+        logger.info({ articles: articles.length, ...meta }, 'articles fetched');
+
+        const listing: ArticleResult[] = articles.map(item => ({
+            title: item.attributes.title,
+            description: item.attributes.subtitle,
+            user: {
+                profile_image_90: `http://localhost:1337/uploads/foto_perfil_google_812f84b6b3.jpeg`,
+                github_username: 'jeanmolossi',
+                name: 'Jean Carlos Molossi',
+                profile_image: 'http://github.com/jeanmolossi.png',
+                twitter_username: '@JeanMolossi',
+                username: 'JeanMolossi',
+                website_url: Api().BASE_URL,
+            },
+            published_at: item.attributes.createdAt,
+            public_reactions_count: 0,
+            page_views_count: 0,
+            reading_time_minutes: 7,
+            slug: item.attributes.uid,
+            cover_image: format(
+                '%s%s',
+                Api().STRAPI_URL, item.attributes.cover.data.attributes.url
+            ),
+        }));
+
+        return listing || [];
     } catch (e) {
         const err = e as Error;
 

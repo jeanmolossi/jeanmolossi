@@ -37,3 +37,18 @@ export interface ListingArticle extends BaseArticle {
 }
 
 export interface Article extends BaseArticle {}
+
+export interface ArticleResult {
+    slug: string;
+    cover_image: string;
+    title: string;
+    user: {
+        profile_image_90: string;
+        name: string;
+    };
+    published_at: string;
+    reading_time_minutes: number;
+    public_reactions_count: number;
+    page_views_count: number;
+    description: string;
+}

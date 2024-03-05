@@ -1,10 +1,10 @@
-import Container from '@/app/components/_layout/container'
+import Container from '@/app/components/_layout/container';
 import { getArticles } from "@/data/dev.to";
-import { ListingArticle } from '@/domain/entities/dev.to/article';
-import styles from './blog.module.css';
-import Link from 'next/link';
+import { ArticleResult } from '@/domain/entities/dev.to/article';
 import Image from 'next/image';
+import Link from 'next/link';
 import { FiBookOpen, FiEye, FiHeart } from 'react-icons/fi';
+import styles from './blog.module.css';
 
 interface BlogProps {
     params?: {};
@@ -51,7 +51,7 @@ export default async function Blog({ searchParams }: BlogProps) {
 
             <div className={styles.articles_wrapper}>
                 {articles.map((article) =>
-                    <Article key={article.id} article={article} />)}
+                    <Article key={article.slug} article={article} />)}
             </div>
 
             <div
@@ -84,7 +84,7 @@ export default async function Blog({ searchParams }: BlogProps) {
 }
 
 interface ArticleProps {
-    article: ListingArticle;
+    article: ArticleResult;
 }
 
 function Article({ article }: ArticleProps) {
