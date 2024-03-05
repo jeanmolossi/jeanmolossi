@@ -9,7 +9,7 @@ export default function Layout({
     modal: React.ReactNode,
 }) {
     return (
-        <div className="app-layout-child mx-auto w-full bg-background pt-[4.5rem]">
+        <div className="app-layout-child mx-auto w-full max-w-screen-2xl bg-background pt-[4.5rem]">
             <Navigation />
 
             {children}

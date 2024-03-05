@@ -30,6 +30,9 @@ export const App = () => z.object({
 
 export const Api = () => z.object({
     BASE_URL: z.string().min(1).url(),
+    STRAPI_URL: z.string().min(1).url(),
+    STRAPI_AUTH_TOKEN: z.string().min(1),
+
     DEV_TO_BASE_URL: z.string().min(1).url(),
     DEV_TO_API_KEY: z.string().min(1),
 

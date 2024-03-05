@@ -1,15 +1,17 @@
-import { Suspense } from "react";
 import { Playlists, PlaylistsSkeleton } from "@/app/components/playlists/playlists";
+import { Suspense } from "react";
 
 interface PlaylistsPageProps {
     params?: {};
     searchParams?: {
         page?: string;
+        pageSize?: string;
     }
 }
 
 export default function PlaylistsPage({ searchParams }: PlaylistsPageProps) {
-    const page = searchParams?.page;
+    const page = searchParams?.page || '1';
+    const pageSize = searchParams?.pageSize || '10';
 
     return (
         <>
@@ -17,7 +19,7 @@ export default function PlaylistsPage({ searchParams }: PlaylistsPageProps) {
             <h2 className="text-xl">Aprenda com projetos práticos!</h2>
 
             <Suspense fallback={<PlaylistsSkeleton />}>
-                <Playlists page={page} />
+                <Playlists page={page} pageSize={pageSize} />
             </Suspense>
         </>
     )

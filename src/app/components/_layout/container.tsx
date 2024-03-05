@@ -8,7 +8,7 @@ export default function Container({
     ...rest
 }: ContainerProps) {
     return (
-        <section {...rest} className={['w-full max-w-7xl px-6 xl:p-0', className].join(' ')}>
+        <section {...rest} className={['w-full max-w-screen-2xl px-6 xl:p-0', className].join(' ')}>
             {children}
         </section>
     )

@@ -1,19 +1,20 @@
-import Link from "next/link";
-import { getPlaylists } from "@/data/youtube/playlists"
-import styles from './playlists.module.css';
+import { getPlaylists } from "@/data/youtube/playlists";
 import { Playlist } from "@/domain/entities/youtube/view";
 import Image from "next/image";
+import Link from "next/link";
 import { ImYoutube } from "react-icons/im";
+import styles from './playlists.module.css';
 
 interface PlaylistsProps {
     page?: string;
+    pageSize?: string;
 }
 
-export async function Playlists({ page }: PlaylistsProps) {
-    const playlists = await getPlaylists({ page })
+export async function Playlists({ page = '1', pageSize = '10' }: PlaylistsProps) {
+    const playlists = await getPlaylists({ page, pageSize })
 
-    const hasNextPage = !!playlists.nextPageToken;
-    const hasPrevPage = !!playlists.prevPageToken;
+    const hasNextPage = !!playlists.nextPageParams;
+    const hasPrevPage = !!playlists.prevPageParams;
 
     return (
         <div className="mt-6 grid grid-cols-1 gap-6">
@@ -29,18 +30,18 @@ export async function Playlists({ page }: PlaylistsProps) {
             </div>
 
             <div
-                aria-hidden={!(hasNextPage && hasPrevPage)}
+                aria-hidden={(!hasNextPage && !hasPrevPage)}
                 className={styles.divider}
             ></div>
 
             <div
-                aria-hidden={!(hasNextPage && hasPrevPage)}
+                aria-hidden={(!hasNextPage && !hasPrevPage)}
                 className={styles.pagination}
             >
                 <Link
                     aria-hidden={!hasPrevPage}
                     className={styles.page_link}
-                    href={`/playlists?page=${playlists.prevPageToken}`}
+                    href={`/playlists?${playlists.prevPageParams}`}
                 >
                     Página anterior
                 </Link>
@@ -48,7 +49,7 @@ export async function Playlists({ page }: PlaylistsProps) {
                 <Link
                     aria-hidden={!hasNextPage}
                     className={styles.page_link}
-                    href={`/playlists?page=${playlists.nextPageToken}`}
+                    href={`/playlists?${playlists.nextPageParams}`}
                 >
                     Próxima página
                 </Link>
@@ -62,7 +63,7 @@ interface PlaylistItemProps {
 }
 
 function PlaylistItem({ playlist }: PlaylistItemProps) {
-    const href = `/playlist/${playlist.id}`;
+    const href = `/playlist/${playlist.slug}`;
 
     return (
         <div key={playlist.id} className={styles.playlist_item}>
