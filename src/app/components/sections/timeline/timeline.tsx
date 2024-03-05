@@ -1,6 +1,7 @@
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/presentation/components/ui/card';
+import Link from 'next/link';
 import React, { HtmlHTMLAttributes } from 'react';
 import styles from './styles.module.css';
-import Link from 'next/link';
 
 interface TimelineProps extends HtmlHTMLAttributes<HTMLTableSectionElement> {
     header: string;
@@ -73,16 +74,24 @@ function Item({
             <div className={styles.timeline_circle}></div>
         </div>,
 
-        <div className={styles.timeline_content}>
-            <h3>{heading}</h3>
-            <small>{subheading}</small>
-            <p>{content}</p>
+        <Card className={styles.timeline_content}>
+            <CardHeader>
+                <CardTitle>{heading}</CardTitle>
+                <CardDescription>{subheading}</CardDescription>
+            </CardHeader>
+
+            <CardContent>
+                <p>{content}</p>
+            </CardContent>
+
             {href && (
-                <Link className='mt-4 text-sm' href={href}>
-                    Ver experiência completa
-                </Link>
+                <CardFooter>
+                    <Link className='mt-4 text-sm' href={href}>
+                        Ver experiência completa
+                    </Link>
+                </CardFooter>
             )}
-        </div>
+        </Card>
     ];
 
     if (!left)

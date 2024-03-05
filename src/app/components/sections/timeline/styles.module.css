@@ -33,29 +33,24 @@ section.wrapper {
 
 .timeline_content {
     @apply
-        bg-neutral-800
-        text-white
-        p-7
         transition-[400ms_ease]
-        break-words
         m-4
         mb-5
-        rounded-md
 }
 
-.timeline_content > small {
+.timeline_content small {
     @apply text-gray-400
 }
 
-.timeline_content > p {
+.timeline_content p {
     @apply text-gray-300 text-sm
 }
 
-.timeline_content > a {
+.timeline_content a {
     @apply text-sm mt-4 block text-end;
 }
 
-.timeline_content > p > b {
+.timeline_content p > b {
     @apply decoration-dotted underline text-cyan-600 font-semibold
 }
 
@@ -65,8 +60,8 @@ section.wrapper {
         w-1
         h-full
         bg-gradient-to-b
-        from-cyan-800
-        to-cyan-400
+        from-primary
+        to-secondary
 }
 
 .timeline_circle {
@@ -78,8 +73,8 @@ section.wrapper {
         h-4
         rounded-full
         bg-gradient-to-tr
-        from-cyan-400
-        to-cyan-800
+        from-secondary
+        to-primary
         -translate-x-1/2
         -translate-y-1/2
         max-md:hidden
