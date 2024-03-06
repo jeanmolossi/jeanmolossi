@@ -1,7 +1,7 @@
-import Container from "@/app/components/_layout/container";
 import { getPlaylistItems } from "@/data/youtube/playlist-items";
 import { YTPlaylistItems } from "@/domain/entities/youtube/request";
 import { cn } from "@/lib/helpers";
+import Container from "@/presentation/components/_layout/container";
 import { Button } from "@/presentation/components/ui/button";
 import { ArrowLeftCircle } from "lucide-react";
 import Image from "next/image";
@@ -9,7 +9,7 @@ import Link from "next/link";
 import React from "react";
 import styles from './playlist-item.module.css';
 
-const LazyMD = React.lazy(() => import('@/app/components/_layout/markdown'))
+const LazyMD = React.lazy(() => import('@/presentation/components/markdown'))
 
 interface PlaylistProps {
     params?: {

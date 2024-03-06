@@ -1,10 +1,9 @@
-import Image from "next/image";
-import Container from "@/app/components/_layout/container";
-import { getVideo } from "@/data/youtube/video";
-import React, { Suspense } from "react";
 import { VideoWrapper } from "@/app/components/video-wrapper";
+import { getVideo } from "@/data/youtube/video";
+import Container from "@/presentation/components/_layout/container";
+import React, { Suspense } from "react";
 
-const LazyMD = React.lazy(() => import('@/app/components/_layout/markdown'))
+const LazyMD = React.lazy(() => import('@/presentation/components/markdown'))
 
 interface VideoProps {
     params?: {

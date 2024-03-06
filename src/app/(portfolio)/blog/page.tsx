@@ -1,6 +1,6 @@
-import Container from '@/app/components/_layout/container';
 import { getArticles } from "@/data/dev.to";
 import { ArticleResult } from '@/domain/entities/dev.to/article';
+import Container from '@/presentation/components/_layout/container';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FiBookOpen, FiEye, FiHeart } from 'react-icons/fi';

@@ -8,7 +8,7 @@ import React, { Suspense } from "react";
 import { FiHeart, FiMessageCircle } from "react-icons/fi";
 import styles from './artigo.module.css';
 
-const LazyMd = React.lazy(() => import('@/app/components/_layout/markdown'))
+const LazyMd = React.lazy(() => import('@/presentation/components/markdown'))
 
 interface ArticleProps {
     params?: {

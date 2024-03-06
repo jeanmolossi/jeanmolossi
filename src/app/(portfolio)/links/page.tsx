@@ -1,5 +1,5 @@
-import Container from "@/app/components/_layout/container";
 import { social } from "@/config/constants";
+import Container from "@/presentation/components/_layout/container";
 import { SwapComponents } from "@/presentation/helpers";
 import { getContrast } from "@/presentation/helpers/contrast-calc";
 import { socialColors } from "@/presentation/styles";
