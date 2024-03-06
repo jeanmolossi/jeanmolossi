@@ -29,9 +29,10 @@ div.markdown_wrapper > pre > code {
 
 div.markdown_wrapper > p > code {
     @apply
-        bg-[#222]
+        bg-accent-foreground
+        text-accent
         rounded
-        p-2
+        p-1
         overflow-x-hidden
 }
 
