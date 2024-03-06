@@ -51,6 +51,8 @@ const imgSrc = [
     "https://*.easypanel.host",
     "http://localhost:1337",
     "data:",
+
+    "https://*.googletagmanager.com/"
 ]
 
 const ContentSecurityPolicy = `
