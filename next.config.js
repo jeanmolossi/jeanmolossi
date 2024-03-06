@@ -15,8 +15,8 @@ const nextConfig = {
     },
 
     images: {
-        loader: !isProd ? 'custom' : undefined,
-        loaderFile: !isProd ? './src/lib/local-strapi-loader.js' : undefined,
+        loader: 'custom',
+        loaderFile: !isProd ? './src/lib/local-strapi-loader.js' : './src/lib/prod-strapi-loader.js',
 
         remotePatterns: [
             {
