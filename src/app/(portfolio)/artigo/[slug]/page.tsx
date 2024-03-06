@@ -1,12 +1,11 @@
 import { SocialLinks } from "@/app/components/social-links";
 import { App } from "@/config/constants";
 import { getArticleBySlug } from "@/data/strapi";
-import { Article } from "@/domain/article";
 import Container from "@/presentation/components/_layout/container";
 import AspectRatioCover from "@/presentation/components/global/aspect-ratio-cover";
-import Image from "next/image";
+import AuthorPic from "@/presentation/components/global/author-pic";
+import Link from "next/link";
 import React, { Suspense } from "react";
-import { FiHeart, FiMessageCircle } from "react-icons/fi";
 import styles from './artigo.module.css';
 
 const LazyMd = React.lazy(() => import('@/presentation/components/markdown'))
@@ -23,9 +22,10 @@ export default async function Article({ params }: ArticleProps) {
     const article = await getArticleBySlug(slug)
     const {
         title,
+        subtitle,
         readingTimeMinutes = 0,
         cover,
-        taglist,
+        tags: taglist,
         publishedAt,
         author,
         content,
@@ -37,8 +37,6 @@ export default async function Article({ params }: ArticleProps) {
     return (
         <Container className="my-6 max-w-5xl mx-auto">
             <article className={styles.article}>
-                <h1 className="text-3xl">{title}</h1>
-
                 <AspectRatioCover
                     alt={`Capa do artigo ${title}`}
                     src={{
@@ -49,54 +47,33 @@ export default async function Article({ params }: ArticleProps) {
                     prority
                 />
 
-                <div className={styles.metadata}>
-                    <Reactions article={article} />
-                    <TagList taglist={taglist.join(', ')} />
-                    <span>Publicado { publishedAt.toRelativeTime() }</span>
-                    <span>Tempo de leitura: Aprox. { readingTime } </span>
-                </div>
+                <h1 className="text-3xl font-bold leading-10">{title}</h1>
+                <h2 className="text-xl">{subtitle}</h2>
 
-                <div className={styles.author}>
-                    <div className={styles.author_photo}>
-                        <Image
-                            alt={`Imagem do author do artigo`}
-                            style={{ objectFit: "cover" }}
-                            src={{
-                                src: author.profileImg,
-                                width: 100,
-                                height: 100,
-                            }}
-                            fill
-                            sizes="(max-width: 768px) 100px"
-                        />
+                <div className={styles.metadata}>
+                    <div className="text-muted-foreground">
+                        <small>Publicado { publishedAt.toRelativeTime() }</small>
+                        <small> &#8226; </small>
+                        <small>~{ readingTime } min. de leitura </small>
+
+                        <TagList taglist={taglist.join(', ')} />
                     </div>
 
-                    <div className={styles.author_infos}>
-                        <span>{author.name}</span>
-                        <SocialLinks />
+                    <div className={styles.author}>
+                        <AuthorPic src={author.profileImg} className="w-20" />
+
+                        <div className={styles.author_infos}>
+                            <Link href={`/links`}>{author.name}</Link>
+                            <SocialLinks />
+                        </div>
                     </div>
                 </div>
 
                 <Suspense fallback="Carregando...">
                     <LazyMd>{content}</LazyMd>
                 </Suspense>
-
-                <Reactions article={article} />
             </article>
         </Container>
-    )
-}
-
-interface WithArticle {
-    article: Article
-}
-
-function Reactions({ article }: WithArticle) {
-    return (
-        <div className={styles.reactions}>
-            <span><FiHeart /> { article.reactionsCount.compress() }</span>
-            <span><FiMessageCircle /> { article.reactionsCount.compress() }</span>
-        </div>
     )
 }
 
@@ -110,6 +87,7 @@ function TagList({ taglist = '' }: TagListProps) {
             href={`${App().NEXT_PUBLIC_DEV_TO_BASE_URL}/t/${tag}`}
             key={tag}
             target="_blank"
+            rel="noopener noreferer"
         >
             #{tag}
         </a>

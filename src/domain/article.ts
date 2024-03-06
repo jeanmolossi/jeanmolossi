@@ -10,8 +10,9 @@ export interface PartialArticle {
 export interface Article {
     cover: string;
     title: string;
+    subtitle: string;
     content: string;
-    taglist: string[];
+    tags: string[];
     author: {
         name: string;
         profileImg: string;
@@ -19,6 +20,4 @@ export interface Article {
     };
     readingTimeMinutes: number;
     publishedAt: string;
-    reactionsCount: number;
-    views: number;
 }

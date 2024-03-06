@@ -14,7 +14,7 @@ interface GetArticlesParams {
 }
 
 type ArticlesWithRelations = WithRel<Article, 'cover', Strapi.File>
-export type ArticlesResponse = Strapi.ListResponse<ArticlesWithRelations>;
+type ArticlesResponse = Strapi.ListResponse<ArticlesWithRelations>;
 
 export async function getArticles({ page = 1, pageSize: limit = 10, search }: GetArticlesParams = {}): Promise<CollectionResult<PartialArticle>> {
     try {

@@ -1,10 +1,14 @@
 import { strapi } from "@/data/api/strapi";
 import { notify } from "@/data/telegram/notify";
 import { Article } from "@/domain/article";
+import { Strapi } from "@/domain/entities/strapi";
+import { Author } from "@/domain/entities/strapi/article";
+import { WithRel } from "@/domain/entities/strapi/playlist";
 import { notFound } from "next/navigation";
-import { ArticlesResponse } from "./get-articles";
 
-export type FilteredArticlesRespose = ArticlesResponse;
+type AuthorWithRel = WithRel<Author, 'avatar', Strapi.File>
+type ArticlesWithRelations = WithRel<Article, 'cover', Strapi.File> & WithRel<Article, 'author', AuthorWithRel>
+type FilteredArticlesRespose = Strapi.ListResponse<ArticlesWithRelations>;
 
 export async function getArticleBySlug(slug: string): Promise<Article> {
     try {
@@ -30,6 +34,7 @@ export async function getArticleBySlug(slug: string): Promise<Article> {
 
         return {
             title: article.title,
+            subtitle: article.subtitle || '',
             content: article.content,
             author: {
                 name: author.name,
@@ -42,11 +47,9 @@ export async function getArticleBySlug(slug: string): Promise<Article> {
                 || coverSize.small.url
                 || coverSize.thumbnail.url
                 || article.cover.data.attributes.url,
-            reactionsCount: article.reactions || 0,
             readingTimeMinutes: article.readingTimeMinutes || 5,
             publishedAt: article.publishedAt,
-            taglist: article.tags || [],
-            views: article.reactions || 0
+            tags: article.tags || [],
         }
     } catch (error) {
         notify({ method: 'getArticleBySlug', message: `failed to fetch article ${slug}`, error: error as any })
