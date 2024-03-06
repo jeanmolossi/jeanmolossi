@@ -1,5 +1,5 @@
-import { getArticles } from "@/data/dev.to";
-import { ArticleResult } from '@/domain/entities/dev.to/article';
+import { getArticles } from "@/data/strapi";
+import { PartialArticle } from "@/domain/article";
 import Container from '@/presentation/components/_layout/container';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -10,39 +10,32 @@ interface BlogProps {
     params?: {};
     searchParams?: {
         page?: string;
-        per_page?: string;
+        pageSize?: string;
     }
 }
 
 export default async function Blog({ searchParams }: BlogProps) {
-    let page: number | undefined = Number(searchParams?.page);
-    let perPage: number | undefined = Number(searchParams?.per_page);
+    const page = +(searchParams?.page || 0)
+        ? +(searchParams?.page || 1)
+        : undefined;
 
-    if (isNaN(page))
-        page = undefined;
+    const pageSize = +(searchParams?.pageSize || 0)
+        ? +(searchParams?.pageSize || 10)
+        : undefined;
 
-    if (isNaN(perPage))
-        perPage = undefined;
-
-    const articles = await getArticles({ page, perPage })
+    const { data: articles, pagination } = await getArticles({
+        page,
+        pageSize,
+    })
 
     const showingText = articles.length <= 1
         ? `Mostrando ${articles.length} artigo`
         : `Mostrando ${articles.length} artigos`
 
-    const hasNextPage = !perPage || articles.length >= perPage;
-    const hasPrevPage = !!page && page > 1
+    const { nextPageParams, prevPageParams } = pagination;
 
-    const prevParams = new URLSearchParams(searchParams)
-    if (hasPrevPage)
-        prevParams.set('page', ((page || 2)-1).toString())
-
-    const nextParams = new URLSearchParams(searchParams)
-    if (hasNextPage)
-        nextParams.set('page', ((page || 1)+1).toString())
-
-    if (!perPage)
-        nextParams.set('per_page', '10')
+    const hasNextPage = !!nextPageParams
+    const hasPrevPage = !!prevPageParams
 
     return (
         <Container className='my-6'>
@@ -65,7 +58,7 @@ export default async function Blog({ searchParams }: BlogProps) {
             >
                 <Link
                     aria-hidden={!hasPrevPage}
-                    href={`/blog?${prevParams.toString()}`}
+                    href={`/blog?${prevPageParams}`}
                     className={styles.page_link}
                 >
                     Página anterior
@@ -73,7 +66,7 @@ export default async function Blog({ searchParams }: BlogProps) {
 
                 <Link
                     aria-hidden={!hasNextPage}
-                    href={`/blog?${nextParams.toString()}`}
+                    href={`/blog?${nextPageParams}`}
                     className={styles.page_link}
                 >
                     Próxima página
@@ -84,7 +77,7 @@ export default async function Blog({ searchParams }: BlogProps) {
 }
 
 interface ArticleProps {
-    article: ArticleResult;
+    article: PartialArticle;
 }
 
 function Article({ article }: ArticleProps) {
@@ -95,13 +88,13 @@ function Article({ article }: ArticleProps) {
             <Link
                 className={styles.article_cover}
                 href={href}
-                aria-hidden={!article.cover_image}
+                aria-hidden={!article.cover}
             >
                 <Image
                     loading='lazy'
                     className='object-cover'
                     src={{
-                        src: article.cover_image,
+                        src: article.cover,
                         width: 1280,
                         height: 720
                     }}
@@ -119,7 +112,7 @@ function Article({ article }: ArticleProps) {
                     <div className='relative rounded-full overflow-hidden aspect-square w-12'>
                         <Image
                             src={{
-                                src: article.user.profile_image_90,
+                                src: article.author.profileImg,
                                 width: 90,
                                 height: 90
                             }}
@@ -129,19 +122,19 @@ function Article({ article }: ArticleProps) {
 
                     {/* AUTHOR INFO */}
                     <div className={styles.article_author}>
-                        <span>{article.user.name}</span>
-                        <small>Publicado {article.published_at.toRelativeTime()}</small>
-                        <span>Aprox. {article.reading_time_minutes} minutos de leitura</span>
+                        <span>{article.author.name}</span>
+                        <small>Publicado {article.publishedAt.toRelativeTime()}</small>
+                        <span>Aprox. {article.readingTimeMinutes} minutos de leitura</span>
                     </div>
 
                     {/* REACTIONS */}
                     <div className={styles.article_reactions}>
-                        <span title={`${article.public_reactions_count.compress()} curtidas`}>
-                            <FiHeart /> {article.public_reactions_count.compress()}
+                        <span title={`${article.reactionsCount.compress()} curtidas`}>
+                            <FiHeart /> {article.reactionsCount.compress()}
                         </span>
 
-                        <span title={`${article.page_views_count.compress()} visualizações pelo dev.to`}>
-                            <FiEye /> {article.page_views_count.compress()}
+                        <span title={`${article.views.compress()} visualizações pelo dev.to`}>
+                            <FiEye /> {article.views.compress()}
                         </span>
                     </div>
                 </div>
@@ -150,7 +143,7 @@ function Article({ article }: ArticleProps) {
                     href={href}
                     className='text-white hover:text-cyan-500 flex-1 shrink-0'
                 >
-                    {article.description}
+                    {article.excerpt}
                 </Link>
 
                 <Link href={href} className='flex items-center self-end gap-2 text-cyan-500 hover:underline underline-offset-2'>

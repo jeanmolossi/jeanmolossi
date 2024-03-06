@@ -3,7 +3,7 @@ import logger from '@/config/logger/logger';
 import { strapi } from '@/data/api/strapi';
 import { Article as DevArticle, TypeofArticle } from '@/domain/entities/dev.to/article';
 import { Strapi } from '@/domain/entities/strapi';
-import { Article, Publisher } from '@/domain/entities/strapi/article';
+import { Article, Author } from '@/domain/entities/strapi/article';
 import { WithRel } from '@/domain/entities/strapi/playlist';
 import { AxiosError } from 'axios';
 import { format } from 'util';
@@ -13,7 +13,7 @@ export async function getArticleBySlug(slug: string): Promise<DevArticle> {
 
     try {
         const { data: { data: articles, meta } } =
-            await strapi.get<Strapi.ListResponse<WithRel<Article, 'publisher', Publisher> & WithRel<Article, 'cover', Strapi.File>>>(
+            await strapi.get<Strapi.ListResponse<WithRel<Article, 'publisher', Author> & WithRel<Article, 'cover', Strapi.File>>>(
             `/artigos`,
             {
                 params: {

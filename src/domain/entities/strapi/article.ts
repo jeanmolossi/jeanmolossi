@@ -4,6 +4,7 @@ export interface Article {
     content: string;
     createdAt: string;
     updatedAt: string;
+    publishedAt: string;
     uid: string;
     cover?: string;
     readingTimeMinutes?: number;
@@ -11,7 +12,9 @@ export interface Article {
     tags?: string[];
 }
 
-export interface Publisher {
-    fistname: string;
-    lastname: string;
+export interface Author {
+    name: string;
+    bio: string | null;
+    canonicalUrl: string;
+    updatedAt: string;
 }
