@@ -3,7 +3,7 @@ import { strapi } from "@/data/api/strapi";
 import { notify } from "@/data/telegram/notify";
 import { PartialArticle } from "@/domain/article";
 import { Strapi } from "@/domain/entities/strapi";
-import { Article, Author } from "@/domain/entities/strapi/article";
+import { Article } from "@/domain/entities/strapi/article";
 import { WithRel } from "@/domain/entities/strapi/playlist";
 import { CollectionResult } from "../types";
 
@@ -13,19 +13,8 @@ interface GetArticlesParams {
     search?: string;
 }
 
-type AuthorRel = WithRel<Author, 'avatar', Strapi.File>;
-type ArticlesWithRelations = WithRel<Article, 'author', AuthorRel> & WithRel<Article, 'cover', Strapi.File>
+type ArticlesWithRelations = WithRel<Article, 'cover', Strapi.File>
 export type ArticlesResponse = Strapi.ListResponse<ArticlesWithRelations>;
-
-const filterConfig = (pagination: any) => {
-    return {
-        pagination,
-        populate: {
-            cover: '*',
-            author: { populate: ['avatar'] }
-        }
-    }
-}
 
 export async function getArticles({ page = 1, pageSize: limit = 10, search }: GetArticlesParams = {}): Promise<CollectionResult<PartialArticle>> {
     try {
@@ -35,10 +24,13 @@ export async function getArticles({ page = 1, pageSize: limit = 10, search }: Ge
             await strapi.get<ArticlesResponse>(
             `/artigos`,
             {
-                params: filterConfig({
-                    start,
-                    limit,
-                })
+                params: {
+                    pagination: {
+                        start,
+                        limit,
+                    },
+                    populate: 'cover'
+                }
             }
         );
 
@@ -47,18 +39,11 @@ export async function getArticles({ page = 1, pageSize: limit = 10, search }: Ge
         const listing: PartialArticle[] = articles.map(item => ({
             title: item.attributes.title,
             slug: item.attributes.uid,
-            author: {
-                name: item.attributes.author.data.attributes.name,
-                profileImg: item.attributes.author.data.attributes.avatar.data.attributes.formats.thumbnail.url,
-                slug: item.attributes.author.data.attributes.canonicalUrl,
-            },
             cover: item.attributes.cover.data.attributes.formats.small.url
                 || item.attributes.cover.data.attributes.url,
             excerpt: item.attributes.subtitle?.trimAfter(120) || item.attributes.content.trimAfter(120),
             publishedAt: item.attributes.publishedAt,
-            reactionsCount: item.attributes.reactions || 0,
             readingTimeMinutes: item.attributes.readingTimeMinutes || 5,
-            views: item.attributes.reactions || 0,
         }));
 
         const hasPrevPage = page > 1;
