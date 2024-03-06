@@ -3,6 +3,7 @@ import { App } from "@/config/constants";
 import { getArticleBySlug } from "@/data/strapi";
 import { Article } from "@/domain/article";
 import Container from "@/presentation/components/_layout/container";
+import AspectRatioCover from "@/presentation/components/global/aspect-ratio-cover";
 import Image from "next/image";
 import React, { Suspense } from "react";
 import { FiHeart, FiMessageCircle } from "react-icons/fi";
@@ -38,19 +39,15 @@ export default async function Article({ params }: ArticleProps) {
             <article className={styles.article}>
                 <h1 className="text-3xl">{title}</h1>
 
-                <div className={styles.cover}>
-                    <Image
-                        alt={`Capa do artigo ${title}`}
-                        className="object-cover"
-                        src={{
-                            src: cover,
-                            width: 1280,
-                            height: 720,
-                        }}
-                        fill
-                        priority={true}
-                    />
-                </div>
+                <AspectRatioCover
+                    alt={`Capa do artigo ${title}`}
+                    src={{
+                        src: cover,
+                        width: 1280,
+                        height: 720,
+                    }}
+                    prority
+                />
 
                 <div className={styles.metadata}>
                     <Reactions article={article} />

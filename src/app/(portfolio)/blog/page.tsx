@@ -1,9 +1,11 @@
 import { getArticles } from "@/data/strapi";
 import { PartialArticle } from "@/domain/article";
 import Container from '@/presentation/components/_layout/container';
-import Image from 'next/image';
+import AspectRatioCover from "@/presentation/components/global/aspect-ratio-cover";
+import PageHeading from "@/presentation/components/global/page-heading";
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/presentation/components/ui/card";
+import { Link2 } from "lucide-react";
 import Link from 'next/link';
-import { FiBookOpen, FiEye, FiHeart } from 'react-icons/fi';
 import styles from './blog.module.css';
 
 interface BlogProps {
@@ -39,8 +41,7 @@ export default async function Blog({ searchParams }: BlogProps) {
 
     return (
         <Container className='my-6'>
-            <h1 className="text-3xl">Blog</h1>
-            <h2 className='text-lg font-medium text-gray-500'>{showingText}</h2>
+            <PageHeading subheading={showingText}>Blog</PageHeading>
 
             <div className={styles.articles_wrapper}>
                 {articles.map((article) =>
@@ -84,73 +85,56 @@ function Article({ article }: ArticleProps) {
     const href = `/artigo/${article.slug}`;
 
     return (
-        <article className={styles.article}>
-            <Link
-                className={styles.article_cover}
-                href={href}
-                aria-hidden={!article.cover}
-            >
-                <Image
-                    loading='lazy'
-                    className='object-cover'
-                    src={{
-                        src: article.cover,
-                        width: 1280,
-                        height: 720
-                    }}
-                    alt={`Capa do artigo ${article.title}`}
-                    fill
-                />
-            </Link>
+        <Card>
+            <CardHeader>
+                <Link
+                    className="data-[hidden='true']:hidden border-2 border-transparent hover:border-primary transition-all rounded-md"
+                    href={href}
+                    aria-hidden={!article.cover}
+                    data-hidden={!article.cover}
+                >
+                    <AspectRatioCover
+                        loading='lazy'
+                        src={{
+                            src: article.cover,
+                            width: 1280,
+                            height: 720
+                        }}
+                        alt={`Capa do artigo ${article.title}`}
+                        wrapperClassName="rounded overflow-hidden"
+                    />
+                </Link>
 
-            <div className={styles.article_content}>
-                <h1 className='text-xl'>{article.title}</h1>
+                <CardTitle className="leading-8">
+                    <Link href={href}>
+                        {article.title}
+                    </Link>
+                </CardTitle>
+            </CardHeader>
 
-                {/* DETAILS */}
-                <div className={styles.article_details}>
-                    {/* FOTO */}
-                    <div className='relative rounded-full overflow-hidden aspect-square w-12'>
-                        <Image
-                            src={{
-                                src: article.author.profileImg,
-                                width: 90,
-                                height: 90
-                            }}
-                            alt={`Foto de perfil do autor`}
-                        />
-                    </div>
-
-                    {/* AUTHOR INFO */}
-                    <div className={styles.article_author}>
-                        <span>{article.author.name}</span>
-                        <small>Publicado {article.publishedAt.toRelativeTime()}</small>
-                        <span>Aprox. {article.readingTimeMinutes} minutos de leitura</span>
-                    </div>
-
-                    {/* REACTIONS */}
-                    <div className={styles.article_reactions}>
-                        <span title={`${article.reactionsCount.compress()} curtidas`}>
-                            <FiHeart /> {article.reactionsCount.compress()}
-                        </span>
-
-                        <span title={`${article.views.compress()} visualizações pelo dev.to`}>
-                            <FiEye /> {article.views.compress()}
-                        </span>
-                    </div>
-                </div>
-
+            <CardContent className="space-y-4">
                 <Link
                     href={href}
-                    className='text-white hover:text-cyan-500 flex-1 shrink-0'
+                    className='hover:text-cyan-500 flex-1 shrink-0'
                 >
                     {article.excerpt}
                 </Link>
 
-                <Link href={href} className='flex items-center self-end gap-2 text-cyan-500 hover:underline underline-offset-2'>
-                    <FiBookOpen />
+                <p className="text-muted-foreground">
+                    <small>{article.publishedAt.toRelativeTime()}</small>
+                    <small> &#8226; </small>
+                    <small>{article.readingTimeMinutes} min. leitura</small>
+                </p>
+            </CardContent>
+
+            <CardFooter className="justify-end">
+                <Link
+                    href={href}
+                    className='flex items-center self-end gap-2 text-cyan-500 hover:underline underline-offset-2'>
+                    <Link2 />
                     Veja o artigo completo
                 </Link>
-            </div>
-        </article>
+            </CardFooter>
+        </Card>
     )
 }
