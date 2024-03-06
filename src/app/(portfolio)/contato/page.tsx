@@ -1,5 +1,5 @@
-import Container from "@/app/components/_layout/container";
 import kumala from '@/presentation/assets/images/kumala-la-kumala.gif';
+import Container from "@/presentation/components/_layout/container";
 import Image from "next/image";
 import Link from "next/link";
 

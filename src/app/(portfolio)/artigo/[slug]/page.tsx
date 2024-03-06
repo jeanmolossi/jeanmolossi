@@ -1,11 +1,12 @@
-import Image from "next/image";
-import Container from "@/app/components/_layout/container";
-import { getArticleBySlug } from "@/data/dev.to";
-import styles from './artigo.module.css';
-import React, { Suspense } from "react";
-import { Article } from "@/domain/entities/dev.to/article";
-import { FiHeart, FiMessageCircle } from "react-icons/fi";
 import { SocialLinks } from "@/app/components/social-links";
+import { App } from "@/config/constants";
+import { getArticleBySlug } from "@/data/dev.to";
+import { Article } from "@/domain/entities/dev.to/article";
+import Container from "@/presentation/components/_layout/container";
+import Image from "next/image";
+import React, { Suspense } from "react";
+import { FiHeart, FiMessageCircle } from "react-icons/fi";
+import styles from './artigo.module.css';
 
 const LazyMd = React.lazy(() => import('@/app/components/_layout/markdown'))
 
@@ -109,7 +110,7 @@ interface TagListProps {
 function TagList({ taglist = '' }: TagListProps) {
     const tags = taglist.split(', ').filter(Boolean).map((tag) => (
         <a
-            href={`${process.env.NEXT_PUBLIC_DEV_TO_BASE_URL}/t/${tag}`}
+            href={`${App().NEXT_PUBLIC_DEV_TO_BASE_URL}/t/${tag}`}
             key={tag}
             target="_blank"
         >
