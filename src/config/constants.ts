@@ -38,5 +38,11 @@ export const Api = () => z.object({
 
     YOUTUBE_V3_API: z.string().min(1).url(),
     YOUTUBE_API_KEY: z.string().min(1),
-    YOUTUBE_CHAN_ID: z.string().min(1)
+    YOUTUBE_CHAN_ID: z.string().min(1),
+
+    TELEGRAM_BOT_TOKEN: z.string().refine(
+        (v) => /[0-9]{9,10}:[a-zA-Z_0-9]{34}/.test(v),
+        { message: 'TELEGRAM_BOT_TOKEN invalid' }
+    ),
+    TELEGRAM_MY_ID: z.string().length(9)
 }).parse(process.env)

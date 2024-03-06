@@ -1,5 +1,6 @@
 import logger from "@/config/logger/logger";
 import { strapi } from "@/data/api/strapi";
+import { notify } from "@/data/telegram/notify";
 import { PartialArticle } from "@/domain/article";
 import { Strapi } from "@/domain/entities/strapi";
 import { Article, Author } from "@/domain/entities/strapi/article";
@@ -53,7 +54,7 @@ export async function getArticles({ page = 1, pageSize: limit = 10, search }: Ge
             },
             cover: item.attributes.cover.data.attributes.formats.small.url
                 || item.attributes.cover.data.attributes.url,
-            excerpt: item.attributes.subtitle.trimAfter(120),
+            excerpt: item.attributes.subtitle?.trimAfter(120) || item.attributes.content.trimAfter(120),
             publishedAt: item.attributes.publishedAt,
             reactionsCount: item.attributes.reactions || 0,
             readingTimeMinutes: item.attributes.readingTimeMinutes || 5,
@@ -80,6 +81,7 @@ export async function getArticles({ page = 1, pageSize: limit = 10, search }: Ge
         const err = e as Error;
 
         logger.error(err, 'failed to fetch articles');
+        notify({ method: 'getArticles', message: 'failed to fetch articles', error: err })
 
         return {
             data: [],

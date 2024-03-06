@@ -1,4 +1,5 @@
 import { strapi } from "@/data/api/strapi";
+import { notify } from "@/data/telegram/notify";
 import { Article } from "@/domain/article";
 import { notFound } from "next/navigation";
 import { ArticlesResponse } from "./get-articles";
@@ -48,6 +49,7 @@ export async function getArticleBySlug(slug: string): Promise<Article> {
             views: article.reactions || 0
         }
     } catch (error) {
+        notify({ method: 'getArticleBySlug', message: `failed to fetch article ${slug}`, error: error as any })
         return notFound();
     }
 }

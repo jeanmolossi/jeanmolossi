@@ -1,6 +1,6 @@
 export interface Article {
     title: string;
-    subtitle: string;
+    subtitle?: string;
     content: string;
     createdAt: string;
     updatedAt: string;
