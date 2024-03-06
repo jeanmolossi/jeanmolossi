@@ -1,7 +1,7 @@
 import { SocialLinks } from "@/app/components/social-links";
 import { App } from "@/config/constants";
-import { getArticleBySlug } from "@/data/dev.to";
-import { Article } from "@/domain/entities/dev.to/article";
+import { getArticleBySlug } from "@/data/strapi";
+import { Article } from "@/domain/article";
 import Container from "@/presentation/components/_layout/container";
 import Image from "next/image";
 import React, { Suspense } from "react";
@@ -22,16 +22,16 @@ export default async function Article({ params }: ArticleProps) {
     const article = await getArticleBySlug(slug)
     const {
         title,
-        reading_time_minutes,
-        cover_image,
-        tag_list,
-        published_at,
-        user,
-        body_markdown,
+        readingTimeMinutes = 0,
+        cover,
+        taglist,
+        publishedAt,
+        author,
+        content,
     } = article;
 
-    const min = reading_time_minutes <= 1 ? 'minuto' : 'minutos';
-    const readingTime = `${reading_time_minutes} ${min}`
+    const min = readingTimeMinutes <= 1 ? 'minuto' : 'minutos';
+    const readingTime = `${readingTimeMinutes} ${min}`
 
     return (
         <Container className="my-6 max-w-5xl mx-auto">
@@ -43,7 +43,7 @@ export default async function Article({ params }: ArticleProps) {
                         alt={`Capa do artigo ${title}`}
                         className="object-cover"
                         src={{
-                            src: cover_image,
+                            src: cover,
                             width: 1280,
                             height: 720,
                         }}
@@ -54,8 +54,8 @@ export default async function Article({ params }: ArticleProps) {
 
                 <div className={styles.metadata}>
                     <Reactions article={article} />
-                    <TagList taglist={tag_list} />
-                    <span>Publicado { published_at.toRelativeTime() }</span>
+                    <TagList taglist={taglist.join(', ')} />
+                    <span>Publicado { publishedAt.toRelativeTime() }</span>
                     <span>Tempo de leitura: Aprox. { readingTime } </span>
                 </div>
 
@@ -65,7 +65,7 @@ export default async function Article({ params }: ArticleProps) {
                             alt={`Imagem do author do artigo`}
                             style={{ objectFit: "cover" }}
                             src={{
-                                src: user.profile_image_90,
+                                src: author.profileImg,
                                 width: 100,
                                 height: 100,
                             }}
@@ -75,13 +75,13 @@ export default async function Article({ params }: ArticleProps) {
                     </div>
 
                     <div className={styles.author_infos}>
-                        <span>{user.name}</span>
+                        <span>{author.name}</span>
                         <SocialLinks />
                     </div>
                 </div>
 
                 <Suspense fallback="Carregando...">
-                    <LazyMd>{body_markdown}</LazyMd>
+                    <LazyMd>{content}</LazyMd>
                 </Suspense>
 
                 <Reactions article={article} />
@@ -97,8 +97,8 @@ interface WithArticle {
 function Reactions({ article }: WithArticle) {
     return (
         <div className={styles.reactions}>
-            <span><FiHeart /> { article.public_reactions_count.compress() }</span>
-            <span><FiMessageCircle /> { article.comments_count.compress() }</span>
+            <span><FiHeart /> { article.reactionsCount.compress() }</span>
+            <span><FiMessageCircle /> { article.reactionsCount.compress() }</span>
         </div>
     )
 }

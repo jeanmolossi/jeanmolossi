@@ -14,7 +14,7 @@ interface GetArticlesParams {
 
 type AuthorRel = WithRel<Author, 'avatar', Strapi.File>;
 type ArticlesWithRelations = WithRel<Article, 'author', AuthorRel> & WithRel<Article, 'cover', Strapi.File>
-type ArticlesResponse = Strapi.ListResponse<ArticlesWithRelations>;
+export type ArticlesResponse = Strapi.ListResponse<ArticlesWithRelations>;
 
 const filterConfig = (pagination: any) => {
     return {

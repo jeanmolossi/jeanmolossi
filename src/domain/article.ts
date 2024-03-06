@@ -14,4 +14,18 @@ export interface PartialArticle {
     views: number;
 }
 
-export interface Article {}
+export interface Article {
+    cover: string;
+    title: string;
+    content: string;
+    taglist: string[];
+    author: {
+        name: string;
+        profileImg: string;
+        slug: string;
+    };
+    readingTimeMinutes: number;
+    publishedAt: string;
+    reactionsCount: number;
+    views: number;
+}
