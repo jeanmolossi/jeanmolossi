@@ -30,7 +30,6 @@ export async function generateMetadata(
     { params }: PlaylistProps,
     _parent: ResolvedMetadata
 ): Promise<Metadata> {
-    console.log('generateMeta')
     const playlistId = params?.playlistId!
     const playlist = await getPlaylist(playlistId);
 

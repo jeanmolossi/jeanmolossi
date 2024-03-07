@@ -47,7 +47,6 @@ export async function generateMetadata(
     { params }: VideoProps,
     _parent: ResolvedMetadata
 ): Promise<Metadata> {
-    console.log('generateMeta')
     const video = await getVideo(params?.videoId!);
 
     let title = video.title;
