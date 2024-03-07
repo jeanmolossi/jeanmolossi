@@ -1,5 +1,5 @@
-import { getPlaylistItems } from "@/data/youtube/playlist-items";
-import { YTPlaylistItems } from "@/domain/entities/youtube/request";
+import { getPlaylistVideos } from "@/data/strapi";
+import { PartialVideo } from "@/domain/playlist";
 import { cn } from "@/lib/helpers";
 import Container from "@/presentation/components/_layout/container";
 import AspectRatioCover from "@/presentation/components/global/aspect-ratio-cover";
@@ -20,22 +20,33 @@ interface PlaylistProps {
     searchParams?: {
         page?: string;
         pageSize?: string;
+        search?: string;
     }
 }
 
 export default async function Playlist({ params, searchParams }: PlaylistProps) {
+    const {
+        page: qsPage = '1',
+        pageSize: qsPageSize = '10',
+        search
+    } = searchParams || {}
+
     const playlistId = params?.playlistId
-    const page = searchParams?.page || '1'
-    const pageSize = searchParams?.pageSize || '10'
 
     if (!playlistId) {
         return <Container>Nada encontrado</Container>
     }
 
-    const playlistVideos = await getPlaylistItems({ playlistId, page, pageSize })
-    const { items, nextPageParams, prevPageParams } = playlistVideos
+    const { data: playlistVideos, pagination } = await getPlaylistVideos({
+        canonicalUrl: playlistId,
+        page: +qsPage,
+        pageSize: +qsPageSize,
+        search,
+    })
 
-    const emptyVideos = items.length === 0;
+    const { nextPageParams, prevPageParams } = pagination
+
+    const emptyVideos = playlistVideos.length === 0;
 
     const hasPrevPage = !!prevPageParams
     const hasNextPage = !!nextPageParams
@@ -67,7 +78,7 @@ export default async function Playlist({ params, searchParams }: PlaylistProps) 
 
 
             <div className={styles.items_wrapper}>
-                {items.map(item => <Video key={item.id} video={item} />)}
+                {playlistVideos.map(item => <Video key={item.slug} video={item} />)}
             </div>
 
             <div className={styles.divider}></div>
@@ -97,12 +108,11 @@ export default async function Playlist({ params, searchParams }: PlaylistProps) 
 }
 
 interface VideoProps {
-    video: YTPlaylistItems.Item
+    video: PartialVideo
 }
 
 function Video({ video }: VideoProps) {
     const description = video
-        .snippet
         .description
         .nlToBr()
         .trimAfter(250, '... _**ver mais**_');
@@ -110,20 +120,22 @@ function Video({ video }: VideoProps) {
     return (
         <Card className={styles.item_wrapper}>
             <AspectRatioCover
+                priority
                 src={{
-                    src: video.snippet.thumbnails.medium?.url!,
-                    width: video.snippet.thumbnails.medium?.width!,
-                    height: video.snippet.thumbnails.medium?.height!,
+                    src: video.cover,
+                    width: 1280,
+                    height: 720,
                 }}
-                alt={video.snippet.title}
+                alt={video.title}
+                sizes="1280x720"
                 wrapperClassName="rounded overflow-hidden"
             />
 
             <CardContent>
-                <h2 className="text-2xl">{video.snippet.title}</h2>
-                <small>Publicado {video.snippet.publishedAt.toRelativeTime()}</small>
+                <h2 className="text-2xl">{video.title}</h2>
+                <small>Publicado {video.publishedAt.toRelativeTime()}</small>
 
-                <Link href={`/video/${video.snippet.resourceId.videoId}`}>
+                <Link href={`/video/${video.slug}`}>
                     <LazyMD>{description}</LazyMD>
                 </Link>
             </CardContent>

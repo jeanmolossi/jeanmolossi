@@ -6,7 +6,12 @@ export default function strapiImageLoader({ src, width, quality } = {}) {
     const isStrapiUpload = srcWithoutHeadslash.startsWith('uploads')
     const isExternal = srcWithoutHeadslash.startsWith('http')
 
-    if (isExternal) return src;
+    if (isExternal) {
+        const url = new URL(src)
+        url.searchParams.append('w', width)
+        url.searchParams.append('q', quality || 75)
+        return url.toString()
+    };
 
     if (isLocalStatic || !isStrapiUpload)
         return `http://localhost:3000/${srcWithoutHeadslash}?w=${width}&q=${quality||75}`;
