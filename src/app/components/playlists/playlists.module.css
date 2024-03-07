@@ -7,18 +7,6 @@
         gap-4
 }
 
-.playlist_item {
-    @apply
-        flex
-        flex-col
-        gap-2
-        p-4
-        rounded-md
-        bg-neutral-800
-        shadow-md
-        drop-shadow-md
-}
-
 .playlist_cover {
     @apply
         rounded-md
