@@ -33,7 +33,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
             return {
                 ...url({
-                    url: baseUrl(`/playlist/${playlist.id}`)
+                    url: baseUrl(`/playlist/${playlist.slug}`)
                 })
             }
         })
@@ -50,7 +50,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const videosSiteMap = videos.map(video => {
         return {
             ...url({
-                url: baseUrl(`/video/${video.id}`)
+                url: baseUrl(`/video/${video.slug}`)
             })
         }
     })
