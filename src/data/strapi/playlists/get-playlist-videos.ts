@@ -47,6 +47,7 @@ export async function getPlaylistVideos({
             return notFound()
 
         const videos: PartialVideo[] = data.map(item => ({
+            id: item.attributes.videoID,
             slug: item.attributes.canonicalUrl,
             cover: format('https://i.ytimg.com/vi/%s/sddefault.jpg', item.attributes.videoID),
             description: item.attributes.excerpt,

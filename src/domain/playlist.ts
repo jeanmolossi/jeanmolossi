@@ -8,6 +8,7 @@ export interface PartialPlaylist {
 }
 
 export interface PartialVideo {
+    id: string;
     cover: string;
     title: string;
     publishedAt: string;

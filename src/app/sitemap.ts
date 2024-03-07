@@ -1,39 +1,60 @@
-import { getArticles } from "@/data/strapi";
-import { getPlaylists } from "@/data/youtube/playlists";
-import { getLastVideos } from "@/data/youtube/video";
+import { CollectionResult, getArticles, getPlaylistVideos, getPlaylists } from "@/data/strapi";
+import { PartialVideo } from "@/domain/playlist";
 import '@/presentation/helpers/index';
 import { MetadataRoute } from "next";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-    const [{ data: articles }, videos, playlists] = await Promise.all([
+    const [articlesResult, playlistsResult] = await Promise.allSettled([
         getArticles(),
-        getLastVideos(30),
-        getPlaylists({}),
+        getPlaylists({ pageSize: 30 }),
     ])
 
-    const articlesSiteMap = articles.map(article => {
-        return {
-            ...url({
-                url: baseUrl(`/artigo/${article.slug}`)
-            })
-        }
+    let articlesSiteMap: any[] = [];
+    if (articlesResult.status === 'fulfilled') {
+        const articles = articlesResult.value.data
+        articlesSiteMap = articles.map(article => {
+            return {
+                ...url({
+                    url: baseUrl(`/artigo/${article.slug}`)
+                })
+            }
+        })
+    }
+
+    let videosPromises: Array<Promise<CollectionResult<PartialVideo>>> = [];
+
+    let playlistsSiteMap: any[] = []
+    if (playlistsResult.status === 'fulfilled') {
+        const playlists = playlistsResult.value.data
+        playlistsSiteMap = playlists.map(playlist => {
+            videosPromises.push(
+                getPlaylistVideos({ canonicalUrl: playlist.slug })
+            )
+
+            return {
+                ...url({
+                    url: baseUrl(`/playlist/${playlist.id}`)
+                })
+            }
+        })
+    }
+
+    const videos: Array<PartialVideo> = [];
+    const videosResults = await Promise.allSettled(videosPromises)
+    videosResults.forEach(videoResult => {
+        if (videoResult.status === 'rejected') return;
+
+        videos.push(...videoResult.value.data)
     })
 
     const videosSiteMap = videos.map(video => {
         return {
             ...url({
-                url: baseUrl(`/video/${video.id.videoId}`)
+                url: baseUrl(`/video/${video.id}`)
             })
         }
     })
 
-    const playlistsSiteMap = playlists.playlists.map(playlist => {
-        return {
-            ...url({
-                url: baseUrl(`/playlist/${playlist.id}`)
-            })
-        }
-    })
 
     return [
         { ...url({ priority: 1, changeFrequency: 'yearly' }) },
