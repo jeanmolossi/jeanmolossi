@@ -4,6 +4,7 @@ import { getArticleBySlug } from "@/data/strapi";
 import Container from "@/presentation/components/_layout/container";
 import AspectRatioCover from "@/presentation/components/global/aspect-ratio-cover";
 import AuthorPic from "@/presentation/components/global/author-pic";
+import { Metadata } from "next";
 import Link from "next/link";
 import React, { Suspense } from "react";
 import styles from './artigo.module.css';
@@ -97,4 +98,47 @@ function TagList({ taglist = '' }: TagListProps) {
         return null
 
     return <div className="flex gap-4 flex-wrap">{tags}</div>
+}
+
+export async function generateMetadata({ params }: ArticleProps): Promise<Metadata> {
+    const slug = params?.slug!
+
+    const article = await getArticleBySlug(slug)
+    let {
+        title,
+        subtitle,
+        readingTimeMinutes = 0,
+        cover,
+        tags,
+        publishedAt,
+        author,
+    } = article;
+
+    const titleParts = title.split(/[:\?]/)
+    let description = subtitle.trimAfter(150);
+
+    if (titleParts.length > 1) {
+        title = titleParts[0].trimAfter(50)
+        description = titleParts[1].trimAfter(150)
+    } else {
+        title = title.trimAfter(50)
+    }
+
+    cover = cover.replace(/^https?:\/\/(.+)(\/uploads.+)/, '$2')
+    cover = 'https://cdn.jeanmolossi.com.br'.concat(cover)
+
+    return {
+        title,
+        description,
+        keywords: tags,
+        authors: [{ name: author.name }],
+        openGraph: {
+            images: [new URL(cover)],
+            title,
+            description,
+            publishedTime: publishedAt,
+            type: 'article',
+            countryName: 'Brazil'
+        }
+    }
 }
