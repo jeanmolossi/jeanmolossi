@@ -1,7 +1,7 @@
 'use client';
 
 import { Loader } from "@/app/components/loader";
-import { Video as VideoModel } from "@/domain/entities/youtube/view";
+import { Video } from "@/domain/playlist";
 import AspectRatioCover from "@/presentation/components/global/aspect-ratio-cover";
 import { SwapComponents } from "@/presentation/helpers";
 import dynamic from "next/dynamic";
@@ -15,7 +15,7 @@ const LazyIFrame = dynamic(
 ) as FunctionComponent<{ videoId: string }>
 
 interface VideoWrapperProps {
-    video: VideoModel;
+    video: Video;
 }
 
 export const VideoWrapper = React.memo(({ video }: VideoWrapperProps) => {
@@ -27,10 +27,11 @@ export const VideoWrapper = React.memo(({ video }: VideoWrapperProps) => {
     )
 
     const src = useMemo(() => {
-        return video.snippet.thumbnails.maxres?.url
-            || video.snippet.thumbnails.high?.url
-            || video.snippet.thumbnails.medium!.url;
-    }, [video.snippet.thumbnails])
+        return video.cover.maxres
+            || video.cover.high
+            || video.cover.medium
+            || video.cover.default;
+    }, [video.cover])
 
     return (
         <div className={styles.video_wrapper}>
@@ -42,9 +43,10 @@ export const VideoWrapper = React.memo(({ video }: VideoWrapperProps) => {
                 componentIfConditionFalse={
                     <button className={styles.image_button} onClick={wantPlayVideo}>
                         <AspectRatioCover
-                            alt={`Capa do vídeo ${video.snippet.title}`}
+                            alt={`Capa do vídeo ${video.title}`}
                             src={{ src, width: 1280, height: 720 }}
                             wrapperClassName="rounded overflow-hidden"
+                            priority
                         />
 
                         <span>

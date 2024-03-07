@@ -14,3 +14,17 @@ export interface PartialVideo {
     slug: string;
     description: string;
 }
+
+export interface Video {
+    id: string;
+    title: string;
+    description: string;
+    cover: {
+        maxres?: string;
+        high?: string;
+        medium?: string;
+        default: string;
+    };
+    canonicalUrl: string;
+    publishedAt: string;
+}
