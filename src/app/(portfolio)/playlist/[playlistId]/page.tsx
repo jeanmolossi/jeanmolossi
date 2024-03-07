@@ -26,7 +26,7 @@ interface PlaylistProps {
     }
 }
 
-export async function generateMetatada(
+export async function generateMetadata(
     { params }: PlaylistProps,
     _parent: ResolvedMetadata
 ): Promise<Metadata> {

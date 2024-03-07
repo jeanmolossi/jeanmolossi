@@ -43,7 +43,7 @@ export default async function Video({ params }: VideoProps) {
 }
 
 
-export async function generateMetatada(
+export async function generateMetadata(
     { params }: VideoProps,
     _parent: ResolvedMetadata
 ): Promise<Metadata> {
