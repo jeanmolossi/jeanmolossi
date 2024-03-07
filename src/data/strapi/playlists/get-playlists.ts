@@ -2,6 +2,7 @@ import { strapi } from "@/data/api/strapi";
 import { Strapi } from "@/domain/entities/strapi";
 import { Playlist } from "@/domain/entities/strapi/playlist";
 import { PartialPlaylist } from "@/domain/playlist";
+import { addSearch, handlePagination } from "@/lib/helpers/handle-pagination";
 import { CollectionResult } from "../types";
 
 interface GetPlaylists {
@@ -41,30 +42,19 @@ export async function getPlaylists({ page = 1, pageSize: limit = 10, search }: G
             cover: item.attributes.cover,
         }))
 
-        const hasNextPage = (meta.pagination?.total || 0) >= limit + (meta.pagination?.start || 0);
-        const hasPrevPage = page > 1
+        const { pagination } = meta;
+        const hook = addSearch(search)
 
-        const nextPageParams = new URLSearchParams({
-            page: `${page+1}`,
-            pageSize: limit.toString(),
-        })
-
-        const prevPageParams = new URLSearchParams({
-            page: `${page-1}`,
-            pageSize: limit.toString(),
-        })
-
-        if (hasNextPage && search)
-            nextPageParams.set('search', search);
-
-        if (hasPrevPage && search)
-            prevPageParams.set('search', search);
+        const {
+            nextPageParams,
+            prevPageParams,
+        } = handlePagination(page, limit, pagination, hook, hook);
 
         return {
             data: playlists,
             pagination: {
-                nextPageParams: hasNextPage ? nextPageParams.toString() : null,
-                prevPageParams: hasPrevPage ? prevPageParams.toString() : null,
+                nextPageParams,
+                prevPageParams,
             }
         }
     } catch(err: any) {

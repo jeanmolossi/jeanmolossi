@@ -5,6 +5,7 @@ import { PartialArticle } from "@/domain/article";
 import { Strapi } from "@/domain/entities/strapi";
 import { Article } from "@/domain/entities/strapi/article";
 import { WithRel } from "@/domain/entities/strapi/playlist";
+import { addSearch, handlePagination } from "@/lib/helpers/handle-pagination";
 import { CollectionResult } from "../types";
 
 interface GetArticlesParams {
@@ -46,20 +47,19 @@ export async function getArticles({ page = 1, pageSize: limit = 10, search }: Ge
             readingTimeMinutes: item.attributes.readingTimeMinutes || 5,
         }));
 
-        const hasPrevPage = page > 1;
-        const hasNextPage = (meta.pagination?.total || 0) > (limit + (meta.pagination?.start || 0))
+        const { pagination } = meta;
+        const hook = addSearch(search)
 
-        const nextPageParams = new URLSearchParams({ page: `${page+1}`, pageSize: `${limit}` })
-        if (search) nextPageParams.append('search', search);
-
-        const prevPageParams = new URLSearchParams({ page: `${page-1}`, pageSize: `${limit}` })
-        if (search) nextPageParams.append('search', search);
+        const {
+            nextPageParams,
+            prevPageParams,
+        } = handlePagination(page, limit, pagination, hook, hook);
 
         return {
             data: listing || [],
             pagination: {
-                nextPageParams: hasNextPage ? nextPageParams.toString() : null,
-                prevPageParams: hasPrevPage ? prevPageParams.toString() : null,
+                nextPageParams,
+                prevPageParams,
             }
         }
     } catch (e) {

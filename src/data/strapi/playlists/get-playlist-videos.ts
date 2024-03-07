@@ -1,7 +1,9 @@
 import { strapi } from "@/data/api/strapi";
+import { notify } from "@/data/telegram/notify";
 import { Strapi } from "@/domain/entities/strapi";
 import { Video } from "@/domain/entities/strapi/video";
 import { PartialVideo } from "@/domain/playlist";
+import { addSearch, handlePagination } from "@/lib/helpers/handle-pagination";
 import { notFound } from "next/navigation";
 import { format } from "util";
 import { CollectionResult } from "../types";
@@ -52,21 +54,28 @@ export async function getPlaylistVideos({
             publishedAt: item.attributes.publishedAt,
         }))
 
+        const { pagination } = meta;
+        const hook = addSearch(search);
+
+        const {
+            nextPageParams,
+            prevPageParams,
+        } = handlePagination(page, limit, pagination, hook, hook)
+
         return {
             data: videos,
             pagination: {
-                nextPageParams: null,
-                prevPageParams: null,
+                nextPageParams,
+                prevPageParams,
             }
         }
-    } catch (error) {
+    } catch (error: any) {
+        notify({
+            method: 'getPlaylistVideos',
+            message: 'failed to fetch playlist videos',
+            error
+        })
 
-        return {
-            data: [],
-            pagination: {
-                nextPageParams: null,
-                prevPageParams: null,
-            }
-        }
+        return notFound()
     }
 }
