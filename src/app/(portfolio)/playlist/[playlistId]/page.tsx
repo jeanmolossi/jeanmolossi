@@ -2,9 +2,11 @@ import { getPlaylistItems } from "@/data/youtube/playlist-items";
 import { YTPlaylistItems } from "@/domain/entities/youtube/request";
 import { cn } from "@/lib/helpers";
 import Container from "@/presentation/components/_layout/container";
+import AspectRatioCover from "@/presentation/components/global/aspect-ratio-cover";
+import PageHeading from "@/presentation/components/global/page-heading";
 import { Button } from "@/presentation/components/ui/button";
+import { Card, CardContent } from "@/presentation/components/ui/card";
 import { ArrowLeftCircle } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import styles from './playlist-item.module.css';
@@ -40,8 +42,7 @@ export default async function Playlist({ params, searchParams }: PlaylistProps) 
 
     return (
         <Container className="my-4">
-            <h1 className="text-4xl my-4">Vídeos</h1>
-
+            <PageHeading>Vídeos</PageHeading>
 
             <div className={cn({'hidden': !emptyVideos}, 'mx-auto max-w-[768px]')}>
                 <h1 className="text-7xl mb-8">Oops! Nenhum vídeo</h1>
@@ -107,27 +108,25 @@ function Video({ video }: VideoProps) {
         .trimAfter(250, '... _**ver mais**_');
 
     return (
-        <div className={styles.item_wrapper}>
-            <div className="relative aspect-video w-full rounded-md">
-                <Image
-                    src={{
-                        src: video.snippet.thumbnails.medium?.url!,
-                        width: video.snippet.thumbnails.medium?.width!,
-                        height: video.snippet.thumbnails.medium?.height!,
-                    }}
-                    alt={video.snippet.title}
-                    fill
-                />
-            </div>
+        <Card className={styles.item_wrapper}>
+            <AspectRatioCover
+                src={{
+                    src: video.snippet.thumbnails.medium?.url!,
+                    width: video.snippet.thumbnails.medium?.width!,
+                    height: video.snippet.thumbnails.medium?.height!,
+                }}
+                alt={video.snippet.title}
+                wrapperClassName="rounded overflow-hidden"
+            />
 
-            <div className={styles.item_content}>
+            <CardContent>
                 <h2 className="text-2xl">{video.snippet.title}</h2>
                 <small>Publicado {video.snippet.publishedAt.toRelativeTime()}</small>
 
                 <Link href={`/video/${video.snippet.resourceId.videoId}`}>
                     <LazyMD>{description}</LazyMD>
                 </Link>
-            </div>
-        </div>
+            </CardContent>
+        </Card>
     )
 }

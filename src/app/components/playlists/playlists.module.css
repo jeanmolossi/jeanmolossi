@@ -21,8 +21,6 @@
 
 .playlist_cover {
     @apply
-        relative
-        aspect-video
         rounded-md
         overflow-hidden
         border-2

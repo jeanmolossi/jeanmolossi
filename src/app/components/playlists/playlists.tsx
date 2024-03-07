@@ -1,6 +1,8 @@
 import { getPlaylists } from "@/data/youtube/playlists";
 import { Playlist } from "@/domain/entities/youtube/view";
-import Image from "next/image";
+import AspectRatioCover from "@/presentation/components/global/aspect-ratio-cover";
+import { Button } from "@/presentation/components/ui/button";
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/presentation/components/ui/card";
 import Link from "next/link";
 import { ImYoutube } from "react-icons/im";
 import styles from './playlists.module.css';
@@ -66,37 +68,45 @@ function PlaylistItem({ playlist }: PlaylistItemProps) {
     const href = `/playlist/${playlist.slug}`;
 
     return (
-        <div key={playlist.id} className={styles.playlist_item}>
-            <h3 className="text-2xl">{playlist.title}</h3>
+        <Card key={playlist.id}>
+            <CardHeader>
+                <CardTitle>{playlist.title}</CardTitle>
 
-            <Link
-                href={href}
-                className={styles.playlist_cover}
-            >
-                <Image
-                    className="object-cover"
-                    src={{
-                        src: playlist.thumbnail.big.url,
-                        width: playlist.thumbnail.big.width,
-                        height: playlist.thumbnail.big.height,
-                    }}
-                    alt={playlist.title}
-                    fill
-                />
-            </Link>
+                <Link
+                    href={href}
+                    className={styles.playlist_cover}
+                >
+                    <AspectRatioCover
+                        src={{
+                            src: playlist.thumbnail.big.url,
+                            width: playlist.thumbnail.big.width,
+                            height: playlist.thumbnail.big.height,
+                        }}
+                        alt={playlist.title}
+                        wrapperClassName="rounded overflow-hidden"
+                    />
+                </Link>
+            </CardHeader>
 
-            <small className="text-gray-400">{playlist.publishedAt.toRelativeTime()}</small>
+            <CardContent>
+                <small className="text-gray-400">{playlist.publishedAt.toRelativeTime()}</small>
+                <p>{playlist.description.trimAfter(120)}</p>
+            </CardContent>
 
-            <p>{playlist.description.trimAfter(120)}</p>
-
-            <Link
-                className="flex gap-2 items-center self-end hover:underline"
-                href={href}
-            >
-                <ImYoutube size={24} />
-                Assistir playlist
-            </Link>
-        </div>
+            <CardFooter>
+                <div className="w-full block">
+                    <Button variant="outline" asChild>
+                        <Link
+                            className="flex gap-2 items-center self-end hover:underline"
+                            href={href}
+                        >
+                            <ImYoutube size={24} />
+                            Assistir playlist
+                        </Link>
+                    </Button>
+                </div>
+            </CardFooter>
+        </Card>
     )
 }
 
