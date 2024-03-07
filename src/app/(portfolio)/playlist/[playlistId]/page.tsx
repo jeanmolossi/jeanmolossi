@@ -8,7 +8,7 @@ import PageHeading from "@/presentation/components/global/page-heading";
 import { Button } from "@/presentation/components/ui/button";
 import { Card, CardContent } from "@/presentation/components/ui/card";
 import { ArrowLeftCircle } from "lucide-react";
-import { Metadata, ResolvedMetadata } from "next";
+import { Metadata } from "next";
 import Link from "next/link";
 import React from "react";
 import styles from './playlist-item.module.css';
@@ -28,7 +28,6 @@ interface PlaylistProps {
 
 export async function generateMetadata(
     { params }: PlaylistProps,
-    _parent: ResolvedMetadata
 ): Promise<Metadata> {
     const playlistId = params?.playlistId!
     const playlist = await getPlaylist(playlistId);

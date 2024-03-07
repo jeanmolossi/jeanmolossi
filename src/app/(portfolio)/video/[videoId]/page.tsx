@@ -1,7 +1,7 @@
 import { VideoWrapper } from "@/app/components/video-wrapper";
 import { getVideo } from "@/data/strapi";
 import Container from "@/presentation/components/_layout/container";
-import { Metadata, ResolvedMetadata } from "next";
+import { Metadata } from "next";
 import React, { Suspense } from "react";
 
 const LazyMD = React.lazy(() => import('@/presentation/components/markdown'))
@@ -45,7 +45,6 @@ export default async function Video({ params }: VideoProps) {
 
 export async function generateMetadata(
     { params }: VideoProps,
-    _parent: ResolvedMetadata
 ): Promise<Metadata> {
     const video = await getVideo(params?.videoId!);
 
