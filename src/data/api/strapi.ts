@@ -14,5 +14,8 @@ strapi.defaults.params = {
     pagination: {
         limit: 10,
         start: 0
-    }
+    },
+    sort: [
+        'publishedAt:desc'
+    ]
 }
