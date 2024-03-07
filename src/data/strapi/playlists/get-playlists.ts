@@ -1,8 +1,10 @@
 import { strapi } from "@/data/api/strapi";
+import { notify } from "@/data/telegram/notify";
 import { Strapi } from "@/domain/entities/strapi";
 import { Playlist } from "@/domain/entities/strapi/playlist";
 import { PartialPlaylist } from "@/domain/playlist";
 import { addSearch, handlePagination } from "@/lib/helpers/handle-pagination";
+import { notFound } from "next/navigation";
 import { CollectionResult } from "../types";
 
 interface GetPlaylists {
@@ -58,12 +60,11 @@ export async function getPlaylists({ page = 1, pageSize: limit = 10, search }: G
             }
         }
     } catch(err: any) {
-        return {
-            data: [],
-            pagination: {
-                nextPageParams: null,
-                prevPageParams: null,
-            }
-        }
+        notify({
+            method: 'getPlaylists',
+            message: `failed to get playlists`,
+            error: err,
+        })
+        return notFound();
     }
 }

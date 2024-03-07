@@ -1,4 +1,5 @@
 import { getPlaylistVideos } from "@/data/strapi";
+import { getPlaylist } from "@/data/strapi/playlists/get-playlist";
 import { PartialVideo } from "@/domain/playlist";
 import { cn } from "@/lib/helpers";
 import Container from "@/presentation/components/_layout/container";
@@ -7,6 +8,7 @@ import PageHeading from "@/presentation/components/global/page-heading";
 import { Button } from "@/presentation/components/ui/button";
 import { Card, CardContent } from "@/presentation/components/ui/card";
 import { ArrowLeftCircle } from "lucide-react";
+import { Metadata } from "next";
 import Link from "next/link";
 import React from "react";
 import styles from './playlist-item.module.css';
@@ -24,7 +26,29 @@ interface PlaylistProps {
     }
 }
 
-export default async function Playlist({ params, searchParams }: PlaylistProps) {
+export async function generateMetatada(
+    { params }: PlaylistProps,
+): Promise<Metadata> {
+    console.log('generateMeta')
+    const playlistId = params?.playlistId!
+    const playlist = await getPlaylist(playlistId);
+
+    let title = playlist.title;
+    if (title.length > 60)
+        title = playlist.title.trimAfter(60, '');
+    else if ((title.length + ' | Jean Molossi'.length) <= 60)
+        title = [playlist.title, 'Jean Molossi'].join(' | ')
+
+    return {
+        title,
+        description: playlist.excerpt.trimAfter(150, ''),
+        authors: [{ name: 'Jean Molossi', url: 'https://jeanmolossi.com.br' }],
+        creator: 'Jean Molossi',
+        publisher: 'Jean Molossi',
+    }
+}
+
+export default async function Page({ params, searchParams }: PlaylistProps) {
     const {
         page: qsPage = '1',
         pageSize: qsPageSize = '10',
