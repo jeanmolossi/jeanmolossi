@@ -1,7 +1,14 @@
 import kumala from '@/presentation/assets/images/kumala-la-kumala.gif';
 import Container from "@/presentation/components/_layout/container";
+import { Metadata } from 'next';
 import Image from "next/image";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+    title: 'Jean Molossi | Entre em contato'.trimAfter(50),
+    description: 'Contatos do Desenvolvedor Jean Molossi'.trimAfter(150),
+    publisher: 'https://jeanmolossi.com.br'
+}
 
 export default function Contato () {
     return (

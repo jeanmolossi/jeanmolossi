@@ -1,8 +1,10 @@
 import { social } from "@/config/constants";
+import { cn } from "@/lib/helpers";
 import Container from "@/presentation/components/_layout/container";
 import { SwapComponents } from "@/presentation/helpers";
 import { getContrast } from "@/presentation/helpers/contrast-calc";
 import { socialColors } from "@/presentation/styles";
+import { Metadata } from "next";
 import styles from './links.module.css';
 
 interface Link {
@@ -10,6 +12,12 @@ interface Link {
     label: string;
     bgColor: string;
     txtColor?: 'black' | 'white';
+}
+
+export const metadata: Metadata = {
+    title: 'Jean Molossi | Link tree'.trimAfter(50),
+    description: 'Links de acesso à Jean'.trimAfter(150),
+    publisher: 'https://jeanmolossi.com.br'
 }
 
 export default function LinksPage() {
@@ -75,7 +83,7 @@ const BlankLink = ({ href = '#', children, txtColor, bgColor }: BlankLinkProps) 
                 '--bg-color': bgColor,
                 '--txt-color': txtColor,
             }}
-            className={styles.link_anchor}
+            className={cn(styles.link_anchor, 'dark:shadow-white hover:dark:shadow-white')}
             href={href}
             target="_blank"
             rel="noopener noreferrer"

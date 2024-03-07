@@ -33,14 +33,17 @@
         p-4
 
         transition-all
-        ease-out;
-
-    background-color: var(--bg-color);
-    color: var(--txt-color);
-    box-shadow: 4px 4px 0 white;
+        ease-out
+        shadow-squared
+        shadow-slate-800
+        bg-[var(--bg-color)]
+        text-[var(--txt-color)];
 }
 
 .link_anchor:hover {
-    transform: translate(2px, 2px);
-    box-shadow: 2px 2px 0 white;
+    @apply
+        shadow-squared-hover
+        shadow-slate-800
+        translate-x-[2px]
+        translate-y-[2px];
 }

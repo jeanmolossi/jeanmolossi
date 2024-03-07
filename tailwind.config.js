@@ -76,6 +76,10 @@ module.exports = {
             fontFamily: {
                 sans: ['var(--poppins)', ...fontFamily.sans],
             },
+            boxShadow: {
+                squared: '4px 4px 0 var(--tw-shadow-color)',
+                'squared-hover': '2px 2px 0 var(--tw-shadow-color)'
+            }
         },
     },
     plugins: [require('tailwindcss-animate')],

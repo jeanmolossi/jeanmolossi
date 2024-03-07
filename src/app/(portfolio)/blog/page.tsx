@@ -5,6 +5,7 @@ import AspectRatioCover from "@/presentation/components/global/aspect-ratio-cove
 import PageHeading from "@/presentation/components/global/page-heading";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/presentation/components/ui/card";
 import { Link2 } from "lucide-react";
+import { Metadata } from "next";
 import Link from 'next/link';
 import styles from './blog.module.css';
 
@@ -14,6 +15,12 @@ interface BlogProps {
         page?: string;
         pageSize?: string;
     }
+}
+
+export const metadata: Metadata = {
+    title: 'Jean Molossi | Blog'.trimAfter(50),
+    description: 'Artigos sobre tecnologia e programação'.trimAfter(150),
+    publisher: 'https://jeanmolossi.com.br'
 }
 
 export default async function Blog({ searchParams }: BlogProps) {
