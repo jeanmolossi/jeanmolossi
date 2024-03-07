@@ -10,7 +10,11 @@ type VideosFilterResult = Strapi.ListResponse<StrapiVideo>;
 
 export async function getVideo(canonicalUrl: string): Promise<Video> {
     try {
-        const { data: { data, meta } } = await strapi.get<VideosFilterResult>('/videos')
+        const { data: { data } } =
+            await strapi.get<VideosFilterResult>('/videos', { params: {
+                filters: { canonicalUrl: { '$eq': canonicalUrl } },
+                pagination: { limit: 1 }
+            } })
 
         const video = data.at(0)?.attributes;
         if (!video)
