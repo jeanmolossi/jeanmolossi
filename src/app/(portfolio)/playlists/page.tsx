@@ -38,3 +38,5 @@ export default function PlaylistsPage({ searchParams }: PlaylistsPageProps) {
         </>
     )
 }
+
+export const revalidate = 300

@@ -165,3 +165,5 @@ function Video({ video }: VideoProps) {
         </Card>
     )
 }
+
+export const revalidate = 300

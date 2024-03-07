@@ -42,3 +42,5 @@ export default function Experience({ params }: ExpParams) {
         </div>
     )
 }
+
+export const revalidate = 3600

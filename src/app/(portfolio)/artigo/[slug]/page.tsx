@@ -142,3 +142,5 @@ export async function generateMetadata({ params }: ArticleProps): Promise<Metada
         }
     }
 }
+
+export const revalidate = 300

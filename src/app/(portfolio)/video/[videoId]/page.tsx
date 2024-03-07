@@ -62,3 +62,5 @@ export async function generateMetadata(
         publisher: 'Jean Molossi',
     }
 }
+
+export const revalidate = 300

@@ -1,7 +1,7 @@
 import Modal from "@/app/components/modal/modal";
-import React, { Suspense } from "react";
-import { experiences } from "@/data/content";
 import { expSelector } from "@/app/components/sections/experiences";
+import { experiences } from "@/data/content";
+import { Suspense } from "react";
 
 interface ModalParams {
     params: {
@@ -42,3 +42,5 @@ export default function ExpModal({ params }: ModalParams) {
         </Modal>
     )
 }
+
+export const revalidate = 3600
