@@ -1,3 +1,4 @@
+import { cn } from "@/lib/helpers";
 import { IconType } from "react-icons";
 import styles from './skills.module.css';
 
@@ -21,9 +22,11 @@ export type Range<F extends number, T extends number> = Exclude<Enumerate<T>, En
 export type Skill = {
     alt: string;
     usageFrequency: Range<0, 101>
-    color: Color | string;
+    color?: Color | string;
     icon?: IconType;
     href: string;
+    className?: string;
+    barClassName?: string;
 }
 
 interface SkillsProps {
@@ -33,36 +36,34 @@ interface SkillsProps {
 export function Skills({ skills }: SkillsProps) {
     return (
         <div className="flex flex-col gap-1 p-4 hover:bg-background rounded transition-all">
-            {skills.map((skill, i) => <Skill key={i.toString()} {...skill} />)}
+            {skills.map((skill, i) => <SkillComponent key={i.toString()} {...skill} />)}
         </div>
     )
 }
 
-export function Skill({
+export function SkillComponent({
     alt,
     color,
     usageFrequency = 0,
     icon: Icon,
     href,
+    className,
+    barClassName
 }: Skill) {
     return (
         <div>
             <a
-                className="flex items-center gap-2"
+                className={cn('flex items-center gap-2', className)}
                 href={href}
                 target="_blank"
-                style={{ color }}
             >
                 {!!Icon && <Icon size={24} />} {alt}
             </a>
 
             <div className="flex w-full items-center gap-2">
                 <div
-                    className={styles.skill_bar}
-                    style={{
-                        backgroundColor: color,
-                        width: `${usageFrequency}%`,
-                    }}
+                    className={cn(styles.skill_bar, barClassName)}
+                    style={{ width: `${usageFrequency}%` }}
                 ></div>
                 <small className="text-sm">{usageFrequency}%</small>
             </div>

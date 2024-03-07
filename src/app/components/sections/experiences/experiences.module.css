@@ -7,7 +7,7 @@
 }
 
 .content > p {
-    @apply text-gray-300;
+    @apply dark:text-gray-300;
 }
 
 .content > p > b {

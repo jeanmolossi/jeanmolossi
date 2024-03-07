@@ -43,7 +43,7 @@ section.wrapper {
 }
 
 .timeline_content p {
-    @apply text-gray-300 text-sm
+    @apply dark:text-gray-300 text-sm
 }
 
 .timeline_content a {
