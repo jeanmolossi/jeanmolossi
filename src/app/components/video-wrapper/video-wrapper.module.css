@@ -1,27 +1,23 @@
 .video_wrapper {
-    display: flex;
-    flex-direction: column;
+    @apply flex flex-col;
 }
 
 .video_wrapper > iframe.video-iframe {
-    display: flex;
-    width: 100%;
-    aspect-ratio: 16 / 9;
+    @apply flex w-full aspect-video;
 }
 
 .image_button {
-    border: none;
+    @apply
+        border-0
 
-    display: flex;
-    justify-content: stretch;
-    align-items: center;
-    flex: 0 1 auto;
+        flex
+        justify-stretch
+        items-center
+        flex-[0_1_auto]
+        relative
+        w-full
 
-    position: relative;
-    width: 100%;
-    padding-bottom: 56.25%;
-
-    @apply bg-gray-950;
+        bg-gray-950;
 }
 
 .image_button > span {
@@ -52,7 +48,7 @@
     z-index: -1;
     border-radius: 9999px;
 
-    @apply bg-orange-700;
+    @apply bg-primary;
 }
 
 .image_button > span::before {
@@ -68,12 +64,12 @@
     z-index: -1;
     transition: all 200ms ease-in-out;
 
-    @apply bg-amber-800
+    @apply bg-primary
 }
 
 .image_button > span:hover,
 .image_button > span:active {
-    @apply bg-amber-950/10;
+    @apply bg-primary/10;
 }
 
 @keyframes pulseAnim {

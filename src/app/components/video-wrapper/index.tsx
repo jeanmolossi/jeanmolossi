@@ -1,13 +1,13 @@
 'use client';
 
-import React, { FunctionComponent, useCallback, useMemo, useState } from "react";
-import Image from "next/image";
-import dynamic from "next/dynamic";
-import { FaPlay } from "react-icons/fa";
-import { SwapComponents } from "@/presentation/helpers";
 import { Loader } from "@/app/components/loader";
 import { Video as VideoModel } from "@/domain/entities/youtube/view";
-import styles from './video-wrapper.module.css'
+import AspectRatioCover from "@/presentation/components/global/aspect-ratio-cover";
+import { SwapComponents } from "@/presentation/helpers";
+import dynamic from "next/dynamic";
+import React, { FunctionComponent, useCallback, useMemo, useState } from "react";
+import { FaPlay } from "react-icons/fa";
+import styles from './video-wrapper.module.css';
 
 const LazyIFrame = dynamic(
     () => import('./iframe-loader'),
@@ -41,11 +41,10 @@ export const VideoWrapper = React.memo(({ video }: VideoWrapperProps) => {
                 }
                 componentIfConditionFalse={
                     <button className={styles.image_button} onClick={wantPlayVideo}>
-                        <Image
+                        <AspectRatioCover
                             alt={`Capa do vídeo ${video.snippet.title}`}
-                            style={{ objectFit:"cover" }}
                             src={{ src, width: 1280, height: 720 }}
-                            fill
+                            wrapperClassName="rounded overflow-hidden"
                         />
 
                         <span>

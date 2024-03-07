@@ -25,10 +25,10 @@ export default async function Video({ params }: VideoProps) {
     const video = await getVideo(videoId)
 
     return (
-        <Container className="my-4">
-            <VideoWrapper video={video} />
+        <Container className="my-4 max-w-5xl mx-auto">
+            <h1 className="text-4xl my-4 font-semibold">{video.snippet.title}</h1>
 
-            <h1 className="text-4xl my-4">{video.snippet.title}</h1>
+            <VideoWrapper video={video} />
 
             <div className="my-4">
                 <Suspense fallback="Carregando...">
