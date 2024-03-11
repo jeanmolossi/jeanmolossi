@@ -52,7 +52,8 @@ const imgSrc = [
     "http://localhost:1337",
     "data:",
 
-    "https://*.googletagmanager.com/"
+    "https://*.googletagmanager.com/",
+    "https://*.gstatic.com/",
 ]
 
 const ContentSecurityPolicy = `
