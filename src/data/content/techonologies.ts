@@ -141,8 +141,8 @@ export const techs = [
         icon: SiFirebase,
         alt: 'Firebase',
         color: '#FFCC2F',
-        className: 'text-[#FFCC2]',
-        barClassName: 'bg-[#FFCC2]',
+        className: 'text-[#FFCC2F]',
+        barClassName: 'bg-[#FFCC2F]',
     },
     {
         href: 'https://ubuntu.com/download',

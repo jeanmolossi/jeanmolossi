@@ -22,7 +22,6 @@
 .hire_container > div > img {
     @apply
         origin-center
-        /* invert */
 }
 
 @keyframes spinRight {
