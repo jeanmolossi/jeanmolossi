@@ -1,5 +1,6 @@
 import { Playlists, PlaylistsSkeleton } from "@/app/components/playlists/playlists";
 import PageHeading from "@/presentation/components/global/page-heading";
+import { HeadSubtitle, HeadTitle } from "@/presentation/components/global/page-heading/title";
 import { Metadata } from "next";
 import { Suspense } from "react";
 
@@ -24,8 +25,9 @@ export default function PlaylistsPage({ searchParams }: PlaylistsPageProps) {
 
     return (
         <>
-            <PageHeading subheading="Aprenda com projetos práticos">
-                Playlists
+            <PageHeading>
+                <HeadTitle>Playlists</HeadTitle>
+                <HeadSubtitle>Aprenda com projetos práticos</HeadSubtitle>
             </PageHeading>
 
             <Suspense fallback={<PlaylistsSkeleton />}>

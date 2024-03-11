@@ -5,6 +5,7 @@ import { cn } from "@/lib/helpers";
 import Container from "@/presentation/components/_layout/container";
 import AspectRatioCover from "@/presentation/components/global/aspect-ratio-cover";
 import PageHeading from "@/presentation/components/global/page-heading";
+import { HeadTitle } from "@/presentation/components/global/page-heading/title";
 import { Button } from "@/presentation/components/ui/button";
 import { Card, CardContent } from "@/presentation/components/ui/card";
 import { ArrowLeftCircle } from "lucide-react";
@@ -76,7 +77,9 @@ export default async function Page({ params, searchParams }: PlaylistProps) {
 
     return (
         <Container className="my-4">
-            <PageHeading>Vídeos</PageHeading>
+            <PageHeading>
+                <HeadTitle>Vídeos</HeadTitle>
+            </PageHeading>
 
             <div className={cn({'hidden': !emptyVideos}, 'mx-auto max-w-[768px]')}>
                 <h1 className="text-7xl mb-8">Oops! Nenhum vídeo</h1>

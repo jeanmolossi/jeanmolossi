@@ -1,5 +1,7 @@
 import kumala from '@/presentation/assets/images/kumala-la-kumala.gif';
 import Container from "@/presentation/components/_layout/container";
+import PageHeading from '@/presentation/components/global/page-heading';
+import { HeadTitle } from '@/presentation/components/global/page-heading/title';
 import { Metadata } from 'next';
 import Image from "next/image";
 import Link from "next/link";
@@ -14,7 +16,9 @@ export default function Contato () {
     return (
         <Container>
             <div className="flex flex-col gap-4 mt-4 p-4 max-w-2xl mx-auto">
-                <h1 className="text-4xl">Contato ?</h1>
+                <PageHeading>
+                    <HeadTitle>Contato ?</HeadTitle>
+                </PageHeading>
 
                 <p>Não achou que seria tão facil, achou ? &#128514;&#128514;&#128514;</p>
 

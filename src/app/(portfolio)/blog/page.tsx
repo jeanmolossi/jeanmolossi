@@ -3,6 +3,7 @@ import { PartialArticle } from "@/domain/article";
 import Container from '@/presentation/components/_layout/container';
 import AspectRatioCover from "@/presentation/components/global/aspect-ratio-cover";
 import PageHeading from "@/presentation/components/global/page-heading";
+import { HeadSubtitle, HeadTitle } from "@/presentation/components/global/page-heading/title";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/presentation/components/ui/card";
 import { Link2 } from "lucide-react";
 import { Metadata } from "next";
@@ -48,7 +49,10 @@ export default async function Blog({ searchParams }: BlogProps) {
 
     return (
         <Container className='my-6'>
-            <PageHeading subheading={showingText}>Blog</PageHeading>
+            <PageHeading>
+                <HeadTitle>Blog</HeadTitle>
+                <HeadSubtitle>{showingText}</HeadSubtitle>
+            </PageHeading>
 
             <div className={styles.articles_wrapper}>
                 {articles.map((article) =>
