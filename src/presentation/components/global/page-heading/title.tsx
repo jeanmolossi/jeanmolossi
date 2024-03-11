@@ -1,3 +1,4 @@
+import { cn } from '@/lib/helpers';
 import { PropsWithChildren } from 'react';
 
 interface HeadTitleProps extends PropsWithChildren {}
@@ -11,3 +12,7 @@ interface HeadSubtitleProps extends PropsWithChildren {}
 export const HeadSubtitle = ({ children }: HeadSubtitleProps) => {
     return <h2 className='text-lg font-medium text-gray-500'>{children}</h2>;
 };
+
+export const Headings = ({ children }: PropsWithChildren) => {
+    return <div className={cn('flex flex-col flex-1')}>{children}</div>
+}

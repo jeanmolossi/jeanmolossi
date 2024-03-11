@@ -5,7 +5,8 @@ import { cn } from "@/lib/helpers";
 import Container from "@/presentation/components/_layout/container";
 import AspectRatioCover from "@/presentation/components/global/aspect-ratio-cover";
 import PageHeading from "@/presentation/components/global/page-heading";
-import { HeadTitle } from "@/presentation/components/global/page-heading/title";
+import SearchBar from "@/presentation/components/global/page-heading/search-bar";
+import { HeadTitle, Headings } from "@/presentation/components/global/page-heading/title";
 import { Button } from "@/presentation/components/ui/button";
 import { Card, CardContent } from "@/presentation/components/ui/card";
 import { ArrowLeftCircle } from "lucide-react";
@@ -78,7 +79,11 @@ export default async function Page({ params, searchParams }: PlaylistProps) {
     return (
         <Container className="my-4">
             <PageHeading>
-                <HeadTitle>Vídeos</HeadTitle>
+                <Headings>
+                    <HeadTitle>Vídeos</HeadTitle>
+                </Headings>
+
+                <SearchBar placeholder="Pesquise um vídeo" />
             </PageHeading>
 
             <div className={cn({'hidden': !emptyVideos}, 'mx-auto max-w-[768px]')}>

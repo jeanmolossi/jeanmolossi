@@ -3,7 +3,8 @@ import { PartialArticle } from "@/domain/article";
 import Container from '@/presentation/components/_layout/container';
 import AspectRatioCover from "@/presentation/components/global/aspect-ratio-cover";
 import PageHeading from "@/presentation/components/global/page-heading";
-import { HeadSubtitle, HeadTitle } from "@/presentation/components/global/page-heading/title";
+import SearchBar from "@/presentation/components/global/page-heading/search-bar";
+import { HeadSubtitle, HeadTitle, Headings } from "@/presentation/components/global/page-heading/title";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/presentation/components/ui/card";
 import { Link2 } from "lucide-react";
 import { Metadata } from "next";
@@ -15,6 +16,7 @@ interface BlogProps {
     searchParams?: {
         page?: string;
         pageSize?: string;
+        search?: string;
     }
 }
 
@@ -36,6 +38,7 @@ export default async function Blog({ searchParams }: BlogProps) {
     const { data: articles, pagination } = await getArticles({
         page,
         pageSize,
+        search: searchParams?.search
     })
 
     const showingText = articles.length <= 1
@@ -50,8 +53,12 @@ export default async function Blog({ searchParams }: BlogProps) {
     return (
         <Container className='my-6'>
             <PageHeading>
-                <HeadTitle>Blog</HeadTitle>
-                <HeadSubtitle>{showingText}</HeadSubtitle>
+                <Headings>
+                    <HeadTitle>Blog</HeadTitle>
+                    <HeadSubtitle>{showingText}</HeadSubtitle>
+                </Headings>
+
+                <SearchBar placeholder="Pesquise por um artigo" />
             </PageHeading>
 
             <div className={styles.articles_wrapper}>

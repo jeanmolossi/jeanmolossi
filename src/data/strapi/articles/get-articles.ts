@@ -21,6 +21,13 @@ export async function getArticles({ page = 1, pageSize: limit = 10, search }: Ge
     try {
         const start = limit * (page - 1);
 
+        let filters;
+        if (search) {
+            filters = {
+                title: { '$containsi': search }
+            }
+        }
+
         const { data: { data: articles, meta } } =
             await strapi.get<ArticlesResponse>(
             `/artigos`,
@@ -30,7 +37,8 @@ export async function getArticles({ page = 1, pageSize: limit = 10, search }: Ge
                         start,
                         limit,
                     },
-                    populate: 'cover'
+                    populate: 'cover',
+                    filters,
                 }
             }
         );

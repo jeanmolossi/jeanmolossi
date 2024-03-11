@@ -1,6 +1,7 @@
 import { Playlists, PlaylistsSkeleton } from "@/app/components/playlists/playlists";
 import PageHeading from "@/presentation/components/global/page-heading";
-import { HeadSubtitle, HeadTitle } from "@/presentation/components/global/page-heading/title";
+import SearchBar from "@/presentation/components/global/page-heading/search-bar";
+import { HeadSubtitle, HeadTitle, Headings } from "@/presentation/components/global/page-heading/title";
 import { Metadata } from "next";
 import { Suspense } from "react";
 
@@ -26,8 +27,12 @@ export default function PlaylistsPage({ searchParams }: PlaylistsPageProps) {
     return (
         <>
             <PageHeading>
-                <HeadTitle>Playlists</HeadTitle>
-                <HeadSubtitle>Aprenda com projetos práticos</HeadSubtitle>
+                <Headings>
+                    <HeadTitle>Playlists</HeadTitle>
+                    <HeadSubtitle>Aprenda com projetos práticos</HeadSubtitle>
+                </Headings>
+
+                <SearchBar placeholder="Pesquise por uma playlist" />
             </PageHeading>
 
             <Suspense fallback={<PlaylistsSkeleton />}>
