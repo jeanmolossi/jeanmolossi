@@ -25,6 +25,7 @@ const SearchBar = React.forwardRef<
     children: _children,
     placeholder = 'Pesquise',
     deboundeDelayMs = 700,
+    defaultValue,
     ...props
 }, ref) => {
     const searchParams = useSearchParams()
@@ -81,6 +82,7 @@ const SearchBar = React.forwardRef<
                 ref={ref}
                 placeholder={placeholder}
                 onChange={onChange}
+                defaultValue={searchParams?.get('search') || defaultValue }
                 {...props}
             />
 
