@@ -69,7 +69,7 @@ div.markdown_wrapper > p {
     margin: 0;
 }
 
-div.markdown_wrapper > p > a {
+div.markdown_wrapper a {
     @apply text-primary
         underline
         underline-offset-4
