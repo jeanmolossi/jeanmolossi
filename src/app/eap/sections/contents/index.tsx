@@ -1,7 +1,8 @@
+import amostra from '@/presentation/assets/images/ebook-amostra.svg';
 import Image from "next/image";
 import { IconType } from "react-icons";
 import { FiBook, FiCheck } from "react-icons/fi";
-import styles from './styles.module.css'
+import styles from './styles.module.css';
 
 const items = [
     {
@@ -26,7 +27,7 @@ const items = [
     },
 ] as const;
 
-export function Contents () {
+export async function Contents () {
     return (
         <section id="content" className="bg-neutral-800 w-full py-8 px-4">
             <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[1fr,_clamp(20rem,100%,34rem)] gap-8">
@@ -57,11 +58,7 @@ export function Contents () {
                     <Image
                         className="mx-auto my-auto"
                         alt="Amostra do e-book"
-                        src={{
-                            src: '/images/ebook-amostra.svg',
-                            width: 467,
-                            height: 559,
-                        }}
+                        src={amostra}
                     />
                 </div>
             </div>

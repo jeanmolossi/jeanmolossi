@@ -1,14 +1,17 @@
 'use client';
 
-import { IconType } from "react-icons"
+import Image, { ImageProps } from "next/image";
+import { MouseEvent } from "react";
+import { IconType } from "react-icons";
+import { BsGraphUp, BsPersonVideo2 } from "react-icons/bs";
+import { FiGift } from "react-icons/fi";
 import { IoFootstepsOutline } from "react-icons/io5";
 import { MdOutlineTipsAndUpdates } from "react-icons/md";
 import { SiSkillshare } from "react-icons/si";
-import { BsGraphUp, BsPersonVideo2 } from "react-icons/bs";
-import styles from './styles.module.css'
-import { FiGift } from "react-icons/fi";
-import { MouseEvent } from "react";
-import Image from "next/image";
+import styles from './styles.module.css';
+
+import proof1 from '@/presentation/assets/images/social-prof/cdftv-salary.jpg';
+import proof2 from '@/presentation/assets/images/social-prof/forbes-dev.jpg';
 
 export function Benefits() {
     const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
@@ -65,13 +68,13 @@ export function Benefits() {
                     <ProofItem
                         alt="Vagas na área de tecnologia"
                         backlink="https://forbes.com.br/carreira/2022/08/empregos-em-ti-veja-os-cargos-em-alta-e-os-salarios-da-area/"
-                        image="/images/social-prof/forbes-dev.jpg"
+                        image={proof1}
                     />
 
                     <ProofItem
                         alt="Média de salários por nível de desenvolvedores"
                         backlink="https://pesquisa.codigofonte.com.br/2022"
-                        image="/images/social-prof/cdftv-salary.jpg"
+                        image={proof2}
                     />
                 </div>
             </div>
@@ -102,7 +105,7 @@ function Item({ icon: Icon, benefit }: ItemProps) {
 interface ProofProps {
     alt: string;
     backlink: string;
-    image: string;
+    image: ImageProps['src'];
 }
 
 function ProofItem({ alt, backlink, image }: ProofProps) {
@@ -113,11 +116,7 @@ function ProofItem({ alt, backlink, image }: ProofProps) {
             <a href={backlink} className={styles.proof} rel="noopener noreferer" target="_blank">
                 <Image
                     alt={alt}
-                    src={{
-                        src: image,
-                        width: 800,
-                        height: 800
-                    }}
+                    src={image}
                     style={{ objectFit: 'contain' }}
                     fill
                 />

@@ -6,12 +6,12 @@ import { LastCallToAction } from "./sections/last-call-to-action";
 
 export default function EapPage() {
     return (
-        <>
+        <div className="text-white">
             <HeroSection />
             <Contents />
             <Benefits />
             <Guarantee />
             <LastCallToAction />
-        </>
+        </div>
     )
 }
