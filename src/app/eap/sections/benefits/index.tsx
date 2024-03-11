@@ -10,8 +10,8 @@ import { MdOutlineTipsAndUpdates } from "react-icons/md";
 import { SiSkillshare } from "react-icons/si";
 import styles from './styles.module.css';
 
-import proof1 from '@/presentation/assets/images/social-prof/cdftv-salary.jpg';
-import proof2 from '@/presentation/assets/images/social-prof/forbes-dev.jpg';
+import proof1CDFTV from '@/presentation/assets/images/social-prof/cdftv-salary.jpg';
+import proof2Forbes from '@/presentation/assets/images/social-prof/forbes-dev.jpg';
 
 export function Benefits() {
     const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
@@ -68,13 +68,13 @@ export function Benefits() {
                     <ProofItem
                         alt="Vagas na área de tecnologia"
                         backlink="https://forbes.com.br/carreira/2022/08/empregos-em-ti-veja-os-cargos-em-alta-e-os-salarios-da-area/"
-                        image={proof1}
+                        image={proof2Forbes}
                     />
 
                     <ProofItem
                         alt="Média de salários por nível de desenvolvedores"
                         backlink="https://pesquisa.codigofonte.com.br/2022"
-                        image={proof2}
+                        image={proof1CDFTV}
                     />
                 </div>
             </div>
