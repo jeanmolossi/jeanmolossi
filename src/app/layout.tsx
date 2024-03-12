@@ -30,9 +30,6 @@ export default function RootLayout({
         <html lang="pt-BR">
             <head>
                 <FontLoader />
-                <TagManager />
-                <AnalyticsScript />
-                <HotjarScript />
                 <NextNProgress />
             </head>
             <body className={cn(
@@ -49,6 +46,11 @@ export default function RootLayout({
 
                     {children}
                 </ThemeProvider>
+
+
+                <TagManager />
+                <AnalyticsScript />
+                <HotjarScript />
             </body>
         </html>
     )

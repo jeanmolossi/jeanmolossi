@@ -1,11 +1,10 @@
 'use client';
 
-import { useEffect } from 'react';
-import Script from 'next/script'
-import { useRouter } from 'next/router'
-import { gtag } from '@/config/constants'
 import { gtagActions } from '@/config/analytics';
+import { gtag } from '@/config/constants';
 import { usePathname, useSearchParams } from 'next/navigation';
+import Script from 'next/script';
+import { useEffect } from 'react';
 
 export const AnalyticsScript = () => {
     const pathname = usePathname()
@@ -27,6 +26,7 @@ export const AnalyticsScript = () => {
                 strategy='afterInteractive'
                 async
                 src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GA_TRACKING_ID}`}
+                id="gtag-load"
             />
             <Script
                 id='gtag-init'
