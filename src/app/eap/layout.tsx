@@ -1,3 +1,4 @@
+import { Metadata } from 'next'
 import { PropsWithChildren } from 'react'
 
 interface LayoutProps extends PropsWithChildren {}
@@ -16,3 +17,8 @@ const Layout = ({ children }: LayoutProps) => {
 }
 
 export default Layout
+
+export const metadata: Metadata = {
+    title: 'Ebook | Alavancagem de carreira'.trimAfter(50),
+    description: 'Descubra os segredos para construir uma base sólida, dominar habilidades técnicas e alcançar o sucesso profissional no mundo da programação.'.trimAfter(150)
+}

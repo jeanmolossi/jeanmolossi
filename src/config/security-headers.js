@@ -33,7 +33,8 @@ const childSrc = [
 const styleSrc = [
     "'self'",
     "https://fonts.googleapis.com/",
-    "'unsafe-inline'"
+    "'unsafe-inline'",
+    "https://*.googletagmanager.com/",
 ]
 
 const fontSrc = [
