@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from './styles.module.css';
 
-export const HireLogo = () => {
+const HireLogo = () => {
     return (
         <Link href={"/links"} className={cn(styles.hire_container)}>
             <div>
@@ -30,3 +30,5 @@ export const HireLogo = () => {
         </Link>
     )
 }
+
+export default HireLogo

@@ -1,7 +1,9 @@
 import { Footer } from "@/presentation/components/_layout/footer";
-import { HireLogo } from "@/presentation/components/_layout/hire-logo";
 import Navigation from "@/presentation/components/_layout/navigation-menu";
 import "@/presentation/helpers";
+import React, { Suspense } from "react";
+
+const HireLogo = React.lazy(() => import('@/presentation/components/_layout/hire-logo'))
 
 export default function Layout({
     children,
@@ -17,7 +19,7 @@ export default function Layout({
             {children}
             {modal}
 
-            <HireLogo />
+            <Suspense><HireLogo /></Suspense>
 
             <Footer />
         </div>
