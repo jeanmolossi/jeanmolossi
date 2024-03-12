@@ -95,6 +95,7 @@ export default function HomePage() {
                 <div>
                     <div className="relative rounded-full w-96 lg:w-[512px] aspect-square overflow-hidden drop-shadow-md transition-all">
                         <Image
+                            priority
                             title="Foto gerada por IA"
                             alt="Imagem de um desenvolvedor gerado por IA"
                             src={IAimg}
