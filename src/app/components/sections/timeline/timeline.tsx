@@ -34,7 +34,7 @@ export default function Timeline({
 
     return (
         <section {...rest} className={[styles.wrapper, className].join(' ')}>
-            <h1 className='text-2xl mb-8'>{header}</h1>
+            <h2 className='text-2xl mb-8'>{header}</h2>
 
             <div className={styles.timeline}>
                 {renderItems()}
