@@ -1,6 +1,7 @@
 'use client';
 
 import { cn } from "@/lib/helpers";
+import WebVitals from "@/presentation/components/global/web-vitals";
 import { ThemeProvider } from "@/presentation/components/theme-provider";
 import {
     AnalyticsScript,
@@ -50,6 +51,8 @@ export default function RootLayout({
 
                 <TagManager />
                 <AnalyticsScript />
+
+                <WebVitals />
             </body>
         </html>
     )

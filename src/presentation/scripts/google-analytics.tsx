@@ -26,6 +26,7 @@ export const AnalyticsScript = () => {
                 strategy='afterInteractive'
                 src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GA_TRACKING_ID}`}
                 id="gtag-load"
+                async
             />
             <Script
                 id='gtag-init'
