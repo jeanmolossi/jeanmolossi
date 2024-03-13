@@ -1,10 +1,10 @@
 'use client';
 
-import Script from "next/script"
-import { gtag } from '@/config/constants'
-import { usePathname, useSearchParams } from "next/navigation"
-import { useEffect } from "react"
-import { gtm } from "@/config/analytics"
+import { gtm } from "@/config/analytics";
+import { gtag } from '@/config/constants';
+import { usePathname, useSearchParams } from "next/navigation";
+import Script from "next/script";
+import { useEffect } from "react";
 
 export const TagManager = () => {
     const pathname = usePathname()
