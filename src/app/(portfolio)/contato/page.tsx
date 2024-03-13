@@ -28,7 +28,7 @@ export default function Contato () {
 
                 <div className="mx-auto">
                     <Image
-                        loading="lazy"
+                        priority
                         className="object-cover"
                         src={kumala}
                         alt="fake contacts"

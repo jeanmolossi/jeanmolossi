@@ -31,6 +31,7 @@ export const TagManager = () => {
                     })(window,document,'script','dataLayer','${gtag.GTM_TRACKING_TAG}');
                     `,
                 }}
+                async
             />
             {/* End Google Tag Manager */}
         </>
