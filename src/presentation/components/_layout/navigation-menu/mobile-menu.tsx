@@ -25,6 +25,7 @@ export function MobileNavigation() {
                 <SheetTrigger asChild>
                     <Button size="icon" variant="outline">
                         <GiHamburgerMenu />
+                        <div className="sr-only">Menu</div>
                     </Button>
                 </SheetTrigger>
 
