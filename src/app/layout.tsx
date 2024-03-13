@@ -5,7 +5,6 @@ import { ThemeProvider } from "@/presentation/components/theme-provider";
 import {
     AnalyticsScript,
     FontLoader,
-    HotjarScript,
     TagManager,
     TagManagerNoScript
 } from "@/presentation/scripts";
@@ -31,6 +30,7 @@ export default function RootLayout({
             <head>
                 <FontLoader />
                 <NextNProgress />
+                <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
             </head>
             <body className={cn(
                 'min-h-screen bg-background font-sans antialiased',
@@ -50,7 +50,6 @@ export default function RootLayout({
 
                 <TagManager />
                 <AnalyticsScript />
-                <HotjarScript />
             </body>
         </html>
     )
