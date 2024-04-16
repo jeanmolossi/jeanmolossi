@@ -69,9 +69,9 @@ export async function generateMetadata(
         creator: 'Jean Molossi',
         publisher: 'Jean Molossi',
         openGraph: {
-            type: 'video.other',
+            type: 'video.episode',
             images: [video.cover.default],
-            url: video.canonicalUrl,
+            url: `https://jeanmolossi.com.br/video/${video.canonicalUrl}`,
             title,
             description: video.description.trimAfter(150, ''),
         },
