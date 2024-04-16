@@ -20,5 +20,5 @@ export default Layout
 
 export const metadata: Metadata = {
     title: 'Ebook | Alavancagem de carreira',
-    description: 'Descubra os segredos para construir uma base sólida, dominar habilidades técnicas e alcançar o sucesso profissional no mundo da programação.'.trimAfter(150)
+    description: 'Descubra os segredos para construir uma base sólida, dominar habilidades técnicas e alcançar o sucesso profissional no mundo da programação.'.substring(0, 150)
 }
