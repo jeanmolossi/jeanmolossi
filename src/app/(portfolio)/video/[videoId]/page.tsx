@@ -1,6 +1,7 @@
-import { VideoWrapper } from "@/app/components/video-wrapper";
-import { getVideo } from "@/data/strapi";
+import { VideoComponent } from "@/app/components/video-wrapper/server-video";
+import { cachedGetVideo as getVideo } from "@/data/strapi";
 import Container from "@/presentation/components/_layout/container";
+import { PlayCircle } from "lucide-react";
 import { Metadata } from "next";
 import React, { Suspense } from "react";
 
@@ -29,7 +30,14 @@ export default async function Video({ params }: VideoProps) {
         <Container className="my-4 max-w-5xl mx-auto">
             <h1 className="text-4xl my-4 font-semibold">{video.title}</h1>
 
-            <VideoWrapper video={video} />
+            <Suspense fallback={(
+                <div className="flex flex-col items-center justify-center w-full aspect-video animate-pulse bg-muted-foreground rounded">
+                    <div className="sr-only">Carregando vídeo...</div>
+                    <PlayCircle size={72} />
+                </div>
+            )}>
+                <VideoComponent videoId={video.id} />
+            </Suspense>
 
             <div className="my-4">
                 <Suspense fallback="Carregando...">
@@ -60,6 +68,13 @@ export async function generateMetadata(
         authors: [{ name: 'Jean Molossi', url: 'https://jeanmolossi.com.br' }],
         creator: 'Jean Molossi',
         publisher: 'Jean Molossi',
+        openGraph: {
+            type: 'video.other',
+            images: [video.cover.default],
+            url: video.canonicalUrl,
+            title,
+            description: video.description.trimAfter(150, ''),
+        },
     }
 }
 
