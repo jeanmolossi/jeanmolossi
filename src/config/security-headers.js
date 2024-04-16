@@ -16,6 +16,7 @@ const scriptSrc = [
     "https://*.hotjar.com/",
     "https://*.us-east-1.amazonaws.com/",
     "https://translate.google.com/",
+    "https://*.doubleclick.net",
     "'unsafe-inline'",
 
     // development
