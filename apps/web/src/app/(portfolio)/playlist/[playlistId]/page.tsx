@@ -1,7 +1,6 @@
 import { getPlaylistVideos } from '@/data/strapi';
 import { getPlaylist } from '@/data/strapi/playlists/get-playlist';
 import { PartialVideo } from '@/domain/playlist';
-import { cn } from '@/lib/helpers';
 import Container from '@/presentation/components/_layout/container';
 import AspectRatioCover from '@/presentation/components/global/aspect-ratio-cover';
 import PageHeading from '@/presentation/components/global/page-heading';
@@ -20,6 +19,7 @@ import { ArrowLeftCircle } from 'lucide-react';
 import { Metadata } from 'next';
 import Link from 'next/link';
 import React from 'react';
+import { cn } from '@jeanmolossi/utils';
 import styles from './playlist-item.module.css';
 
 const LazyMD = React.lazy(() => import('@/presentation/components/markdown'));
