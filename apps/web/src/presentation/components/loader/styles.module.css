@@ -1,0 +1,28 @@
+.loader_container {
+    @apply
+        flex
+        justify-center
+        items-center
+
+        w-full
+        h-full
+        cursor-progress
+}
+
+.loader_container > div {
+    @apply
+        flex
+        justify-center
+        items-center
+        text-5xl
+        p-4
+        rounded-full
+        bg-stone-900;
+
+    animation: rotate 1s linear infinite;
+}
+
+@keyframes rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

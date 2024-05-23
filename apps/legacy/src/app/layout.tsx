@@ -1,42 +1,47 @@
 'use client';
 
-import { cn } from "@/lib/helpers";
-import WebVitals from "@/presentation/components/global/web-vitals";
-import { ThemeProvider } from "@/presentation/components/theme-provider";
+import { cn } from '@/lib/helpers';
+import WebVitals from '@/presentation/components/global/web-vitals';
+import { ThemeProvider } from '@/presentation/components/theme-provider';
 import {
     AnalyticsScript,
     FontLoader,
     TagManager,
-    TagManagerNoScript
-} from "@/presentation/scripts";
+    TagManagerNoScript,
+} from '@/presentation/scripts';
 import '@/presentation/styles/github-dark.min.css';
 import '@/presentation/styles/global.css';
 import { Poppins } from 'next/font/google';
 import NextNProgress from 'nextjs-progressbar';
-import React from "react";
+import React from 'react';
 
 const poppins = Poppins({
     subsets: ['latin'],
     weight: ['400', '500', '600', '700'],
     variable: '--poppins',
-})
+});
 
 export default function RootLayout({
     children,
 }: {
-    children: React.ReactNode,
+    children: React.ReactNode;
 }) {
     return (
         <html lang="pt-BR">
             <head>
                 <FontLoader />
                 <NextNProgress />
-                <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+                <link
+                    rel="dns-prefetch"
+                    href="https://www.googletagmanager.com"
+                />
             </head>
-            <body className={cn(
-                'min-h-screen bg-background font-sans antialiased',
-                poppins.variable,
-            )}>
+            <body
+                className={cn(
+                    'min-h-screen bg-background font-sans antialiased',
+                    poppins.variable,
+                )}
+            >
                 <ThemeProvider
                     attribute="class"
                     defaultTheme="system"
@@ -48,14 +53,13 @@ export default function RootLayout({
                     {children}
                 </ThemeProvider>
 
-
                 <TagManager />
                 <AnalyticsScript />
 
                 <WebVitals />
             </body>
         </html>
-    )
+    );
 }
 
 // export function reportWebVitals(metric: NextWebVitalsMetric) {

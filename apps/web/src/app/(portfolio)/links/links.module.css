@@ -1,0 +1,45 @@
+.links_container {
+    @apply flex
+        flex-col
+        mx-auto
+        my-16
+        p-2
+        gap-4
+        max-w-sm
+        w-full;
+}
+
+.links_container > h1 {
+    text-align: center;
+}
+
+.link_list {
+    @apply flex
+        flex-col
+        my-4 mx-auto
+        gap-y-4
+        w-full;
+}
+
+.link_list > div {
+    display: block;
+}
+
+.link_anchor {
+    @apply block
+        p-4
+
+        transition-all
+        ease-out
+        shadow-squared
+        shadow-slate-800
+        bg-[var(--bg-color)]
+        text-[var(--txt-color)];
+}
+
+.link_anchor:hover {
+    @apply shadow-squared-hover
+        shadow-slate-800
+        translate-x-[2px]
+        translate-y-[2px];
+}

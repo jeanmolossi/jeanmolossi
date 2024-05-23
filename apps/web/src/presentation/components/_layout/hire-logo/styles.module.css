@@ -1,0 +1,54 @@
+.hire_container {
+    @apply
+        fixed
+        right-4
+        bottom-4
+        w-28
+        h-28
+
+        hidden
+        md:block;
+}
+
+.hire_container > div {
+    @apply
+        absolute
+        inset-0
+        flex
+        items-center
+        justify-center;
+}
+
+.hire_container > div > img {
+    @apply
+        origin-center
+}
+
+@keyframes spinRight {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes spinLeft {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(-360deg);
+    }
+}
+
+.hire_container > div:first-child > img {
+    animation: spinLeft 8s linear infinite;
+}
+
+.hire_container > div:last-child > img {
+    animation: spinRight 8s linear infinite;
+}
+

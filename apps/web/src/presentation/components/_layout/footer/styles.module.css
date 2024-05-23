@@ -1,0 +1,12 @@
+.footer {
+    @apply
+        min-h-[10rem]
+        flex
+        items-end
+        p-5
+        text-sm
+        bg-background
+        w-full
+        justify-center
+        text-gray-400
+}

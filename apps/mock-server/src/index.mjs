@@ -1,5 +1,7 @@
 import jsonServer from 'json-server';
-import { router as postsRouter } from './artigos.mjs';
+import { router as articlesRouter } from './artigos.mjs';
+import { router as playlistsRouter } from './playlists.mjs';
+import { router as videosRouter } from './videos.mjs';
 
 const server = jsonServer.create();
 const router = jsonServer.router('./src/data.json');
@@ -9,11 +11,15 @@ server.use(middlewares);
 
 server.use(
     jsonServer.rewriter({
-        '/artigos/:id': '/artigos/data/:id',
+        '/api/artigos*': '/artigos/artigos$1',
+        '/api/playlists*': '/playlists/playlists$1',
+        '/api/videos*': '/videos/videos$1',
     }),
 );
 
-server.use('/', postsRouter);
+server.use('/artigos', articlesRouter);
+server.use('/playlists', playlistsRouter);
+server.use('/videos', videosRouter);
 
 server.use(router);
 

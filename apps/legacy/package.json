@@ -3,7 +3,6 @@
     "version": "0.1.0",
     "private": true,
     "scripts": {
-        "dev": "PORT=3002 next dev",
         "prebuild": "npm install",
         "build": "next build",
         "start": "next start",

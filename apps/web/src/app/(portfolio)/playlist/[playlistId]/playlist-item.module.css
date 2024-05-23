@@ -1,0 +1,49 @@
+.items_wrapper {
+    @apply
+        grid
+        grid-cols-1
+        gap-4
+}
+
+.item_wrapper {
+    @apply
+        grid
+        grid-cols-1
+        md:grid-cols-[minmax(284px,312px)_1fr]
+        lg:grid-cols-[minmax(284px,448px)_1fr]
+        gap-4
+        shadow-md
+        drop-shadow-md
+        p-4
+        rounded-md
+}
+
+.item_wrapper strong {
+    @apply
+        text-primary
+}
+
+.pagination {
+    @apply
+        my-6
+        mx-auto
+        grid
+        grid-cols-2
+        gap-4
+        place-items-center
+        w-[min(100%,448px)]
+        place-self-center;
+}
+
+
+.page_link {
+    @apply
+        p-2
+        hover:underline;
+}
+
+.page_link[aria-hidden="true"],
+.pagination[aria-hidden="true"],
+.divider[aria-hidden="true"] {
+    @apply hidden;
+}
