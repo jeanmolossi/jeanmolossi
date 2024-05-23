@@ -6,7 +6,7 @@
         }
     ],
     "functions": {
-        "app/api/cron/**/*.ts": {
+        "src/app/api/cron/**/*.ts": {
             "maxDuration": 30
         }
     }
