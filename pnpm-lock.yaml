@@ -171,6 +171,9 @@ importers:
       '@jeanmolossi/utils':
         specifier: workspace:*
         version: link:../../packages/utils
+      axios:
+        specifier: ^1.7.2
+        version: 1.7.2
       date-fns:
         specifier: ^2.30.0
         version: 2.30.0
