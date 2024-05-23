@@ -213,6 +213,9 @@ importers:
       remark-gfm:
         specifier: ^3.0.1
         version: 3.0.1
+      sharp:
+        specifier: ^0.33.4
+        version: 0.33.4
       slugify:
         specifier: ^1.6.6
         version: 1.6.6
