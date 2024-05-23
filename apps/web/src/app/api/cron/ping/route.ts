@@ -1,5 +1,7 @@
-import { NextResponse } from "next/server";
+import logger from '@/config/logger/logger';
+import { NextResponse } from 'next/server';
 
 export async function GET(req: Request) {
-	return NextResponse.json({ response: 'pong' })
+    logger.info('pong');
+    return NextResponse.json({ response: 'pong' });
 }
