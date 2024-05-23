@@ -1,0 +1,931 @@
+{
+    "artigos": {
+        "data": [
+            {
+                "id": 7,
+                "attributes": {
+                    "title": "Desvendando o Hoisting do Javascript",
+                    "subtitle": "Como funciona o Hoisting de modo simples, que até uma criança de 6 anos entenderia",
+                    "content": "### O Básico do Hoisting: \"Ei, eu já te conheço!\"\nSabe quando você entra numa festa e vê alguém que jurava que só ia chegar mais tarde, mas a pessoa já tá lá, te esperando? No JavaScript, isso acontece direto, só que com variáveis e funções. Isso se chama hoisting, ou em bom português, \"içamento\". O JavaScript dá uma espiada no código antes mesmo de rodar pra valer e fala: \"Ah, tá aqui uma variável/função. Deixa eu lembrar dela para quando precisar mais pra frente\".\n\n### Variáveis: \"Eu sei que você tá aí, mas não sei quem você é\"\nCom as variáveis, é como se o JavaScript dissesse: \"Sei que você existe, mas só vou saber mais sobre você quando a gente se encontrar de verdade\". Se você tentar usar uma variável antes de dizer ao JavaScript quem ela é de fato, ele vai te responder com um belo undefined. Isso porque ele sabe da existência da variável, mas não sabe o valor dela até que você declare.\n\n**Exemplo no mundo real:**\n```js\nconsole.log(meuPet); // O JavaScript diz: \"Conheço um 'meuPet' sim, mas ainda não sei quem é\"\nvar meuPet = \"doguinho\"; // Agora sim, o JavaScript sabe que seu pet é um doguinho\n```\n\nNessa brincadeira, o JavaScript age como se tivesse feito isso:\n\n```js\nvar meuPet; // \"Tô sabendo que tem um 'meuPet' por aí\"\nconsole.log(meuPet); // \"Hmm, 'meuPet'... Não sei quem é ainda, então é 'undefined'\"\nmeuPet = \"doguinho\"; // \"Aaah, então 'meuPet' é um doguinho!\"\n```\n\n### Funções: \"Já sei todos os seus segredos antes mesmo de você contar\"\nAgora, quando o papo é função, o JavaScript parece aquele amigo que já sabe de tudo antes mesmo de você contar. As funções são completamente içadas, então você pode chamar uma função antes mesmo de declará-la no código.\n\n**Exemplo:**\n```js\nfalaAe(); // O JavaScript já tá ligado e executa a função de boa\n\nfunction falaAe() {\n  console.log(\"Salve, JavaScript na área!\");\n}\n```\n\nAqui, não importa onde você colocou a função no seu código. O JavaScript já deu um jeito de saber tudo sobre ela antes mesmo de começar a festa.\n\n### Recapitulando\n\n- `let` e `const`: Se você tentar esse truque de chamar antes de declarar com `let` ou `const`, o JavaScript vai te dar um gelo, um tal de `ReferenceError`. Isso porque `let` e `const` são mais tímidos e só se revelam no momento certo.\n- **Moral da história:** Saber sobre hoisting ajuda a evitar aquelas situações embaraçosas no código, tipo chamar alguém que você ainda não apresentou direito.\n",
+                    "uid": "desvendando-o-hoisting-do-javascript",
+                    "createdAt": "2024-03-25T00:48:18.909Z",
+                    "updatedAt": "2024-03-25T00:49:18.166Z",
+                    "publishedAt": "2024-03-25T00:49:18.160Z",
+                    "readingTimeMinutes": 5,
+                    "reactions": 0,
+                    "tags": ["javascript", "hoisting", "fundamentos"],
+                    "author": {
+                        "data": {
+                            "id": 1,
+                            "attributes": {
+                                "name": "Jean Carlos Molossi",
+                                "bio": null,
+                                "canonicalUrl": "jean-carlos-molossi",
+                                "createdAt": "2024-03-06T02:39:29.355Z",
+                                "updatedAt": "2024-03-06T02:39:31.098Z",
+                                "publishedAt": "2024-03-06T02:39:31.089Z",
+                                "avatar": {
+                                    "data": {
+                                        "id": 8,
+                                        "attributes": {
+                                            "name": "foto-perfil-google.jpeg",
+                                            "alternativeText": null,
+                                            "caption": null,
+                                            "width": 460,
+                                            "height": 460,
+                                            "formats": {
+                                                "thumbnail": {
+                                                    "ext": ".jpeg",
+                                                    "url": "https://cms-minio.p2r8jl.easypanel.host/uploads/thumbnail_foto_perfil_google_b6b62face4.jpeg",
+                                                    "hash": "thumbnail_foto_perfil_google_b6b62face4",
+                                                    "mime": "image/jpeg",
+                                                    "name": "thumbnail_foto-perfil-google.jpeg",
+                                                    "path": null,
+                                                    "size": 5.95,
+                                                    "width": 156,
+                                                    "height": 156
+                                                }
+                                            },
+                                            "hash": "foto_perfil_google_b6b62face4",
+                                            "ext": ".jpeg",
+                                            "mime": "image/jpeg",
+                                            "size": 31.54,
+                                            "url": "https://cms-minio.p2r8jl.easypanel.host/uploads/foto_perfil_google_b6b62face4.jpeg",
+                                            "previewUrl": null,
+                                            "provider": "aws-s3",
+                                            "provider_metadata": null,
+                                            "createdAt": "2024-03-05T22:53:01.261Z",
+                                            "updatedAt": "2024-03-07T06:30:14.643Z"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "cover": {
+                        "data": {
+                            "id": 16,
+                            "attributes": {
+                                "name": "desvendando-hoisting-do-javascript.webp",
+                                "alternativeText": null,
+                                "caption": null,
+                                "width": 1792,
+                                "height": 1024,
+                                "formats": {
+                                    "large": {
+                                        "ext": ".webp",
+                                        "url": "https://cdn.jeanmolossi.com.br/uploads/large_desvendando_hoisting_do_javascript_909104bdd3.webp",
+                                        "hash": "large_desvendando_hoisting_do_javascript_909104bdd3",
+                                        "mime": "image/webp",
+                                        "name": "large_desvendando-hoisting-do-javascript.webp",
+                                        "path": null,
+                                        "size": 92.42,
+                                        "width": 1000,
+                                        "height": 571
+                                    },
+                                    "small": {
+                                        "ext": ".webp",
+                                        "url": "https://cdn.jeanmolossi.com.br/uploads/small_desvendando_hoisting_do_javascript_909104bdd3.webp",
+                                        "hash": "small_desvendando_hoisting_do_javascript_909104bdd3",
+                                        "mime": "image/webp",
+                                        "name": "small_desvendando-hoisting-do-javascript.webp",
+                                        "path": null,
+                                        "size": 34.87,
+                                        "width": 500,
+                                        "height": 286
+                                    },
+                                    "medium": {
+                                        "ext": ".webp",
+                                        "url": "https://cdn.jeanmolossi.com.br/uploads/medium_desvendando_hoisting_do_javascript_909104bdd3.webp",
+                                        "hash": "medium_desvendando_hoisting_do_javascript_909104bdd3",
+                                        "mime": "image/webp",
+                                        "name": "medium_desvendando-hoisting-do-javascript.webp",
+                                        "path": null,
+                                        "size": 62.46,
+                                        "width": 750,
+                                        "height": 429
+                                    },
+                                    "thumbnail": {
+                                        "ext": ".webp",
+                                        "url": "https://cdn.jeanmolossi.com.br/uploads/thumbnail_desvendando_hoisting_do_javascript_909104bdd3.webp",
+                                        "hash": "thumbnail_desvendando_hoisting_do_javascript_909104bdd3",
+                                        "mime": "image/webp",
+                                        "name": "thumbnail_desvendando-hoisting-do-javascript.webp",
+                                        "path": null,
+                                        "size": 11.37,
+                                        "width": 245,
+                                        "height": 140
+                                    }
+                                },
+                                "hash": "desvendando_hoisting_do_javascript_909104bdd3",
+                                "ext": ".webp",
+                                "mime": "image/webp",
+                                "size": 234.67,
+                                "url": "https://cdn.jeanmolossi.com.br/uploads/desvendando_hoisting_do_javascript_909104bdd3.webp",
+                                "previewUrl": null,
+                                "provider": "aws-s3",
+                                "provider_metadata": null,
+                                "createdAt": "2024-03-25T00:49:07.805Z",
+                                "updatedAt": "2024-03-25T00:49:07.805Z"
+                            }
+                        }
+                    }
+                }
+            },
+            {
+                "id": 2,
+                "attributes": {
+                    "title": "Como criar microserviços - Nível fácil",
+                    "subtitle": "Parte 1: Vamos criar um microserviço",
+                    "content": "### Partes\n\n- [Parte 2: Como criar micro serviços - Nível fácil](https://www.jeanmolossi.com.br/artigo/como-criar-micro-servicos-nivel-facil-parte-2)\n- [Parte 3: Como criar micro serviços - Nível fácil](https://www.jeanmolossi.com.br/artigo/como-criar-micro-servicos-nivel-facil-parte-3)\n\nCriar uma API Rest e estruturar micro serviços não precisa ser algo difícil. Nesta sequência de artigos vamos entender desde a concepção de uma infraestrutura baseada em micro serviços até o desenvolvimento completo de uma aplicação.\nO que vamos ter nessa aplicação?\n\n**Veja o diagrama:**\n\n\n![Diagrama de infraestrutura de micro serviços](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/ggon0vg4s14th774h254.jpg)\n\nBaseado no diagrama vou explicar a motivação por trás de cada item e como vamos trabalhar com ele.\n\nÉ importante também que você entenda o que vamos levar em consideração como regras de negócio.\n\nSim, regras de negócio. Ser programador não é só sobre sair criando códigos e scripts de automatização. Você precisa resolver problemas! Nada melhor que entender como o problema surge para conseguir uma saída para resolvê-lo.\n\nVamos aos itens do diagrama.\n\n## CDN (Frontend Statics)\n\nÉ, essencialmente, nosso frontend. Você pode entendê-lo como a aplicação em HTML e CSS, _React_, ou seja, lá qual o framework/lib que você queira usar (Vamos usar o _React_).\n\n### Containers\n\nEsse grupo de itens corresponde às APIs que vamos criar separadamente, cada qual com suas respectivas responsabilidades.\n\n#### Transactions API\n\nEssa é nossa API de transações (ou pagamentos e recebimentos).\n\nEssa API vai manter o histórico de transações de cada usuário e conta de usuário.\n\nPara simplificar, associe a um banco. Como se você fosse o usuário e tivesse contas nesse banco, algo como uma conta corrente e uma poupança.\n\nEssa API vai conter algo semelhante ao seu extrato.\nVamos às regras de negócio da Transactions API\n\n**Regra 1:** Só podemos cadastrar transações, não podemos excluí-las. \n\nIsso significa que uma devolução ou estorno deve ser uma nova transação com o valor reembolsado.\n\n**Regra 2:** Toda transação deve ser diretamente relacionada a um usuário e a uma conta deste usuário.\n\nIsso significa que uma transação deve ter um usuário e uma conta deste mesmo usuário como origem/destino.\n\n**Regra 3:** Toda transação deve ter um tipo, como entrada ou saída. Além de ter o valor, em centavos, da transação, bem como o método de pagamento (Ex.: `pix`, `débito`, `doc` ou `ted`).\n\n#### Users API\n\nEssa é a nossa API de usuários.\n\nEssa API vai manter os dados dos clientes. Aqui teremos e-mail, senha, data de criação e atualização de conta.\nSerão somente esses dados apenas para fins didáticos.\n\nVamos às regras de negócio da Users API\n\n**Regra 1:** Todo usuário deve fornecer um e-mail e uma senha para cadastro.\n\nIsso significa que ambos campos de identificação do usuário são obrigatórios.\n\n**Regra 2:** Toda atualização, adição de transação ou “abertura de conta” deste usuário deve registrar a data de atualização do usuário.\n\nIsso significa que nosso campo `updated_at` sofrerá uma atualização a cada ação de escrita do usuário.\n\n#### Accounts API\n\nEssa é a API de contas de usuário.\nNela vamos manter o tipo da conta do usuário (se é corrente ou poupança), o balanço, o número e o usuário dono da conta.\nVamos às regras de negócio da Accounts API\n\n**Regra 1:** Toda conta deve ter um tipo. Imagino algo como conta corrente, conta poupança.\nIsso significa que não podemos permitir um usuário criar uma conta sem solicitar que seja, conta-corrente ou conta-poupança.\n\n**Regra 2:** Toda conta deve ter obrigatoriamente um dono.\nIsso nos diz que também não podemos permitir a criação de uma conta sem que haja um usuário envolvido.\n\nRegra 3: O balanço da conta deve ser recalculado sempre que for recebido um evento de nova transação.\n\nIsso significa que sempre que houver uma nova transação nossa API de contas vai “ouvir” este evento e recalcular o balanço baseado nesta nova transação.\n\n## Database\n\nGeralmente, micro serviços consomem suas próprias bases de dados. Nesta aplicação vamos utilizar uma única base de dados separando apenas as tabelas.\n\nIsso não é algo incomum em grandes sistemas que estão no processo de migração de um monólito. É uma etapa encontrada durante o processo de estrangulamento do sistema, mas isso é assunto para outro momento.\n\nCada micro serviço deve ser independente de qualquer outro. Vamos trazer isso para nosso modelo. Caso nossa API de transações cair por qualquer motivo, a API de usuários ou de contas devem se manter funcionando de forma independente.\nAlgo que é parcialmente verdade em nosso design atual. Caso o usuário queira saber seu saldo total não é possível se nossa API de contas venha a cair.\n\nPara resolver isso, deveríamos “clonar” o balanço das contas do usuário dentro da base de usuários. Isso tornaria nossa aplicação independente e caso a API de contas fique fora do ar, nosso cliente ainda consegue ver seu saldo atual.\n\nAh! mas isso gera duplicidade de dados, né?! Correto!\n\nEsta é outra dúvida que acontece quando falamos sobre micro serviços independentes. Se você está no início de sua startup não sei se você deveria considerar usar micro serviços, quando digo não sei, na verdade, quero dizer não aconselho usar.\n\nMicro serviços são caros. Você deve levar em conta a utilizar micro serviços em situações específicas. Por exemplo, quando seu sistema está tão grande a ponto de ser muito custoso (em termos de desenvolvimento, não financeiro) para qualquer implementação nova.\n\nEnfim, este é outro tema que dá um artigo completo.\nQuanto às nossas bases de dados, simplesmente teremos três tabelas, usuários, transações e contas. Algo como o seguinte diagrama:\n\n\n![Modelagem de tabelas da base de dados](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/yttqz9f696z5zu3t8jhw.jpg)\n\n## Fila e eventos\n\nVou te mostrar como trabalhar com fila e eventos não é um monstro de sete cabeças.\n\nFila, como o próprio nome já diz é uma fila! (Uau!)\n\n\n![Meme Genius](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/f04lkg3njxkuqh00oogl.jpg)\n\nEm essência, vamos adicionar um evento na fila e esquecê-lo lá. Outra parte da nossa aplicação vai ficar monitorando a fila, pegando os eventos (também conhecidos como mensagens) e processando os dados recebidos.\n\nPara essa fila de eventos (ou mensagens) vamos utilizar RabbitMQ.\n\nEspero que fique calmo, não é algo difícil de utilizar. Você verá que é algo extremamente simples.\n\nÉ importante salientar que é diferente utilizar de implantar. RabbitMQ é algo complexo para se lidar quando se trata de infraestrutura. Porém, como desenvolvedor é algo relativamente simples.\n\nVamos à mão na massa na [parte II](https://jeanmolossi.com.br/artigo/como-criar-micro-servicos-nivel-facil-parte-2-43ln). Espero você lá.",
+                    "uid": "como-criar-micro-servicos-nivel-facil",
+                    "createdAt": "2024-03-05T06:57:37.380Z",
+                    "updatedAt": "2024-03-11T20:39:48.680Z",
+                    "publishedAt": "2024-03-05T06:57:39.498Z",
+                    "readingTimeMinutes": 4,
+                    "reactions": null,
+                    "tags": ["microservices", "code"],
+                    "author": {
+                        "data": {
+                            "id": 1,
+                            "attributes": {
+                                "name": "Jean Carlos Molossi",
+                                "bio": null,
+                                "canonicalUrl": "jean-carlos-molossi",
+                                "createdAt": "2024-03-06T02:39:29.355Z",
+                                "updatedAt": "2024-03-06T02:39:31.098Z",
+                                "publishedAt": "2024-03-06T02:39:31.089Z",
+                                "avatar": {
+                                    "data": {
+                                        "id": 8,
+                                        "attributes": {
+                                            "name": "foto-perfil-google.jpeg",
+                                            "alternativeText": null,
+                                            "caption": null,
+                                            "width": 460,
+                                            "height": 460,
+                                            "formats": {
+                                                "thumbnail": {
+                                                    "ext": ".jpeg",
+                                                    "url": "https://cms-minio.p2r8jl.easypanel.host/uploads/thumbnail_foto_perfil_google_b6b62face4.jpeg",
+                                                    "hash": "thumbnail_foto_perfil_google_b6b62face4",
+                                                    "mime": "image/jpeg",
+                                                    "name": "thumbnail_foto-perfil-google.jpeg",
+                                                    "path": null,
+                                                    "size": 5.95,
+                                                    "width": 156,
+                                                    "height": 156
+                                                }
+                                            },
+                                            "hash": "foto_perfil_google_b6b62face4",
+                                            "ext": ".jpeg",
+                                            "mime": "image/jpeg",
+                                            "size": 31.54,
+                                            "url": "https://cms-minio.p2r8jl.easypanel.host/uploads/foto_perfil_google_b6b62face4.jpeg",
+                                            "previewUrl": null,
+                                            "provider": "aws-s3",
+                                            "provider_metadata": null,
+                                            "createdAt": "2024-03-05T22:53:01.261Z",
+                                            "updatedAt": "2024-03-07T06:30:14.643Z"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "cover": {
+                        "data": {
+                            "id": 10,
+                            "attributes": {
+                                "name": "post2.jpg",
+                                "alternativeText": null,
+                                "caption": null,
+                                "width": 1920,
+                                "height": 1280,
+                                "formats": {
+                                    "large": {
+                                        "ext": ".jpg",
+                                        "url": "https://cdn.jeanmolossi.com.br/uploads/large_post2_f047eb5568.jpg",
+                                        "hash": "large_post2_f047eb5568",
+                                        "mime": "image/jpeg",
+                                        "name": "large_post2.jpg",
+                                        "path": null,
+                                        "size": 221.42,
+                                        "width": 1000,
+                                        "height": 667
+                                    },
+                                    "small": {
+                                        "ext": ".jpg",
+                                        "url": "https://cdn.jeanmolossi.com.br/uploads/small_post2_f047eb5568.jpg",
+                                        "hash": "small_post2_f047eb5568",
+                                        "mime": "image/jpeg",
+                                        "name": "small_post2.jpg",
+                                        "path": null,
+                                        "size": 55.52,
+                                        "width": 500,
+                                        "height": 333
+                                    },
+                                    "medium": {
+                                        "ext": ".jpg",
+                                        "url": "https://cdn.jeanmolossi.com.br/uploads/medium_post2_f047eb5568.jpg",
+                                        "hash": "medium_post2_f047eb5568",
+                                        "mime": "image/jpeg",
+                                        "name": "medium_post2.jpg",
+                                        "path": null,
+                                        "size": 127.18,
+                                        "width": 750,
+                                        "height": 500
+                                    },
+                                    "thumbnail": {
+                                        "ext": ".jpg",
+                                        "url": "https://cdn.jeanmolossi.com.br/uploads/thumbnail_post2_f047eb5568.jpg",
+                                        "hash": "thumbnail_post2_f047eb5568",
+                                        "mime": "image/jpeg",
+                                        "name": "thumbnail_post2.jpg",
+                                        "path": null,
+                                        "size": 11.59,
+                                        "width": 234,
+                                        "height": 156
+                                    }
+                                },
+                                "hash": "post2_f047eb5568",
+                                "ext": ".jpg",
+                                "mime": "image/jpeg",
+                                "size": 584.04,
+                                "url": "https://cdn.jeanmolossi.com.br/uploads/post2_f047eb5568.jpg",
+                                "previewUrl": null,
+                                "provider": "aws-s3",
+                                "provider_metadata": null,
+                                "createdAt": "2024-03-05T22:56:52.206Z",
+                                "updatedAt": "2024-03-13T01:53:38.953Z"
+                            }
+                        }
+                    }
+                }
+            },
+            {
+                "id": 3,
+                "attributes": {
+                    "title": "Como criar microserviços - Nível fácil",
+                    "subtitle": "Parte 2: Vamos continuar nosso microserviço",
+                    "content": "### Partes\n\n- [Parte 1: Como criar micro serviços - Nível fácil](https://www.jeanmolossi.com.br/artigo/como-criar-micro-servicos-nivel-facil)\n- [Parte 3: Como criar micro serviços - Nível fácil](https://www.jeanmolossi.com.br/artigo/como-criar-micro-servicos-nivel-facil-parte-3)\n\nCriar um sistema orientado à micro serviços, na verdade, não é tão simples. Ser algo difícil e ser algo complexo são coisas distintas.\n\nComo comentei na parte 1, vou mostrar como pode ser fácil. Imagine que temos três (3) APIs se comunicando entre si via http em um único sistema.\n\nPronto, você já tem o start de um sistema baseado em micro serviços. Quando trabalhamos com micro serviços, o paradigma de desenvolvimento fica um pouco diferente, eu explico:\n\n# Atenção desviada\n\nNossa atenção muda de foco. Em uma API Rest padrão, focamos em padrões de projeto, código limpo, desacoplamento. Isso não é perdido de foco quando mudamos para micro serviços. Entretanto, nossa preocupação maior fica no monitoramento (ou observabilidade) de serviços e dependências.\n\nNossa preocupação se estende à performance e resiliência das aplicações, por exemplo.\n\n## Nem tudo são rosas\n\nÉ importante comentar sobre o dia a dia de grandes sistemas. Nem tudo são rosas e serviços bem orquestrados. Na verdade, dispende-se grande esforço para manter tudo em ordem.\n\n## Nem tudo é complicado também\n\nNo final das contas o que importa é se a solução resolve o problema, seja com monólito ou com micro serviços, tanto faz.\n\nDe volta à nossa aplicação\n\n# Users API\n\nVamos iniciar pela API de usuários. Ela será o ponto de entrada do nosso usuário.\n\nNossas APIs seguirão o seguinte diagrama:\n\n\n![Arquitetura do projeto](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/xckwx1vnrk2hsr9ewuko.jpg)\n\n# Camadas da API\n\nComo você viu no diagrama, teremos três (3) camadas em nossas APIs (sim, todas vão seguir esse padrão). Cada camada tem sua responsabilidade, vamos a elas:\n\n## Application\n\nDentro da camada de application temos duas estruturas.\n\nA estrutura de Controller vai nos fornecer os recursos da API, são eles:\n\n|Method|Route|\n|--------|-------|\n|POST| /user |\n| GET | /user |\n\nA estrutura Factory será o ponto que acoplaremos a nossa aplicação com a camada de infraestrutura. Essa camada será o lugar onde teremos todas as junções da nossa aplicação, onde vamos conectar o nosso Controller, com nosso Service, com o Repository, etc.\n\n## Infrastructure\n\nEssa camada de infraestrutura será onde teremos as definições de arquitetura da nossa aplicação. Isso quer dizer que, todas as dependências e auxiliares que não trabalham com as regras do negócio, ficam nessa camada.\n\nRepository: é a estrutura responsável que cria uma interface de comunicação entre nossa aplicação e a base de dados.\n\nData: é a estrutura responsável por buscar dados de outros lugares que não estão na base de dados. Por exemplo, consumir as outras APIs.\n\nAdapter: é a estrutura que vai adaptar e validar os dados de entrada e saída da nossa API com o Controller.\n\nError: é a estrutura que modela diferentes erros baseados no comportamento da aplicação e da regra definida.\n\nService: é a estrutura que mescla outras estruturas com o domínio, quase assemelha-se à Factory na camada de Application\n\n## Domain\n\nEssa é nossa camada de domínio, onde não devemos nos preocupar se vamos utilizar um ORM, filas, Frameworks ou qualquer outra dependência.\n\nEssa camada é responsável pela regra de negócio da nossa aplicação. Isso significa que, nos preocupamos unicamente com a lógica do negócio.\n\n# Acompanhe o vídeo\n\n**Em breve**\n\n\n\n\n\n",
+                    "uid": "como-criar-micro-servicos-nivel-facil-parte-2",
+                    "createdAt": "2024-03-05T07:01:24.831Z",
+                    "updatedAt": "2024-03-11T20:40:04.977Z",
+                    "publishedAt": "2024-03-05T07:01:26.308Z",
+                    "readingTimeMinutes": 5,
+                    "reactions": null,
+                    "tags": ["microservices"],
+                    "author": {
+                        "data": {
+                            "id": 1,
+                            "attributes": {
+                                "name": "Jean Carlos Molossi",
+                                "bio": null,
+                                "canonicalUrl": "jean-carlos-molossi",
+                                "createdAt": "2024-03-06T02:39:29.355Z",
+                                "updatedAt": "2024-03-06T02:39:31.098Z",
+                                "publishedAt": "2024-03-06T02:39:31.089Z",
+                                "avatar": {
+                                    "data": {
+                                        "id": 8,
+                                        "attributes": {
+                                            "name": "foto-perfil-google.jpeg",
+                                            "alternativeText": null,
+                                            "caption": null,
+                                            "width": 460,
+                                            "height": 460,
+                                            "formats": {
+                                                "thumbnail": {
+                                                    "ext": ".jpeg",
+                                                    "url": "https://cms-minio.p2r8jl.easypanel.host/uploads/thumbnail_foto_perfil_google_b6b62face4.jpeg",
+                                                    "hash": "thumbnail_foto_perfil_google_b6b62face4",
+                                                    "mime": "image/jpeg",
+                                                    "name": "thumbnail_foto-perfil-google.jpeg",
+                                                    "path": null,
+                                                    "size": 5.95,
+                                                    "width": 156,
+                                                    "height": 156
+                                                }
+                                            },
+                                            "hash": "foto_perfil_google_b6b62face4",
+                                            "ext": ".jpeg",
+                                            "mime": "image/jpeg",
+                                            "size": 31.54,
+                                            "url": "https://cms-minio.p2r8jl.easypanel.host/uploads/foto_perfil_google_b6b62face4.jpeg",
+                                            "previewUrl": null,
+                                            "provider": "aws-s3",
+                                            "provider_metadata": null,
+                                            "createdAt": "2024-03-05T22:53:01.261Z",
+                                            "updatedAt": "2024-03-07T06:30:14.643Z"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "cover": {
+                        "data": {
+                            "id": 10,
+                            "attributes": {
+                                "name": "post2.jpg",
+                                "alternativeText": null,
+                                "caption": null,
+                                "width": 1920,
+                                "height": 1280,
+                                "formats": {
+                                    "large": {
+                                        "ext": ".jpg",
+                                        "url": "https://cdn.jeanmolossi.com.br/uploads/large_post2_f047eb5568.jpg",
+                                        "hash": "large_post2_f047eb5568",
+                                        "mime": "image/jpeg",
+                                        "name": "large_post2.jpg",
+                                        "path": null,
+                                        "size": 221.42,
+                                        "width": 1000,
+                                        "height": 667
+                                    },
+                                    "small": {
+                                        "ext": ".jpg",
+                                        "url": "https://cdn.jeanmolossi.com.br/uploads/small_post2_f047eb5568.jpg",
+                                        "hash": "small_post2_f047eb5568",
+                                        "mime": "image/jpeg",
+                                        "name": "small_post2.jpg",
+                                        "path": null,
+                                        "size": 55.52,
+                                        "width": 500,
+                                        "height": 333
+                                    },
+                                    "medium": {
+                                        "ext": ".jpg",
+                                        "url": "https://cdn.jeanmolossi.com.br/uploads/medium_post2_f047eb5568.jpg",
+                                        "hash": "medium_post2_f047eb5568",
+                                        "mime": "image/jpeg",
+                                        "name": "medium_post2.jpg",
+                                        "path": null,
+                                        "size": 127.18,
+                                        "width": 750,
+                                        "height": 500
+                                    },
+                                    "thumbnail": {
+                                        "ext": ".jpg",
+                                        "url": "https://cdn.jeanmolossi.com.br/uploads/thumbnail_post2_f047eb5568.jpg",
+                                        "hash": "thumbnail_post2_f047eb5568",
+                                        "mime": "image/jpeg",
+                                        "name": "thumbnail_post2.jpg",
+                                        "path": null,
+                                        "size": 11.59,
+                                        "width": 234,
+                                        "height": 156
+                                    }
+                                },
+                                "hash": "post2_f047eb5568",
+                                "ext": ".jpg",
+                                "mime": "image/jpeg",
+                                "size": 584.04,
+                                "url": "https://cdn.jeanmolossi.com.br/uploads/post2_f047eb5568.jpg",
+                                "previewUrl": null,
+                                "provider": "aws-s3",
+                                "provider_metadata": null,
+                                "createdAt": "2024-03-05T22:56:52.206Z",
+                                "updatedAt": "2024-03-13T01:53:38.953Z"
+                            }
+                        }
+                    }
+                }
+            },
+            {
+                "id": 4,
+                "attributes": {
+                    "title": "Como criar microserviços - Nível fácil",
+                    "subtitle": "Parte 3: Testes em microserviço",
+                    "content": "### Partes\n\n- [Parte 1: Como criar micro serviços - Nível fácil](https://www.jeanmolossi.com.br/artigo/como-criar-micro-servicos-nivel-facil)\n- [Parte 2: Como criar micro serviços - Nível fácil](https://www.jeanmolossi.com.br/artigo/como-criar-micro-servicos-nivel-facil-parte-2)\n\nComo já dito nos artigos anteriores, criar um sistema baseado em micro serviços não é difícil. Vamos passo a passo e ao final dessa série, você verá que de fato é simples.\n\n# Users API\n\nAqui, vamos criar uma simples API Rest Http. Isso não deve ser um mistério. Ter uma Controller com as rotas, uma camada de Services, conexão com base de dados, tudo muito simples.\n\n## Domínio\n\nVamos iniciar pela camada de domínio. Isso vai garantir que foquemos em regras de negócio e depois nos preocupamos em implementar as rotas e regras de aplicação, que não são pertinentes ao domínio.\n\nPrimeiro vamos iniciar nosso projeto.\n\n```shell\n\nmkdir users-api && cd users-api\n\nyarn init -y\n\n```\n\nIsso já deve gerar nossa pasta e iniciar o `package.json`. Vamos configurar o `typescript` agora, no terminal execute:\n\n```shell\n\nyarn add -D typescript && \\\n\nyarn tsc --init\n\n```\n\nIsso resolve nossa configuração inicial do `typescript`. Agora vamos começar com nosso domínio.\n\n```shell\n\nmkdir domain && touch domain/user.ts\n\n```\n\nCom isso vamos ter nossa entidade de `user`. Antes de começar com a construção do nosso `user` vamos configurar o `jest` como nosso runtime para testes.\n\nExecute:\n\n```shell\n\nyarn add -D jest @types/jest ts-jest ts-node\n\n```\n\nApós o comando acima, teremos o jest instalado, agora vamos configurá-lo:\n\n```shell\n\nyarn jest --init\n\n```\n\nCom esse comando o `jest` inicia o processo de configuração, com isso seu terminal fará algumas perguntas. Vamos às respostas:\n\n- ✔ Would you like to use Jest when running “test” script in “package.json”? (y/N)\n  - Pressione “n”\n- ✔ Would you like to use Typescript for the configuration file? (y/N)\n  - Pressione “y”\n- ✔ Choose the test environment that will be used for testing\n  - Selecione “node”\n- ✔ Do you want Jest to add coverage reports? (y/N)\n  - Pressione “y”\n- ✔ Which provider should be used to instrument code for coverage?\n  - Selecione “v8”\n- ✔ Automatically clear mock calls, instances, contexts and results before every test? (y/N)\n  - Pressione “y”;\n\nAgora você pode ver que foi criado um arquivo `jest.config.ts`. Esse é o arquivo de configuração do jest. Porém, você precisa adicionar uma última configuração:\n\n```ts\n// tsconfig.json\n\n// ... Logo depois de export default\n\nexport default {\n\n// ... Aqui abaixo.\n\n  transform: {\n\n    \"^.+\\\\.tsx?$\": \"ts-jest\",\n\n  },\n\n  // ...\n\n```\n\nVamos criar nosso primeiro teste para saber se está tudo correto.\n\nCrie o arquivo `user.spec.ts` (ou execute `touch domain/user.spec.ts`) junto com o arquivo `user.ts`\n\nDentro do arquivo de teste (`user.spec.ts`) vamos digitar o seguinte código:\n\n```ts\n\n// user.spec.ts\n\ndescribe(\"Domínio de usuário\", () => {\n  it(\"deve funcionar\", function () {\n    expect(true).toBe(true);\n  });\n});\n\n```\n\nAntes de testar, vamos ajustar nosso `package.json`. Vamos adicionar um script. O `package.json` deve ficar assim:\n\n```json\n// package.json\n\n{\n  \"name\": \"users-api\",\n  \"version\": \"1.0.0\",\n  \"main\": \"index.js\",\n  \"license\": \"MIT\",\n  \"scripts\": {\n    \"start\": \"node index.js\",\n    \"test\": \"jest\"\n  },\n  \"devDependencies\": {\n    \"@types/jest\": \"^28.1.3\",\n    \"jest\": \"^28.1.1\",\n    \"ts-jest\": \"^28.0.5\",\n    \"ts-node\": \"^10.8.1\",\n    \"typescript\": \"^4.7.4\"\n  }\n}\n\n```\n\nNote que adicionamos uma chave `scripts` e nela temos dois (2) scripts. Um para iniciar a aplicação e outro para testar.\n\nAgora no terminal, executamos:\n\n```shell\n\nyarn test\n\n```\n\nEsperamos que tudo dê certo. Se aparecer `1 passed` em verde, significa que tudo está bem configurado.\n\nA partir de agora, vou explicar o que faremos e o resultado.\n\nVamos relembrar. Nossas regras de negócio nos dizem que:\n\nTodo usuário deve fornecer um e-mail e uma senha para poder se cadastrar.\nToda atualização do usuário registra a data em que ocorreu.\nSabendo disso, nosso teste de `user` deve ficar assim:\n\n```ts\n// user.spec.ts\n\nimport { User } from \"./user\";\n\ndescribe(\"Domínio de usuário\", () => {\n\tit(\"deve fornecer um e-mail e senha em User\", function () {\n\t\texpect(\n\t\t\tnew User(\n\t\t\t\t\"id-fake\",\n\t\t\t\t\"email-fake\",\n\t\t\t\t\"password-fake\",\n\t\t\t\t\"created_at-fake\",\n\t\t\t\t\"updated_at-fake\"\n\t\t\t)\n\t\t).toBeTruthy();\n\t});\n\n\tit(\"deve dar erro se não fornecer e-mail ou senha em User\", function () {\n\t\texpect(() => {\n\t\t\tnew User(\n\t\t\t\t\"id-fake\",\n\t\t\t\t// Email vazio\n\t\t\t\t\"\",\n\t\t\t\t\"password-fake\",\n\t\t\t\t\"created_at-fake\",\n\t\t\t\t\"updated_at-fake\"\n\t\t\t);\n\t\t}).toThrowError(\"É obrigatório informar um e-mail\");\n\n\t\texpect(() => {\n\t\t\tnew User(\n\t\t\t\t\"id-fake\",\n\t\t\t\t\"email-fake\",\n\t\t\t\t// Senha vazia\n\t\t\t\t\"\",\n\t\t\t\t\"created_at-fake\",\n\t\t\t\t\"updated_at-fake\"\n\t\t\t);\n\t\t}).toThrowError(\"É obrigatório informar uma senha\");\n\t});\n});\n```\n\nSe você tentar executar os testes `yarn test` deve falhar. Mas agora vamos criar nossa classe de usuário para resolver isso.\n\n```ts\n// user.ts\nexport class User {\n\tprivate _user_id: string;\n\tprivate _email: string;\n\tprivate _password: string;\n\tprivate _created_at: string;\n\tprivate _updated_at: string;\n\n\tconstructor(\n\t\tuser_id: string,\n\t\temail: string,\n\t\tpassword: string,\n\t\tcreated_at: string,\n\t\tupdated_at: string\n\t) {\n\t\tthis._user_id = user_id;\n\t\tthis._email = email;\n\t\tthis._password = password;\n\t\tthis._created_at = created_at;\n\t\tthis._updated_at = updated_at;\n\n\t\tthis.validate();\n\t}\n\n\tprivate validate() {\n\t\tif (!this._email) {\n\t\t\tthrow new Error(\"É obrigatório informar um e-mail\");\n\t\t}\n\n\t\tif (!this._password) {\n\t\t\tthrow new Error(\"É obrigatório informar uma senha\");\n\t\t}\n\t}\n}\n\n```\n\nA partir de agora, acompanhe por vídeo. Este artigo ficará imenso caso eu explique tudo. O essencial já está aqui. O que terá no vídeo é a prática do desenvolvimento e insigths.\n\n# Acompanhe pelo vídeo\n\n**Em breve**",
+                    "uid": "como-criar-micro-servicos-nivel-facil-parte-3",
+                    "createdAt": "2024-03-05T07:07:08.667Z",
+                    "updatedAt": "2024-03-11T20:40:12.967Z",
+                    "publishedAt": "2024-03-05T07:07:10.109Z",
+                    "readingTimeMinutes": 8,
+                    "reactions": null,
+                    "tags": null,
+                    "author": {
+                        "data": {
+                            "id": 1,
+                            "attributes": {
+                                "name": "Jean Carlos Molossi",
+                                "bio": null,
+                                "canonicalUrl": "jean-carlos-molossi",
+                                "createdAt": "2024-03-06T02:39:29.355Z",
+                                "updatedAt": "2024-03-06T02:39:31.098Z",
+                                "publishedAt": "2024-03-06T02:39:31.089Z",
+                                "avatar": {
+                                    "data": {
+                                        "id": 8,
+                                        "attributes": {
+                                            "name": "foto-perfil-google.jpeg",
+                                            "alternativeText": null,
+                                            "caption": null,
+                                            "width": 460,
+                                            "height": 460,
+                                            "formats": {
+                                                "thumbnail": {
+                                                    "ext": ".jpeg",
+                                                    "url": "https://cms-minio.p2r8jl.easypanel.host/uploads/thumbnail_foto_perfil_google_b6b62face4.jpeg",
+                                                    "hash": "thumbnail_foto_perfil_google_b6b62face4",
+                                                    "mime": "image/jpeg",
+                                                    "name": "thumbnail_foto-perfil-google.jpeg",
+                                                    "path": null,
+                                                    "size": 5.95,
+                                                    "width": 156,
+                                                    "height": 156
+                                                }
+                                            },
+                                            "hash": "foto_perfil_google_b6b62face4",
+                                            "ext": ".jpeg",
+                                            "mime": "image/jpeg",
+                                            "size": 31.54,
+                                            "url": "https://cms-minio.p2r8jl.easypanel.host/uploads/foto_perfil_google_b6b62face4.jpeg",
+                                            "previewUrl": null,
+                                            "provider": "aws-s3",
+                                            "provider_metadata": null,
+                                            "createdAt": "2024-03-05T22:53:01.261Z",
+                                            "updatedAt": "2024-03-07T06:30:14.643Z"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "cover": {
+                        "data": {
+                            "id": 10,
+                            "attributes": {
+                                "name": "post2.jpg",
+                                "alternativeText": null,
+                                "caption": null,
+                                "width": 1920,
+                                "height": 1280,
+                                "formats": {
+                                    "large": {
+                                        "ext": ".jpg",
+                                        "url": "https://cdn.jeanmolossi.com.br/uploads/large_post2_f047eb5568.jpg",
+                                        "hash": "large_post2_f047eb5568",
+                                        "mime": "image/jpeg",
+                                        "name": "large_post2.jpg",
+                                        "path": null,
+                                        "size": 221.42,
+                                        "width": 1000,
+                                        "height": 667
+                                    },
+                                    "small": {
+                                        "ext": ".jpg",
+                                        "url": "https://cdn.jeanmolossi.com.br/uploads/small_post2_f047eb5568.jpg",
+                                        "hash": "small_post2_f047eb5568",
+                                        "mime": "image/jpeg",
+                                        "name": "small_post2.jpg",
+                                        "path": null,
+                                        "size": 55.52,
+                                        "width": 500,
+                                        "height": 333
+                                    },
+                                    "medium": {
+                                        "ext": ".jpg",
+                                        "url": "https://cdn.jeanmolossi.com.br/uploads/medium_post2_f047eb5568.jpg",
+                                        "hash": "medium_post2_f047eb5568",
+                                        "mime": "image/jpeg",
+                                        "name": "medium_post2.jpg",
+                                        "path": null,
+                                        "size": 127.18,
+                                        "width": 750,
+                                        "height": 500
+                                    },
+                                    "thumbnail": {
+                                        "ext": ".jpg",
+                                        "url": "https://cdn.jeanmolossi.com.br/uploads/thumbnail_post2_f047eb5568.jpg",
+                                        "hash": "thumbnail_post2_f047eb5568",
+                                        "mime": "image/jpeg",
+                                        "name": "thumbnail_post2.jpg",
+                                        "path": null,
+                                        "size": 11.59,
+                                        "width": 234,
+                                        "height": 156
+                                    }
+                                },
+                                "hash": "post2_f047eb5568",
+                                "ext": ".jpg",
+                                "mime": "image/jpeg",
+                                "size": 584.04,
+                                "url": "https://cdn.jeanmolossi.com.br/uploads/post2_f047eb5568.jpg",
+                                "previewUrl": null,
+                                "provider": "aws-s3",
+                                "provider_metadata": null,
+                                "createdAt": "2024-03-05T22:56:52.206Z",
+                                "updatedAt": "2024-03-13T01:53:38.953Z"
+                            }
+                        }
+                    }
+                }
+            },
+            {
+                "id": 6,
+                "attributes": {
+                    "title": "Implantação Verde-Azul: Além da Simples Atualização",
+                    "subtitle": "Transformando a Manutenção de Sistemas em Uma Arte Estratégica",
+                    "content": "A implantação verde-azul é uma estratégia revolucionária que tem remodelado a forma como desenvolvedores e operações (DevOps) abordam o lançamento de novas versões de software. A essência dessa técnica está na criação de dois ambientes idênticos, mas operacionalmente separados, conhecidos como \"Verde\" e \"Azul\". A beleza desse método reside na sua simplicidade e eficácia, oferecendo um vasto leque de benefícios que vão muito além de uma simples atualização de software. Vamos explorar esses benefícios, tecendo paralelos e ilustrando com exemplos para uma compreensão cristalina.\n\n### Redução do Tempo de Inatividade\n\nUm dos principais atrativos da implantação verde-azul é a sua capacidade de reduzir o tempo de inatividade a praticamente zero. Imagine que você está assistindo a um espetáculo de mágica onde o mágico, com um passe de mágica, troca uma peça sem que você perceba. Assim funciona a implantação verde-azul; enquanto o ambiente Azul está ativo e servindo os usuários, o ambiente Verde está sendo preparado com a nova versão. Uma vez que a nova versão está pronta para ser lançada, simplesmente se troca o tráfego do Azul para o Verde. O truque é tão sutil que os usuários nem percebem que foram transferidos para um ambiente diferente.\n\n### Teste em Ambiente de Produção\n\nOutro benefício significativo é a possibilidade de testar a nova versão em um ambiente de produção real, mas sem afetar os usuários finais. Esse aspecto é como ter um ensaio geral em um teatro fechado, garantindo que tudo funcionará perfeitamente antes da estreia. O ambiente Verde permite que os desenvolvedores e operações testem tudo minuciosamente, ajustem configurações e assegurem que não haverá surpresas indesejadas quando o sistema for ao ar.\n\n### Facilitação do Rollback\n\nNa eventualidade de algo não ir como planejado, a implantação verde-azul simplifica o processo de rollback. Em vez de um processo frenético e propenso a erros de reverter as mudanças no ambiente de produção, basta direcionar o tráfego de volta para o ambiente Azul original. Isso é comparável a ter uma rede de segurança durante um ato de trapezio, oferecendo uma garantia de que você pode sempre voltar a um estado seguro sem maiores complicações.\n\n### Escalabilidade e Flexibilidade\n\nA estratégia verde-azul também promove uma maior escalabilidade e flexibilidade. Ao ter dois ambientes, as organizações podem alternar entre eles sem pressa, permitindo uma abordagem mais metódica e menos reativa às atualizações. Isso não só reduz o estresse associado ao lançamento de novas versões, como também oferece espaço para inovação contínua e experimentação sem riscos.\n\n### Exemplo\n\nImagine que você é o responsável pela tecnologia de uma empresa de e-commerce, \"Ofertas Online\", que está se preparando para a Black Friday. Você tem uma nova versão do site pronta, com recursos que melhoram a experiência do usuário e otimizam as vendas. Contudo, lançar uma atualização durante um evento de vendas tão importante pode ser arriscado.\n\nO desafio é que você precisa atualizar o site com o mínimo risco possível, garantindo que não haja interrupção para os clientes e que seja possível voltar atrás rapidamente se algo não funcionar como esperado.\n\n#### Implementando a Estratégia Verde-Azul\n\n1. **Preparação**: Você prepara dois ambientes idênticos para o site: o ambiente \"Azul\" (o site atual em operação) e o ambiente \"Verde\" (onde a nova versão do site está pronta para ser lançada).\n\n2. **Testes**: No ambiente Verde, você realiza todos os testes necessários para garantir que a nova versão do site está funcionando perfeitamente. Isso inclui testar a performance sob alta demanda, a funcionalidade de novos recursos e a integração com sistemas de pagamento.\n\n3. **Lançamento**: Após confirmar que tudo está funcionando bem no ambiente Verde, você faz a troca dos ambientes durante um período de baixo tráfego. Isso significa que o tráfego dos usuários é redirecionado do ambiente Azul para o Verde sem que eles percebam.\n\n4. **Segurança**: Se algo inesperado acontecer após a troca, você pode rapidamente voltar ao ambiente Azul, garantindo que o site continue operando normalmente enquanto resolve o problema.\n\nDessa forma você consegue lançar sua atualização sem interromper o serviço durante a Black Friday. As melhorias aumentam a satisfação do cliente e as vendas, enquanto a equipe de tecnologia fica tranquila, sabendo que possui um plano de contingência.\n\nA implantação verde-azul oferece uma abordagem segura e eficiente para atualizar serviços críticos, como um site de e-commerce durante a Black Friday, minimizando riscos e maximizando a confiança tanto da equipe quanto dos clientes.\n\n\n---\n\n\nA implantação verde-azul é um método que traz a sofisticação estratégica para o mundo da manutenção de sistemas. Além de oferecer uma solução elegante para o desafio do tempo de inatividade, ela facilita um ciclo de vida de desenvolvimento mais seguro, confiável e inovador. Transformando a manutenção de sistemas de uma tarefa mundana para uma arte estratégica, a implantação verde-azul é verdadeiramente uma revolução silenciosa na engenharia de software.",
+                    "uid": "artigo",
+                    "createdAt": "2024-03-12T14:45:45.927Z",
+                    "updatedAt": "2024-03-12T14:56:35.831Z",
+                    "publishedAt": "2024-03-12T14:56:35.823Z",
+                    "readingTimeMinutes": 8,
+                    "reactions": 0,
+                    "tags": ["devops", "deployment", "escalabilidade"],
+                    "author": {
+                        "data": {
+                            "id": 1,
+                            "attributes": {
+                                "name": "Jean Carlos Molossi",
+                                "bio": null,
+                                "canonicalUrl": "jean-carlos-molossi",
+                                "createdAt": "2024-03-06T02:39:29.355Z",
+                                "updatedAt": "2024-03-06T02:39:31.098Z",
+                                "publishedAt": "2024-03-06T02:39:31.089Z",
+                                "avatar": {
+                                    "data": {
+                                        "id": 8,
+                                        "attributes": {
+                                            "name": "foto-perfil-google.jpeg",
+                                            "alternativeText": null,
+                                            "caption": null,
+                                            "width": 460,
+                                            "height": 460,
+                                            "formats": {
+                                                "thumbnail": {
+                                                    "ext": ".jpeg",
+                                                    "url": "https://cms-minio.p2r8jl.easypanel.host/uploads/thumbnail_foto_perfil_google_b6b62face4.jpeg",
+                                                    "hash": "thumbnail_foto_perfil_google_b6b62face4",
+                                                    "mime": "image/jpeg",
+                                                    "name": "thumbnail_foto-perfil-google.jpeg",
+                                                    "path": null,
+                                                    "size": 5.95,
+                                                    "width": 156,
+                                                    "height": 156
+                                                }
+                                            },
+                                            "hash": "foto_perfil_google_b6b62face4",
+                                            "ext": ".jpeg",
+                                            "mime": "image/jpeg",
+                                            "size": 31.54,
+                                            "url": "https://cms-minio.p2r8jl.easypanel.host/uploads/foto_perfil_google_b6b62face4.jpeg",
+                                            "previewUrl": null,
+                                            "provider": "aws-s3",
+                                            "provider_metadata": null,
+                                            "createdAt": "2024-03-05T22:53:01.261Z",
+                                            "updatedAt": "2024-03-07T06:30:14.643Z"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "cover": {
+                        "data": {
+                            "id": 15,
+                            "attributes": {
+                                "name": "bg-deploy.webp",
+                                "alternativeText": null,
+                                "caption": null,
+                                "width": 1792,
+                                "height": 1024,
+                                "formats": {
+                                    "large": {
+                                        "ext": ".webp",
+                                        "url": "https://cms-minio.p2r8jl.easypanel.host/uploads/large_bg_deploy_748d1b9e91.webp",
+                                        "hash": "large_bg_deploy_748d1b9e91",
+                                        "mime": "image/webp",
+                                        "name": "large_bg-deploy.webp",
+                                        "path": null,
+                                        "size": 76.59,
+                                        "width": 1000,
+                                        "height": 571
+                                    },
+                                    "small": {
+                                        "ext": ".webp",
+                                        "url": "https://cms-minio.p2r8jl.easypanel.host/uploads/small_bg_deploy_748d1b9e91.webp",
+                                        "hash": "small_bg_deploy_748d1b9e91",
+                                        "mime": "image/webp",
+                                        "name": "small_bg-deploy.webp",
+                                        "path": null,
+                                        "size": 26.61,
+                                        "width": 500,
+                                        "height": 286
+                                    },
+                                    "medium": {
+                                        "ext": ".webp",
+                                        "url": "https://cms-minio.p2r8jl.easypanel.host/uploads/medium_bg_deploy_748d1b9e91.webp",
+                                        "hash": "medium_bg_deploy_748d1b9e91",
+                                        "mime": "image/webp",
+                                        "name": "medium_bg-deploy.webp",
+                                        "path": null,
+                                        "size": 50.66,
+                                        "width": 750,
+                                        "height": 429
+                                    },
+                                    "thumbnail": {
+                                        "ext": ".webp",
+                                        "url": "https://cms-minio.p2r8jl.easypanel.host/uploads/thumbnail_bg_deploy_748d1b9e91.webp",
+                                        "hash": "thumbnail_bg_deploy_748d1b9e91",
+                                        "mime": "image/webp",
+                                        "name": "thumbnail_bg-deploy.webp",
+                                        "path": null,
+                                        "size": 8.26,
+                                        "width": 245,
+                                        "height": 140
+                                    }
+                                },
+                                "hash": "bg_deploy_748d1b9e91",
+                                "ext": ".webp",
+                                "mime": "image/webp",
+                                "size": 202.34,
+                                "url": "https://cms-minio.p2r8jl.easypanel.host/uploads/bg_deploy_748d1b9e91.webp",
+                                "previewUrl": null,
+                                "provider": "aws-s3",
+                                "provider_metadata": null,
+                                "createdAt": "2024-03-12T14:56:24.344Z",
+                                "updatedAt": "2024-03-12T14:56:24.344Z"
+                            }
+                        }
+                    }
+                }
+            },
+            {
+                "id": 5,
+                "attributes": {
+                    "title": "Microserviços: Desbloqueando Níveis no Desenvolvimento de Software",
+                    "subtitle": "Superpoderes Para o Seu Código: Escalabilidade, Agilidade e Resiliência",
+                    "content": "E aí, guerreiro do código, pronto para desbloquear o próximo nível no game do desenvolvimento de software? Microserviços são como aquele upgrade que você compra na loja do jogo, dando superpoderes aos seus personagens. Mas, antes de mergulhar de cabeça, que tal algumas dicas de estratégia e referências para não entrar em combate despreparado?\n\n### A Armadura dos Microserviços: Por Que Vestir?\nPense em microserviços como uma armadura feita de peças independentes, cada uma protegendo uma parte específica do corpo. No mundo real, se você está de armadura e leva um golpe no braço, só essa parte sente o impacto. O resto do corpo continua intacto, pronto para a ação. No desenvolvimento, se um serviço cai, não afeta os outros. Isso é resiliência.\n\n### Superpoder de Escalabilidade: Clonagem de Elite\nNo mundo dos videogames, escalar é como usar um poder de clonagem para multiplicar seus melhores guerreiros durante uma batalha intensa. Na prática, isso significa aumentar a capacidade de um serviço específico quando ele está sob demanda, sem mexer em todo o sistema. É a estratégia perfeita para enfrentar ondas inesperadas de inimigos (usuários).\n\n### Independência: Cada Guerreiro Com Seu Combo\nCada microserviço é como um personagem independente no seu jogo, com combos e habilidades únicas. Eles trabalham em equipe, mas se um falha, não compromete a missão. Essa independência facilita updates e manutenção, permitindo que você aprimore um personagem sem tirar o jogo do ar.\n\n### Os Chefões: Desafios no Caminho\nAdotar microserviços não é só alegria. Você enfrentará chefões como complexidade de comunicação e gerenciamento de múltiplos serviços. Aqui, ferramentas como Docker e Kubernetes são suas poções mágicas, ajudando a gerenciar e orquestrar seu exército de serviços com maestria.\n\n### Power-ups: Leituras Complementares\nPara não entrar despreparado nessa missão, confira estas referências que são verdadeiros power-ups:\n\n- \"Building Microservices\" por Sam Newman - Um guia completo para entender e implementar microserviços, desde o design até a execução.\n- \"Microservice Patterns\" por Chris Richardson - Descubra padrões que ajudam a resolver problemas comuns na construção de aplicações baseadas em microserviços.\n- \"Designing Distributed Systems\" por Brendan Burns - Amplie sua visão sobre sistemas distribuídos com foco em padrões e práticas recomendadas.\n\n### Level Up!\nAdotar a arquitetura de microserviços é aceitar o desafio de jogar em um nível mais difícil, mas com a promessa de recompensas maiores. É sobre ter a flexibilidade para adaptar-se rapidamente, a resiliência para manter-se firme diante dos desafios, e a agilidade para implementar novas funcionalidades sem medo. Prepare-se, equipe seu arsenal e avance confiante para o próximo nível do desenvolvimento de software.",
+                    "uid": "microservicos-a-estrategia-vencedora-no-xadrez-da-tecnologia",
+                    "createdAt": "2024-03-07T05:49:09.151Z",
+                    "updatedAt": "2024-03-07T05:53:50.609Z",
+                    "publishedAt": "2024-03-07T05:49:42.209Z",
+                    "readingTimeMinutes": 5,
+                    "reactions": 0,
+                    "tags": ["microservices", "arquitetura de software"],
+                    "author": {
+                        "data": {
+                            "id": 1,
+                            "attributes": {
+                                "name": "Jean Carlos Molossi",
+                                "bio": null,
+                                "canonicalUrl": "jean-carlos-molossi",
+                                "createdAt": "2024-03-06T02:39:29.355Z",
+                                "updatedAt": "2024-03-06T02:39:31.098Z",
+                                "publishedAt": "2024-03-06T02:39:31.089Z",
+                                "avatar": {
+                                    "data": {
+                                        "id": 8,
+                                        "attributes": {
+                                            "name": "foto-perfil-google.jpeg",
+                                            "alternativeText": null,
+                                            "caption": null,
+                                            "width": 460,
+                                            "height": 460,
+                                            "formats": {
+                                                "thumbnail": {
+                                                    "ext": ".jpeg",
+                                                    "url": "https://cms-minio.p2r8jl.easypanel.host/uploads/thumbnail_foto_perfil_google_b6b62face4.jpeg",
+                                                    "hash": "thumbnail_foto_perfil_google_b6b62face4",
+                                                    "mime": "image/jpeg",
+                                                    "name": "thumbnail_foto-perfil-google.jpeg",
+                                                    "path": null,
+                                                    "size": 5.95,
+                                                    "width": 156,
+                                                    "height": 156
+                                                }
+                                            },
+                                            "hash": "foto_perfil_google_b6b62face4",
+                                            "ext": ".jpeg",
+                                            "mime": "image/jpeg",
+                                            "size": 31.54,
+                                            "url": "https://cms-minio.p2r8jl.easypanel.host/uploads/foto_perfil_google_b6b62face4.jpeg",
+                                            "previewUrl": null,
+                                            "provider": "aws-s3",
+                                            "provider_metadata": null,
+                                            "createdAt": "2024-03-05T22:53:01.261Z",
+                                            "updatedAt": "2024-03-07T06:30:14.643Z"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "cover": {
+                        "data": {
+                            "id": 14,
+                            "attributes": {
+                                "name": "desbloqueando-niveis-no-dev-software.jpg",
+                                "alternativeText": null,
+                                "caption": null,
+                                "width": 1792,
+                                "height": 1024,
+                                "formats": {
+                                    "large": {
+                                        "ext": ".jpg",
+                                        "url": "https://cdn.jeanmolossi.com.br/uploads/large_desbloqueando_niveis_no_dev_software_5a4fa4316d.jpg",
+                                        "hash": "large_desbloqueando_niveis_no_dev_software_5a4fa4316d",
+                                        "mime": "image/jpeg",
+                                        "name": "large_desbloqueando-niveis-no-dev-software.jpg",
+                                        "path": null,
+                                        "size": 139.98,
+                                        "width": 1000,
+                                        "height": 571
+                                    },
+                                    "small": {
+                                        "ext": ".jpg",
+                                        "url": "https://cdn.jeanmolossi.com.br/uploads/small_desbloqueando_niveis_no_dev_software_5a4fa4316d.jpg",
+                                        "hash": "small_desbloqueando_niveis_no_dev_software_5a4fa4316d",
+                                        "mime": "image/jpeg",
+                                        "name": "small_desbloqueando-niveis-no-dev-software.jpg",
+                                        "path": null,
+                                        "size": 43.12,
+                                        "width": 500,
+                                        "height": 286
+                                    },
+                                    "medium": {
+                                        "ext": ".jpg",
+                                        "url": "https://cdn.jeanmolossi.com.br/uploads/medium_desbloqueando_niveis_no_dev_software_5a4fa4316d.jpg",
+                                        "hash": "medium_desbloqueando_niveis_no_dev_software_5a4fa4316d",
+                                        "mime": "image/jpeg",
+                                        "name": "medium_desbloqueando-niveis-no-dev-software.jpg",
+                                        "path": null,
+                                        "size": 87.47,
+                                        "width": 750,
+                                        "height": 429
+                                    },
+                                    "thumbnail": {
+                                        "ext": ".jpg",
+                                        "url": "https://cdn.jeanmolossi.com.br/uploads/thumbnail_desbloqueando_niveis_no_dev_software_5a4fa4316d.jpg",
+                                        "hash": "thumbnail_desbloqueando_niveis_no_dev_software_5a4fa4316d",
+                                        "mime": "image/jpeg",
+                                        "name": "thumbnail_desbloqueando-niveis-no-dev-software.jpg",
+                                        "path": null,
+                                        "size": 12.31,
+                                        "width": 245,
+                                        "height": 140
+                                    }
+                                },
+                                "hash": "desbloqueando_niveis_no_dev_software_5a4fa4316d",
+                                "ext": ".jpg",
+                                "mime": "image/jpeg",
+                                "size": 339.15,
+                                "url": "https://cdn.jeanmolossi.com.br/uploads/desbloqueando_niveis_no_dev_software_5a4fa4316d.jpg",
+                                "previewUrl": null,
+                                "provider": "aws-s3",
+                                "provider_metadata": null,
+                                "createdAt": "2024-03-07T05:53:46.137Z",
+                                "updatedAt": "2024-03-13T02:41:43.048Z"
+                            }
+                        }
+                    }
+                }
+            },
+            {
+                "id": 1,
+                "attributes": {
+                    "title": "O que pode ser feito com HTML ?",
+                    "subtitle": "HTML: A base de toda a internet",
+                    "content": "O HTML (Hypertext Markup Language) é uma linguagem de marcação utilizada para criar páginas da web. Ela funciona como uma espécie de esqueleto para o conteúdo da página, fornecendo estrutura e significado para o texto, imagens, vídeos, formulários e outros elementos que compõem a página.\n\nPor exemplo, imagine que você quer criar um site para o seu negócio. Com o HTML, você pode adicionar um título à sua página principal, como \"Bem-vindo à minha loja de roupas\". Além disso, você pode adicionar parágrafos descrevendo os produtos que você vende, como \"Oferecemos uma ampla variedade de roupas femininas, masculinas e infantis, desde camisetas básicas até vestidos de festa\".\n\nO HTML é uma linguagem de marcação que é usada para criar páginas da web. Com ele, é possível fazer várias coisas, tais como:\n\n1. Criar estrutura de página: O HTML permite adicionar títulos, parágrafos, listas, links, imagens e vídeos ao seu site, dando estrutura e significado ao conteúdo.\n\n```html\n<h1>Título</h1>\n\n<p>Parágrafo</p>\n\n<ol>\n    <li>Item de lista</li>\n</ol>\n```\n\n2. Adicionar links: O HTML permite adicionar links para outras páginas dentro do seu site ou para outros sites na internet.\n\n```html\n<a href=\"http://jeanmolossi.com.br/\">Link ou Anchor</a>\n```\n\n3. Criar formulários: O HTML permite criar formulários de entrada de dados, como formulários de contato ou formulários de compra online, para que os visitantes possam interagir com o site.\n\n```html\n<label>Digite seu e-mail</label>\n<input type=\"text\" name=\"email\" />\n```\n\n4. Adicionar imagens e vídeos: O HTML permite adicionar imagens e vídeos ao seu site, tornando-o mais atraente e interativo.\n\n```html\n<img src=\"https://jeanmolossi.com.br/kumala-la-kumala.gif?w=640&q=undefined\" alt=\"imagem kumala\" />\n```\n\n5. Criar tabelas: O HTML permite criar tabelas para exibir dados ou organizar o conteúdo em uma grade.\n\n```html\n<table>\n  <thead>\n    <tr>\n      <td>#</td>\n      <td>E-mail</td>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>1</td>\n      <td>john@doe.com</td>\n    </tr>\n  </tbody>\n</table>\n```\n\n6. Criar áreas de navegação: O HTML permite criar áreas de navegação para facilitar a navegação pelo site.\n\n```html\n<nav>\n  <a href=\"/\">Início</a>\n  <a href=\"/contato\">Contato</a>\n</nav>\n```\n\n7. Adicionar metadados: O HTML permite adicionar metadados à página, como o título da página, descrição e palavras-chave, que são usados ​​pelos mecanismos de busca para indexar e classificar sua página.\n\n```html\n<head>\n  <title>Título da página</title>\n</head>\n```\n\n8. Acessibilidade: O HTML também permite criar conteúdo acessível para pessoas com necessidades especiais, usando tags específicas e atributos.\n\n```html\n<img src=\"dinosaur.png\" aria-labelledby=\"dino-label\">\n```\n\nÉ importante notar que o HTML é usado em conjunto com outras tecnologias da web, como o CSS (Cascading Style Sheets) e o JavaScript, para criar páginas da web dinâmicas e atraentes.\n\nSe você está interessado em aprender HTML, existem muitos recursos disponíveis na internet, como tutoriais em vídeo, livros e cursos online. Comece com o básico e, aos poucos, vá aprofundando seus conhecimentos. Em pouco tempo, você estará criando páginas da web incríveis! Alguns recursos populares para aprender HTML incluem o [W3Schools](https://www.w3schools.com/), etc.\n\nEm resumo, o HTML é uma linguagem de marcação fundamental para a criação de páginas da web. Ele permite adicionar títulos, parágrafos, listas, links, imagens e vídeos ao seu site, além de permitir a criação de formulários para que os usuários interajam com o site. Quando usado em conjunto com o CSS e o JavaScript, o HTML permite criar sites atraentes e dinâmicos. Se você está interessado em aprender HTML, há muitos recursos disponíveis para ajudá-lo a começar.",
+                    "uid": "o-que-pode-ser-feito-com-html",
+                    "createdAt": "2024-03-05T06:56:13.484Z",
+                    "updatedAt": "2024-03-07T06:32:33.269Z",
+                    "publishedAt": "2024-03-05T06:56:15.691Z",
+                    "readingTimeMinutes": 7,
+                    "reactions": null,
+                    "tags": ["html"],
+                    "author": {
+                        "data": {
+                            "id": 1,
+                            "attributes": {
+                                "name": "Jean Carlos Molossi",
+                                "bio": null,
+                                "canonicalUrl": "jean-carlos-molossi",
+                                "createdAt": "2024-03-06T02:39:29.355Z",
+                                "updatedAt": "2024-03-06T02:39:31.098Z",
+                                "publishedAt": "2024-03-06T02:39:31.089Z",
+                                "avatar": {
+                                    "data": {
+                                        "id": 8,
+                                        "attributes": {
+                                            "name": "foto-perfil-google.jpeg",
+                                            "alternativeText": null,
+                                            "caption": null,
+                                            "width": 460,
+                                            "height": 460,
+                                            "formats": {
+                                                "thumbnail": {
+                                                    "ext": ".jpeg",
+                                                    "url": "https://cms-minio.p2r8jl.easypanel.host/uploads/thumbnail_foto_perfil_google_b6b62face4.jpeg",
+                                                    "hash": "thumbnail_foto_perfil_google_b6b62face4",
+                                                    "mime": "image/jpeg",
+                                                    "name": "thumbnail_foto-perfil-google.jpeg",
+                                                    "path": null,
+                                                    "size": 5.95,
+                                                    "width": 156,
+                                                    "height": 156
+                                                }
+                                            },
+                                            "hash": "foto_perfil_google_b6b62face4",
+                                            "ext": ".jpeg",
+                                            "mime": "image/jpeg",
+                                            "size": 31.54,
+                                            "url": "https://cms-minio.p2r8jl.easypanel.host/uploads/foto_perfil_google_b6b62face4.jpeg",
+                                            "previewUrl": null,
+                                            "provider": "aws-s3",
+                                            "provider_metadata": null,
+                                            "createdAt": "2024-03-05T22:53:01.261Z",
+                                            "updatedAt": "2024-03-07T06:30:14.643Z"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "cover": {
+                        "data": {
+                            "id": 9,
+                            "attributes": {
+                                "name": "post1.png",
+                                "alternativeText": null,
+                                "caption": null,
+                                "width": 2240,
+                                "height": 1024,
+                                "formats": {
+                                    "large": {
+                                        "ext": ".png",
+                                        "url": "https://cdn.jeanmolossi.com.br/uploads/large_post1_0b3ab1f957.png",
+                                        "hash": "large_post1_0b3ab1f957",
+                                        "mime": "image/png",
+                                        "name": "large_post1.png",
+                                        "path": null,
+                                        "size": 571.86,
+                                        "width": 1000,
+                                        "height": 457
+                                    },
+                                    "small": {
+                                        "ext": ".png",
+                                        "url": "https://cdn.jeanmolossi.com.br/uploads/small_post1_0b3ab1f957.png",
+                                        "hash": "small_post1_0b3ab1f957",
+                                        "mime": "image/png",
+                                        "name": "small_post1.png",
+                                        "path": null,
+                                        "size": 209.34,
+                                        "width": 500,
+                                        "height": 229
+                                    },
+                                    "medium": {
+                                        "ext": ".png",
+                                        "url": "https://cdn.jeanmolossi.com.br/uploads/medium_post1_0b3ab1f957.png",
+                                        "hash": "medium_post1_0b3ab1f957",
+                                        "mime": "image/png",
+                                        "name": "medium_post1.png",
+                                        "path": null,
+                                        "size": 374.98,
+                                        "width": 750,
+                                        "height": 343
+                                    },
+                                    "thumbnail": {
+                                        "ext": ".png",
+                                        "url": "https://cdn.jeanmolossi.com.br/uploads/thumbnail_post1_0b3ab1f957.png",
+                                        "hash": "thumbnail_post1_0b3ab1f957",
+                                        "mime": "image/png",
+                                        "name": "thumbnail_post1.png",
+                                        "path": null,
+                                        "size": 64.84,
+                                        "width": 245,
+                                        "height": 112
+                                    }
+                                },
+                                "hash": "post1_0b3ab1f957",
+                                "ext": ".png",
+                                "mime": "image/png",
+                                "size": 482.42,
+                                "url": "https://cdn.jeanmolossi.com.br/uploads/post1_0b3ab1f957.png",
+                                "previewUrl": null,
+                                "provider": "aws-s3",
+                                "provider_metadata": null,
+                                "createdAt": "2024-03-05T22:56:21.292Z",
+                                "updatedAt": "2024-03-13T01:40:24.443Z"
+                            }
+                        }
+                    }
+                }
+            }
+        ],
+        "meta": {
+            "pagination": {
+                "page": 1,
+                "pageSize": 25,
+                "pageCount": 1,
+                "total": 7
+            }
+        }
+    }
+}

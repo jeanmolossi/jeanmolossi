@@ -1,0 +1,154 @@
+{
+    "videos": {
+        "data": [
+            {
+                "id": 5,
+                "attributes": {
+                    "title": "#5 - Micro serviços para iniciantes",
+                    "excerpt": "Iniciamos nossas configurações da API de forma que consigamos ter as rotas e os recursos necessários para disponibilizar para consumo.\n\nAqui, trabalhamos na camada de aplicação, a nossa camada mais alta e que também é nosso ponto de entrada.\n\nNessa playlist vamos criar micro serviços e mostrar a importância de ter testes, como configurá-los, quais são os mistérios sobre os micro serviços e quais são as facilidades.\n\nAlém de mostrar situações reais, do cotidiano de um sistema que está em fase de migração, sistemas que querem migrar de monólito pra micro serviços.\n\n### Links úteis\n\n- [Acompanhe a playlist inteira](https://www.jeanmolossi.com.br/playlist/micro-servicos-para-iniciantes)\n- [Veja o artigo completo](https://www.jeanmolossi.com.br/blog?search=como+criar+microserviços+-+nível+fácil)\n- [Me acompanhe por outras redes sociais](https://jeanmolossi.com.br/links)\n- [Vídeo anterior](https://www.jeanmolossi.com.br/video/4-micro-servicos-para-iniciantes): #4 - Micro serviços para iniciantes\n\nArtigos sobre AWS, NodeJS, Golang, Javascript, padrões de projeto, padrões de arquitetura, tudo que você precisa pra evoluir em sua carreira!",
+                    "order": 4,
+                    "canonicalUrl": "5-micro-servicos-para-iniciantes",
+                    "videoID": "1w73bOD4dhM",
+                    "createdAt": "2024-03-05T06:47:25.949Z",
+                    "updatedAt": "2024-03-11T20:42:40.007Z",
+                    "publishedAt": "2024-03-05T06:47:27.644Z",
+                    "playlist": {
+                        "data": {
+                            "id": 1,
+                            "attributes": {
+                                "title": "Micro serviços para iniciantes",
+                                "cover": "https://i.ytimg.com/vi/dhVTQ825k30/sddefault.jpg",
+                                "content": "Sequencia de vídeo desmistificando micro serviços para iniciantes. Aprendemos a teoria por trás de micro serviços e colocamos em prática\n\nVamos aprender sobre testes, API Rest, DDD, Docker e outras dicas incríveis para alavancar sua carreira!",
+                                "canonicalUrl": "micro-servicos-para-iniciantes",
+                                "excerpt": "Sequencia de vídeo desmistificando micro serviços para iniciantes. Aprenderemos...",
+                                "createdAt": "2024-03-05T06:39:39.987Z",
+                                "updatedAt": "2024-03-05T06:40:41.051Z",
+                                "publishedAt": "2024-03-05T06:39:46.371Z"
+                            }
+                        }
+                    }
+                }
+            },
+            {
+                "id": 1,
+                "attributes": {
+                    "title": "#1 - Micro serviços para iniciantes (Introdução)",
+                    "excerpt": "Este vídeo é a introdução sobre o gestor de finanças que vamos criar na playlist.\n\nNessa playlist vamos criar micro serviços e mostrar a importância de ter testes, como configurá-los, quais são os mistérios sobre os micro serviços e quais são as facilidades.\n\nAlém de mostrar situações reais, do cotidiano de um sistema que está em fase de migração, sistemas que querem migrar de monólito pra micro serviços.\n\n### Links úteis\n\n- [Acompanhe a playlist inteira](https://www.jeanmolossi.com.br/playlist/micro-servicos-para-iniciantes)\n- [Veja o artigo completo](https://www.jeanmolossi.com.br/blog?search=como+criar+microserviços+-+nível+fácil)\n- [Me acompanhe por outras redes sociais](https://jeanmolossi.com.br/links)\n- [Próximo vídeo](https://www.jeanmolossi.com.br/video/2-micro-servicos-para-iniciantes): #2 - Micro serviços para iniciantes\n\nArtigos sobre AWS, NodeJS, Golang, Javascript, padrões de projeto, padrões de arquitetura, tudo que você precisa pra evoluir em sua carreira!",
+                    "order": 0,
+                    "canonicalUrl": "1-micro-servicos-para-iniciantes-introducao",
+                    "videoID": "dhVTQ825k30",
+                    "createdAt": "2024-03-05T06:42:05.135Z",
+                    "updatedAt": "2024-03-11T20:42:01.481Z",
+                    "publishedAt": "2024-03-05T06:42:08.773Z",
+                    "playlist": {
+                        "data": {
+                            "id": 1,
+                            "attributes": {
+                                "title": "Micro serviços para iniciantes",
+                                "cover": "https://i.ytimg.com/vi/dhVTQ825k30/sddefault.jpg",
+                                "content": "Sequencia de vídeo desmistificando micro serviços para iniciantes. Aprendemos a teoria por trás de micro serviços e colocamos em prática\n\nVamos aprender sobre testes, API Rest, DDD, Docker e outras dicas incríveis para alavancar sua carreira!",
+                                "canonicalUrl": "micro-servicos-para-iniciantes",
+                                "excerpt": "Sequencia de vídeo desmistificando micro serviços para iniciantes. Aprenderemos...",
+                                "createdAt": "2024-03-05T06:39:39.987Z",
+                                "updatedAt": "2024-03-05T06:40:41.051Z",
+                                "publishedAt": "2024-03-05T06:39:46.371Z"
+                            }
+                        }
+                    }
+                }
+            },
+            {
+                "id": 3,
+                "attributes": {
+                    "title": "#3 - Micro serviços para iniciantes",
+                    "excerpt": "Iniciamos nossas configurações da API de forma que consigamos ter as rotas e os recursos necessários para disponibilizar para consumo.\n\nAqui, trabalhamos na camada de aplicação, a nossa camada mais alta e que também é nosso ponto de entrada.\n\nNessa playlist vamos criar micro serviços e mostrar a importância de ter testes, como configurá-los, quais são os mistérios sobre os micro serviços e quais são as facilidades.\n\nAlém de mostrar situações reais, do cotidiano de um sistema que está em fase de migração, sistemas que querem migrar de monólito pra micro serviços.\n\n### Links úteis\n\n- [Acompanhe a playlist inteira](https://www.jeanmolossi.com.br/playlist/micro-servicos-para-iniciantes)\n- [Veja o artigo completo](https://www.jeanmolossi.com.br/blog?search=como+criar+microserviços+-+nível+fácil)\n- [Me acompanhe por outras redes sociais](https://jeanmolossi.com.br/links)\n- [Vídeo anterior](https://www.jeanmolossi.com.br/video/2-micro-servicos-para-iniciantes): #2 - Micro serviços para iniciantes\n- [Próximo vídeo](https://www.jeanmolossi.com.br/video/4-micro-servicos-para-iniciantes): #4 - Micro serviços para iniciantes\n\nArtigos sobre AWS, NodeJS, Golang, Javascript, padrões de projeto, padrões de arquitetura, tudo que você precisa pra evoluir em sua carreira!",
+                    "order": 2,
+                    "canonicalUrl": "3-micro-servicos-para-iniciantes",
+                    "videoID": "Ic3iVIn5qfk",
+                    "createdAt": "2024-03-05T06:45:31.795Z",
+                    "updatedAt": "2024-03-11T20:42:25.768Z",
+                    "publishedAt": "2024-03-05T06:45:33.546Z",
+                    "playlist": {
+                        "data": {
+                            "id": 1,
+                            "attributes": {
+                                "title": "Micro serviços para iniciantes",
+                                "cover": "https://i.ytimg.com/vi/dhVTQ825k30/sddefault.jpg",
+                                "content": "Sequencia de vídeo desmistificando micro serviços para iniciantes. Aprendemos a teoria por trás de micro serviços e colocamos em prática\n\nVamos aprender sobre testes, API Rest, DDD, Docker e outras dicas incríveis para alavancar sua carreira!",
+                                "canonicalUrl": "micro-servicos-para-iniciantes",
+                                "excerpt": "Sequencia de vídeo desmistificando micro serviços para iniciantes. Aprenderemos...",
+                                "createdAt": "2024-03-05T06:39:39.987Z",
+                                "updatedAt": "2024-03-05T06:40:41.051Z",
+                                "publishedAt": "2024-03-05T06:39:46.371Z"
+                            }
+                        }
+                    }
+                }
+            },
+            {
+                "id": 2,
+                "attributes": {
+                    "title": "#2 - Micro serviços para iniciantes",
+                    "excerpt": "Neste vídeo damos início ao desenvolvimento prático do nosso primeiro micro serviço, nosso serviços de usuário.\n\nNesta etapa damos inicio às configurações do repositório, quais ferramentas vamos precisar, configurar tais ferramentas, onde vamos ter mais foco, como utilizar cada camada da aplicação\n\nNessa playlist vamos criar micro serviços e mostrar a importância de ter testes, como configurá-los, quais são os mistérios sobre os micro serviços e quais são as facilidades.\n\nAlém de mostrar situações reais, do cotidiano de um sistema que está em fase de migração, sistemas que querem migrar de monólito pra micro serviços.\n\n### Links úteis\n\n- [Acompanhe a playlist inteira](https://www.jeanmolossi.com.br/playlist/micro-servicos-para-iniciantes)\n- [Veja o artigo completo](https://www.jeanmolossi.com.br/blog?search=como+criar+microserviços+-+nível+fácil)\n- [Me acompanhe por outras redes sociais](https://jeanmolossi.com.br/links)\n- [Vídeo anterior](https://www.jeanmolossi.com.br/video/1-micro-servicos-para-iniciantes-introducao): #1 - Micro serviços para iniciantes\n- [Próximo vídeo](https://www.jeanmolossi.com.br/video/3-micro-servicos-para-iniciantes): #3 - Micro serviços para iniciantes\n\nArtigos sobre AWS, NodeJS, Golang, Javascript, padrões de projeto, padrões de arquitetura, tudo que você precisa pra evoluir em sua carreira!",
+                    "order": 1,
+                    "canonicalUrl": "2-micro-servicos-para-iniciantes",
+                    "videoID": "qMlBPbspEF8",
+                    "createdAt": "2024-03-05T06:43:48.033Z",
+                    "updatedAt": "2024-03-11T20:42:16.736Z",
+                    "publishedAt": "2024-03-05T06:44:17.902Z",
+                    "playlist": {
+                        "data": {
+                            "id": 1,
+                            "attributes": {
+                                "title": "Micro serviços para iniciantes",
+                                "cover": "https://i.ytimg.com/vi/dhVTQ825k30/sddefault.jpg",
+                                "content": "Sequencia de vídeo desmistificando micro serviços para iniciantes. Aprendemos a teoria por trás de micro serviços e colocamos em prática\n\nVamos aprender sobre testes, API Rest, DDD, Docker e outras dicas incríveis para alavancar sua carreira!",
+                                "canonicalUrl": "micro-servicos-para-iniciantes",
+                                "excerpt": "Sequencia de vídeo desmistificando micro serviços para iniciantes. Aprenderemos...",
+                                "createdAt": "2024-03-05T06:39:39.987Z",
+                                "updatedAt": "2024-03-05T06:40:41.051Z",
+                                "publishedAt": "2024-03-05T06:39:46.371Z"
+                            }
+                        }
+                    }
+                }
+            },
+            {
+                "id": 4,
+                "attributes": {
+                    "title": "#4 - Micro serviços para iniciantes",
+                    "excerpt": "Iniciamos nossas configurações da API de forma que consigamos ter as rotas e os recursos necessários para disponibilizar para consumo.\n\nAqui, trabalhamos na camada de aplicação, a nossa camada mais alta e que também é nosso ponto de entrada.\n\nNessa playlist vamos criar micro serviços e mostrar a importância de ter testes, como configurá-los, quais são os mistérios sobre os micro serviços e quais são as facilidades.\n\nAlém de mostrar situações reais, do cotidiano de um sistema que está em fase de migração, sistemas que querem migrar de monólito pra micro serviços.\n\n### Links úteis\n\n- [Acompanhe a playlist inteira](https://www.jeanmolossi.com.br/playlist/micro-servicos-para-iniciantes)\n- [Veja o artigo completo](https://www.jeanmolossi.com.br/blog?search=como+criar+microserviços+-+nível+fácil)\n- [Me acompanhe por outras redes sociais](https://jeanmolossi.com.br/links)\n- [Vídeo anterior](https://www.jeanmolossi.com.br/video/3-micro-servicos-para-iniciantes): #3 - Micro serviços para iniciantes\n- [Próximo vídeo](https://www.jeanmolossi.com.br/video/5-micro-servicos-para-iniciantes): #5 - Micro serviços para iniciantes\n\nArtigos sobre AWS, NodeJS, Golang, Javascript, padrões de projeto, padrões de arquitetura, tudo que você precisa pra evoluir em sua carreira!",
+                    "order": 3,
+                    "canonicalUrl": "4-micro-servicos-para-iniciantes",
+                    "videoID": "aUJshrMh5mI",
+                    "createdAt": "2024-03-05T06:46:34.740Z",
+                    "updatedAt": "2024-03-11T20:42:32.474Z",
+                    "publishedAt": "2024-03-05T06:46:39.508Z",
+                    "playlist": {
+                        "data": {
+                            "id": 1,
+                            "attributes": {
+                                "title": "Micro serviços para iniciantes",
+                                "cover": "https://i.ytimg.com/vi/dhVTQ825k30/sddefault.jpg",
+                                "content": "Sequencia de vídeo desmistificando micro serviços para iniciantes. Aprendemos a teoria por trás de micro serviços e colocamos em prática\n\nVamos aprender sobre testes, API Rest, DDD, Docker e outras dicas incríveis para alavancar sua carreira!",
+                                "canonicalUrl": "micro-servicos-para-iniciantes",
+                                "excerpt": "Sequencia de vídeo desmistificando micro serviços para iniciantes. Aprenderemos...",
+                                "createdAt": "2024-03-05T06:39:39.987Z",
+                                "updatedAt": "2024-03-05T06:40:41.051Z",
+                                "publishedAt": "2024-03-05T06:39:46.371Z"
+                            }
+                        }
+                    }
+                }
+            }
+        ],
+        "meta": {
+            "pagination": {
+                "page": 1,
+                "pageSize": 25,
+                "pageCount": 1,
+                "total": 5
+            }
+        }
+    }
+}
