@@ -1,25 +1,24 @@
 'use client';
 
-import { gtm } from "@/config/analytics";
+import { gtm } from '@/config/analytics';
 import { gtag } from '@/config/constants';
-import { usePathname, useSearchParams } from "next/navigation";
-import Script from "next/script";
-import { useEffect } from "react";
+import { usePathname, useSearchParams } from 'next/navigation';
+import Script from 'next/script';
+import { useEffect } from 'react';
 
 export const TagManager = () => {
-    const pathname = usePathname()
-    const searchParams = useSearchParams()
+    const pathname = usePathname();
+    const searchParams = useSearchParams();
 
     useEffect(() => {
-        const url = pathname + (searchParams?.toString() || '')
-        gtm.pageView(url)
-    }, [pathname, searchParams])
+        const url = pathname + (searchParams?.toString() || '');
+        gtm.pageView(url);
+    }, [pathname, searchParams]);
 
     return (
         <>
             {/* Google Tag Manager */}
             <Script
-                src={undefined}
                 id="tag-manager-init"
                 strategy="afterInteractive"
                 dangerouslySetInnerHTML={{
@@ -35,16 +34,20 @@ export const TagManager = () => {
             />
             {/* End Google Tag Manager */}
         </>
-    )
-}
+    );
+};
 
 export const TagManagerNoScript = () => {
     return (
         // <!-- Google Tag Manager (noscript) -->
         <noscript id="tag-manager-noscript-init">
-            <iframe src={`https://www.googletagmanager.com/ns.html?id=${gtag.GTM_TRACKING_TAG}`} height="0" width="0" style={{display:'none',visibility:'hidden'}}>
-            </iframe>
+            <iframe
+                src={`https://www.googletagmanager.com/ns.html?id=${gtag.GTM_TRACKING_TAG}`}
+                height="0"
+                width="0"
+                style={{ display: 'none', visibility: 'hidden' }}
+            ></iframe>
         </noscript>
         // <!-- End Google Tag Manager (noscript) -->
-    )
-}
+    );
+};

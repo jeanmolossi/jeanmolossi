@@ -13,6 +13,7 @@ import '@/presentation/styles/github-dark.min.css';
 import '@/presentation/styles/global.css';
 import { Poppins } from 'next/font/google';
 import React from 'react';
+import { gtag } from '@/config/constants';
 
 const poppins = Poppins({
     subsets: ['latin'],
@@ -32,6 +33,18 @@ export default function RootLayout({
                 <link
                     rel="dns-prefetch"
                     href="https://www.googletagmanager.com"
+                />
+
+                <link
+                    rel="preload"
+                    href={`https://www.googletagmanager.com/gtag/js?id=${gtag.GA_TRACKING_ID}`}
+                    as="script"
+                />
+
+                <link
+                    rel="preload"
+                    href={`https://www.googletagmanager.com/gtm.js?id=${gtag.GTM_TRACKING_TAG}`}
+                    as="script"
                 />
             </head>
             <body
