@@ -80,7 +80,7 @@ jobs:
                   name: nextjs-build-artifacts
                   path: apps/web/.next
             - name: Run pages size analysis
-              run: node ./scripts/analyze-bundle.mjs
+              run: node ./scripts/bundle-analyzer.mjs
 
     njsscan:
         name: NodeJS scan check
