@@ -1,8 +1,0 @@
-#!/usr/bin/env sh
-. "$(dirname -- "$0")/_/husky.sh"
-
-yarn tsc --noEmit
-
-sudo chown -R "$(whoami)" .next
-
-yarn build

@@ -1,0 +1,46 @@
+name: Next.JS workflow to verify application healthy
+
+on:
+    # Runs on pushes targeting the default branch
+    push:
+        branches: [$default-branch]
+
+    # Allows to manually trigger the workflow
+    workflow_dispatch:
+
+concurrency:
+    group: nextjs-health-check
+    cancel-in-progress: false
+
+jobs:
+    build:
+        name: Verify application healthy
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+            - name: Setup Node
+              uses: actions/setup-node@v4
+              with:
+                  node-version: '20'
+                  cache: pnpm
+
+            - name: Restore cache
+              uses: actions/cache@v4
+              with:
+                  path: .next/cache
+                  key: ${{ runner.os }}-nextjs-${{ hashFiles('**/pnpm-lock.yaml')
+                  restore-keys: ${{ runner.os }}-nextjs-${{ hashFiles('**/pnpm-lock.yaml') }}
+
+            - name: Install dependencies
+              run: pnpm install
+
+            - name: Build with Next.js
+              run: pnpm build
+
+    echo:
+        name: 'Echo'
+        runs-on: ubuntu-latest
+        steps:
+            - name: Echo
+              run: echo "Hello World"
