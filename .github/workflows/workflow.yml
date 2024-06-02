@@ -23,7 +23,10 @@ jobs:
               uses: actions/setup-node@v4
               with:
                   node-version: '20'
-                  cache: pnpm
+                  cache: 'pnpm'
+
+            - name: Install pnpm
+              run: npm install -g pnpm
 
             - name: Restore cache
               uses: actions/cache@v4
@@ -38,9 +41,14 @@ jobs:
             - name: Build with Next.js
               run: pnpm build
 
-    echo:
-        name: 'Echo'
+    njsscan:
+        name: NodeJS scan check
         runs-on: ubuntu-latest
         steps:
-            - name: Echo
-              run: echo "Hello World"
+            - name: Checkout the code
+              uses: actions/checkout@v4
+            - name: nodejsscan scan
+              id: njsscan
+              uses: ajinabraham/njsscan-action@master
+              with:
+                  args: '.'
