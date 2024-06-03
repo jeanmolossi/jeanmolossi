@@ -7,30 +7,30 @@ import Script from 'next/script';
 import { useEffect } from 'react';
 
 export const AnalyticsScript = () => {
-    const pathname = usePathname()
-    const searchParams = useSearchParams()
+    const pathname = usePathname();
+    const searchParams = useSearchParams();
 
     useEffect(() => {
         const handleChangeRoute = (url: string) => {
             gtagActions.pageView(url);
-        }
+        };
 
-        const url = pathname + (searchParams?.toString() || '')
-        handleChangeRoute(url)
-    }, [pathname, searchParams])
+        const url = pathname + (searchParams?.toString() || '');
+        handleChangeRoute(url);
+    }, [pathname, searchParams]);
 
     return (
         <>
             {/* Global site tag (gtag.js) - Google Analytics */}
             <Script
-                strategy='afterInteractive'
                 src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GA_TRACKING_ID}`}
+                strategy="afterInteractive"
                 id="gtag-load"
                 async
             />
             <Script
-                id='gtag-init'
-                strategy='afterInteractive'
+                id="gtag-init"
+                strategy="afterInteractive"
                 dangerouslySetInnerHTML={{
                     __html: `
                     window.dataLayer = window.dataLayer || [];
@@ -40,9 +40,9 @@ export const AnalyticsScript = () => {
                     gtag('config', '${gtag.GA_TRACKING_ID}',{
                         page_path: window.location.pathname,
                     });
-                    `
+                    `,
                 }}
             />
         </>
-    )
-}
+    );
+};
