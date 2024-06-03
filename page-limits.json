@@ -21,5 +21,10 @@
     "/(portfolio)/error": "283.1885 kB",
     "/(portfolio)/@modal/default": "282.6768 kB",
     "/(portfolio)/page": "403.6983 kB",
-    "/eap/page": "318.7696 kB"
+    "/eap/page": "318.7696 kB",
+    "/(authentication)/login/page": "200.0000 kB",
+    "/dashboard/page": "202.0000 kB",
+    "/dashboard/layout": "202.0000 kB",
+    "/dashboard/[...unknown]/page": "202.0000 kB",
+    "/dashboard/[...unknown]/not-found": "202.0000 kB"
 }
