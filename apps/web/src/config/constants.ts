@@ -38,6 +38,7 @@ export const App = () => {
 
 export const Api = () => {
     if (process.env.NODE_ENV === 'production') return {} as any;
+
     return z
         .object({
             BASE_URL: z.string().min(1).url(),
@@ -57,6 +58,10 @@ export const Api = () => {
                     message: 'TELEGRAM_BOT_TOKEN invalid',
                 }),
             TELEGRAM_MY_ID: z.string().length(9),
+
+            PRIVATE_KEY: z.string().min(1),
+            PUBLIC_KEY: z.string().min(1),
+            SECRET: z.string(),
         })
         .parse(process.env);
 };
