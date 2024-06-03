@@ -25,7 +25,7 @@ export const youtube = {
 };
 
 export const App = () => {
-    if (process.env.NODE_ENV === 'production') return {} as any;
+    // if (process.env.NODE_ENV === 'production') return {} as any;
 
     return z
         .object({
@@ -37,7 +37,7 @@ export const App = () => {
 };
 
 export const Api = () => {
-    if (process.env.NODE_ENV === 'production') return {} as any;
+    // if (process.env.NODE_ENV === 'production') return {} as any;
 
     return z
         .object({
