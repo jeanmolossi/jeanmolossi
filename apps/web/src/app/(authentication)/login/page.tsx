@@ -1,7 +1,11 @@
 import { login } from '@/lib/actions/login';
 
 export default function Page(props: { searchParams: { error: string } }) {
-    const message = decodeURIComponent(props.searchParams.error);
+    const message =
+        props.searchParams.error &&
+        decodeURIComponent(props.searchParams.error);
+
+    console.log(message);
 
     return (
         <div className="grid place-content-center w-full h-screen">
@@ -14,12 +18,25 @@ export default function Page(props: { searchParams: { error: string } }) {
                         {message}
                     </div>
                 )}
+
+                <label htmlFor="email">Digite seu email</label>
                 <input
+                    id="email"
+                    type="text"
+                    name="email"
+                    placeholder="seu@email.com"
+                    className="p-2 rounded"
+                />
+
+                <label htmlFor="password">Digite sua senha</label>
+                <input
+                    id="password"
                     type="password"
                     name="password"
                     placeholder="S3nh4 Secre7A"
                     className="p-2 rounded"
                 />
+
                 <button type="submit" className="p-2 rounded bg-primary">
                     Acessar
                 </button>

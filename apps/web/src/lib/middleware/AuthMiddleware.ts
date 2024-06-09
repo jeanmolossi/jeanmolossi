@@ -1,7 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { generateToken, verifyToken } from '@/lib/auth/token';
 import { parse } from './utils';
-import { AUTH_TOKEN_EXPIRES_IN, AUTH_TOKEN_MAX_AGE } from '@jeanmolossi/utils';
+import {
+    AUTH_TOKEN_EXPIRES_IN,
+    AUTH_TOKEN_MAX_AGE,
+    REFRESH_TOKEN_EXPIRES_IN,
+    REFRESH_TOKEN_MAX_AGE,
+} from '@jeanmolossi/utils';
+
+const __PROD__ = process.env.VERCEL_ENV === 'production';
 
 export async function AuthMiddleware(req: NextRequest) {
     const { key } = parse(req);
@@ -13,6 +20,21 @@ export async function AuthMiddleware(req: NextRequest) {
     if (authToken) {
         try {
             await verifyToken(authToken);
+
+            // users still connected but has no refresh token
+            if (!refreshToken) {
+                const refreshToken = await generateToken(
+                    { user: 'jeanmolossi' },
+                    REFRESH_TOKEN_EXPIRES_IN,
+                );
+
+                response.cookies.set('refresh-token', refreshToken, {
+                    httpOnly: true,
+                    maxAge: REFRESH_TOKEN_MAX_AGE,
+                    sameSite: 'strict',
+                    secure: __PROD__,
+                });
+            }
 
             if (key === 'login') {
                 return NextResponse.redirect(new URL('/dashboard', req.url));
@@ -37,7 +59,7 @@ export async function AuthMiddleware(req: NextRequest) {
                 httpOnly: true,
                 maxAge: AUTH_TOKEN_MAX_AGE,
                 sameSite: 'strict',
-                secure: process.env.VERCEL_ENV === 'production',
+                secure: __PROD__,
             });
 
             return response;
