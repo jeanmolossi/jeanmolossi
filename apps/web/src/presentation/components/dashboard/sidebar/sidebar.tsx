@@ -4,6 +4,7 @@ import { cn } from '@jeanmolossi/utils';
 import { LogOut } from 'lucide-react';
 import Link, { type LinkProps } from 'next/link';
 import { AnchorHTMLAttributes } from 'react';
+import { ToggleTheme } from '../../_layout/navigation-menu/toggle-theme';
 
 const NavLink = (
     props: LinkProps & AnchorHTMLAttributes<HTMLAnchorElement>,
@@ -37,7 +38,11 @@ function Sidebar() {
                 <NavLink href="/dashboard/artigos">Artigos</NavLink>
             </div>
 
-            <form action={logout} className="w-full">
+            <form
+                action={logout}
+                className="w-full flex flex-row-reverse gap-2"
+            >
+                <ToggleTheme />
                 <Button type="submit" variant="destructive" className="w-full">
                     <LogOut />
                     Sair

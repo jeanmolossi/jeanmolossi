@@ -1,4 +1,7 @@
-const isProd = process.env.NODE_ENV === 'production';
+import BundleAnalyzer from '@next/bundle-analyzer';
+const withBundleAnalyzer = BundleAnalyzer({
+    enabled: process.env.ANALYZE === 'true',
+});
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -10,11 +13,6 @@ const nextConfig = {
     reactStrictMode: true,
 
     images: {
-        loader: 'custom',
-        loaderFile: !isProd
-            ? './src/lib/local-strapi-loader.js'
-            : './src/lib/prod-strapi-loader.js',
-
         remotePatterns: [
             {
                 protocol: 'https',
@@ -84,4 +82,4 @@ const nextConfig = {
     },
 };
 
-module.exports = nextConfig;
+export default withBundleAnalyzer(nextConfig);
