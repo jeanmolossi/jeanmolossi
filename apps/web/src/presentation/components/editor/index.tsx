@@ -1,9 +1,9 @@
 'use client';
 
-import { useCallback, useEffect, useState } from 'react';
 import Quill from 'quill';
-import rehypeHighlight from 'rehype-highlight';
 import 'quill/dist/quill.snow.css';
+import { useCallback, useEffect, useState } from 'react';
+import rehypeHighlight from 'rehype-highlight';
 
 const TOOLBAR = [
     ['bold', 'italic', 'underline', 'strike'],
@@ -25,10 +25,10 @@ export default function Editor({ name, placeholder }: EditorProps) {
     const [value, setValue] = useState('');
     const [q, setQ] = useState<Quill | null>(null);
 
-    const wrapper = useCallback(async (editor: HTMLDivElement | null) => {
+    const wrapper = useCallback((editor: HTMLDivElement | null) => {
         if (typeof window === 'undefined') return;
+        if (typeof document === 'undefined') return;
         if (!editor) return;
-        if (!document) return;
 
         const quill = new Quill(editor, {
             placeholder,

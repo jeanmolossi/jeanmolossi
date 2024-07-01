@@ -1,6 +1,6 @@
 'use client';
 
-import { cn } from '@jeanmolossi/utils';
+import { gtag } from '@/config/constants';
 import WebVitals from '@/presentation/components/global/web-vitals';
 import { ThemeProvider } from '@/presentation/components/theme-provider';
 import {
@@ -11,9 +11,9 @@ import {
 } from '@/presentation/scripts';
 import '@/presentation/styles/github-dark.min.css';
 import '@/presentation/styles/global.css';
+import { cn } from '@jeanmolossi/utils';
 import { Poppins } from 'next/font/google';
-import React from 'react';
-import { gtag } from '@/config/constants';
+import React, { Suspense } from 'react';
 
 const poppins = Poppins({
     subsets: ['latin'],
@@ -64,8 +64,8 @@ export default function RootLayout({
                     {children}
                 </ThemeProvider>
 
-                <TagManager />
-                <AnalyticsScript />
+                <Suspense><TagManager /></Suspense>
+                <Suspense><AnalyticsScript /></Suspense>
 
                 <WebVitals />
             </body>

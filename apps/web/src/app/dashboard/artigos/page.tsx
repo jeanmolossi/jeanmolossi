@@ -31,3 +31,5 @@ export default function Page() {
         </form>
     );
 }
+
+export const dynamic = 'force-dynamic'

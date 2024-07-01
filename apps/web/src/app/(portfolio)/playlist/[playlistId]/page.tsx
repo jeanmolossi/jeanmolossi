@@ -15,11 +15,11 @@ import {
     Card,
     CardContent,
 } from '@jeanmolossi/ui';
+import { cn } from '@jeanmolossi/utils';
 import { ArrowLeftCircle } from 'lucide-react';
 import { Metadata } from 'next';
 import Link from 'next/link';
-import React from 'react';
-import { cn } from '@jeanmolossi/utils';
+import React, { Suspense } from 'react';
 import styles from './playlist-item.module.css';
 
 const LazyMD = React.lazy(() => import('@/presentation/components/markdown'));
@@ -89,7 +89,9 @@ export default async function Page({ params, searchParams }: PlaylistProps) {
                     <HeadTitle>Vídeos</HeadTitle>
                 </Headings>
 
-                <SearchBar placeholder="Pesquise um vídeo" />
+                <Suspense>
+                    <SearchBar placeholder="Pesquise um vídeo" />
+                </Suspense>
             </PageHeading>
 
             <div

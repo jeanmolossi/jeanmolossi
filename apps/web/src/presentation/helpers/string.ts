@@ -1,7 +1,7 @@
+import { charmap } from '@/config/slugify/charmap';
 import { formatDistanceToNow, isDate } from 'date-fns';
 import ptBr from 'date-fns/locale/pt-BR';
 import slugify from 'slugify';
-import { charmap } from '@/config/slugify/charmap';
 
 declare global {
     interface String {
@@ -39,7 +39,7 @@ String.prototype.nlToBr = function () {
     return self.replace(/\n/g, '<br />');
 };
 
-String.prototype.trimAfter = function (length: number, suffix = '...') {
+const trimAfter = function (length: number, suffix = '...') {
     const self = this.replace(/[\s\t\r]+/gi, ' ') as string;
 
     if (self.length <= length) {
@@ -49,4 +49,6 @@ String.prototype.trimAfter = function (length: number, suffix = '...') {
     return self.substring(0, length).concat(suffix);
 };
 
-export {};
+String.prototype.trimAfter = trimAfter;
+
+export { trimAfter };

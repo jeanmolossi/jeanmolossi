@@ -9,6 +9,7 @@ import {
     HeadTitle,
     Headings,
 } from '@/presentation/components/global/page-heading/title';
+import { trimAfter } from '@/presentation/helpers/string';
 import {
     Card,
     CardContent,
@@ -19,6 +20,7 @@ import {
 import { Link2 } from 'lucide-react';
 import { Metadata } from 'next';
 import Link from 'next/link';
+import { Suspense } from 'react';
 import styles from './blog.module.css';
 
 interface BlogProps {
@@ -31,8 +33,8 @@ interface BlogProps {
 }
 
 export const metadata: Metadata = {
-    title: 'Jean Molossi | Blog'.trimAfter(50),
-    description: 'Artigos sobre tecnologia e programação'.trimAfter(150),
+    title: trimAfter.call('Jean Molossi | Blog', 50),
+    description: trimAfter.call('Artigos sobre tecnologia e programação', 150),
     publisher: 'https://jeanmolossi.com.br',
 };
 
@@ -69,7 +71,9 @@ export default async function Blog({ searchParams }: BlogProps) {
                     <HeadSubtitle>{showingText}</HeadSubtitle>
                 </Headings>
 
-                <SearchBar placeholder="Pesquise por um artigo" />
+                <Suspense>
+                    <SearchBar placeholder="Pesquise por um artigo" />
+                </Suspense>
             </PageHeading>
 
             <div className={styles.articles_wrapper}>

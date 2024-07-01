@@ -39,7 +39,9 @@ export default function PlaylistsPage({ searchParams }: PlaylistsPageProps) {
                     <HeadSubtitle>Aprenda com projetos práticos</HeadSubtitle>
                 </Headings>
 
-                <SearchBar placeholder="Pesquise por uma playlist" />
+                <Suspense>
+                    <SearchBar placeholder="Pesquise por uma playlist" />
+                </Suspense>
             </PageHeading>
 
             <Suspense fallback={<PlaylistsSkeleton />}>

@@ -61,8 +61,8 @@ export default function Timeline({
 
 interface ItemProps {
     left?: boolean;
-    heading: string | React.ReactNode;
-    subheading: string | React.ReactNode;
+    heading: React.ReactNode | null;
+    subheading: React.ReactNode | null;
     content: React.ReactNode;
     href?: string | null;
 }
@@ -83,8 +83,8 @@ function Item({
 
         <Card className={styles.timeline_content}>
             <CardHeader>
-                <CardTitle>{heading}</CardTitle>
-                <CardDescription>{subheading}</CardDescription>
+                <CardTitle>{heading as any}</CardTitle>
+                <CardDescription>{subheading as any}</CardDescription>
             </CardHeader>
 
             <CardContent>

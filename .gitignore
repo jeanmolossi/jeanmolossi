@@ -21,6 +21,7 @@ dist
 .DS_Store
 *.pem
 .turbo/
+.vscode/
 
 # debug
 npm-debug.log*

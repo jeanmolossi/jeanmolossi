@@ -3,7 +3,7 @@ import * as React from 'react';
 import { cn } from '@jeanmolossi/utils';
 
 export interface InputProps
-    extends React.InputHTMLAttributes<HTMLInputElement> {}
+    extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'formAction'> {}
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
     ({ className, type, ...props }, ref) => {

@@ -12,9 +12,9 @@ import {
     //
     Input,
 } from '@jeanmolossi/ui';
-import React, { InputHTMLAttributes, useEffect, useRef, useState } from 'react';
 import { Command } from 'lucide-react';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import React, { InputHTMLAttributes, useEffect, useRef, useState } from 'react';
 
 interface SearchBarProps extends InputHTMLAttributes<HTMLInputElement> {
     deboundeDelayMs?: number;
