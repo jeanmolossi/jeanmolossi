@@ -15,7 +15,7 @@ export namespace Gtag {
     };
 
     export type Actor = {
-         /**
+        /**
          * pageView - This method is used to send a pageview hit to Google Analytics.
          * @param url is the url to be tracked
          */
@@ -27,6 +27,8 @@ export namespace Gtag {
         event(e: Event): void;
     };
 }
+
+const tempEventQueue: Array<Gtag.Event> = [];
 
 export const gtagActions: Gtag.Actor = {
     /**
@@ -42,6 +44,21 @@ export const gtagActions: Gtag.Actor = {
      * @param {Gtag.Event} event is the event to be tracked
      */
     event({ action, category, label, value }: Gtag.Event) {
+        if (typeof window.gtag === 'undefined') {
+            tempEventQueue.push({ action, category, label, value });
+            return;
+        }
+
+        if (tempEventQueue.length > 0) {
+            for (let event of tempEventQueue) {
+                window.gtag('event', event.action, {
+                    event_category: event.category,
+                    event_label: event.label,
+                    value: event.value,
+                });
+            }
+        }
+
         window.gtag('event', action, {
             event_category: category,
             event_label: label,
