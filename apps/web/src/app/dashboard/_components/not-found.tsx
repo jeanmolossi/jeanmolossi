@@ -5,7 +5,7 @@ import Link from 'next/link';
 export default function NotFound() {
     return (
         <div className="mx-auto max-w-screen-sm py-20 space-y-8">
-            <h1 className="text-7xl font-semibold">Oops!</h1>
+            <h1 className="text-7xl font-semibold">Dash / Oops!</h1>
             <p>
                 A Página que você está buscando não existe, tente de outra
                 forma!
@@ -24,21 +24,21 @@ export default function NotFound() {
                 <Button asChild variant="link">
                     <Link href="/dashboard/playlists">
                         <ListVideo />
-                        Navegue por playlists
+                        Adicione uma playlist
                     </Link>
                 </Button>
 
                 <Button asChild variant="link">
                     <Link href="/dashboard/videos">
                         <Video />
-                        Navegue por videos
+                        Adicione um video
                     </Link>
                 </Button>
 
                 <Button asChild variant="link">
                     <Link href="/dashboard/artigos">
                         <Newspaper />
-                        Navegue por artigos
+                        Adicione um artigo
                     </Link>
                 </Button>
             </div>

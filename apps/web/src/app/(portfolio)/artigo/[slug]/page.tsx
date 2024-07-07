@@ -1,6 +1,6 @@
 import { SocialLinks } from "@/app/components/social-links";
 import { App } from "@/config/constants";
-import { getArticleBySlug } from "@/data/strapi";
+import { getArticleBySlug, getArticles } from "@/data/strapi";
 import Container from "@/presentation/components/_layout/container";
 import AspectRatioCover from "@/presentation/components/global/aspect-ratio-cover";
 import AuthorPic from "@/presentation/components/global/author-pic";
@@ -143,4 +143,15 @@ export async function generateMetadata({ params }: ArticleProps): Promise<Metada
     }
 }
 
-export const revalidate = 300
+export async function generateStaticParams() {
+    const { data: articles } = await getArticles({
+        page: 1,
+        pageSize: 30,
+    });
+
+    return articles.map(article => ({
+        slug: article.slug
+    }))
+}
+
+export const revalidate = 86400
