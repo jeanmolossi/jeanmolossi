@@ -45,7 +45,7 @@ export default async function Article({ params }: ArticleProps) {
                         width: 1280,
                         height: 720,
                     }}
-                    prority
+                    priority
                 />
 
                 <h1 className="text-3xl font-bold leading-10">{title}</h1>
