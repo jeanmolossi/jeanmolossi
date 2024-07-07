@@ -1,4 +1,4 @@
-import { getPlaylistVideos } from '@/data/strapi';
+import { getPlaylistVideos, getPlaylists } from '@/data/strapi';
 import { getPlaylist } from '@/data/strapi/playlists/get-playlist';
 import { PartialVideo } from '@/domain/playlist';
 import Container from '@/presentation/components/_layout/container';
@@ -191,4 +191,15 @@ function Video({ video }: VideoProps) {
     );
 }
 
-export const revalidate = 300;
+export async function generateStaticParams() {
+    const { data: playlists } = await getPlaylists({
+        page: 1,
+        pageSize: 10,
+    });
+
+    return playlists.map((playlist) => ({
+        playlistId: playlist.slug,
+    }))
+}
+
+export const revalidate = 600;
