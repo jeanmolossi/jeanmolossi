@@ -5,8 +5,6 @@ import { useReportWebVitals } from 'next/web-vitals';
 
 const WebVitals = () => {
     useReportWebVitals(metric => {
-        console.log(metric);
-
         gtagActions.event({
             category: 'portfolio',
             action: 'web-vitals',

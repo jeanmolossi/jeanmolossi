@@ -96,7 +96,7 @@ const SearchBar = React.forwardRef<HTMLInputElement, SearchBarProps>(
                     </span>
                 </small>
 
-                <Dialog open={isOpen} onOpenChange={console.log}>
+                <Dialog open={isOpen}>
                     <DialogContent>
                         <DialogHeader>Faça sua busca</DialogHeader>
                         <DialogDescription>{placeholder}</DialogDescription>
