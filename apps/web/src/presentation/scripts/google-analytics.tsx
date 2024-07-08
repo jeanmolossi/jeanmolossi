@@ -15,7 +15,7 @@ export const AnalyticsScript = () => {
             gtagActions.pageView(url);
         };
 
-        const url = pathname + (searchParams?.toString() || '');
+        const url = pathname + (searchParams ? '?'.concat(searchParams.toString()) : '');
         handleChangeRoute(url);
     }, [pathname, searchParams]);
 

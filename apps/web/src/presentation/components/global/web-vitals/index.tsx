@@ -8,7 +8,7 @@ const WebVitals = () => {
         gtagActions.event({
             category: 'portfolio',
             action: 'web-vitals',
-            label: metric.id,
+            label: metric.name,
             value: Math.round(
                 metric.name === 'CLS' ? metric.value * 1000 : metric.value,
             ).toString(),

@@ -11,7 +11,7 @@ export const TagManager = () => {
     const searchParams = useSearchParams();
 
     useEffect(() => {
-        const url = pathname + (searchParams?.toString() || '');
+        const url = pathname + (searchParams ? '?'.concat(searchParams.toString()) : '');
         gtm.pageView(url);
     }, [pathname, searchParams]);
 
