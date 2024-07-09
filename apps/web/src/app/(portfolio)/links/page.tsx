@@ -1,18 +1,11 @@
 import { social } from '@/config/constants';
-import { cn } from '@jeanmolossi/utils';
 import Container from '@/presentation/components/_layout/container';
 import { SwapComponents } from '@/presentation/helpers';
 import { getContrast } from '@/presentation/helpers/contrast-calc';
 import { socialColors } from '@/presentation/styles';
 import { Metadata } from 'next';
+import LinkList, { type Link } from './links';
 import styles from './links.module.css';
-
-interface Link {
-    href: string;
-    label: string;
-    bgColor: string;
-    txtColor?: 'black' | 'white';
-}
 
 export const metadata: Metadata = {
     title: 'Jean Molossi | Link tree'.trimAfter(50),
@@ -26,6 +19,7 @@ export default function LinksPage() {
         const bgColor = socialColors[index];
 
         return {
+            name: index,
             href: item[1],
             label: capitalize(item[0]),
             bgColor: bgColor,
@@ -42,27 +36,7 @@ export default function LinksPage() {
                     condition={!!links && links.length > 0}
                     componentIfConditionTrue={
                         <div className={styles.link_list}>
-                            {links?.map(
-                                (
-                                    {
-                                        href,
-                                        label,
-                                        bgColor,
-                                        txtColor = 'black',
-                                    },
-                                    i,
-                                ) => (
-                                    <div key={i.toString()}>
-                                        <BlankLink
-                                            href={href}
-                                            txtColor={txtColor}
-                                            bgColor={bgColor}
-                                        >
-                                            {label}
-                                        </BlankLink>
-                                    </div>
-                                ),
-                            )}
+                            <LinkList links={links} />
                         </div>
                     }
                     componentIfConditionFalse={
@@ -81,37 +55,6 @@ export default function LinksPage() {
     );
 }
 
-interface BlankLinkProps {
-    href?: string;
-    children?: React.ReactNode;
-    txtColor: 'black' | 'white';
-    bgColor: string;
-}
-
-const BlankLink = ({
-    href = '#',
-    children,
-    txtColor,
-    bgColor,
-}: BlankLinkProps) => {
-    return (
-        <a
-            style={{
-                '--bg-color': bgColor,
-                '--txt-color': txtColor,
-            }}
-            className={cn(
-                styles.link_anchor,
-                'dark:shadow-white hover:dark:shadow-white',
-            )}
-            href={href}
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-            {children}
-        </a>
-    );
-};
 
 function capitalize(text: string) {
     return text
