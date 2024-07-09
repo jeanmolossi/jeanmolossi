@@ -28,7 +28,7 @@ export namespace Gtag {
     };
 }
 
-const tempEventQueue: Array<Gtag.Event> = [];
+let tempEventQueue: Array<Gtag.Event> = [];
 
 export const gtagActions: Gtag.Actor = {
     /**
@@ -57,6 +57,8 @@ export const gtagActions: Gtag.Actor = {
                     value: event.value,
                 });
             }
+
+            tempEventQueue = [];
         }
 
         window.gtag('event', action, {
