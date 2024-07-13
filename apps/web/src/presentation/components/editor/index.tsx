@@ -4,6 +4,7 @@ import Quill from 'quill';
 import 'quill/dist/quill.snow.css';
 import { useCallback, useEffect, useState } from 'react';
 import rehypeHighlight from 'rehype-highlight';
+import './editor.css';
 
 const TOOLBAR = [
     ['bold', 'italic', 'underline', 'strike'],
@@ -28,7 +29,7 @@ export default function Editor({ name, placeholder }: EditorProps) {
     const wrapper = useCallback((editor: HTMLDivElement | null) => {
         if (typeof window === 'undefined') return;
         if (typeof document === 'undefined') return;
-        if (!editor) return;
+        if (!editor || !!q) return;
 
         const quill = new Quill(editor, {
             placeholder,
@@ -60,9 +61,8 @@ export default function Editor({ name, placeholder }: EditorProps) {
     }, [q, handleChange]);
 
     return (
-        <div>
+        <div className='relative'>
             <div ref={wrapper} id="editor"></div>
-
             <textarea hidden value={value} name={name}></textarea>
         </div>
     );

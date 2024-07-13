@@ -5,41 +5,54 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider        = "prisma-client-js"
-  schemas         = ["public", "auth"]
-  previewFeatures = ["postgresqlExtensions", "fullTextSearch"]
+    provider        = "prisma-client-js"
+    schemas         = ["public", "auth"]
+    previewFeatures = ["postgresqlExtensions", "fullTextSearch"]
 }
 
 datasource db {
-  provider  = "postgresql"
-  url       = env("DATABASE_URL")
-  directUrl = env("DIRECT_URL")
+    provider  = "postgresql"
+    url       = env("DATABASE_URL")
+    directUrl = env("DIRECT_URL")
 }
 
 model Article {
-  id           String    @id @default(cuid())
-  title        String
-  subtitle     String?
-  slug         String
-  cover        String?
-  content      String
-  reading_time Int
-  created_at   DateTime  @default(now())
-  published_at DateTime?
+    id           String    @id @default(cuid())
+    title        String
+    subtitle     String?
+    slug         String    @unique
+    cover        String?
+    blurhash     String?
+    content      String
+    reading_time Int
+    created_at   DateTime  @default(now())
+    published_at DateTime?
 
-  tags Tag[]
+    tags ArticlesOnTags[]
 
-  @@index([slug, created_at(sort: Desc)])
+    @@index([slug, created_at(sort: Desc)])
+    @@index([published_at(sort: Desc)])
+}
+
+model ArticlesOnTags {
+    article_id String
+    article    Article @relation(fields: [article_id], references: [id], onUpdate: Cascade, onDelete: Cascade)
+    tag_id     String
+    tag        Tag     @relation(fields: [tag_id], references: [id], onUpdate: Cascade, onDelete: Cascade)
+
+    @@id([article_id, tag_id])
+    @@unique([article_id, tag_id])
+    @@index([tag_id])
 }
 
 model Tag {
-  id         String   @id @default(cuid())
-  name       String
-  slug       String
-  article_id String
-  created_at DateTime @default(now())
+    id         String   @id @default(cuid())
+    name       String
+    slug       String
+    created_at DateTime @default(now())
 
-  article Article @relation(fields: [article_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+    articles ArticlesOnTags[]
 
-  @@index([slug, created_at(sort: Desc)])
+    @@unique([slug])
+    @@index([slug, created_at(sort: Desc)])
 }

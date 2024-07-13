@@ -2,10 +2,10 @@
     "name": "jeanmolossi",
     "private": true,
     "scripts": {
-        "build": "turbo build",
-        "dev": "turbo dev",
-        "start": "turbo start",
-        "lint": "turbo lint",
+        "build": "turbo build --env-mode=loose",
+        "dev": "turbo dev --env-mode=loose",
+        "start": "turbo start --env-mode=loose",
+        "lint": "turbo lint --env-mode=loose",
         "format": "prettier --write \"**/*.{ts,tsx,md}\""
     },
     "devDependencies": {

@@ -3,6 +3,8 @@ const withBundleAnalyzer = BundleAnalyzer({
     enabled: process.env.ANALYZE === 'true',
 });
 
+const SUPABASE = new URL(process.env.NEXT_PUBLIC_SUPABASE_URL);
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     poweredByHeader: false,
@@ -10,6 +12,12 @@ const nextConfig = {
 
     images: {
         remotePatterns: [
+            {
+                protocol: SUPABASE.protocol.substring(0, 5),
+                hostname: SUPABASE.hostname,
+                port: SUPABASE.port,
+                pathname: '/**'
+            },
             {
                 protocol: 'https',
                 hostname: 'res.cloudinary.com',
