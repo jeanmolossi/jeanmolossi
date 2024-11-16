@@ -12,12 +12,13 @@ import styles from './artigo.module.css';
 const LazyMd = React.lazy(() => import('@/presentation/components/markdown'))
 
 interface ArticleProps {
-    params?: {
+    params?: Promise<{
         slug: string;
-    }
+    }>
 }
 
-export default async function Article({ params }: ArticleProps) {
+export default async function Article(props: ArticleProps) {
+    const params = await props.params;
     const slug = params?.slug!
 
     const article = await getArticleBySlug(slug)
@@ -100,7 +101,8 @@ function TagList({ taglist = '' }: TagListProps) {
     return <div className="flex gap-4 flex-wrap">{tags}</div>
 }
 
-export async function generateMetadata({ params }: ArticleProps): Promise<Metadata> {
+export async function generateMetadata(props: ArticleProps): Promise<Metadata> {
+    const params = await props.params;
     const slug = params?.slug!
 
     const article = await getArticleBySlug(slug)

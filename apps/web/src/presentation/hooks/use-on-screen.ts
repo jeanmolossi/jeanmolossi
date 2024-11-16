@@ -3,7 +3,7 @@
 import { useState, useEffect, RefObject, MutableRefObject } from 'react';
 
 export function useOnScreen<T extends HTMLElement = any>(
-    ref: RefObject<T> | MutableRefObject<T>,
+    ref: RefObject<T | null> | MutableRefObject<T>,
     rootMargin = '0px',
 ) {
     const [isIntersecting, setIntersecting] = useState(false);

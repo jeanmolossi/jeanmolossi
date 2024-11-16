@@ -5,7 +5,8 @@ import Link from 'next/link';
 import Cover from '../_components/cover';
 import { getArticles } from './action';
 
-export default async function Page({ searchParams }: { searchParams: Record<string, string> }) {
+export default async function Page(props: { searchParams: Promise<Record<string, string>> }) {
+    const searchParams = await props.searchParams;
     const articles = await getArticles({
         limit: parseInt(searchParams.limit || '10'),
         offset: parseInt(searchParams.offset || '0'),

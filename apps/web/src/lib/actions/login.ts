@@ -24,7 +24,7 @@ export async function login(data: FormData) {
 
     const { authToken, refreshToken } = await response.json();
 
-    const cookieStore = cookies();
+    const cookieStore = await cookies();
     cookieStore.set('auth-token', authToken, {
         path: '/',
         maxAge: AUTH_TOKEN_MAX_AGE,

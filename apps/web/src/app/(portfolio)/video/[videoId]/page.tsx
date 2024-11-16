@@ -8,12 +8,13 @@ import React, { Suspense } from "react";
 const LazyMD = React.lazy(() => import('@/presentation/components/markdown'))
 
 interface VideoProps {
-    params?: {
+    params?: Promise<{
         videoId: string;
-    }
+    }>
 }
 
-export default async function Video({ params }: VideoProps) {
+export default async function Video(props: VideoProps) {
+    const params = await props.params;
     const slug = params?.videoId
 
     if (!slug) {
@@ -51,9 +52,8 @@ export default async function Video({ params }: VideoProps) {
 }
 
 
-export async function generateMetadata(
-    { params }: VideoProps,
-): Promise<Metadata> {
+export async function generateMetadata(props: VideoProps): Promise<Metadata> {
+    const params = await props.params;
     const video = await getVideo(params?.videoId!);
 
     let title = video.title;

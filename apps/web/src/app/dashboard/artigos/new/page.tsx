@@ -3,7 +3,8 @@ import Editor from '@/presentation/components/editor';
 import { Button, Input } from '@jeanmolossi/ui';
 import { submit } from './action';
 
-export default function Page({ searchParams }: { searchParams: Record<string, string> }) {
+export default async function Page(props: { searchParams: Promise<Record<string, string>> }) {
+    const searchParams = await props.searchParams;
     const error = searchParams.error;
 
     return (

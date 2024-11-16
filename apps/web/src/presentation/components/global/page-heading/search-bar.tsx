@@ -37,7 +37,7 @@ const SearchBar = React.forwardRef<HTMLInputElement, SearchBarProps>(
 
         const [isOpen, setIsOpen] = useState(false);
 
-        const debounced = useRef<ReturnType<typeof setTimeout>>();
+        const debounced = useRef<ReturnType<typeof setTimeout>>(undefined);
 
         const onSearch = (term: string): URLSearchParams => {
             const params = new URLSearchParams(searchParams);

@@ -7,13 +7,14 @@ import { getArticleById } from './actions';
 import Cover from './cover';
 
 interface PageProps {
-    searchParams: Record<string, string>;
-    params: Record<string, string>;
+    searchParams: Promise<Record<string, string>>;
+    params: Promise<Record<string, string>>;
 }
 
 const LazyMd = React.lazy(() => import('@/presentation/components/markdown'))
 
-export default async function Page({ params }: PageProps) {
+export default async function Page(props: PageProps) {
+    const params = await props.params;
     const { id } = params;
     const article = await getArticleById(id);
 

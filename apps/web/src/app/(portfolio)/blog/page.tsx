@@ -24,12 +24,12 @@ import { Suspense } from 'react';
 import styles from './blog.module.css';
 
 interface BlogProps {
-    params?: {};
-    searchParams?: {
+    params?: Promise<{}>;
+    searchParams?: Promise<{
         page?: string;
         pageSize?: string;
         search?: string;
-    };
+    }>;
 }
 
 export const metadata: Metadata = {
@@ -38,7 +38,8 @@ export const metadata: Metadata = {
     publisher: 'https://jeanmolossi.com.br',
 };
 
-export default async function Blog({ searchParams }: BlogProps) {
+export default async function Blog(props: BlogProps) {
+    const searchParams = await props.searchParams;
     const page = +(searchParams?.page || 0)
         ? +(searchParams?.page || 1)
         : undefined;

@@ -1,9 +1,8 @@
 import { login } from '@/lib/actions/login';
 
-export default function Page(props: { searchParams: { error: string } }) {
-    const message =
-        props.searchParams.error &&
-        decodeURIComponent(props.searchParams.error);
+export default async function Page(props: { searchParams: Promise<{ error: string }> }) {
+    const searchParams = await props.searchParams;
+    const message = searchParams.error && decodeURIComponent(searchParams.error);
 
     console.log(message);
 

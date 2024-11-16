@@ -5,10 +5,7 @@ import Container from '@/presentation/components/_layout/container';
 import AspectRatioCover from '@/presentation/components/global/aspect-ratio-cover';
 import PageHeading from '@/presentation/components/global/page-heading';
 import SearchBar from '@/presentation/components/global/page-heading/search-bar';
-import {
-    HeadTitle,
-    Headings,
-} from '@/presentation/components/global/page-heading/title';
+import { HeadTitle, Headings } from '@/presentation/components/global/page-heading/title';
 import {
     Button,
     //
@@ -25,19 +22,18 @@ import styles from './playlist-item.module.css';
 const LazyMD = React.lazy(() => import('@/presentation/components/markdown'));
 
 interface PlaylistProps {
-    params?: {
+    params?: Promise<{
         playlistId: string;
-    };
-    searchParams?: {
+    }>;
+    searchParams?: Promise<{
         page?: string;
         pageSize?: string;
         search?: string;
-    };
+    }>;
 }
 
-export async function generateMetadata({
-    params,
-}: PlaylistProps): Promise<Metadata> {
+export async function generateMetadata(props: PlaylistProps): Promise<Metadata> {
+    const params = await props.params;
     const playlistId = params?.playlistId!;
     const playlist = await getPlaylist(playlistId);
 
@@ -55,12 +51,10 @@ export async function generateMetadata({
     };
 }
 
-export default async function Page({ params, searchParams }: PlaylistProps) {
-    const {
-        page: qsPage = '1',
-        pageSize: qsPageSize = '10',
-        search,
-    } = searchParams || {};
+export default async function Page(props: PlaylistProps) {
+    const searchParams = await props.searchParams;
+    const params = await props.params;
+    const { page: qsPage = '1', pageSize: qsPageSize = '10', search } = searchParams || {};
 
     const playlistId = params?.playlistId;
 
@@ -94,26 +88,17 @@ export default async function Page({ params, searchParams }: PlaylistProps) {
                 </Suspense>
             </PageHeading>
 
-            <div
-                className={cn(
-                    { hidden: !emptyVideos },
-                    'mx-auto max-w-[768px]',
-                )}
-            >
+            <div className={cn({ hidden: !emptyVideos }, 'mx-auto max-w-[768px]')}>
                 <h1 className="text-7xl mb-8">Oops! Nenhum vídeo</h1>
 
                 <p>
-                    Nenhum vídeo foi adicionado à essa playlist ainda. Seja o
-                    primeiro a saber quando um vídeo for adicionado!
+                    Nenhum vídeo foi adicionado à essa playlist ainda. Seja o primeiro a saber
+                    quando um vídeo for adicionado!
                 </p>
 
                 <div className="my-4">
                     <label htmlFor="mail">Quero ser avisado: </label>
-                    <input
-                        id="mail"
-                        placeholder="Deixe seu e-mail"
-                        className="p-2 rounded"
-                    />
+                    <input id="mail" placeholder="Deixe seu e-mail" className="p-2 rounded" />
                 </div>
 
                 <Button asChild variant={'link'} size="lg">
@@ -132,10 +117,7 @@ export default async function Page({ params, searchParams }: PlaylistProps) {
 
             <div className={styles.divider}></div>
 
-            <div
-                className={styles.pagination}
-                aria-hidden={!hasPrevPage && !hasNextPage}
-            >
+            <div className={styles.pagination} aria-hidden={!hasPrevPage && !hasNextPage}>
                 <Link
                     className={styles.page_link}
                     aria-hidden={!hasPrevPage}
@@ -161,9 +143,7 @@ interface VideoProps {
 }
 
 function Video({ video }: VideoProps) {
-    const description = video.description
-        .nlToBr()
-        .trimAfter(250, '... _**ver mais**_');
+    const description = video.description.nlToBr().trimAfter(250, '... _**ver mais**_');
 
     return (
         <Card className={styles.item_wrapper}>
@@ -197,9 +177,9 @@ export async function generateStaticParams() {
         pageSize: 10,
     });
 
-    return playlists.map((playlist) => ({
+    return playlists.map(playlist => ({
         playlistId: playlist.slug,
-    }))
+    }));
 }
 
 export const revalidate = 600;

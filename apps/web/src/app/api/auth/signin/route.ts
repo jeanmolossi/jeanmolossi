@@ -32,7 +32,7 @@ export async function POST(request: NextRequest) {
         REFRESH_TOKEN_EXPIRES_IN,
     );
 
-    const cookieStore = cookies();
+    const cookieStore = await cookies();
     cookieStore.set('auth-token', sessionToken, {
         path: '/',
         maxAge: AUTH_TOKEN_MAX_AGE,

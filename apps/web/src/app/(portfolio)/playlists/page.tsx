@@ -18,15 +18,16 @@ export const metadata: Metadata = {
 };
 
 interface PlaylistsPageProps {
-    params?: {};
-    searchParams?: {
+    params?: Promise<{}>;
+    searchParams?: Promise<{
         page?: string;
         pageSize?: string;
         search?: string;
-    };
+    }>;
 }
 
-export default function PlaylistsPage({ searchParams }: PlaylistsPageProps) {
+export default async function PlaylistsPage(props: PlaylistsPageProps) {
+    const searchParams = await props.searchParams;
     const page = searchParams?.page || '1';
     const pageSize = searchParams?.pageSize || '10';
     const search = searchParams?.search;
