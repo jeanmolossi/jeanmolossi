@@ -30,7 +30,9 @@ function NavMenu({ className }: { className?: string }) {
         <NavigationMenu>
             <NavigationMenuList>
                 {items.map(({ href, as, label, icon: Icon }, i) => (
+                    // @ts-ignore
                     <NavigationMenuItem key={i}>
+                        {/* @ts-ignore */}
                         <NavigationMenuLink className={className} asChild>
                             <Link href={href} as={as}>
                                 <Icon />

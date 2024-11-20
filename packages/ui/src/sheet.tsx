@@ -49,12 +49,17 @@ const sheetVariants = cva(
 
 interface SheetContentProps
     extends React.ComponentPropsWithoutRef<typeof SheetPrimitive.Content>,
-        VariantProps<typeof sheetVariants> {}
+        VariantProps<typeof sheetVariants> {
+    ref?: React.RefObject<React.ElementRef<typeof SheetPrimitive.Content>>;
+}
 
-const SheetContent = React.forwardRef<
-    React.ElementRef<typeof SheetPrimitive.Content>,
-    SheetContentProps
->(({ side = 'right', className, children, ...props }, ref) => (
+const SheetContent = ({
+    side = 'right',
+    className,
+    children,
+    ref,
+    ...props
+}: SheetContentProps) => (
     <SheetPortal>
         <SheetOverlay />
         <SheetPrimitive.Content
@@ -70,7 +75,7 @@ const SheetContent = React.forwardRef<
             </SheetPrimitive.Close>
         </SheetPrimitive.Content>
     </SheetPortal>
-));
+);
 SheetContent.displayName = SheetPrimitive.Content.displayName;
 
 const SheetHeader = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
@@ -86,16 +91,17 @@ const SheetFooter = ({ className, ...props }: React.HTMLAttributes<HTMLDivElemen
 );
 SheetFooter.displayName = 'SheetFooter';
 
-const SheetTitle = React.forwardRef<
-    React.ElementRef<typeof SheetPrimitive.Title>,
-    React.ComponentPropsWithoutRef<typeof SheetPrimitive.Title>
->(({ className, ...props }, ref) => (
+interface SheetTitleProps extends React.ComponentPropsWithoutRef<typeof SheetPrimitive.Title> {
+    ref?: React.RefObject<React.ElementRef<typeof SheetPrimitive.Title>>;
+}
+
+const SheetTitle = ({ className, ref, ...props }: SheetTitleProps) => (
     <SheetPrimitive.Title
         ref={ref}
         className={cn('text-lg font-semibold text-foreground', className)}
         {...props}
     />
-));
+);
 SheetTitle.displayName = SheetPrimitive.Title.displayName;
 
 const SheetDescription = React.forwardRef<

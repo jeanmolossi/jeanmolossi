@@ -27,6 +27,10 @@ const config: Pick<Config, 'presets'> = {
                         'pulse-scale': 'pulse-scale 6s ease-out infinite',
                         'gradient-move': 'gradient-move 5s linear infinite',
                     },
+                    boxShadow: {
+                        squared: '4px 4px 0 var(--tw-shadow-color)',
+                        'squared-hover': '2px 2px 0 var(--tw-shadow-color)',
+                    },
                     keyframes: {
                         ...sharedConfig?.theme?.extend?.keyframes,
                         // Infinite scroll animation

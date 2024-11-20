@@ -1,11 +1,12 @@
-import Container from "@/presentation/components/_layout/container";
-import { AspectRatio, Skeleton } from "@jeanmolossi/ui";
+import Container from '@/presentation/components/_layout/container';
+import { AspectRatio, Skeleton } from '@jeanmolossi/ui';
 import styles from './artigo.module.css';
 
 export default function Loading() {
-    return(
+    return (
         <Container className="my-6 max-w-5xl mx-auto">
             <article className={styles.article}>
+                {/* @ts-ignore */}
                 <AspectRatio ratio={16 / 9}>
                     <Skeleton className="w-full h-full" />
                 </AspectRatio>
@@ -54,5 +55,5 @@ export default function Loading() {
                 <Skeleton className="h-4 w-[min(100%,320px)]" />
             </article>
         </Container>
-    )
+    );
 }

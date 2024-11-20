@@ -10,13 +10,7 @@ import {
     Headings,
 } from '@/presentation/components/global/page-heading/title';
 import { trimAfter } from '@/presentation/helpers/string';
-import {
-    Card,
-    CardContent,
-    CardFooter,
-    CardHeader,
-    CardTitle,
-} from '@jeanmolossi/ui';
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@jeanmolossi/ui';
 import { Link2 } from 'lucide-react';
 import { Metadata } from 'next';
 import Link from 'next/link';
@@ -40,13 +34,9 @@ export const metadata: Metadata = {
 
 export default async function Blog(props: BlogProps) {
     const searchParams = await props.searchParams;
-    const page = +(searchParams?.page || 0)
-        ? +(searchParams?.page || 1)
-        : undefined;
+    const page = +(searchParams?.page || 0) ? +(searchParams?.page || 1) : undefined;
 
-    const pageSize = +(searchParams?.pageSize || 0)
-        ? +(searchParams?.pageSize || 10)
-        : undefined;
+    const pageSize = +(searchParams?.pageSize || 0) ? +(searchParams?.pageSize || 10) : undefined;
 
     const { data: articles, pagination } = await getArticles({
         page,
@@ -83,15 +73,9 @@ export default async function Blog(props: BlogProps) {
                 ))}
             </div>
 
-            <div
-                aria-hidden={!hasPrevPage && !hasNextPage}
-                className={styles.divider}
-            ></div>
+            <div aria-hidden={!hasPrevPage && !hasNextPage} className={styles.divider}></div>
 
-            <div
-                aria-hidden={!hasPrevPage && !hasNextPage}
-                className={styles.pagination}
-            >
+            <div aria-hidden={!hasPrevPage && !hasNextPage} className={styles.pagination}>
                 <Link
                     aria-hidden={!hasPrevPage}
                     href={`/blog?${prevPageParams}`}
@@ -146,10 +130,7 @@ function Article({ article }: ArticleProps) {
             </CardHeader>
 
             <CardContent className="space-y-4">
-                <Link
-                    href={href}
-                    className="hover:text-cyan-500 flex-1 shrink-0"
-                >
+                <Link href={href} className="hover:text-cyan-500 flex-1 shrink-0">
                     {article.excerpt}
                 </Link>
 

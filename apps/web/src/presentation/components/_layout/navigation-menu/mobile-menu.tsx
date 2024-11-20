@@ -23,7 +23,9 @@ export function MobileNavigation() {
                 Jean Molossi
             </Link>
 
+            {/* @ts-ignore */}
             <Sheet>
+                {/* @ts-ignore */}
                 <SheetTrigger asChild>
                     <Button size="icon" variant="outline">
                         <GiHamburgerMenu />
@@ -38,13 +40,7 @@ export function MobileNavigation() {
 
                     <div className="w-full flex flex-col items-stretch gap-6 mt-10">
                         {items.map(({ href, as, label, icon: Icon }, i) => (
-                            <Button
-                                asChild
-                                variant="ghost"
-                                size="lg"
-                                className="gap-2"
-                                key={i}
-                            >
+                            <Button asChild variant="ghost" size="lg" className="gap-2" key={i}>
                                 <Link href={href} as={as}>
                                     <Icon className="h-6 w-6" />
                                     {label}
@@ -62,6 +58,7 @@ export function MobileNavigation() {
 
                             <div className="inline-flex items-center justify-end gap-4">
                                 Fechar
+                                {/* @ts-ignore */}
                                 <SheetClose>
                                     <X />
                                 </SheetClose>
