@@ -1,77 +1,53 @@
-import { CollectionResult, getArticles, getPlaylistVideos, getPlaylists } from "@/data/strapi";
-import { PartialVideo } from "@/domain/playlist";
+import { getCourses } from '@/lib/api/repositories/courses/get-courses';
+import { getLesson } from '@/lib/api/repositories/courses/get-lessons';
 import '@/presentation/helpers/index';
-import { MetadataRoute } from "next";
+import { MetadataRoute } from 'next';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-    const [articlesResult, playlistsResult] = await Promise.allSettled([
-        getArticles(),
-        getPlaylists({ pageSize: 30 }),
-    ])
+    const courses = await getCourses();
 
-    let articlesSiteMap: any[] = [];
-    if (articlesResult.status === 'fulfilled') {
-        const articles = articlesResult.value.data
-        articlesSiteMap = articles.map(article => {
-            return {
-                ...url({
-                    url: baseUrl(`/artigo/${article.slug}`)
-                })
-            }
-        })
-    }
-
-    let videosPromises: Array<Promise<CollectionResult<PartialVideo>>> = [];
-
-    let playlistsSiteMap: any[] = []
-    if (playlistsResult.status === 'fulfilled') {
-        const playlists = playlistsResult.value.data
-        playlistsSiteMap = playlists.map(playlist => {
-            videosPromises.push(
-                getPlaylistVideos({ canonicalUrl: playlist.slug })
-            )
+    const coursesWithLessons = await Promise.all(
+        courses.map(async course => {
+            const courseLessons = await Promise.all(course.contents.lessons.map(getLesson));
 
             return {
-                ...url({
-                    url: baseUrl(`/playlist/${playlist.slug}`)
-                })
-            }
-        })
-    }
+                ...course,
+                contents: {
+                    ...course.contents,
+                    lessons: courseLessons,
+                },
+            };
+        }),
+    );
 
-    const videos: Array<PartialVideo> = [];
-    const videosResults = await Promise.allSettled(videosPromises)
-    videosResults.forEach(videoResult => {
-        if (videoResult.status === 'rejected') return;
+    let lessonsSiteMap: any[] = [];
+    const coursesSiteMap = coursesWithLessons.map(course => {
+        course.contents.lessons.forEach(lesson => {
+            lessonsSiteMap.push({
+                ...url({ url: baseUrl(lesson._links._self!), changeFrequency: 'yearly' }),
+            });
+        });
 
-        videos.push(...videoResult.value.data)
-    })
-
-    const videosSiteMap = videos.map(video => {
         return {
             ...url({
-                url: baseUrl(`/video/${video.slug}`)
-            })
-        }
-    })
-
+                url: baseUrl(course._links._self!),
+            }),
+        };
+    });
 
     return [
         { ...url({ priority: 1, changeFrequency: 'yearly' }) },
-        { ...url({ url: baseUrl('/playlists') }) },
-        { ...url({ url: baseUrl('/blog') }) },
+        { ...url({ url: baseUrl('/cursos') }) },
         { ...url({ url: baseUrl('/contato'), changeFrequency: 'yearly' }) },
-        ...articlesSiteMap,
-        ...videosSiteMap,
-        ...playlistsSiteMap,
-    ]
+        ...lessonsSiteMap,
+        ...coursesSiteMap,
+    ];
 }
 
 function baseUrl(path: string) {
-    if (path.substring(0,1) !== '/')
-        path = "/" + path
+    if (path.substring(0, 1) !== '/') path = '/' + path;
 
-    return `${process.env.BASE_URL || 'https://jeanmolossi.com.br'}${path}`
+    return `${process.env.BASE_URL || 'https://jeanmolossi.com.br'}${path}`;
 }
 
 type Route = MetadataRoute.Sitemap[0];
@@ -83,7 +59,7 @@ function url(route: Partial<Route>) {
         changeFrequency: 'monthly',
         priority: 0.5,
         ...route,
-    }
+    };
 
-    return result
+    return result;
 }
