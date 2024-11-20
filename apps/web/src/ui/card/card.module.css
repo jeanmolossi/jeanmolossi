@@ -1,0 +1,49 @@
+.root {
+    @apply bg-primary-foreground
+        rounded-lg
+        overflow-hidden
+        drop-shadow-lg px-1
+        min-h-28;
+}
+
+.highlighted {
+    @apply relative z-0;
+}
+
+@keyframes rotateBorders {
+    from {
+        transform: translateY(-25%) rotate(0deg);
+    }
+    to {
+        transform: translateY(-25%) rotate(360deg);
+    }
+}
+
+.highlighted::before {
+    @apply content-[""]
+        absolute
+        -inset-1/2
+        bg-gradient-to-t
+        from-primary-foreground
+        via-primary-foreground
+        to-violet-700
+        aspect-square
+        transition-all
+        origin-center
+        z-0;
+
+    animation: rotateBorders 2s infinite linear;
+}
+
+.highlighted::after {
+    @apply content-[""]
+        absolute
+        bg-primary-foreground
+        rounded
+        inset-1
+        z-0;
+}
+
+.root > div {
+    @apply z-10 rounded-md relative flex flex-col h-full p-2;
+}

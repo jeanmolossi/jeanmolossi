@@ -12,28 +12,27 @@ import {
 import '@/presentation/styles/github-dark.min.css';
 import '@/presentation/styles/global.css';
 import { cn } from '@jeanmolossi/utils';
-import { Poppins } from 'next/font/google';
+import { Inter, Ubuntu } from 'next/font/google';
 import React, { Suspense } from 'react';
 
-const poppins = Poppins({
+const inter = Inter({
     subsets: ['latin'],
     weight: ['400', '500', '600', '700'],
-    variable: '--poppins',
+    variable: '--font-inter',
 });
 
-export default function RootLayout({
-    children,
-}: {
-    children: React.ReactNode;
-}) {
+const ubuntu = Ubuntu({
+    subsets: ['latin'],
+    weight: ['300', '400', '500', '700'],
+    variable: '--font-ubuntu',
+});
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
-        <html lang="pt-BR">
+        <html lang="pt-BR" className={cn(inter.variable, ubuntu.variable)}>
             <head>
                 <FontLoader />
-                <link
-                    rel="dns-prefetch"
-                    href="https://www.googletagmanager.com"
-                />
+                <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
 
                 <link
                     rel="preload"
@@ -47,12 +46,7 @@ export default function RootLayout({
                     as="script"
                 />
             </head>
-            <body
-                className={cn(
-                    'min-h-screen bg-background font-sans antialiased',
-                    poppins.variable,
-                )}
-            >
+            <body className={'min-h-screen bg-background antialiased'}>
                 <ThemeProvider
                     attribute="class"
                     defaultTheme="system"
@@ -64,8 +58,12 @@ export default function RootLayout({
                     {children}
                 </ThemeProvider>
 
-                <Suspense><TagManager /></Suspense>
-                <Suspense><AnalyticsScript /></Suspense>
+                <Suspense>
+                    <TagManager />
+                </Suspense>
+                <Suspense>
+                    <AnalyticsScript />
+                </Suspense>
 
                 <WebVitals />
             </body>

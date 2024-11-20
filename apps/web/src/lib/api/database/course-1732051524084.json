@@ -1,0 +1,24 @@
+{
+    "id": "2",
+    "slug": "micro-servicos-para-iniciantes",
+    "title": "Micro serviços para iniciantes",
+    "cover": "https://i.ytimg.com/vi/dhVTQ825k30/sddefault.jpg",
+    "highlight": false,
+    "contents": {
+        "total_lesson_time": 93,
+        "lessons": [
+            "lesson-1732118800728.json",
+            "lesson-1732118948338.json",
+            "lesson-1732119513141.json",
+            "lesson-1732119651095.json",
+            "lesson-1732119698251.json"
+        ],
+        "level": "iniciante"
+    },
+    "created_at": 1732051524084,
+    "_links": {
+        "_self": "/curso/micro-servicos-para-iniciantes",
+        "_previous": "/curso/api-em-nodejs-sem-frameworks",
+        "_next": null
+    }
+}

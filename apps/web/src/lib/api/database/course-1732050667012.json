@@ -1,0 +1,21 @@
+{
+    "id": "1",
+    "slug": "api-em-nodejs-sem-frameworks",
+    "title": "Api em NodeJS - Sem frameworks",
+    "cover": "https://i.ytimg.com/vi/ER4bT27Ndwc/sddefault.jpg",
+    "highlight": false,
+    "contents": {
+        "total_lesson_time": 181,
+        "lessons": [
+            "lesson-1732054766691.json",
+            "lesson-1732054914607.json"
+        ],
+        "level": "iniciante"
+    },
+    "created_at": 1732050667012,
+    "_links": {
+        "_self": "/curso/api-em-nodejs-sem-frameworks",
+        "_previous": null,
+        "_next": "/curso/micro-servicos-para-iniciantes"
+    }
+}

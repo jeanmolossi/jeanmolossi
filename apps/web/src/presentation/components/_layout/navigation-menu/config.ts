@@ -1,10 +1,4 @@
-import {
-    Contact,
-    Home,
-    ListVideo,
-    Newspaper,
-    NotebookText,
-} from 'lucide-react';
+import { Contact, Home, ListVideo, Newspaper, NotebookText } from 'lucide-react';
 
 export const items = [
     {
@@ -20,9 +14,9 @@ export const items = [
         icon: NotebookText,
     },
     {
-        href: '/playlists',
-        as: '/playlists',
-        label: 'Playlists',
+        href: '/cursos',
+        as: '/cursos',
+        label: 'Cursos',
         icon: ListVideo,
     },
     {
