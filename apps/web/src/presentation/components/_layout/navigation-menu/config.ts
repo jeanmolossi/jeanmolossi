@@ -20,12 +20,6 @@ export const items = [
         icon: ListVideo,
     },
     {
-        href: '/blog',
-        as: '/blog',
-        label: 'Blog',
-        icon: Newspaper,
-    },
-    {
         href: '/contato',
         as: '/contato',
         label: 'Contato ?',
