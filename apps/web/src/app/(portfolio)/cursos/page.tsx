@@ -39,7 +39,7 @@ export default async function Page() {
                                     width: 160,
                                     height: 80,
                                 }}
-                                className="rounded"
+                                className="rounded w-full"
                             />
 
                             <div className="grid-cols-1 grid gap-2 p-2">
