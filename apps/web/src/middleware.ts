@@ -1,6 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { parse } from './lib/middleware/utils';
-import { AuthMiddleware } from './lib/middleware/AuthMiddleware';
 
 export const config = {
     matcher: [
@@ -18,11 +16,5 @@ export const config = {
 };
 
 export default async function middleware(req: NextRequest) {
-    const { key } = parse(req);
-
-    if (['dashboard', 'login'].includes(key)) {
-        return AuthMiddleware(req);
-    }
-
     return NextResponse.next();
 }

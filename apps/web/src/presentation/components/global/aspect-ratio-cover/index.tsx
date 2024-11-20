@@ -21,6 +21,7 @@ export default function AspectRatioCover({
     ...rest
 }: AspectRatioCoverProps) {
     return (
+        // @ts-ignore
         <AspectRatio ratio={ratio} className={cn('bg-muted', wrapperClassName)}>
             <Image
                 alt={alt}

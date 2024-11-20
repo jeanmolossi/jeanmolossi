@@ -10,13 +10,7 @@ import {
     Headings,
 } from '@/presentation/components/global/page-heading/title';
 import { trimAfter } from '@/presentation/helpers/string';
-import {
-    Card,
-    CardContent,
-    CardFooter,
-    CardHeader,
-    CardTitle,
-} from '@jeanmolossi/ui';
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@jeanmolossi/ui';
 import { Link2 } from 'lucide-react';
 import { Metadata } from 'next';
 import Link from 'next/link';
@@ -24,12 +18,12 @@ import { Suspense } from 'react';
 import styles from './blog.module.css';
 
 interface BlogProps {
-    params?: {};
-    searchParams?: {
+    params?: Promise<{}>;
+    searchParams?: Promise<{
         page?: string;
         pageSize?: string;
         search?: string;
-    };
+    }>;
 }
 
 export const metadata: Metadata = {
@@ -38,14 +32,11 @@ export const metadata: Metadata = {
     publisher: 'https://jeanmolossi.com.br',
 };
 
-export default async function Blog({ searchParams }: BlogProps) {
-    const page = +(searchParams?.page || 0)
-        ? +(searchParams?.page || 1)
-        : undefined;
+export default async function Blog(props: BlogProps) {
+    const searchParams = await props.searchParams;
+    const page = +(searchParams?.page || 0) ? +(searchParams?.page || 1) : undefined;
 
-    const pageSize = +(searchParams?.pageSize || 0)
-        ? +(searchParams?.pageSize || 10)
-        : undefined;
+    const pageSize = +(searchParams?.pageSize || 0) ? +(searchParams?.pageSize || 10) : undefined;
 
     const { data: articles, pagination } = await getArticles({
         page,
@@ -82,15 +73,9 @@ export default async function Blog({ searchParams }: BlogProps) {
                 ))}
             </div>
 
-            <div
-                aria-hidden={!hasPrevPage && !hasNextPage}
-                className={styles.divider}
-            ></div>
+            <div aria-hidden={!hasPrevPage && !hasNextPage} className={styles.divider}></div>
 
-            <div
-                aria-hidden={!hasPrevPage && !hasNextPage}
-                className={styles.pagination}
-            >
+            <div aria-hidden={!hasPrevPage && !hasNextPage} className={styles.pagination}>
                 <Link
                     aria-hidden={!hasPrevPage}
                     href={`/blog?${prevPageParams}`}
@@ -145,10 +130,7 @@ function Article({ article }: ArticleProps) {
             </CardHeader>
 
             <CardContent className="space-y-4">
-                <Link
-                    href={href}
-                    className="hover:text-cyan-500 flex-1 shrink-0"
-                >
+                <Link href={href} className="hover:text-cyan-500 flex-1 shrink-0">
                     {article.excerpt}
                 </Link>
 

@@ -1,0 +1,22 @@
+{
+    "id": "4",
+    "title": "#2 - Micro serviços para iniciantes",
+    "slug": "2-micro-servicos-para-iniciantes",
+    "thumbnail": "https://i.ytimg.com/vi/qMlBPbspEF8/sddefault.jpg",
+    "videoID": "qMlBPbspEF8",
+    "contents": {
+        "total_lesson_time": 21,
+        "level": "Intermediário"
+    },
+    "course": {
+        "title": "Micro serviços para iniciantes"
+    },
+    "created_at": 1732118948338,
+    "_links": {
+        "_self": "/curso/micro-servicos-para-iniciantes/2-micro-servicos-para-iniciantes",
+        "_course": "/curso/micro-servicos-para-iniciantes",
+        "_previous": "/curso/micro-servicos-para-iniciantes/1-micro-servicos-para-iniciantes",
+        "_next": "/curso/micro-servicos-para-iniciantes/3-micro-servicos-para-iniciantes"
+    }
+}
+

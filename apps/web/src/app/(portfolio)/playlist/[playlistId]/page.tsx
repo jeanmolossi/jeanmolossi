@@ -1,43 +1,20 @@
-import { getPlaylistVideos, getPlaylists } from '@/data/strapi';
 import { getPlaylist } from '@/data/strapi/playlists/get-playlist';
-import { PartialVideo } from '@/domain/playlist';
-import Container from '@/presentation/components/_layout/container';
-import AspectRatioCover from '@/presentation/components/global/aspect-ratio-cover';
-import PageHeading from '@/presentation/components/global/page-heading';
-import SearchBar from '@/presentation/components/global/page-heading/search-bar';
-import {
-    HeadTitle,
-    Headings,
-} from '@/presentation/components/global/page-heading/title';
-import {
-    Button,
-    //
-    Card,
-    CardContent,
-} from '@jeanmolossi/ui';
-import { cn } from '@jeanmolossi/utils';
-import { ArrowLeftCircle } from 'lucide-react';
 import { Metadata } from 'next';
-import Link from 'next/link';
-import React, { Suspense } from 'react';
-import styles from './playlist-item.module.css';
-
-const LazyMD = React.lazy(() => import('@/presentation/components/markdown'));
+import { redirect } from 'next/navigation';
 
 interface PlaylistProps {
-    params?: {
+    params: Promise<{
         playlistId: string;
-    };
-    searchParams?: {
+    }>;
+    searchParams?: Promise<{
         page?: string;
         pageSize?: string;
         search?: string;
-    };
+    }>;
 }
 
-export async function generateMetadata({
-    params,
-}: PlaylistProps): Promise<Metadata> {
+export async function generateMetadata(props: PlaylistProps): Promise<Metadata> {
+    const params = await props.params;
     const playlistId = params?.playlistId!;
     const playlist = await getPlaylist(playlistId);
 
@@ -55,151 +32,7 @@ export async function generateMetadata({
     };
 }
 
-export default async function Page({ params, searchParams }: PlaylistProps) {
-    const {
-        page: qsPage = '1',
-        pageSize: qsPageSize = '10',
-        search,
-    } = searchParams || {};
-
-    const playlistId = params?.playlistId;
-
-    if (!playlistId) {
-        return <Container>Nada encontrado</Container>;
-    }
-
-    const { data: playlistVideos, pagination } = await getPlaylistVideos({
-        canonicalUrl: playlistId,
-        page: +qsPage,
-        pageSize: +qsPageSize,
-        search,
-    });
-
-    const { nextPageParams, prevPageParams } = pagination;
-
-    const emptyVideos = playlistVideos.length === 0;
-
-    const hasPrevPage = !!prevPageParams;
-    const hasNextPage = !!nextPageParams;
-
-    return (
-        <Container className="my-4">
-            <PageHeading>
-                <Headings>
-                    <HeadTitle>Vídeos</HeadTitle>
-                </Headings>
-
-                <Suspense>
-                    <SearchBar placeholder="Pesquise um vídeo" />
-                </Suspense>
-            </PageHeading>
-
-            <div
-                className={cn(
-                    { hidden: !emptyVideos },
-                    'mx-auto max-w-[768px]',
-                )}
-            >
-                <h1 className="text-7xl mb-8">Oops! Nenhum vídeo</h1>
-
-                <p>
-                    Nenhum vídeo foi adicionado à essa playlist ainda. Seja o
-                    primeiro a saber quando um vídeo for adicionado!
-                </p>
-
-                <div className="my-4">
-                    <label htmlFor="mail">Quero ser avisado: </label>
-                    <input
-                        id="mail"
-                        placeholder="Deixe seu e-mail"
-                        className="p-2 rounded"
-                    />
-                </div>
-
-                <Button asChild variant={'link'} size="lg">
-                    <Link href="/playlists">
-                        <ArrowLeftCircle />
-                        Volte para as playlists
-                    </Link>
-                </Button>
-            </div>
-
-            <div className={styles.items_wrapper}>
-                {playlistVideos.map(item => (
-                    <Video key={item.slug} video={item} />
-                ))}
-            </div>
-
-            <div className={styles.divider}></div>
-
-            <div
-                className={styles.pagination}
-                aria-hidden={!hasPrevPage && !hasNextPage}
-            >
-                <Link
-                    className={styles.page_link}
-                    aria-hidden={!hasPrevPage}
-                    href={`/playlist/${playlistId}?${prevPageParams}`}
-                >
-                    Página anterior
-                </Link>
-
-                <Link
-                    className={styles.page_link}
-                    aria-hidden={!hasNextPage}
-                    href={`/playlist/${playlistId}?${nextPageParams}`}
-                >
-                    Proxima página
-                </Link>
-            </div>
-        </Container>
-    );
+export default async function Page(props: PlaylistProps) {
+    const params = await props.params;
+    return redirect(`/curso/${params?.playlistId}`);
 }
-
-interface VideoProps {
-    video: PartialVideo;
-}
-
-function Video({ video }: VideoProps) {
-    const description = video.description
-        .nlToBr()
-        .trimAfter(250, '... _**ver mais**_');
-
-    return (
-        <Card className={styles.item_wrapper}>
-            <AspectRatioCover
-                priority
-                src={{
-                    src: video.cover,
-                    width: 1280,
-                    height: 720,
-                }}
-                alt={video.title}
-                sizes="1280x720"
-                wrapperClassName="rounded overflow-hidden"
-            />
-
-            <CardContent>
-                <h2 className="text-2xl">{video.title}</h2>
-                <small>Publicado {video.publishedAt.toRelativeTime()}</small>
-
-                <Link href={`/video/${video.slug}`}>
-                    <LazyMD>{description}</LazyMD>
-                </Link>
-            </CardContent>
-        </Card>
-    );
-}
-
-export async function generateStaticParams() {
-    const { data: playlists } = await getPlaylists({
-        page: 1,
-        pageSize: 10,
-    });
-
-    return playlists.map((playlist) => ({
-        playlistId: playlist.slug,
-    }))
-}
-
-export const revalidate = 600;

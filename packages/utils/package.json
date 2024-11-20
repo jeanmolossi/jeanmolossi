@@ -2,9 +2,9 @@
     "name": "@jeanmolossi/utils",
     "description": "Utility functions and constants for the application",
     "version": "0.0.1",
-    "main": "./dist/index.mjs",
-    "module": "./dist/index.mjs",
-    "types": "./dist/index.d.mts",
+    "main": "./dist/index.js",
+    "module": "./dist/index.js",
+    "types": "./dist/index.d.ts",
     "files": [
         "dist/**"
     ],

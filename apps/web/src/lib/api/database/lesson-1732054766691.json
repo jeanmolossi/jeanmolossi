@@ -1,0 +1,21 @@
+{
+    "id": "1",
+    "title": "#1 - API em NodeJS - Sem frameworks",
+    "slug": "1-api-em-nodejs-sem-frameworks",
+    "thumbnail": "https://i.ytimg.com/vi/ER4bT27Ndwc/sddefault.jpg",
+    "videoID": "ER4bT27Ndwc",
+    "contents": {
+        "total_lesson_time": 89,
+        "level": "Iniciante"
+    },
+    "course": {
+        "title": "Api em NodeJS - Sem frameworks"
+    },
+    "created_at": 1732054766691,
+    "_links": {
+        "_self": "/curso/api-em-nodejs-sem-frameworks/1-api-em-nodejs-sem-frameworks",
+        "_course": "/curso/api-em-nodejs-sem-frameworks",
+        "_previous": null,
+        "_next": "/curso/api-em-nodejs-sem-frameworks/2-api-em-nodejs-sem-frameworks"
+    }
+}
