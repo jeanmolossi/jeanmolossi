@@ -1,4 +1,3 @@
-import { Api } from '@/config/constants';
 import { discord } from '@/data/api/discord';
 import { telegram } from '@/data/api/telegram';
 import { NextRequest, NextResponse } from 'next/server';
@@ -23,7 +22,7 @@ export async function POST(request: NextRequest) {
                 parse_mode: z.enum(['Markdown', 'HTML']).default('Markdown'),
                 disable_notification: z.boolean().default(false),
                 disable_web_page_preview: z.boolean().default(false),
-                chat_id: z.string().default(Api().TELEGRAM_MY_ID),
+                chat_id: z.string().default(process.env.TELEGRAM_MY_ID!),
             })
             .parse(body);
 

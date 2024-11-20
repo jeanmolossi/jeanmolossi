@@ -2,9 +2,9 @@ import { VideoComponent } from '@/app/components/video-wrapper/server-video';
 import { getLessonBySlug } from '@/lib/api/repositories/courses/get-lessons';
 import { formatDuration } from '@/lib/helpers/format-duration';
 import { Breadcrumb } from '@/ui/breadcrumb';
-import LessonMdx from '@/ui/mdx-components/lesson.mdx';
 import { Typography } from '@jeanmolossi/ui';
 import { ArrowLeftCircle, ArrowRightCircle, Clock, PlayCircle } from 'lucide-react';
+import { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { Suspense } from 'react';
@@ -14,6 +14,35 @@ interface LessonPageProps {
         slug: string;
         lesson_slug: string;
     }>;
+}
+
+export async function generateMetadata(props: LessonPageProps): Promise<Metadata> {
+    const { slug, lesson_slug } = await props.params;
+
+    const lesson = await getLessonBySlug(slug, lesson_slug);
+    if (!lesson) {
+        return notFound();
+    }
+
+    let title = lesson.title;
+    if (title.length > 60) title = lesson.title.trimAfter(60, '');
+    else if (title.length + ' | Jean Molossi'.length <= 60)
+        title = [lesson.title, 'Jean Molossi'].join(' | ');
+
+    return {
+        title,
+        description: `Aula ${title}`,
+        authors: [{ name: 'Jean Molossi', url: 'https://jeanmolossi.com.br' }],
+        creator: 'Jean Molossi',
+        publisher: 'Jean Molossi',
+        openGraph: {
+            type: 'video.episode',
+            images: [lesson.thumbnail],
+            url: `https://jeanmolossi.com.br/${lesson._links._self}`,
+            title,
+            description: `Aula ${title}`,
+        },
+    };
 }
 
 export default async function LessonPage({ params }: LessonPageProps) {
