@@ -54,12 +54,12 @@ export default async function LessonPage({ params }: LessonPageProps) {
     }
 
     return (
-        <div className="max-w-screen-xl flex flex-col gap-8 w-full mx-auto">
+        <div className="p-8 max-w-screen-xl flex flex-col gap-8 w-full mx-auto">
             <Typography variant="h1" asChild center>
                 <h1>{lesson.title}</h1>
             </Typography>
 
-            <Typography className="flex gap-4 items-center">
+            <Typography className="flex gap-4 items-center flex-wrap">
                 <Breadcrumb href="/cursos" label="cursos" />
                 <Breadcrumb href={lesson._links._course!} label={lesson.course.title} />
             </Typography>
@@ -83,7 +83,7 @@ export default async function LessonPage({ params }: LessonPageProps) {
                         Sobre a aula
                     </Typography>
 
-                    <div className="flex gap-4 items-center">
+                    <div className="flex flex-col md:flex-row gap-4 items-center">
                         <Typography variant="small" asChild>
                             <span className="flex gap-1 items-center">
                                 <Clock className="inline" size={16} />
